@@ -1,3 +1,5 @@
+include mixins/titleData
+
 doctype html
 html(lang="en")
     head
@@ -6,4 +8,6 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title #{pageTitle}
     body 
-        div #{pythonData}
+        ul 
+            each title in pythonDataList
+                +titleData(title)
