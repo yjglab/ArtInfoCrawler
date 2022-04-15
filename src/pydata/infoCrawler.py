@@ -1,6 +1,7 @@
+import requests
 import sys 
 import io 
-import requests
+
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -15,23 +16,22 @@ def set_chrome_driver():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
-driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver')
-driver.implicitly_wait(3)
-driver.get('https://www.britishmuseum.org/exhibitions-events')
-driver.set_window_position(0, 0)
-driver.set_window_size(3000, 1000)
-html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser', from_encoding='cp949')
+def print_msm_data(url, titles_selector, dates_selector):
+    driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver')
+    driver.implicitly_wait(3)
+    driver.get(url)
+    driver.set_window_position(0, 0)
+    driver.set_window_size(3000, 1000)
 
-britishMsm_exn_titles = driver.find_elements(by=By.CSS_SELECTOR, value=".teaser__title > span:nth-child(1)")
-britishMsm_exn_dates = driver.find_elements(by=By.CSS_SELECTOR, value=".teaser__meta > li:nth-child(2)")
+    exibition_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
+    exibition_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
 
-for title in britishMsm_exn_titles[:7]:
-    print(title.text)
-    print("//")
-print("FILTER")
-for date in britishMsm_exn_dates[:7]:
-    print(date.text)
-    print("//")
-print("FILTER")
-driver.close()
+    for title in exibition_titles[:7]:
+        print(title.text)
+        print("//")
+    print("FILTER")
+    for date in exibition_dates[:7]:
+        print(date.text)
+        print("//")
+    print("FILTER")
+    driver.close()

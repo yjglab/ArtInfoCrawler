@@ -3,7 +3,7 @@ export let louvreMsmInfo = {};
 
 export const makeMsmInfo = (britishSpawn, louvreSpawn) => {
   const britishMsmData = britishSpawn("python", [
-    process.cwd() + "/src/pydata/infoCrawler.py",
+    process.cwd() + "/src/pydata/british.py",
   ]);
   const louvreMsmData = louvreSpawn("python", [
     process.cwd() + "/src/pydata/louvre.py",
