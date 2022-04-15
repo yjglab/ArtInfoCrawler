@@ -12,18 +12,17 @@ const infoCrawler = () => {
   result.stdout.on("data", function (data) {
     console.log(data.toString());
     let britishMsmDataString = data.toString();
+
+    let startIdx = 0;
+    let idxOfFilter = 0;
     const FILTER = "FILTER";
-    for (
-      let i = 0;
-      britishMsmDataString.indexOf(`${FILTER}`, i) !== -1;
-      i = britishMsmDataString.indexOf(`${FILTER}`, i) + `${FILTER}}`.length
-    ) {
-      let dataString = britishMsmDataString.slice(
-        i,
-        britishMsmDataString.indexOf(`${FILTER}`, i)
-      );
+    while (idxOfFilter !== -1) {
+      idxOfFilter = britishMsmDataString.indexOf(`${FILTER}`, startIdx);
+      let dataString = britishMsmDataString.slice(startIdx, idxOfFilter);
       arr.push(dataString);
+      startIdx = idxOfFilter + `${FILTER}}`.length;
     }
+
     console.log("fffff");
     for (let i = 0; i < arr.length; i += 1) {
       arr[i] = arr[i].split("//");
