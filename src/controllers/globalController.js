@@ -1,34 +1,42 @@
 let britishMsmDataList;
-const britishMsmData = () => {
-  const exibitionTitle = [];
-  exibitionTitle.push();
-  const exibitionDate = [];
+const britishMsmData = (britishMsmDataString) => {
+  const info = {
+    titles: "",
+  };
 };
-
+let arr = [];
 const infoCrawler = () => {
   const spawn = require("child_process").spawn;
   const result = spawn("python", ["infoCrawler.py"]);
 
   result.stdout.on("data", function (data) {
+    console.log(data.toString());
     let britishMsmDataString = data.toString();
-    console.log(britishMsmDataString);
-    britishMsmDataString = britishMsmDataString.slice(
-      0,
-      britishMsmDataString.indexOf("---")
-    );
-    console.log(britishMsmDataString);
-    britishMsmDataList = britishMsmDataString.split("//");
-
-    for (let i = 0; i < britishMsmDataList.length; i += 1) {
-      britishMsmDataList[i] = britishMsmDataList[i].replace(/(\r\n\r\n)/gm, "");
+    const FILTER = "FILTER";
+    for (
+      let i = 0;
+      britishMsmDataString.indexOf(`${FILTER}`, i) !== -1;
+      i = britishMsmDataString.indexOf(`${FILTER}`, i) + `${FILTER}}`.length
+    ) {
+      let dataString = britishMsmDataString.slice(
+        i,
+        britishMsmDataString.indexOf(`${FILTER}`, i)
+      );
+      arr.push(dataString);
+    }
+    console.log("fffff");
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[i].split("//");
+      for (let j = 0; j < arr[i].length; j += 1) {
+        arr[i][j] = arr[i][j].replace(/(\r\n\r\n)/gm, "");
+      }
+      arr[i] = arr[i].filter((el) => el !== "");
     }
 
-    britishMsmDataList = britishMsmDataList
-      .filter((el) => el !== "")
-      .slice(0, -2);
-
-    console.log(data.toString());
-    console.log(britishMsmDataList);
+    console.log(arr[0]);
+    console.log(arr[1]);
+    // console.log(data.toString());
+    // console.log(britishMsmDataList);
   });
   result.stderr.on("data", function (data) {
     console.log(data.toString());
@@ -36,7 +44,7 @@ const infoCrawler = () => {
 };
 
 export const main = (req, res) => {
-  res.render("main", { pageTitle: "결과", britishMsmDataList });
+  res.render("main", { pageTitle: "결과", dataList: arr[1] });
 };
 
 infoCrawler();

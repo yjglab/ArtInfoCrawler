@@ -27,5 +27,9 @@ britishMsm_exn_titles = driver.find_elements_by_css_selector(".teaser__title > s
 for title in britishMsm_exn_titles:
     print(title.text)
     print("//")
-print("---")
+print("FILTER")
+for title in britishMsm_exn_titles:
+    print(title.text)
+    print("//")
+print("FILTER")
 driver.close()
