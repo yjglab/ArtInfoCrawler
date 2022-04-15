@@ -1,3 +1,4 @@
+
 import sys 
 import io 
 import requests
@@ -17,21 +18,22 @@ def set_chrome_driver():
 
 driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver')
 driver.implicitly_wait(3)
-driver.get('https://www.britishmuseum.org/exhibitions-events')
+driver.get('https://www.louvre.fr/en')
 driver.set_window_position(0, 0)
 driver.set_window_size(3000, 1000)
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser', from_encoding='cp949')
 
-britishMsm_exn_titles = driver.find_elements_by_css_selector(".teaser__title > span:nth-child(1)")
-britishMsm_exn_dates = driver.find_elements_by_css_selector(".teaser__meta > li:nth-child(2")
+louvre_exn_titles = driver.find_elements(by=By.CSS_SELECTOR, value=".CardsSlideshow_ALaUne_title")
+louvre_exn_dates = driver.find_elements(by=By.CSS_SELECTOR, value=".CardsSlideshow_ALaUne_text")
 
-for title in britishMsm_exn_titles[:7]:
+for title in louvre_exn_titles[:4]:
     print(title.text)
     print("//")
 print("FILTER")
-for date in britishMsm_exn_dates[:7]:
+for date in louvre_exn_dates[:4]:
     print(date.text)
     print("//")
 print("FILTER")
+
 driver.close()
