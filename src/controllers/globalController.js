@@ -1,19 +1,34 @@
-let pythonData;
-let pythonDataList;
+let britishMsmDataList;
+const britishMsmData = () => {
+  const exibitionTitle = [];
+  exibitionTitle.push();
+  const exibitionDate = [];
+};
 
 const infoCrawler = () => {
   const spawn = require("child_process").spawn;
   const result = spawn("python", ["infoCrawler.py"]);
 
   result.stdout.on("data", function (data) {
-    pythonData = data.toString();
-    pythonDataList = pythonData.split("//");
-    for (let i = 0; i < pythonDataList.length; i += 1) {
-      pythonDataList[i] = pythonDataList[i].replace(/(\r\n\r\n)/gm, "");
+    let britishMsmDataString = data.toString();
+    console.log(britishMsmDataString);
+    britishMsmDataString = britishMsmDataString.slice(
+      0,
+      britishMsmDataString.indexOf("---")
+    );
+    console.log(britishMsmDataString);
+    britishMsmDataList = britishMsmDataString.split("//");
+
+    for (let i = 0; i < britishMsmDataList.length; i += 1) {
+      britishMsmDataList[i] = britishMsmDataList[i].replace(/(\r\n\r\n)/gm, "");
     }
-    pythonDataList = pythonDataList.filter((el) => el !== "").slice(0, -2);
+
+    britishMsmDataList = britishMsmDataList
+      .filter((el) => el !== "")
+      .slice(0, -2);
+
     console.log(data.toString());
-    console.log(pythonDataList);
+    console.log(britishMsmDataList);
   });
   result.stderr.on("data", function (data) {
     console.log(data.toString());
@@ -21,7 +36,7 @@ const infoCrawler = () => {
 };
 
 export const main = (req, res) => {
-  res.render("main", { pageTitle: "결과", pythonDataList });
+  res.render("main", { pageTitle: "결과", britishMsmDataList });
 };
 
 infoCrawler();

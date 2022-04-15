@@ -21,10 +21,11 @@ driver.get('https://www.britishmuseum.org/exhibitions-events')
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser', from_encoding='cp949')
 
-data = driver.find_elements_by_css_selector(".teaser__title > span:nth-child(1)")
+britishMsm_exn_titles = driver.find_elements_by_css_selector(".teaser__title > span:nth-child(1)")
 
 
-for d in data:
-    print(d.text)
+for title in britishMsm_exn_titles:
+    print(title.text)
     print("//")
+print("---")
 driver.close()
