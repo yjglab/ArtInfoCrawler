@@ -1,4 +1,4 @@
-mixin printInfo(britishMsmInfo)
-    - for (var i = 0; i < britishMsmInfo.infoLength - 1; i += 1)
-        h4 Title: #{britishMsmInfo.titles[i]}
-        span Date: #{britishMsmInfo.dates[i]}
+mixin printInfo(msmInfo)
+    - for (var i = 0; i < msmInfo.infoLength - 1; i += 1)
+        h4 Title: #{msmInfo.titles[i]}
+        span Date: #{msmInfo.dates[i]}

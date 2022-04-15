@@ -1,26 +1,20 @@
 const spawn = require("child_process").spawn;
-const result = spawn("python", ["infoCrawler.py"]);
-
-result.stdout.on("data", function (data) {
-  console.log(data.toString());
-  handleBritishMsmData(data);
-});
-result.stderr.on("data", function (data) {
-  console.log(data.toString());
-});
+const britishMsmData = spawn("python", ["infoCrawler.py"]);
+const louvreMsmData = spawn("python", ["louvre.py"]);
 
 let britishMsmInfo = {};
+let louvreMsmInfo = {};
 
-const handleBritishMsmData = (data) => {
+const handleMsmData = (data) => {
   const dataStringList = [];
-  let britishMsmDataString = data.toString();
-
+  let msmDataString = data.toString();
   let startIdx = 0;
   let idxOfFilter = 0;
   const FILTER = "FILTER";
+
   while (idxOfFilter !== -1) {
-    idxOfFilter = britishMsmDataString.indexOf(`${FILTER}`, startIdx);
-    let dataString = britishMsmDataString.slice(startIdx, idxOfFilter); // 가공안된거
+    idxOfFilter = msmDataString.indexOf(`${FILTER}`, startIdx);
+    let dataString = msmDataString.slice(startIdx, idxOfFilter); // 가공안된거
     dataStringList.push(dataString);
     startIdx = idxOfFilter + `${FILTER}}`.length;
   }
@@ -33,13 +27,31 @@ const handleBritishMsmData = (data) => {
     dataStringList[i] = dataStringList[i].filter((el) => el !== "");
   }
 
-  britishMsmInfo = {
+  let msmInfo = {
     titles: dataStringList[0],
     dates: dataStringList[1],
   };
-  console.log(britishMsmInfo.titles);
-  console.log(britishMsmInfo.dates);
+  console.log(msmInfo.titles);
+  console.log(msmInfo.dates);
+
+  return msmInfo;
 };
+britishMsmData.stdout.on("data", function (data) {
+  // console.log(data.toString());
+  britishMsmInfo = handleMsmData(data);
+});
+britishMsmData.stderr.on("data", function (data) {
+  // console.log(data.toString());
+});
+
+louvreMsmData.stdout.on("data", function (data) {
+  console.log(data.toString());
+  louvreMsmInfo = handleMsmData(data);
+});
+louvreMsmData.stderr.on("data", function (data) {
+  console.log(data.toString());
+});
+
 export const main = (req, res) => {
   res.render("main", {
     pageTitle: "결과",
@@ -47,6 +59,11 @@ export const main = (req, res) => {
       titles: britishMsmInfo.titles,
       dates: britishMsmInfo.dates,
       infoLength: britishMsmInfo.titles.length,
+    },
+    louvreMsmInfo: {
+      titles: louvreMsmInfo.titles,
+      dates: louvreMsmInfo.dates,
+      infoLength: louvreMsmInfo.titles.length,
     },
   });
 };
