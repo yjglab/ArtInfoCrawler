@@ -7,11 +7,11 @@ const infoCrawler = () => {
 
   result.stdout.on("data", function (data) {
     pythonData = data.toString();
-    pythonDataList = pythonData.split("--");
+    pythonDataList = pythonData.split("//");
     for (let i = 0; i < pythonDataList.length; i += 1) {
-      pythonDataList[i] = pythonDataList[i].replace(/(\r\n|\n|\r|)/gm, "");
+      pythonDataList[i] = pythonDataList[i].replace(/(\r\n\r\n)/gm, "");
     }
-    pythonDataList = pythonDataList.filter((el) => el !== "");
+    pythonDataList = pythonDataList.filter((el) => el !== "").slice(0, -2);
     console.log(data.toString());
     console.log(pythonDataList);
   });

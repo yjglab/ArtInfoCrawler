@@ -26,5 +26,5 @@ data = driver.find_elements_by_css_selector(".teaser__title > span:nth-child(1)"
 
 for d in data:
     print(d.text)
-    print("--")
+    print("//")
 driver.close()
