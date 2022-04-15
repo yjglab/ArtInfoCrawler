@@ -1,4 +1,4 @@
-include mixins/titleData
+include mixins/printInfo
 
 doctype html
 html(lang="en")
@@ -9,5 +9,7 @@ html(lang="en")
         title #{pageTitle}
     body 
         ul 
-            each title in britishMsmInfo.titles
-                +titleData(title)
+            h2 British Museum
+            +printInfo(britishMsmInfo)
+            h2 ㄷ
+            

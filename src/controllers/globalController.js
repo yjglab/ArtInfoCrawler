@@ -38,14 +38,15 @@ const handleBritishMsmData = (data) => {
     dates: dataStringList[1],
   };
   console.log(britishMsmInfo.titles);
+  console.log(britishMsmInfo.dates);
 };
-
 export const main = (req, res) => {
   res.render("main", {
     pageTitle: "결과",
     britishMsmInfo: {
       titles: britishMsmInfo.titles,
       dates: britishMsmInfo.dates,
+      infoLength: britishMsmInfo.titles.length,
     },
   });
 };
