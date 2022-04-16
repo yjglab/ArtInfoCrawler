@@ -1,12 +1,16 @@
 export let britishMsmInfo = {};
 export let louvreMsmInfo = {};
+export let pompidouMsmInfo = {};
 
-export const makeMsmInfo = (britishSpawn, louvreSpawn) => {
+export const makeMsmInfo = (britishSpawn, louvreSpawn, pompidouSpawn) => {
   const britishMsmData = britishSpawn("python", [
     process.cwd() + "/src/pydata/british.py",
   ]);
   const louvreMsmData = louvreSpawn("python", [
     process.cwd() + "/src/pydata/louvre.py",
+  ]);
+  const pompidouMsmData = pompidouSpawn("python", [
+    process.cwd() + "/src/pydata/pompidou.py",
   ]);
 
   const handleMsmData = (data) => {
@@ -40,6 +44,7 @@ export const makeMsmInfo = (britishSpawn, louvreSpawn) => {
 
     return msmInfo;
   };
+
   britishMsmData.stdout.on("data", function (data) {
     // console.log(data.toString());
     britishMsmInfo = handleMsmData(data);
@@ -53,6 +58,14 @@ export const makeMsmInfo = (britishSpawn, louvreSpawn) => {
     louvreMsmInfo = handleMsmData(data);
   });
   louvreMsmData.stderr.on("data", function (data) {
+    console.log(data.toString());
+  });
+
+  pompidouMsmData.stdout.on("data", function (data) {
+    console.log(data.toString());
+    pompidouMsmInfo = handleMsmData(data);
+  });
+  pompidouMsmData.stderr.on("data", function (data) {
     console.log(data.toString());
   });
 };

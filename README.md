@@ -6,6 +6,7 @@
 
 - british.py : 대영박물관 전시정보
 - louvre.py : 루브르박물관 전시정보
+- pompidou.py : 조르주 퐁피두 센터 전시정보
 
 [js]
 
