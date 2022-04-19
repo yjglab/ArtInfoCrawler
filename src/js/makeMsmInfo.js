@@ -1,8 +1,14 @@
 export let britishMsmInfo = {};
 export let louvreMsmInfo = {};
 export let pompidouMsmInfo = {};
+export let londonNatlInfo = {};
 
-export const makeMsmInfo = (britishSpawn, louvreSpawn, pompidouSpawn) => {
+export const makeMsmInfo = (
+  britishSpawn,
+  louvreSpawn,
+  pompidouSpawn,
+  londonNatlSpawn
+) => {
   const britishMsmData = britishSpawn("python", [
     process.cwd() + "/src/pydata/british.py",
   ]);
@@ -11,6 +17,9 @@ export const makeMsmInfo = (britishSpawn, louvreSpawn, pompidouSpawn) => {
   ]);
   const pompidouMsmData = pompidouSpawn("python", [
     process.cwd() + "/src/pydata/pompidou.py",
+  ]);
+  const londonNatlData = londonNatlSpawn("python", [
+    process.cwd() + "/src/pydata/london_natl.py",
   ]);
 
   const handleMsmData = (data) => {
@@ -66,6 +75,14 @@ export const makeMsmInfo = (britishSpawn, louvreSpawn, pompidouSpawn) => {
     pompidouMsmInfo = handleMsmData(data);
   });
   pompidouMsmData.stderr.on("data", function (data) {
+    // console.log(data.toString());
+  });
+
+  londonNatlData.stdout.on("data", function (data) {
+    // console.log(data.toString());
+    londonNatlInfo = handleMsmData(data);
+  });
+  londonNatlData.stderr.on("data", function (data) {
     // console.log(data.toString());
   });
 };

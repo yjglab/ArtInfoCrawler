@@ -3,13 +3,15 @@ import {
   britishMsmInfo,
   louvreMsmInfo,
   pompidouMsmInfo,
+  londonNatlInfo,
 } from "../js/makeMsmInfo.js";
 
 const britishSpawn = require("child_process").spawn;
 const louvreSpawn = require("child_process").spawn;
 const pompidouSpawn = require("child_process").spawn;
+const londonNatlSpawn = require("child_process").spawn;
 
-makeMsmInfo(britishSpawn, louvreSpawn, pompidouSpawn);
+makeMsmInfo(britishSpawn, louvreSpawn, pompidouSpawn, londonNatlSpawn);
 
 export const main = (req, res) => {
   res.render("main", {
@@ -28,6 +30,11 @@ export const main = (req, res) => {
       titles: pompidouMsmInfo.titles,
       dates: pompidouMsmInfo.dates,
       infoLength: pompidouMsmInfo.titles.length,
+    },
+    londonNatlInfo: {
+      titles: londonNatlInfo.titles,
+      dates: londonNatlInfo.dates,
+      infoLength: londonNatlInfo.titles.length,
     },
   });
 };

@@ -32,7 +32,6 @@ def print_msm_data(url, titles_selector, dates_selector):
     # exibition_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
     exibition_titles = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, titles_selector)))
     exibition_dates = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, dates_selector)))
-    # exn_info = set_selector(driver, titles_selector, dates_selector).copy()
    
     if url == 'https://www.britishmuseum.org/exhibitions-events': 
         # british museum 정보 중 전시정보가 아닌 것은 제외함
@@ -56,7 +55,9 @@ def print_msm_data(url, titles_selector, dates_selector):
         #         dates_temp.append(date_webElement)
         # exibition_titles = titles_temp[:]
         # exibition_dates = dates_temp[:]
-    
+    if url == "https://www.nationalgallery.org.uk/exhibitions":
+        exibition_titles.insert(0, driver.find_element(by=By.CSS_SELECTOR, value=("body > main > div.exhibition-promo.position-relative.dl-product > div.exhibition-promo-content-wrap > div > div.row.exhibition-promo-content > div.col-12.col-sm-8.col-lg-10.pt-3.pt-sm-0.pl-sm-only-align-with-topnav.pl-md-only-align-with-topnav")))
+
     for title in exibition_titles:
         print(title.text)
         print("//")
