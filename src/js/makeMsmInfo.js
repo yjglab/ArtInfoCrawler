@@ -54,18 +54,18 @@ export const makeMsmInfo = (britishSpawn, louvreSpawn, pompidouSpawn) => {
   });
 
   louvreMsmData.stdout.on("data", function (data) {
-    console.log(data.toString());
+    // console.log(data.toString());
     louvreMsmInfo = handleMsmData(data);
   });
   louvreMsmData.stderr.on("data", function (data) {
-    console.log(data.toString());
+    // console.log(data.toString());
   });
 
   pompidouMsmData.stdout.on("data", function (data) {
-    console.log(data.toString());
+    // console.log(data.toString());
     pompidouMsmInfo = handleMsmData(data);
   });
   pompidouMsmData.stderr.on("data", function (data) {
-    console.log(data.toString());
+    // console.log(data.toString());
   });
 };
