@@ -4,9 +4,12 @@
 
 [python]
 
-- british.py : 대영박물관 전시정보
-- louvre.py : 루브르박물관 전시정보
+- british.py : 대영 박물관 전시정보
+- louvre.py : 루브르 박물관 전시정보
 - pompidou.py : 조르주 퐁피두 센터 전시정보
+- london_natl.py : 런던 네셔널 갤러리 전시정보
+- wien.py : 비엔나 박물관 전시정보
+- prado.py : 프라도 미술관 전시정보
 
 [js]
 
@@ -25,6 +28,12 @@
   받아오지 못하였음. 2) time.sleep()을 사용했으나 사용 후 초기 리스트의 내용이 사라지는 문제가 있음(원인을 모르겠음)
 
 [사용]
+
+1. 전시정보를 가져올 python 파일 생성 후 파일에 URL, 가져올 정보의 selector 저장
+2. makeMsmInfo.js에 객체와 파일 정보 입력
+3. globalController.js 에서 Main 퍼그 템플릿에 전달할 객체 저장
+4. 퍼그 템플릿에서 데이터 전달받아 출력할 태그 추가
+5. Main 페이지에서 출력 확인
 
 [bs4 관련]
 

@@ -32,5 +32,10 @@ export const main = (req, res) => {
       dates: msmInfoName[4].dates,
       infoLength: msmInfoName[4].titles.length,
     },
+    pradoMsmInfo: {
+      titles: msmInfoName[5].titles,
+      dates: msmInfoName[5].dates,
+      infoLength: msmInfoName[5].titles.length,
+    },
   });
 };
