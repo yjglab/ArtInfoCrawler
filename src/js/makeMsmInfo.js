@@ -2,13 +2,21 @@ let britishMsmInfo = {};
 let louvreMsmInfo = {};
 let pompidouMsmInfo = {};
 let londonNatlInfo = {};
+let wienMsmInfo = {};
 export const msmInfoName = [
   britishMsmInfo,
   louvreMsmInfo,
   pompidouMsmInfo,
   londonNatlInfo,
+  wienMsmInfo,
 ];
-const pyFile = ["british.py", "louvre.py", "pompidou.py", "london_natl.py"];
+const pyFile = [
+  "british.py",
+  "louvre.py",
+  "pompidou.py",
+  "london_natl.py",
+  "wien.py",
+];
 
 // 텍스트 가공 함수
 const handleMsmData = (data) => {

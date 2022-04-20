@@ -27,5 +27,10 @@ export const main = (req, res) => {
       dates: msmInfoName[3].dates,
       infoLength: msmInfoName[3].titles.length,
     },
+    wienMsmInfo: {
+      titles: msmInfoName[4].titles,
+      dates: msmInfoName[4].dates,
+      infoLength: msmInfoName[4].titles.length,
+    },
   });
 };
