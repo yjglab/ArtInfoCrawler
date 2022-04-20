@@ -1,40 +1,31 @@
-import {
-  makeMsmInfo,
-  britishMsmInfo,
-  louvreMsmInfo,
-  pompidouMsmInfo,
-  londonNatlInfo,
-} from "../js/makeMsmInfo.js";
+import { makeMsmInfo, msmInfoName } from "../js/makeMsmInfo.js";
 
-const britishSpawn = require("child_process").spawn;
-const louvreSpawn = require("child_process").spawn;
-const pompidouSpawn = require("child_process").spawn;
-const londonNatlSpawn = require("child_process").spawn;
+const childSpawn = require("child_process").spawn;
 
-makeMsmInfo(britishSpawn, louvreSpawn, pompidouSpawn, londonNatlSpawn);
+makeMsmInfo(childSpawn);
 
 export const main = (req, res) => {
   res.render("main", {
     pageTitle: "출력 정리",
     britishMsmInfo: {
-      titles: britishMsmInfo.titles,
-      dates: britishMsmInfo.dates,
-      infoLength: britishMsmInfo.titles.length,
+      titles: msmInfoName[0].titles,
+      dates: msmInfoName[0].dates,
+      infoLength: msmInfoName[0].titles.length,
     },
     louvreMsmInfo: {
-      titles: louvreMsmInfo.titles,
-      dates: louvreMsmInfo.dates,
-      infoLength: louvreMsmInfo.titles.length,
+      titles: msmInfoName[1].titles,
+      dates: msmInfoName[1].dates,
+      infoLength: msmInfoName[1].titles.length,
     },
     pompidouMsmInfo: {
-      titles: pompidouMsmInfo.titles,
-      dates: pompidouMsmInfo.dates,
-      infoLength: pompidouMsmInfo.titles.length,
+      titles: msmInfoName[2].titles,
+      dates: msmInfoName[2].dates,
+      infoLength: msmInfoName[2].titles.length,
     },
     londonNatlInfo: {
-      titles: londonNatlInfo.titles,
-      dates: londonNatlInfo.dates,
-      infoLength: londonNatlInfo.titles.length,
+      titles: msmInfoName[3].titles,
+      dates: msmInfoName[3].dates,
+      infoLength: msmInfoName[3].titles.length,
     },
   });
 };
