@@ -12,7 +12,12 @@ export const main = (req, res) => {
       dates: msmInfoName[0].dates,
       infoLength: msmInfoName[0].titles.length,
     },
-    louvreMsmInfo: {
+    // louvreMsmInfo: {
+    //   titles: msmInfoName[1].titles,
+    //   dates: msmInfoName[1].dates,
+    //   infoLength: msmInfoName[1].titles.length,
+    // },
+    cincinnatiInfo: {
       titles: msmInfoName[1].titles,
       dates: msmInfoName[1].dates,
       infoLength: msmInfoName[1].titles.length,
@@ -27,6 +32,7 @@ export const main = (req, res) => {
       dates: msmInfoName[3].dates,
       infoLength: msmInfoName[3].titles.length,
     },
+
     wienMsmInfo: {
       titles: msmInfoName[4].titles,
       dates: msmInfoName[4].dates,

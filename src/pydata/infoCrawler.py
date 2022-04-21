@@ -20,7 +20,6 @@ def set_chrome_driver():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
-
 def print_msm_data(url, titles_selector, dates_selector):
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver')
     driver.implicitly_wait(3)
@@ -28,10 +27,10 @@ def print_msm_data(url, titles_selector, dates_selector):
     driver.set_window_position(0, 0)
     driver.set_window_size(3000, 1000)
 
-    # exibition_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
-    # exibition_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
-    exibition_titles = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, titles_selector)))
-    exibition_dates = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, dates_selector)))
+    exibition_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
+    exibition_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
+    # exibition_titles = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, titles_selector)))
+    # exibition_dates = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, dates_selector)))
    
     if url == 'https://www.britishmuseum.org/exhibitions-events': 
         # british museum 정보 중 전시정보가 아닌 것은 제외함
@@ -67,5 +66,6 @@ def print_msm_data(url, titles_selector, dates_selector):
         print(date.text)
         print("//")
     print("FILTER")
+    
     
     driver.close()

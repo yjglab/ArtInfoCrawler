@@ -1,5 +1,6 @@
 let britishMsmInfo = {};
-let louvreMsmInfo = {};
+// let louvreMsmInfo = {};
+let cincinnatiInfo = {};
 let pompidouMsmInfo = {};
 let londonNatlInfo = {};
 let wienMsmInfo = {};
@@ -7,7 +8,8 @@ let pradoMsmInfo = {};
 
 export const msmInfoName = [
   britishMsmInfo,
-  louvreMsmInfo,
+  // louvreMsmInfo,
+  cincinnatiInfo,
   pompidouMsmInfo,
   londonNatlInfo,
   wienMsmInfo,
@@ -15,7 +17,8 @@ export const msmInfoName = [
 ];
 const pyFile = [
   "british.py",
-  "louvre.py",
+  // "louvre.py",
+  "cincinnati.py",
   "pompidou.py",
   "london_natl.py",
   "wien.py",
