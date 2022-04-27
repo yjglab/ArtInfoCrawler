@@ -1,41 +1,38 @@
-let britishMsmInfo = {};
-// let louvreMsmInfo = {};
-let cincinnatiInfo = {};
-let pompidouMsmInfo = {};
-let londonNatlInfo = {};
-let wienMsmInfo = {};
-let pradoMsmInfo = {};
+let uk_britishInfo = {};
+let us_cincinnatiInfo = {};
+let fr_pompidouInfo = {};
+let uk_londonNatlInfo = {};
+let at_wienInfo = {};
+let es_pradoInfo = {};
 
-export const msmInfoName = [
-  britishMsmInfo,
-  // louvreMsmInfo,
-  cincinnatiInfo,
-  pompidouMsmInfo,
-  londonNatlInfo,
-  wienMsmInfo,
-  pradoMsmInfo,
+export const infoObjects = [
+  uk_britishInfo,
+  us_cincinnatiInfo,
+  fr_pompidouInfo,
+  uk_londonNatlInfo,
+  at_wienInfo,
+  es_pradoInfo,
 ];
 const pyFile = [
-  "british.py",
-  // "louvre.py",
-  "cincinnati.py",
-  "pompidou.py",
-  "london_natl.py",
-  "wien.py",
-  "prado.py",
+  "uk_british.py",
+  "us_cincinnati.py",
+  "fr_pompidou.py",
+  "uk_londonNatl.py",
+  "at_wien.py",
+  "es_prado.py",
 ];
 
 // 텍스트 가공 함수
-const handleMsmData = (data) => {
+const handleProcessInfoData = (data) => {
   const dataStringList = [];
-  let msmDataString = data.toString();
+  let crawledDataString = data.toString();
   let startIdx = 0;
   let idxOfFilter = 0;
   const FILTER = "FILTER";
 
   while (idxOfFilter !== -1) {
-    idxOfFilter = msmDataString.indexOf(`${FILTER}`, startIdx);
-    let dataString = msmDataString.slice(startIdx, idxOfFilter); // 가공안된거
+    idxOfFilter = crawledDataString.indexOf(`${FILTER}`, startIdx);
+    let dataString = crawledDataString.slice(startIdx, idxOfFilter); // 가공안된거
     dataStringList.push(dataString);
     startIdx = idxOfFilter + `${FILTER}}`.length;
   }
@@ -49,31 +46,31 @@ const handleMsmData = (data) => {
   }
 
   // 텍스트 가공된 관 정보
-  let processedInfoText = {
+  let processedInfo = {
     titles: dataStringList[0],
     dates: dataStringList[1],
   };
-  console.log(processedInfoText.titles);
-  console.log(processedInfoText.dates);
+  console.log(processedInfo.titles);
+  console.log(processedInfo.dates);
 
-  return processedInfoText;
+  return processedInfo;
 };
-export const makeMsmInfo = (childSpawn) => {
+export const makeInfo = (childSpawn) => {
   for (let i = 0; i < pyFile.length; i += 1) {
-    const msmData = childSpawn("python", [
+    const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
-    msmData.stdout.on("data", function (data) {
+    infoData.stdout.on("data", function (data) {
       // console.log(data.toString());
-      msmInfoName[i] = handleMsmData(data);
+      infoObjects[i] = handleProcessInfoData(data);
     });
-    msmData.stderr.on("data", function (data) {
+    infoData.stderr.on("data", function (data) {
       // console.log(data.toString());
     });
   }
 };
 
-// export const makeMsmInfos = (
+// export const makeInfos = (
 //   britishSpawn,
 //   louvreSpawn,
 //   pompidouSpawn,
@@ -92,16 +89,16 @@ export const makeMsmInfo = (childSpawn) => {
 //     process.cwd() + "/src/pydata/london_natl.py",
 //   ]);
 
-//   const handleMsmData = (data) => {
+//   const handleProcessInfoData = (data) => {
 //     const dataStringList = [];
-//     let msmDataString = data.toString();
+//     let crawledDataString = data.toString();
 //     let startIdx = 0;
 //     let idxOfFilter = 0;
 //     const FILTER = "FILTER";
 
 //     while (idxOfFilter !== -1) {
-//       idxOfFilter = msmDataString.indexOf(`${FILTER}`, startIdx);
-//       let dataString = msmDataString.slice(startIdx, idxOfFilter); // 가공안된거
+//       idxOfFilter = crawledDataString.indexOf(`${FILTER}`, startIdx);
+//       let dataString = crawledDataString.slice(startIdx, idxOfFilter); // 가공안된거
 //       dataStringList.push(dataString);
 //       startIdx = idxOfFilter + `${FILTER}}`.length;
 //     }
@@ -126,7 +123,7 @@ export const makeMsmInfo = (childSpawn) => {
 
 //   britishMsmData.stdout.on("data", function (data) {
 //     // console.log(data.toString());
-//     britishMsmInfo = handleMsmData(data);
+//     uk_britishInfo = handleProcessInfoData(data);
 //   });
 //   britishMsmData.stderr.on("data", function (data) {
 //     // console.log(data.toString());
@@ -134,7 +131,7 @@ export const makeMsmInfo = (childSpawn) => {
 
 //   louvreMsmData.stdout.on("data", function (data) {
 //     // console.log(data.toString());
-//     louvreMsmInfo = handleMsmData(data);
+//      = handleProcessInfoData(data);
 //   });
 //   louvreMsmData.stderr.on("data", function (data) {
 //     // console.log(data.toString());
@@ -142,7 +139,7 @@ export const makeMsmInfo = (childSpawn) => {
 
 //   pompidouMsmData.stdout.on("data", function (data) {
 //     // console.log(data.toString());
-//     pompidouMsmInfo = handleMsmData(data);
+//     fr_pompidouInfo = handleProcessInfoData(data);
 //   });
 //   pompidouMsmData.stderr.on("data", function (data) {
 //     // console.log(data.toString());
@@ -150,7 +147,7 @@ export const makeMsmInfo = (childSpawn) => {
 
 //   londonNatlData.stdout.on("data", function (data) {
 //     // console.log(data.toString());
-//     londonNatlInfo = handleMsmData(data);
+//     uk_londonNatlInfo = handleProcessInfoData(data);
 //   });
 //   londonNatlData.stderr.on("data", function (data) {
 //     // console.log(data.toString());

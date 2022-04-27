@@ -32,6 +32,8 @@ def print_msm_data(url, titles_selector, dates_selector):
         pass
     if url == "https://www.nationalgallery.org.uk/exhibitions":
         exibition_titles.insert(0, driver.find_element(by=By.CSS_SELECTOR, value=("body > main > div.exhibition-promo.position-relative.dl-product > div.exhibition-promo-content-wrap > div > div.row.exhibition-promo-content > div.col-12.col-sm-8.col-lg-10.pt-3.pt-sm-0.pl-sm-only-align-with-topnav.pl-md-only-align-with-topnav")))
+    # if url == 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/':
+    #     exibition_dates = list(map(lambda x : x[6:], exibition_dates))
     if url == 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/':
         exibition_titles = exibition_titles[:3]
     for title in exibition_titles:

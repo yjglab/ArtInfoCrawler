@@ -5,4 +5,3 @@ titles_selector = ".col-sm-8 h4"
 dates_selector = ".col-sm-8 h5"
 
 infoCrawler.print_msm_data(url, titles_selector, dates_selector)
-

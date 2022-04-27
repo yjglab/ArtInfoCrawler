@@ -1,47 +1,42 @@
-import { makeMsmInfo, msmInfoName } from "../js/makeMsmInfo.js";
+import { makeInfo, infoObjects } from "../js/makeInfo.js";
 
 const childSpawn = require("child_process").spawn;
 
-makeMsmInfo(childSpawn);
+makeInfo(childSpawn);
 
 export const main = (req, res) => {
   res.render("main", {
     pageTitle: "출력 정리",
-    britishMsmInfo: {
-      titles: msmInfoName[0].titles,
-      dates: msmInfoName[0].dates,
-      infoLength: msmInfoName[0].titles.length,
+    uk_britishInfo: {
+      titles: infoObjects[0].titles,
+      dates: infoObjects[0].dates,
+      infoLength: infoObjects[0].titles.length,
     },
-    // louvreMsmInfo: {
-    //   titles: msmInfoName[1].titles,
-    //   dates: msmInfoName[1].dates,
-    //   infoLength: msmInfoName[1].titles.length,
-    // },
-    cincinnatiInfo: {
-      titles: msmInfoName[1].titles,
-      dates: msmInfoName[1].dates,
-      infoLength: msmInfoName[1].titles.length,
+    us_cincinnatiInfo: {
+      titles: infoObjects[1].titles,
+      dates: infoObjects[1].dates,
+      infoLength: infoObjects[1].titles.length,
     },
-    pompidouMsmInfo: {
-      titles: msmInfoName[2].titles,
-      dates: msmInfoName[2].dates,
-      infoLength: msmInfoName[2].titles.length,
+    fr_pompidouInfo: {
+      titles: infoObjects[2].titles,
+      dates: infoObjects[2].dates,
+      infoLength: infoObjects[2].titles.length,
     },
-    londonNatlInfo: {
-      titles: msmInfoName[3].titles,
-      dates: msmInfoName[3].dates,
-      infoLength: msmInfoName[3].titles.length,
+    uk_londonNatlInfo: {
+      titles: infoObjects[3].titles,
+      dates: infoObjects[3].dates,
+      infoLength: infoObjects[3].titles.length,
     },
 
-    wienMsmInfo: {
-      titles: msmInfoName[4].titles,
-      dates: msmInfoName[4].dates,
-      infoLength: msmInfoName[4].titles.length,
+    at_wienInfo: {
+      titles: infoObjects[4].titles,
+      dates: infoObjects[4].dates,
+      infoLength: infoObjects[4].titles.length,
     },
-    pradoMsmInfo: {
-      titles: msmInfoName[5].titles,
-      dates: msmInfoName[5].dates,
-      infoLength: msmInfoName[5].titles.length,
+    es_pradoInfo: {
+      titles: infoObjects[5].titles,
+      dates: infoObjects[5].dates,
+      infoLength: infoObjects[5].titles.length,
     },
   });
 };
