@@ -10,33 +10,38 @@ export const main = (req, res) => {
     uk_britishInfo: {
       titles: infoObjects[0].titles,
       dates: infoObjects[0].dates,
+      thumbnailsSrc: infoObjects[0].thumbnailsSrc,
       infoLength: infoObjects[0].titles.length,
     },
+
     us_cincinnatiInfo: {
       titles: infoObjects[1].titles,
       dates: infoObjects[1].dates,
+      thumbnailsSrc: infoObjects[1].thumbnailsSrc,
       infoLength: infoObjects[1].titles.length,
     },
     fr_pompidouInfo: {
       titles: infoObjects[2].titles,
       dates: infoObjects[2].dates,
+      thumbnailsSrc: infoObjects[2].thumbnailsSrc,
       infoLength: infoObjects[2].titles.length,
     },
     uk_londonNatlInfo: {
       titles: infoObjects[3].titles,
       dates: infoObjects[3].dates,
+      thumbnailsSrc: infoObjects[3].thumbnailsSrc,
       infoLength: infoObjects[3].titles.length,
     },
 
-    at_wienInfo: {
-      titles: infoObjects[4].titles,
-      dates: infoObjects[4].dates,
-      infoLength: infoObjects[4].titles.length,
-    },
-    es_pradoInfo: {
-      titles: infoObjects[5].titles,
-      dates: infoObjects[5].dates,
-      infoLength: infoObjects[5].titles.length,
-    },
+    // at_wienInfo: {
+    //   titles: infoObjects[4].titles,
+    //   dates: infoObjects[4].dates,
+    //   infoLength: infoObjects[4].titles.length,
+    // },
+    // es_pradoInfo: {
+    //   titles: infoObjects[5].titles,
+    //   dates: infoObjects[5].dates,
+    //   infoLength: infoObjects[5].titles.length,
+    // },
   });
 };
