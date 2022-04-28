@@ -54,6 +54,7 @@ const handleProcessInfoData = (data) => {
     titles: dataStringList[0],
     dates: dataStringList[1],
     thumbnailsSrc: dataStringList[2],
+    details: dataStringList[3],
   };
   console.log("가공됨");
   console.log(processedInfo.titles);
@@ -65,7 +66,7 @@ const handleProcessInfoData = (data) => {
 
 // dev pyFile.length
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 4; i += 1) {
+  for (let i = 0; i < 6; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
@@ -79,87 +80,3 @@ export const makeInfo = (childSpawn) => {
     });
   }
 };
-
-// export const makeInfos = (
-//   britishSpawn,
-//   louvreSpawn,
-//   pompidouSpawn,
-//   londonNatlSpawn
-// ) => {
-//   const britishMsmData = britishSpawn("python", [
-//     process.cwd() + "/src/pydata/british.py",
-//   ]);
-//   const louvreMsmData = louvreSpawn("python", [
-//     process.cwd() + "/src/pydata/louvre.py",
-//   ]);
-//   const pompidouMsmData = pompidouSpawn("python", [
-//     process.cwd() + "/src/pydata/pompidou.py",
-//   ]);
-//   const londonNatlData = londonNatlSpawn("python", [
-//     process.cwd() + "/src/pydata/london_natl.py",
-//   ]);
-
-//   const handleProcessInfoData = (data) => {
-//     const dataStringList = [];
-//     let crawledDataString = data.toString();
-//     let startIdx = 0;
-//     let idxOfFilter = 0;
-//     const FILTER = "FILTER";
-
-//     while (idxOfFilter !== -1) {
-//       idxOfFilter = crawledDataString.indexOf(`${FILTER}`, startIdx);
-//       let dataString = crawledDataString.slice(startIdx, idxOfFilter); // 가공안된거
-//       dataStringList.push(dataString);
-//       startIdx = idxOfFilter + `${FILTER}}`.length;
-//     }
-
-//     for (let i = 0; i < dataStringList.length; i += 1) {
-//       dataStringList[i] = dataStringList[i].split("//");
-//       for (let j = 0; j < dataStringList[i].length; j += 1) {
-//         dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n\r\n)/gm, "");
-//       }
-//       dataStringList[i] = dataStringList[i].filter((el) => el !== "");
-//     }
-
-//     let msmInfo = {
-//       titles: dataStringList[0],
-//       dates: dataStringList[1],
-//     };
-//     console.log(msmInfo.titles);
-//     console.log(msmInfo.dates);
-
-//     return msmInfo;
-//   };
-
-//   britishMsmData.stdout.on("data", function (data) {
-//     // console.log(data.toString());
-//     uk_britishInfo = handleProcessInfoData(data);
-//   });
-//   britishMsmData.stderr.on("data", function (data) {
-//     // console.log(data.toString());
-//   });
-
-//   louvreMsmData.stdout.on("data", function (data) {
-//     // console.log(data.toString());
-//      = handleProcessInfoData(data);
-//   });
-//   louvreMsmData.stderr.on("data", function (data) {
-//     // console.log(data.toString());
-//   });
-
-//   pompidouMsmData.stdout.on("data", function (data) {
-//     // console.log(data.toString());
-//     fr_pompidouInfo = handleProcessInfoData(data);
-//   });
-//   pompidouMsmData.stderr.on("data", function (data) {
-//     // console.log(data.toString());
-//   });
-
-//   londonNatlData.stdout.on("data", function (data) {
-//     // console.log(data.toString());
-//     uk_londonNatlInfo = handleProcessInfoData(data);
-//   });
-//   londonNatlData.stderr.on("data", function (data) {
-//     // console.log(data.toString());
-//   });
-// };
