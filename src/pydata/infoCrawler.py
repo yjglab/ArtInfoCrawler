@@ -22,18 +22,20 @@ at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
 
 def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, details_links_selector):
     options = webdriver.ChromeOptions()
-    # options.add_argument("headless")
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
     driver.implicitly_wait(10)
     driver.get(url)
     driver.set_window_position(0, 0)
     driver.set_window_size(3000, 1000)
-
-    exb_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
-    exb_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
-    exb_thumbnails = driver.find_elements(by=By.CSS_SELECTOR, value=thumbnails_selector)
-    exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
     
+    def load_data():
+        exb_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
+        exb_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
+        exb_thumbnails = driver.find_elements(by=By.CSS_SELECTOR, value=thumbnails_selector)
+        return exb_titles, exb_dates, exb_thumbnails
+
+    exb_titles, exb_dates, exb_thumbnails = [], [], []
+    exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
     exb_details = []
 
     # a링크 배열로 가져오고 반복문, 링크 들어가서)click 정보빼오고 다시 나오고)back 1회 끝
@@ -47,32 +49,42 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
                 detail = driver.find_element(by=By.CSS_SELECTOR, value=".section--intro__content .h3")
             elif i == 4 or i >= 7:
                 detail = driver.find_element(by=By.CSS_SELECTOR, value=".section--intro__content h3")
-            
             exb_details.append(detail.text)
-            driver.get(url) # back
+            driver.back() # back
         
-        
-        exb_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
-        exb_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
-        exb_thumbnails = driver.find_elements(by=By.CSS_SELECTOR, value=thumbnails_selector)
-        exb_titles = exb_titles[:13]
+        exb_titles, exb_dates, exb_thumbnails = load_data()
+        exb_titles = exb_titles[:10]
         exb_thumbnails = ["https://www.britishmuseum.org" + x.get_attribute("data-srcset").split("h=")[0] for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:13]
+        exb_thumbnails = exb_thumbnails[:10]
 
-    if url == us_cincinnati:
+    elif url == us_cincinnati:
+        exb_titles, exb_dates, exb_thumbnails = load_data()
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:6]
-    if url == fr_pompidou:
+        exb_details = [x.text for x in exb_details_links]
+    elif url == fr_pompidou:
+        for i in range(13):
+            exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
+                
+            driver.implicitly_wait(3)
+            driver.get(exb_details_links[i].get_attribute("href"))
+            detail = driver.find_element(by=By.CSS_SELECTOR, value=".description-courte p:nth-child(1)")
+            exb_details.append(detail.text)
+            driver.get(url) # back
+
+        exb_titles, exb_dates, exb_thumbnails = load_data()
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
+        exb_thumbnails = exb_thumbnails[:len(exb_titles)]
+
         # exb_thumbnails = exb_thumbnails[:]
-    if url == us_londonNatl:
+    elif url == us_londonNatl:
         exb_thumbnails = [x.get_attribute("style").strip("\"background-image: url(") for x in exb_thumbnails]
         exb_thumbnails = ["https://www.nationalgallery.org.uk/" + x[:x.find(".jpg?") + 4] for x in exb_thumbnails]
-    if url == at_wien:
+    elif url == at_wien:
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:2] # spinner.gif 나중에 처리하기 / 일단 2개만 출력
         exb_titles, exb_dates = exb_titles[:2], exb_dates[:2]
-    if url == es_prado:
+    elif url == es_prado:
         exb_titles = exb_titles[:3]
         exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[3:6]

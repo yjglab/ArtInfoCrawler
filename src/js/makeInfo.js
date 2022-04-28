@@ -67,7 +67,7 @@ const handleProcessInfoData = (data) => {
 
 // dev pyFile.length
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 1; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
@@ -77,7 +77,7 @@ export const makeInfo = (childSpawn) => {
       infoObjects[i] = handleProcessInfoData(data);
     });
     infoData.stderr.on("data", function (data) {
-      // console.log(data.toString());
+      console.log(data.toString());
     });
   }
 };

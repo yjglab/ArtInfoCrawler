@@ -14,20 +14,20 @@ export const main = (req, res) => {
       infoLength: infoObjects[0].titles.length,
     },
 
-    // us_cincinnatiInfo: {
-    //   titles: infoObjects[1].titles,
-    //   dates: infoObjects[1].dates,
-    //   thumbnailsSrc: infoObjects[1].thumbnailsSrc,
-    //   details: infoObjects[1].details,
-    //   infoLength: infoObjects[1].titles.length,
-    // },
-    // fr_pompidouInfo: {
-    //   titles: infoObjects[2].titles,
-    //   dates: infoObjects[2].dates,
-    //   thumbnailsSrc: infoObjects[2].thumbnailsSrc,
-    //   details: infoObjects[2].details,
-    //   infoLength: infoObjects[2].titles.length,
-    // },
+    us_cincinnatiInfo: {
+      titles: infoObjects[1].titles,
+      dates: infoObjects[1].dates,
+      thumbnailsSrc: infoObjects[1].thumbnailsSrc,
+      details: infoObjects[1].details,
+      infoLength: infoObjects[1].titles.length,
+    },
+    fr_pompidouInfo: {
+      titles: infoObjects[2].titles,
+      dates: infoObjects[2].dates,
+      thumbnailsSrc: infoObjects[2].thumbnailsSrc,
+      details: infoObjects[2].details,
+      infoLength: infoObjects[2].titles.length,
+    },
     // uk_londonNatlInfo: {
     //   titles: infoObjects[3].titles,
     //   dates: infoObjects[3].dates,
