@@ -1,16 +1,20 @@
 # ArtWork Info Crawler
 
-졸업프로젝트 제작을 위한 예술관 전시정보 크롤러
+졸업프로젝트 제작을 위한 전시정보 크롤러
 
 프랑스: 오르세, 퐁피두 센터, 루브르, 로댕
 영국 : 영국, 내셔널 갤러리, 자연사, 빅토리아 앨버트,
 오스트리아 : 빈 미술사, 벨베데레 궁전, 빈 자연사, osterreichische galerie belvedere
 스페인 : 프라도, 빌바오 구겐하임, 티센 보르네미사, 피카소
 
+미국 : 신시내티
+한국 :
+
 [python]
 
 - british.py : 대영 박물관 전시정보
 - louvre.py : 루브르 박물관 전시정보
+- cincinnati.py : 미국
 - pompidou.py : 조르주 퐁피두 센터 전시정보
 - london_natl.py : 런던 네셔널 갤러리 전시정보
 - wien.py : 비엔나 박물관 전시정보
@@ -46,3 +50,5 @@
 - 정적 페이지 : bs4, 동적 페이지 : selenium
 - chrome driver
 - PhantomJS webdriver
+
+You can not just get all the links into some list and then iterate over that list since by navigating to another web page all the existing elements grabbed by Selenium on the initial page become Stale.
