@@ -20,6 +20,7 @@ us_cincinnati = 'https://www.cincinnatiartmuseum.org/art/exhibitions/?gclid=Cj0K
 es_prado = 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/'
 at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
+fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
 
 def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, details_links_selector):
     options = webdriver.ChromeOptions()
@@ -39,7 +40,6 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
     exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
     exb_details = []
 
-    # a링크 배열로 가져오고 반복문, 링크 들어가서)click 정보빼오고 다시 나오고)back 1회 끝
     if url == uk_british: 
         for i in range(10): # 타이틀수
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
@@ -140,6 +140,23 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
         exb_dates = exb_dates[:3]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:3]
+
+    elif url == fr_lodin:
+        for i in range(1):
+            exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
+                
+            driver.implicitly_wait(3)
+            driver.get(exb_details_links[i].get_attribute("href"))
+            detail = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "#frame_content > div.w1230 > div > div.col-12.col-lg-8.main-col > div > div > div:nth-child(1) > div > div")))
+            exb_details.append(detail.text)
+            driver.get(url) # back
+
+        exb_titles, exb_dates, exb_thumbnails = load_data()
+        exb_titles = exb_titles[:1]
+        exb_dates = exb_dates[:1]
+        exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
+        exb_thumbnails = exb_thumbnails[:1]
         
     for title in exb_titles:
         print("타이틀", title.text)
