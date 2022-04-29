@@ -10,27 +10,30 @@
 - uk_london_natl.py : 런던 내셔널 갤러리
 - uk_victoriaAlbert.py : 빅토리아 알베르트 박물관
 
-  [FR. French]
+[FR. French]
 
 - fr_pompidou.py : 조르주 퐁피두 센터
 - fr_orsay.py : 오르세 미술관
 - fr_lodin.py : 로댕 미술관
 
-  [US. United States]
+[US. United States]
 
 - us_cincinnati.py : 미국 신시내티 미술관
 
-  [AT. Austria]
+[AT. Austria]
 
 - at_wien.py : 비엔나 박물관
 
-  [ES. Spain]
+[ES. Spain]
 
 - es_prado.py : 프라도 미술관
 
 ### JavaScript
 
-- makeMsmInfo.js : 박물관 전시정보 객체 생성
+- index.js : 라우팅 관리
+- makeInfo.js : 장소별 정보 객체 생성
+- makeAllPlaceInfo.js : 컨트롤러에 전달할 전체 정보 객체 수집 및 생성
+- globalController.js : JS자식 프로세스 스폰 및 템플릿에 정보 객체 전달
 
 ### 기본 동작
 
