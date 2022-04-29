@@ -24,7 +24,9 @@ fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
 
 def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, details_links_selector):
     options = webdriver.ChromeOptions()
+    # options.add_argument("headless")
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
+    
     driver.implicitly_wait(10)
     driver.get(url)
     driver.set_window_position(0, 0)
@@ -58,6 +60,7 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
         exb_titles = exb_titles[:10]
+        exb_dates = exb_dates[:10]
         exb_thumbnails = ["https://www.britishmuseum.org" + x.get_attribute("data-srcset").split("h=")[0] for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:10]
 
@@ -97,6 +100,8 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
             driver.get(url) # back
             
         exb_titles, exb_dates, exb_thumbnails = load_data()
+        exb_titles = exb_titles[:7]
+        exb_dates = exb_dates[:7]
         exb_thumbnails = [x.get_attribute("style").strip("\"background-image: url(") for x in exb_thumbnails]
         exb_thumbnails = ["https://www.nationalgallery.org.uk/" + x[:x.find(".jpg?") + 4] for x in exb_thumbnails]
     elif url == at_wien:
@@ -115,6 +120,8 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
             driver.get(url) # back
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
+        exb_titles = exb_titles[:2]
+        exb_dates = exb_dates[:2]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:2] # spinner.gif 나중에 처리하기 / 일단 2개만 출력
         exb_titles, exb_dates = exb_titles[:2], exb_dates[:2]
@@ -122,7 +129,7 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
         exb_details = [x.text for x in exb_details_links]
         exb_titles = exb_titles[:3]
         exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[3:6]
+        exb_thumbnails = exb_thumbnails[:3]
     
     elif url == fr_orsay:
         for i in range(3):
