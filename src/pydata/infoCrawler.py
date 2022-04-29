@@ -22,7 +22,7 @@ at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
 fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
 
-def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, details_links_selector):
+def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
@@ -43,76 +43,74 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
     exb_details = []
 
     if url == uk_british: 
-        for i in range(10): # 타이틀수
+        for i in range(exb_nums): # 타이틀수
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
             
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             if i <= 6 and i != 4: # 0 1 2 3 5 6
                 detail = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, ".section--intro__content .h3")))
+                    EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             elif i == 4 or i >= 7:
                 detail = WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, ".section--intro__content h3")))
                 
             exb_details.append(detail.text)
-            driver.back() # back
+            driver.get(url) # back
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:10]
-        exb_dates = exb_dates[:10]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = ["https://www.britishmuseum.org" + x.get_attribute("data-srcset").split("h=")[0] for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:10]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
 
     elif url == us_cincinnati:
         exb_titles, exb_dates, exb_thumbnails = load_data()
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:6]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
         exb_details = [x.text for x in exb_details_links]
     elif url == fr_pompidou:
-        for i in range(7):
+        for i in range(exb_nums):
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
                 
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             detail = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".description-courte p:nth-child(1)")))
-            # detail = driver.find_element(by=By.CSS_SELECTOR, value=".description-courte p:nth-child(1)")
+                EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
             driver.get(url) # back
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:7]
-        exb_dates = exb_dates[:7]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:7]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
 
-        # exb_thumbnails = exb_thumbnails[:]
     elif url == us_londonNatl:
-        for i in range(7):
+        for i in range(exb_nums):
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
                 
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             detail = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "div.body-text")))
+                EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
             driver.get(url) # back
             
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:7]
-        exb_dates = exb_dates[:7]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = [x.get_attribute("style").strip("\"background-image: url(") for x in exb_thumbnails]
         exb_thumbnails = ["https://www.nationalgallery.org.uk/" + x[:x.find(".jpg?") + 4] for x in exb_thumbnails]
     elif url == at_wien:
-        for i in range(2):
+        for i in range(exb_nums):
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
                 
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             if i == 0:
                 detail = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "#main p:nth-of-type(2)")))
+                    EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             else:
                 detail = WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "#main p")))
@@ -120,50 +118,50 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
             driver.get(url) # back
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:2]
-        exb_dates = exb_dates[:2]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[:2] # spinner.gif 나중에 처리하기 / 일단 2개만 출력
-        exb_titles, exb_dates = exb_titles[:2], exb_dates[:2]
+        
     elif url == es_prado:
         exb_details = [x.text for x in exb_details_links]
-        exb_titles = exb_titles[:3]
+        exb_titles = exb_titles[:exb_nums]
         exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:3]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
     
     elif url == fr_orsay:
-        for i in range(3):
+        for i in range(exb_nums):
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
                 
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             detail = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".field--name-field-chapo")))
+                EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
             driver.get(url) # back
         
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:3]
-        exb_dates = exb_dates[:3]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:3]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
 
     elif url == fr_lodin:
-        for i in range(1):
+        for i in range(exb_nums):
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
                 
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
             detail = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "#frame_content > div.w1230 > div > div.col-12.col-lg-8.main-col > div > div > div:nth-child(1) > div > div")))
+                EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
             driver.get(url) # back
 
         exb_titles, exb_dates, exb_thumbnails = load_data()
-        exb_titles = exb_titles[:1]
-        exb_dates = exb_dates[:1]
+        exb_titles = exb_titles[:exb_nums]
+        exb_dates = exb_dates[:exb_nums]
         exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
-        exb_thumbnails = exb_thumbnails[:1]
+        exb_thumbnails = exb_thumbnails[:exb_nums]
         
     for title in exb_titles:
         print("타이틀", title.text)
