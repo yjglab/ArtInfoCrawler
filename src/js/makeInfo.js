@@ -1,25 +1,28 @@
 let uk_britishInfo = {};
-let us_cincinnatiInfo = {};
-let fr_pompidouInfo = {};
 let uk_londonNatlInfo = {};
-let at_wienInfo = {};
-let es_pradoInfo = {};
+let uk_victoriaAlbertInfo = {};
+let fr_pompidouInfo = {};
 let fr_orsayInfo = {};
 let fr_lodinInfo = {};
+let us_cincinnatiInfo = {};
+let at_wienInfo = {};
+let es_pradoInfo = {};
 
 export const infoObjects = [
   uk_britishInfo,
-  us_cincinnatiInfo,
-  fr_pompidouInfo,
   uk_londonNatlInfo,
-  at_wienInfo,
-  es_pradoInfo,
+  uk_victoriaAlbertInfo,
+  fr_pompidouInfo,
   fr_orsayInfo,
   fr_lodinInfo,
+  us_cincinnatiInfo,
+  at_wienInfo,
+  es_pradoInfo,
 ];
 const pyFile = [
   "uk_british.py",
   "uk_londonNatl.py",
+  "uk_victoriaAlbert.py",
   "fr_pompidou.py",
   "fr_orsay.py",
   "fr_lodin.py",
@@ -71,7 +74,7 @@ const handleProcessInfoData = (data) => {
   return processedInfo;
 };
 
-// dev pyFile.length
+// DEV: i조정
 export const makeInfo = (childSpawn) => {
   for (let i = 0; i < infoObjects.length; i += 1) {
     const infoData = childSpawn("python", [

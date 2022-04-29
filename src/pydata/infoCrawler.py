@@ -21,6 +21,7 @@ es_prado = 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/'
 at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
 fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
+uk_victoriaAlbert = 'https://www.vam.ac.uk/?utm_source=google&utm_medium=cpc&utm_campaign=Grant_Museum_Homepage&gclid=Cj0KCQjwma6TBhDIARIsAOKuANz_MHDyJSDO8LqWnZ0CZ7L20BviIGD8LG-enIcRjLM4SQw1WrMdBtwaAqPlEALw_wcB'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -102,12 +103,13 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url == uk_londonNatl:
             exb_thumbnails = [x.get_attribute("style").strip("\"background-image: url(") for x in exb_thumbnails]
             exb_thumbnails = ["https://www.nationalgallery.org.uk/" + x[:x.find(".jpg?") + 4] for x in exb_thumbnails]
-        elif url == at_wien:
-            exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
-            exb_thumbnails = exb_thumbnails[:2] # spinner.gif 나중에 처리하기 / 일단 2개만 출력
         elif url == es_prado:
             exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]    
+        elif url == uk_victoriaAlbert: # 크기조절가능 / src안불러와짐
+            exb_thumbnails = [x.get_attribute("data-src") for x in exb_thumbnails]
+            # exb_thumbnails = [x[x.find("1920w, ") + 7:x.find("2560w") - 1] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
