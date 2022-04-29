@@ -19,6 +19,7 @@ us_londonNatl = "https://www.nationalgallery.org.uk/exhibitions"
 us_cincinnati = 'https://www.cincinnatiartmuseum.org/art/exhibitions/?gclid=Cj0KCQjw3v6SBhCsARIsACyrRAlU8C9ymrvNSV-ts7ZSz3C6QGU7ctlrzUOwSSRAMgeCD2Po5DSI7L0aAsxFEALw_wcB'
 es_prado = 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/'
 at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
+fr_orsay = 'https://www.musee-orsay.fr/fr'
 
 def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, details_links_selector):
     options = webdriver.ChromeOptions()
@@ -122,7 +123,24 @@ def print_msm_data(url, titles_selector, dates_selector, thumbnails_selector, de
         exb_titles = exb_titles[:3]
         exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
         exb_thumbnails = exb_thumbnails[3:6]
-
+    
+    elif url == fr_orsay:
+        for i in range(3):
+            exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
+                
+            driver.implicitly_wait(3)
+            driver.get(exb_details_links[i].get_attribute("href"))
+            detail = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".field--name-field-chapo")))
+            exb_details.append(detail.text)
+            driver.get(url) # back
+        
+        exb_titles, exb_dates, exb_thumbnails = load_data()
+        exb_titles = exb_titles[:3]
+        exb_dates = exb_dates[:3]
+        exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
+        exb_thumbnails = exb_thumbnails[:3]
+        
     for title in exb_titles:
         print("타이틀", title.text)
         print("SPLITER")
