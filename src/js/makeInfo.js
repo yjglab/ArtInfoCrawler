@@ -4,6 +4,8 @@ let fr_pompidouInfo = {};
 let uk_londonNatlInfo = {};
 let at_wienInfo = {};
 let es_pradoInfo = {};
+let fr_orsayInfo = {};
+let fr_lodinInfo = {};
 
 export const infoObjects = [
   uk_britishInfo,
@@ -12,12 +14,16 @@ export const infoObjects = [
   uk_londonNatlInfo,
   at_wienInfo,
   es_pradoInfo,
+  fr_orsayInfo,
+  fr_lodinInfo,
 ];
 const pyFile = [
   "uk_british.py",
-  "us_cincinnati.py",
-  "fr_pompidou.py",
   "uk_londonNatl.py",
+  "fr_pompidou.py",
+  "fr_orsay.py",
+  "fr_lodin.py",
+  "us_cincinnati.py",
   "at_wien.py",
   "es_prado.py",
 ];
@@ -29,7 +35,7 @@ const handleProcessInfoData = (data) => {
   let startIdx = 0;
   let idxOfFilter = 0;
   const FILTER = "FILTER";
-
+  const SPLITER = "SPLITER";
   while (idxOfFilter !== -1) {
     idxOfFilter = crawledDataString.indexOf(`${FILTER}`, startIdx);
     let dataString = crawledDataString.slice(startIdx, idxOfFilter); // 가공안된거
@@ -38,7 +44,7 @@ const handleProcessInfoData = (data) => {
   }
 
   for (let i = 0; i < dataStringList.length; i += 1) {
-    dataStringList[i] = dataStringList[i].split("SPLITER");
+    dataStringList[i] = dataStringList[i].split(SPLITER);
     for (let j = 0; j < dataStringList[i].length; j += 1) {
       dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n\r\n)/gm, "");
       if (i == 2) {
@@ -49,7 +55,7 @@ const handleProcessInfoData = (data) => {
     dataStringList[i] = dataStringList[i].filter((el) => el !== "");
   }
 
-  // 텍스트 가공된 관 정보
+  // 텍스트 가공된 관 정보s
   let processedInfo = {
     titles: dataStringList[0],
     dates: dataStringList[1],
@@ -67,7 +73,7 @@ const handleProcessInfoData = (data) => {
 
 // dev pyFile.length
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 6; i += 1) {
+  for (let i = 0; i < infoObjects.length; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
