@@ -67,7 +67,7 @@ const handleProcessInfoData = (data) => {
 
 // dev pyFile.length
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < 6; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
