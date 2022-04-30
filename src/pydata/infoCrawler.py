@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
+# 나중에 따로 분리하기
 uk_british = 'https://www.britishmuseum.org/exhibitions-events'
 fr_pompidou = 'https://www.centrepompidou.fr/en/'
 uk_londonNatl = "https://www.nationalgallery.org.uk/exhibitions"
@@ -21,11 +22,11 @@ es_prado = 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/'
 at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
 fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
-uk_victoriaAlbert = 'https://www.vam.ac.uk/?utm_source=google&utm_medium=cpc&utm_campaign=Grant_Museum_Homepage&gclid=Cj0KCQjwma6TBhDIARIsAOKuANz_MHDyJSDO8LqWnZ0CZ7L20BviIGD8LG-enIcRjLM4SQw1WrMdBtwaAqPlEALw_wcB'
+us_chicago = 'https://www.artic.edu/exhibitions'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
-    options.add_argument("headless")
+    # options.add_argument("headless")
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
     
     driver.implicitly_wait(10)
@@ -86,6 +87,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                     detail = WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, "#main p")))
             else:
+                # detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
                 detail = WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
@@ -103,13 +105,15 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url == uk_londonNatl:
             exb_thumbnails = [x.get_attribute("style").strip("\"background-image: url(") for x in exb_thumbnails]
             exb_thumbnails = ["https://www.nationalgallery.org.uk/" + x[:x.find(".jpg?") + 4] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
         elif url == es_prado:
             exb_thumbnails = [x.get_attribute("data-srcset") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]    
-        elif url == uk_victoriaAlbert: # 크기조절가능 / src안불러와짐
-            exb_thumbnails = [x.get_attribute("data-src") for x in exb_thumbnails]
-            # exb_thumbnails = [x[x.find("1920w, ") + 7:x.find("2560w") - 1] for x in exb_thumbnails]
+        elif url == us_chicago:
+            exb_thumbnails = [x.get_attribute("data-pin-media") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
+        
+        
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]

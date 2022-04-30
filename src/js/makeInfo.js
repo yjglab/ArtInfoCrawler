@@ -1,32 +1,32 @@
 let uk_britishInfo = {};
 let uk_londonNatlInfo = {};
-let uk_victoriaAlbertInfo = {};
 let fr_pompidouInfo = {};
 let fr_orsayInfo = {};
 let fr_lodinInfo = {};
 let us_cincinnatiInfo = {};
+let us_chicagoInfo = {};
 let at_wienInfo = {};
 let es_pradoInfo = {};
 
 export const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
-  uk_victoriaAlbertInfo,
   fr_pompidouInfo,
   fr_orsayInfo,
   fr_lodinInfo,
   us_cincinnatiInfo,
+  us_chicagoInfo,
   at_wienInfo,
   es_pradoInfo,
 ];
 const pyFile = [
   "uk_british.py",
   "uk_londonNatl.py",
-  "uk_victoriaAlbert.py",
   "fr_pompidou.py",
   "fr_orsay.py",
   "fr_lodin.py",
   "us_cincinnati.py",
+  "us_chicago.py",
   "at_wien.py",
   "es_prado.py",
 ];
@@ -50,9 +50,18 @@ const handleProcessInfoData = (data) => {
     dataStringList[i] = dataStringList[i].split(SPLITER);
     for (let j = 0; j < dataStringList[i].length; j += 1) {
       dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n\r\n)/gm, "");
+      if (i == 0) {
+        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
+      }
+      if (i == 1) {
+        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
+      }
       if (i == 2) {
         dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
         dataStringList[i][j] = dataStringList[i][j].replace(/(\n)/gm, "");
+      }
+      if (i == 3) {
+        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
       }
     }
     dataStringList[i] = dataStringList[i].filter((el) => el !== "");
@@ -76,7 +85,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < infoObjects.length; i += 1) {
+  for (let i = 6; i < 7; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);

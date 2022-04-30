@@ -1,5 +1,5 @@
 mixin printInfo(info)
-    - for (var i = 0; i < info.infoLength - 1; i += 1)
+    - for (var i = 0; i < info.infoLength; i += 1)
         h4 Title: #{info.titles[i]} 
         img(src=`${info.thumbnailsSrc[i]}`)
         div Date: #{info.dates[i]} 

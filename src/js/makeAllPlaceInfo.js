@@ -5,11 +5,11 @@ export const makeAllPlaceInfo = () => {
   const allPlaceInfoName = [
     "uk_britishInfo",
     "uk_londonNatlInfo",
-    "uk_victoriaAlbertInfo",
     "fr_pompidouInfo",
     "fr_orsayInfo",
     "fr_lodinInfo",
     "us_cincinnatiInfo",
+    "us_chicagoInfo",
     "at_wienInfo",
     "es_pradoInfo",
   ];
@@ -18,11 +18,11 @@ export const makeAllPlaceInfo = () => {
   // DEV: i조정
   allPlaceInfoName.forEach((name, i) => {
     allPlaceInfo[name] = {
-      titles: infoObjects[i].titles,
-      dates: infoObjects[i].dates,
-      thumbnailsSrc: infoObjects[i].thumbnailsSrc,
-      details: infoObjects[i].details,
-      infoLength: infoObjects[i].titles.length,
+      titles: infoObjects[6].titles,
+      dates: infoObjects[6].dates,
+      thumbnailsSrc: infoObjects[6].thumbnailsSrc,
+      details: infoObjects[6].details,
+      infoLength: infoObjects[6].titles.length,
     };
   });
 
