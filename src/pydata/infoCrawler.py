@@ -87,9 +87,9 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                     detail = WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, "#main p")))
             else:
-                # detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
-                detail = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
+                detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
+                # detail = WebDriverWait(driver, 10).until(
+                #     EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
             exb_details.append(detail.text)
             driver.get(url) # back
         

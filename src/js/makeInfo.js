@@ -5,7 +5,9 @@ let fr_orsayInfo = {};
 let fr_lodinInfo = {};
 let us_cincinnatiInfo = {};
 let us_chicagoInfo = {};
+let us_bostonInfo = {};
 let at_wienInfo = {};
+let at_arsElectronicaInfo = {};
 let es_pradoInfo = {};
 
 export const infoObjects = [
@@ -16,7 +18,9 @@ export const infoObjects = [
   fr_lodinInfo,
   us_cincinnatiInfo,
   us_chicagoInfo,
+  us_bostonInfo,
   at_wienInfo,
+  at_arsElectronicaInfo,
   es_pradoInfo,
 ];
 const pyFile = [
@@ -27,7 +31,9 @@ const pyFile = [
   "fr_lodin.py",
   "us_cincinnati.py",
   "us_chicago.py",
+  "us_boston.py",
   "at_wien.py",
+  "at_arsElectronica.py",
   "es_prado.py",
 ];
 
@@ -85,7 +91,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 6; i < 7; i += 1) {
+  for (let i = 9; i < 10; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);
