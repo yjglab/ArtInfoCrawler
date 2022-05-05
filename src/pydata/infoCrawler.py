@@ -20,10 +20,10 @@ uk_londonNatl = "https://www.nationalgallery.org.uk/exhibitions"
 us_cincinnati = 'https://www.cincinnatiartmuseum.org/art/exhibitions/?gclid=Cj0KCQjw3v6SBhCsARIsACyrRAlU8C9ymrvNSV-ts7ZSz3C6QGU7ctlrzUOwSSRAMgeCD2Po5DSI7L0aAsxFEALw_wcB'
 es_prado = 'https://www.pradomuseumtickets.com/prado-museum-exhibitions/'
 at_wien = 'https://www.wienmuseum.at/en/exhibitions/current-exhibitions'
+at_belvedere = 'https://www.belvedere.at/ausstellungen-aktuell'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
 fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
 us_chicago = 'https://www.artic.edu/exhibitions'
-
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
@@ -59,7 +59,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         global exb_thumbnails
         global exb_details
         global exb_details_links
-
+        
         # 디테일 데이터 조정
         for i in range(exb_nums):
             # 전시 개별 링크 들어가지 않아도 되는 사이트들 처리
@@ -98,6 +98,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         exb_titles = exb_titles[:exb_nums]
         exb_dates = exb_dates[:exb_nums]
 
+        
         # 썸네일 데이터 조정
         if url == uk_british:
             exb_thumbnails = ["https://www.britishmuseum.org" + x.get_attribute("data-srcset").split("h=")[0] for x in exb_thumbnails]

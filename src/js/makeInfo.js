@@ -8,6 +8,7 @@ let us_chicagoInfo = {};
 let us_bostonInfo = {};
 let at_wienInfo = {};
 let at_arsElectronicaInfo = {};
+let at_belvedereInfo = {};
 let es_pradoInfo = {};
 
 export const infoObjects = [
@@ -21,6 +22,7 @@ export const infoObjects = [
   us_bostonInfo,
   at_wienInfo,
   at_arsElectronicaInfo,
+  at_belvedereInfo,
   es_pradoInfo,
 ];
 const pyFile = [
@@ -34,6 +36,7 @@ const pyFile = [
   "us_boston.py",
   "at_wien.py",
   "at_arsElectronica.py",
+  "at_belvedere.py",
   "es_prado.py",
 ];
 
@@ -91,7 +94,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 9; i < 10; i += 1) {
+  for (let i = 10; i < 11; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);

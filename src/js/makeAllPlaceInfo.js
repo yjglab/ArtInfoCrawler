@@ -12,6 +12,7 @@ export const makeAllPlaceInfo = () => {
     "us_bostonInfo",
     "at_wienInfo",
     "at_arsElectronicaInfo",
+    "at_belvedereInfo", //교체
     "es_pradoInfo",
   ];
   const allPlaceInfo = {};
@@ -19,11 +20,11 @@ export const makeAllPlaceInfo = () => {
   // DEV: i조정
   allPlaceInfoName.forEach((name, i) => {
     allPlaceInfo[name] = {
-      titles: infoObjects[9].titles,
-      dates: infoObjects[9].dates,
-      thumbnailsSrc: infoObjects[9].thumbnailsSrc,
-      details: infoObjects[9].details,
-      infoLength: infoObjects[9].titles.length,
+      titles: infoObjects[10].titles,
+      dates: infoObjects[10].dates,
+      thumbnailsSrc: infoObjects[10].thumbnailsSrc,
+      details: infoObjects[10].details,
+      infoLength: infoObjects[10].titles.length,
     };
   });
 

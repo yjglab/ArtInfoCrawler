@@ -18,11 +18,15 @@
 
 [US. United States]
 
-- us_cincinnati.py : 미국 신시내티 미술관
+- us_cincinnati.py : 신시내티 미술관
+- us_chicago.py : 시카고 미술관
+- us_boston.py : 보스턴 미술관
 
 [AT. Austria]
 
 - at_wien.py : 비엔나 박물관
+- at_arsElectronica.py : ARS
+- at_belvedere.py : 벨베데레 뮤지엄
 
 [ES. Spain]
 
@@ -55,6 +59,8 @@
 ### 기타 기록
 
 - Selenium은 페이지 이동 시 초기 데이터가 모두 초기화됨.
+- robots.txt 확인하기.
+- belvedere title, date 못가져오는 문제있음.
 
 ### DEV 지점
 
