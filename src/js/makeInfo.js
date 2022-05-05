@@ -10,6 +10,8 @@ let at_wienInfo = {};
 let at_arsElectronicaInfo = {};
 let at_belvedereInfo = {};
 let es_pradoInfo = {};
+let es_thyssenInfo = {};
+let es_malagaAutomovilInfo = {};
 
 export const infoObjects = [
   uk_britishInfo,
@@ -24,6 +26,8 @@ export const infoObjects = [
   at_arsElectronicaInfo,
   at_belvedereInfo,
   es_pradoInfo,
+  es_thyssenInfo,
+  es_malagaAutomovilInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -38,6 +42,8 @@ const pyFile = [
   "at_arsElectronica.py",
   "at_belvedere.py",
   "es_prado.py",
+  "es_thyssen.py",
+  "es_malagaAutomovil.py",
 ];
 
 // 텍스트 가공 함수
@@ -94,7 +100,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 10; i < 11; i += 1) {
+  for (let i = 13; i < 14; i += 1) {
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pydata/${pyFile[i]}`,
     ]);

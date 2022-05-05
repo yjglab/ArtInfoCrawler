@@ -24,9 +24,14 @@ at_belvedere = 'https://www.belvedere.at/ausstellungen-aktuell'
 fr_orsay = 'https://www.musee-orsay.fr/fr'
 fr_lodin = 'https://www.musee-rodin.fr/musee/expositions'
 us_chicago = 'https://www.artic.edu/exhibitions'
+es_thyssen = 'https://www.museothyssen.org/en/exhibitions'
+es_guggenheim = 'https://www.guggenheim-bilbao.eus/exposiciones'
+es_malagaAutomovil = 'https://www.cristobalbalenciagamuseoa.com/descubre/exposiciones-actuales/'
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
     
     driver.implicitly_wait(10)
@@ -41,10 +46,20 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
 
     exb_titles, exb_dates, exb_thumbnails = [], [], []
     
+    # 쿠키 알람 처리
+    if url == es_guggenheim:
+        driver.find_element(by=By.CSS_SELECTOR, value="#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll").click()
+    if url == at_belvedere:
+        driver.find_element(by=By.CSS_SELECTOR, value="#select-all-cookies-btn").click()
+    if url == es_malagaAutomovil:
+        driver.find_element(by=By.CSS_SELECTOR, value=".icon__glyph").click()
+        driver.execute_script("window.scrollTo(0, 1000)")
     def load_data():
         global exb_titles
         global exb_dates
         global exb_thumbnails
+
+        
         exb_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
         exb_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
         exb_thumbnails = driver.find_elements(by=By.CSS_SELECTOR, value=thumbnails_selector)
@@ -63,8 +78,11 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         # 디테일 데이터 조정
         for i in range(exb_nums):
             # 전시 개별 링크 들어가지 않아도 되는 사이트들 처리
-            if url in [us_cincinnati, es_prado]:
+            time.sleep(1)
+            if url in [us_cincinnati, es_prado, es_malagaAutomovil]:
                 exb_details = [x.text for x in exb_details_links]
+                break
+            if url in [es_thyssen]:
                 break
 
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
