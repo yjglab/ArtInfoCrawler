@@ -12,9 +12,11 @@ let at_belvedereInfo = {};
 let es_pradoInfo = {};
 let es_thyssenInfo = {};
 let es_malagaAutomovilInfo = {};
+let it_uffiziInfo = {};
+let it_ducaleInfo = {};
 
 export const infoObjects = [
-  uk_britishInfo,
+  // uk_britishInfo,
   uk_londonNatlInfo,
   fr_pompidouInfo,
   fr_orsayInfo,
@@ -28,9 +30,11 @@ export const infoObjects = [
   es_pradoInfo,
   es_thyssenInfo,
   es_malagaAutomovilInfo,
+  it_uffiziInfo,
+  it_ducaleInfo,
 ];
 const pyFile = [
-  "uk_british.py",
+  // "uk_british.py",
   "uk_londonNatl.py",
   "fr_pompidou.py",
   "fr_orsay.py",
@@ -44,6 +48,8 @@ const pyFile = [
   "es_prado.py",
   "es_thyssen.py",
   "es_malagaAutomovil.py",
+  "it_uffizi.py",
+  "it_ducale.py",
 ];
 
 // 텍스트 가공 함수
@@ -100,9 +106,10 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 13; i < 14; i += 1) {
+  for (let i = 0; i < infoObjects.length; i += 1) {
+    let folderName = `${pyFile[i]}`.substring(0, 2);
     const infoData = childSpawn("python", [
-      process.cwd() + `/src/pydata/${pyFile[i]}`,
+      process.cwd() + `/src/pyFiles/country/${folderName}/${pyFile[i]}`,
     ]);
     infoData.stdout.on("data", function (data) {
       console.log("날 거");

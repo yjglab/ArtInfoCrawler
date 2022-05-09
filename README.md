@@ -61,6 +61,7 @@
 - Selenium은 페이지 이동 시 초기 데이터가 모두 초기화됨.
 - robots.txt 확인하기.
 - belvedere title, date 못가져오는 문제있음.
+- stale element reference: element is not attached to the page document -> 가상 브라우저 속도차 문제. sleep으로 해결.
 
 ### DEV 지점
 

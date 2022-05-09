@@ -1,7 +1,9 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 import infoCrawler
 # ?
 url = 'https://www.britishmuseum.org/exhibitions-events'
-exb_nums = 10
+exb_nums = 6
 titles_selector = ".teaser__title > span:nth-child(1)"
 dates_selector = ".teaser__meta-item:nth-child(2)"
 thumbnails_selector = ".media img"
