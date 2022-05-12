@@ -8,7 +8,7 @@ titles_selector = ".teaser__title > span:nth-child(1)"
 dates_selector = ".teaser__meta-item:nth-child(2)"
 thumbnails_selector = ".media img"
 details_links_selector = ".teaser__link"
-details_contents_selector = ".section--intro__content .h3"
+details_contents_selector = ".section--intro__content > .h3"
 
 infoCrawler.print_msm_data(
     url, 

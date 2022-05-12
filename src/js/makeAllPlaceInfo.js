@@ -2,7 +2,7 @@ import { infoObjects } from "./makeInfo.js";
 
 export const makeAllPlaceInfo = () => {
   const allPlaceInfoName = [
-    // "uk_britishInfo",
+    "uk_britishInfo",
     "uk_londonNatlInfo",
     "fr_pompidouInfo",
     "fr_orsayInfo",
@@ -18,17 +18,18 @@ export const makeAllPlaceInfo = () => {
     "es_malagaAutomovilInfo",
     "it_uffiziInfo",
     "it_ducaleInfo",
+    "it_napoliInfo",
   ];
   const allPlaceInfo = {};
 
   // DEV: i조정
   allPlaceInfoName.forEach((name, i) => {
     allPlaceInfo[name] = {
-      titles: infoObjects[i].titles,
-      dates: infoObjects[i].dates,
-      thumbnailsSrc: infoObjects[i].thumbnailsSrc,
-      details: infoObjects[i].details,
-      infoLength: infoObjects[i].titles.length,
+      titles: infoObjects[16].titles,
+      dates: infoObjects[16].dates,
+      thumbnailsSrc: infoObjects[16].thumbnailsSrc,
+      details: infoObjects[16].details,
+      infoLength: infoObjects[16].titles.length,
     };
   });
 

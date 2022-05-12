@@ -50,6 +50,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
     exb_titles, exb_dates, exb_thumbnails = [], [], []
     
     # 쿠키 알람 처리
+    if url == uk_british:
+        driver.find_element(by=By.CSS_SELECTOR, value="#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll").click()
     if url == es_guggenheim:
         driver.find_element(by=By.CSS_SELECTOR, value="#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll").click()
     if url == at_belvedere:
@@ -95,15 +97,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
             driver.get(exb_details_links[i].get_attribute("href"))
             detail = ""
 
-            if url == uk_british:
-                if i <= 6 and i != 4: # 0 1 2 3 5 6
-                    
-                    detail = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
-                elif i == 4 or i >= 7:
-                    detail = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, ".section--intro__content h3")))
-            elif url == at_wien:
+            if url == at_wien:
                 if i == 0:
                     detail = WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))

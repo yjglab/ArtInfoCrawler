@@ -16,7 +16,7 @@ let it_uffiziInfo = {};
 let it_ducaleInfo = {};
 
 export const infoObjects = [
-  // uk_britishInfo,
+  uk_britishInfo,
   uk_londonNatlInfo,
   fr_pompidouInfo,
   fr_orsayInfo,
@@ -34,7 +34,7 @@ export const infoObjects = [
   it_ducaleInfo,
 ];
 const pyFile = [
-  // "uk_british.py",
+  "uk_british.py",
   "uk_londonNatl.py",
   "fr_pompidou.py",
   "fr_orsay.py",
