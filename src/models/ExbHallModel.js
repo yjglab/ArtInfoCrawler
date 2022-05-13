@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const exbHallSchema = new mongoose.Schema({
+  country: String,
   titles: [{ type: String }],
   dates: [{ type: String }],
   thumbnailsSrc: [{ type: String }],
@@ -8,5 +9,5 @@ const exbHallSchema = new mongoose.Schema({
   infoLength: Number,
 });
 
-const ExbHall = mongoose.model("Exb", exbHallSchema);
-export default ExbHall;
+const ExbHallModel = mongoose.model("ExbHallModel", exbHallSchema);
+export default ExbHallModel;

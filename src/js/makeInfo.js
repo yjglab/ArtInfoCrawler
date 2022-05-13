@@ -54,7 +54,7 @@ const pyFile = [
 ];
 
 // 텍스트 가공 함수
-const handleProcessInfoData = (data) => {
+const handleProcessInfoData = (data, country) => {
   const dataStringList = [];
   let crawledDataString = data.toString();
   let startIdx = 0;
@@ -91,6 +91,7 @@ const handleProcessInfoData = (data) => {
 
   // 텍스트 가공된 관 정보s
   let processedInfo = {
+    country: country,
     titles: dataStringList[0],
     dates: dataStringList[1],
     thumbnailsSrc: dataStringList[2],
@@ -108,14 +109,14 @@ const handleProcessInfoData = (data) => {
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
   for (let i = 0; i < 1; i += 1) {
-    let folderName = `${pyFile[i]}`.substring(0, 2);
+    let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
-      process.cwd() + `/src/pyFiles/country/${folderName}/${pyFile[i]}`,
+      process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
     ]);
     infoData.stdout.on("data", function (data) {
       console.log("날 거");
       console.log(data.toString());
-      infoObjects[i] = handleProcessInfoData(data);
+      infoObjects[i] = handleProcessInfoData(data, country);
     });
     infoData.stderr.on("data", function (data) {
       console.log(data.toString());
