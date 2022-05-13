@@ -50,6 +50,7 @@ const pyFile = [
   "es_malagaAutomovil.py",
   "it_uffizi.py",
   "it_ducale.py",
+  "it_napoli.py",
 ];
 
 // 텍스트 가공 함수
@@ -106,7 +107,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < infoObjects.length; i += 1) {
+  for (let i = 0; i < 0; i += 1) {
     let folderName = `${pyFile[i]}`.substring(0, 2);
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${folderName}/${pyFile[i]}`,

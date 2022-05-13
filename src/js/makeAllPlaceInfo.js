@@ -12,24 +12,23 @@ export const makeAllPlaceInfo = () => {
     "us_bostonInfo",
     "at_wienInfo",
     "at_arsElectronicaInfo",
-    "at_belvedereInfo", // titles, dates 오류
+    "at_belvedereInfo", // titles, dates 미수집 오류
     "es_pradoInfo",
     "es_thyssenInfo",
     "es_malagaAutomovilInfo",
     "it_uffiziInfo",
     "it_ducaleInfo",
-    "it_napoliInfo",
   ];
   const allPlaceInfo = {};
 
   // DEV: i조정
   allPlaceInfoName.forEach((name, i) => {
     allPlaceInfo[name] = {
-      titles: infoObjects[16].titles,
-      dates: infoObjects[16].dates,
-      thumbnailsSrc: infoObjects[16].thumbnailsSrc,
-      details: infoObjects[16].details,
-      infoLength: infoObjects[16].titles.length,
+      titles: infoObjects[0].titles,
+      dates: infoObjects[0].dates,
+      thumbnailsSrc: infoObjects[0].thumbnailsSrc,
+      details: infoObjects[0].details,
+      infoLength: infoObjects[0].titles.length,
     };
   });
 

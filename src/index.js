@@ -1,3 +1,4 @@
+import "./db";
 import express from "express";
 import globalRouter from "./routers/globalRouter.js";
 const app = express();
@@ -9,5 +10,5 @@ app.set("views", process.cwd() + "/src/views");
 app.use("/", globalRouter);
 
 app.listen(PORT, () => {
-  console.log(`Listen : ${PORT}`);
+  console.log(`🔵 Listen : ${PORT}`);
 });
