@@ -107,7 +107,7 @@ const handleProcessInfoData = (data) => {
 
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 0; i += 1) {
+  for (let i = 0; i < 1; i += 1) {
     let folderName = `${pyFile[i]}`.substring(0, 2);
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${folderName}/${pyFile[i]}`,
