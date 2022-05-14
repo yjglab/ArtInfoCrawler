@@ -1,3 +1,5 @@
+import ExbHallModel from "../models/ExbHallModel";
+
 let uk_britishInfo = {};
 let uk_londonNatlInfo = {};
 let fr_pompidouInfo = {};
@@ -106,6 +108,15 @@ const handleProcessInfoData = (data, country) => {
   return processedInfo;
 };
 
+const makeExbHalls = async () => {
+  await ExbHallModel.create({
+    country: infoObjects[0].country,
+    titles: infoObjects[0].titles,
+    dates: infoObjects[0].dates,
+    thumbnailsSrc: infoObjects[0].thumbnailsSrc,
+    details: infoObjects[0].details,
+  });
+};
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
   for (let i = 0; i < 1; i += 1) {
@@ -117,6 +128,7 @@ export const makeInfo = (childSpawn) => {
       console.log("날 거");
       console.log(data.toString());
       infoObjects[i] = handleProcessInfoData(data, country);
+      makeExbHalls(); // db저장
     });
     infoData.stderr.on("data", function (data) {
       console.log(data.toString());

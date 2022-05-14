@@ -1,6 +1,6 @@
 mixin printInfo(halls)
     - for (var i = 0; i < 1; i += 1)
-        - for (var j = 0; j < halls[i].infoLength; j += 1)
+        - for (var j = 0; j < halls[i].titles.length; j += 1)
             h4 Title: #{halls[i].titles[j]} 
             img(src=`${halls[i].thumbnailsSrc[j]}`)
             div Date: #{halls[i].dates[j]} 
