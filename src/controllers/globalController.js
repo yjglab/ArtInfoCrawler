@@ -9,5 +9,9 @@ export const main = async (req, res) => {
     pageTitle: "출력 정리",
     uk: await ExbHallModel.find({ country: "uk" }), // db에서.
     fr: await ExbHallModel.find({ country: "fr" }),
+    at: await ExbHallModel.find({ country: "at" }),
+    it: await ExbHallModel.find({ country: "it" }),
+    us: await ExbHallModel.find({ country: "us" }),
+    es: await ExbHallModel.find({ country: "es" }),
   });
 };

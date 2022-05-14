@@ -16,13 +16,33 @@ let es_thyssenInfo = {};
 let es_malagaAutomovilInfo = {};
 let it_uffiziInfo = {};
 let it_ducaleInfo = {};
+let it_napoliInfo = {};
+let it_accademiaInfo = {};
 
 const hallName = [
+  // uk
   "British Museum",
   "London National Gallery",
+  // fr
   "Centre Georges-Pompidou",
   "Orsay Museum",
   "Rodin museum",
+  // us
+  "Cincinnati Art Museum",
+  "The Art Institute of Chicago",
+  "Museum of Fine Arts, Boston",
+  // at
+  "Kunsthistorisches Museum", // wien
+  "Ars Electronica Center",
+  "Belvedere Museum Vienna",
+  // es
+  "Prado National Museum",
+  "Thyssen-Bornemisza National Museum",
+  "Automobile Museum Malaga",
+  // it
+  "Uffizi Museum",
+  "Doge's Palace",
+  "Napoli National Archaeological Museum",
 ];
 
 export const infoObjects = [
@@ -42,6 +62,7 @@ export const infoObjects = [
   es_malagaAutomovilInfo,
   it_uffiziInfo,
   it_ducaleInfo,
+  it_napoliInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -129,7 +150,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 16; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
