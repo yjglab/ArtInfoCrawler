@@ -17,6 +17,14 @@ let es_malagaAutomovilInfo = {};
 let it_uffiziInfo = {};
 let it_ducaleInfo = {};
 
+const hallName = [
+  "British Museum",
+  "London National Gallery",
+  "Centre Georges-Pompidou",
+  "Orsay Museum",
+  "Rodin museum",
+];
+
 export const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
@@ -107,19 +115,21 @@ const handleProcessInfoData = (data, country) => {
 
   return processedInfo;
 };
-
-const makeExbHalls = async () => {
+// DB 생성 && 업데이트
+const makeExbHallsDB = async (i) => {
+  await ExbHallModel.find({ titles: infoObjects[i].titles }).remove();
   await ExbHallModel.create({
-    country: infoObjects[0].country,
-    titles: infoObjects[0].titles,
-    dates: infoObjects[0].dates,
-    thumbnailsSrc: infoObjects[0].thumbnailsSrc,
-    details: infoObjects[0].details,
+    country: infoObjects[i].country,
+    titles: infoObjects[i].titles,
+    dates: infoObjects[i].dates,
+    thumbnailsSrc: infoObjects[i].thumbnailsSrc,
+    details: infoObjects[i].details,
+    hallName: hallName[i],
   });
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 1; i += 1) {
+  for (let i = 0; i < 5; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
@@ -128,7 +138,7 @@ export const makeInfo = (childSpawn) => {
       console.log("날 거");
       console.log(data.toString());
       infoObjects[i] = handleProcessInfoData(data, country);
-      makeExbHalls(); // db저장
+      makeExbHallsDB(i); // db저장
     });
     infoData.stderr.on("data", function (data) {
       console.log(data.toString());

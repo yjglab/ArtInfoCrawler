@@ -6,6 +6,7 @@ const exbHallSchema = new mongoose.Schema({
   dates: [{ type: String }],
   thumbnailsSrc: [{ type: String }],
   details: [{ type: String }],
+  hallName: String,
   infoLength: Number,
 });
 
