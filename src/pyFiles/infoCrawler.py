@@ -28,7 +28,8 @@ es_thyssen = 'https://www.museothyssen.org/en/exhibitions'
 es_guggenheim = 'https://www.guggenheim-bilbao.eus/exposiciones'
 es_malagaAutomovil = 'https://www.cristobalbalenciagamuseoa.com/descubre/exposiciones-actuales/'
 it_ducale = 'https://palazzoducale.visitmuve.it/category/en/mostre-en/mostre-in-corso-en/'
-
+kr_modernContemporary = 'https://www.mmca.go.kr/exhibitions/progressList.do'
+kr_natl = 'https://www.museum.go.kr/site/main/exhiSpecialTheme/list/current'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -89,7 +90,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
             if url in [us_cincinnati, es_prado, es_malagaAutomovil, it_ducale]:
                 exb_details = [x.text for x in exb_details_links]
                 break
-            if url in [es_thyssen]:
+            if url in [es_thyssen, kr_modernContemporary, kr_natl]:
                 break
 
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)

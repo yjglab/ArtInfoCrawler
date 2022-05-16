@@ -17,7 +17,9 @@ let es_malagaAutomovilInfo = {};
 let it_uffiziInfo = {};
 let it_ducaleInfo = {};
 let it_napoliInfo = {};
-let it_accademiaInfo = {};
+let kr_natlFolkInfo = {};
+let kr_modernContemporaryInfo = {};
+let kr_natlInfo = {};
 
 const hallName = [
   // uk
@@ -43,6 +45,10 @@ const hallName = [
   "Uffizi Museum",
   "Doge's Palace",
   "Napoli National Archaeological Museum",
+  // kr
+  "국립 민속 박물관",
+  "국립 현대 미술관",
+  "국립 중앙 미술관",
 ];
 
 export const infoObjects = [
@@ -63,6 +69,9 @@ export const infoObjects = [
   it_uffiziInfo,
   it_ducaleInfo,
   it_napoliInfo,
+  kr_natlFolkInfo,
+  kr_modernContemporaryInfo,
+  kr_natlInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -82,6 +91,9 @@ const pyFile = [
   "it_uffizi.py",
   "it_ducale.py",
   "it_napoli.py",
+  "kr_natlFolk.py",
+  "kr_modernContemporary.py",
+  "kr_natl.py",
 ];
 
 // 텍스트 가공 함수
@@ -150,7 +162,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 16; i < infoObjects.length; i += 1) {
+  for (let i = 19; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
