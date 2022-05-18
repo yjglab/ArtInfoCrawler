@@ -30,6 +30,7 @@ es_malagaAutomovil = 'https://www.cristobalbalenciagamuseoa.com/descubre/exposic
 it_ducale = 'https://palazzoducale.visitmuve.it/category/en/mostre-en/mostre-in-corso-en/'
 kr_modernContemporary = 'https://www.mmca.go.kr/exhibitions/progressList.do'
 kr_natl = 'https://www.museum.go.kr/site/main/exhiSpecialTheme/list/current'
+jp_natl = 'https://www.tnm.jp/modules/r_calender/index.php?date=today&lang=en'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -87,7 +88,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         for i in range(exb_nums):
             # 전시 개별 링크 들어가지 않아도 되는 사이트들 처리
             time.sleep(1)
-            if url in [us_cincinnati, es_prado, es_malagaAutomovil, it_ducale]:
+            if url in [us_cincinnati, es_prado, es_malagaAutomovil, it_ducale, jp_natl]:
                 exb_details = [x.text for x in exb_details_links]
                 break
             if url in [es_thyssen, kr_modernContemporary, kr_natl]:

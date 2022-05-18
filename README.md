@@ -1,6 +1,6 @@
-# ArtWork Info Crawler
+# Museum / Gallery InfoCrawler
 
-졸업프로젝트 제작을 위한 전시정보 크롤러
+프로젝트 제작을 위한 전시정보 크롤러
 
 ### python
 
@@ -39,6 +39,9 @@
 - it_ducale.py : 두칼레 궁전
 - it_napoli.py : 나폴리 고고학 박물관
 
+[KR. Republic of Korea]
+[JP. Japan]
+
 ### JavaScript
 
 - index.js : 서버 관리
@@ -49,7 +52,6 @@
 ### 기본 동작
 
 - infoCrawler를 통해 원하는 url과 원하는 정보의 selector만 넣으면 selenium으로 데이터를 모아와 JavaScript에서 텍스트 가공 후 MongoDB에 저장한 후 저장된 데이터를 가져와 템플릿에 자동으로 출력한다.
-- 해당 앱은 프로젝트 제작 시 DOM에서 실시간 정보전달 매개체로써 사용될 예정.
 
 ### 중심 로그
 
