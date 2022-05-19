@@ -23,6 +23,9 @@ let kr_natlInfo = {};
 let jp_tokyoNatlInfo = {};
 let jp_kyotoNatlInfo = {};
 let jp_naraNatlInfo = {};
+let gr_archaeologicalInfo = {};
+let gr_thessalonikiInfo = {};
+let gr_odysseusInfo = {};
 
 const hallName = [
   // uk
@@ -49,13 +52,17 @@ const hallName = [
   "Doge's Palace",
   "Napoli National Archaeological Museum",
   // kr
-  "국립 민속 박물관",
-  "국립 현대 미술관",
-  "국립 중앙 박술관",
+  "National Folk Museum of Korea",
+  "National Museum of Modern Art",
+  "National Museum of Koera",
   // jp
   "Tokyo National Museum",
   "Kyoto National Museum",
   "Nara National Museum",
+  // GR
+  "National Archaeological Museum",
+  "Archaeological Museum of Thessaloniki",
+  "Ancient Agora Museum", // odysseus
 ];
 
 export const infoObjects = [
@@ -82,6 +89,9 @@ export const infoObjects = [
   jp_tokyoNatlInfo,
   jp_kyotoNatlInfo,
   jp_naraNatlInfo,
+  gr_archaeologicalInfo,
+  gr_thessalonikiInfo,
+  gr_odysseusInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -107,6 +117,9 @@ const pyFile = [
   "jp_tokyoNatl.py",
   "jp_kyotoNatl.py",
   "jp_naraNatl.py",
+  "gr_archaeological.py",
+  "gr_thessaloniki.py",
+  "gr_odysseus.py",
 ];
 
 // 텍스트 가공 함수
@@ -175,7 +188,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 22; i < infoObjects.length; i += 1) {
+  for (let i = 25; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
