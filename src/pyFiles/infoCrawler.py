@@ -32,6 +32,8 @@ kr_modernContemporary = 'https://www.mmca.go.kr/exhibitions/progressList.do'
 kr_natl = 'https://www.museum.go.kr/site/main/exhiSpecialTheme/list/current'
 jp_natl = 'https://www.tnm.jp/modules/r_calender/index.php?date=today&lang=en'
 gr_odysseus = 'http://odysseus.culture.gr/h/4/eh41.jsp?obj_id=10321'
+cz_pragueNatlGallery = 'https://www.ngprague.cz/en/exhibitions-and-events'
+cz_brnoTechnical = 'https://www.tmbrno.cz/vystavy-a-akce/vystavy/'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -55,13 +57,16 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
     # 쿠키 알람 처리
     if url == uk_british:
         driver.find_element(by=By.CSS_SELECTOR, value="#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll").click()
-    if url == es_guggenheim:
+    elif url == es_guggenheim:
         driver.find_element(by=By.CSS_SELECTOR, value="#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll").click()
-    if url == at_belvedere:
+    elif url == at_belvedere:
         driver.find_element(by=By.CSS_SELECTOR, value="#select-all-cookies-btn").click()
-    if url == es_malagaAutomovil:
+    elif url == es_malagaAutomovil:
         driver.find_element(by=By.CSS_SELECTOR, value=".icon__glyph").click()
         driver.execute_script("window.scrollTo(0, 1000)")
+    elif url == cz_brnoTechnical:
+        driver.find_element(by=By.CSS_SELECTOR, value="#wt-cli-accept-all-btn").click()
+    
     def load_data():
         global exb_titles
         global exb_dates
@@ -94,7 +99,9 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                         es_malagaAutomovil, 
                         it_ducale, 
                         jp_natl, 
-                        gr_odysseus]:
+                        gr_odysseus,
+                        cz_brnoTechnical,
+                        ]:
                 exb_details = [x.text for x in exb_details_links]
                 break
             if url in [es_thyssen, kr_modernContemporary, kr_natl]:
@@ -112,10 +119,15 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                 else:
                     detail = WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, "#main p")))
+            elif url == cz_pragueNatlGallery:
+                driver.execute_script("window.scrollTo(0, 600)")
+                time.sleep(1)
+                detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
             else:
                 detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
                 # detail = WebDriverWait(driver, 10).until(
                 #     EC.presence_of_element_located((By.CSS_SELECTOR, details_content_selector)))
+
             exb_details.append(detail.text)
             driver.get(url) # back
         
@@ -139,11 +151,10 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url == us_chicago:
             exb_thumbnails = [x.get_attribute("data-pin-media") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
-        elif url == it_ducale:
+        elif url in [it_ducale, cz_brnoTechnical]:
             exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
             exb_thumbnails = [x[x.find("url(") + 5:-3] for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
-        
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]

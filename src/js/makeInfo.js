@@ -26,6 +26,9 @@ let jp_naraNatlInfo = {};
 let gr_archaeologicalInfo = {};
 let gr_thessalonikiInfo = {};
 let gr_odysseusInfo = {};
+let cz_pragueNatlInfo = {};
+let cz_pragueNatlGalleryInfo = {};
+let cz_brnoTechnicalInfo = {};
 
 const hallName = [
   // uk
@@ -34,7 +37,7 @@ const hallName = [
   // fr
   "Centre Georges-Pompidou",
   "Orsay Museum",
-  "Rodin museum",
+  "Rodin Museum",
   // us
   "Cincinnati Art Museum",
   "The Art Institute of Chicago",
@@ -63,6 +66,10 @@ const hallName = [
   "National Archaeological Museum",
   "Archaeological Museum of Thessaloniki",
   "Ancient Agora Museum", // odysseus
+  // CZ
+  "Prague National Museum",
+  "Prague National Gallery",
+  "Brno Technical Museum",
 ];
 
 export const infoObjects = [
@@ -92,6 +99,9 @@ export const infoObjects = [
   gr_archaeologicalInfo,
   gr_thessalonikiInfo,
   gr_odysseusInfo,
+  cz_pragueNatlInfo,
+  cz_pragueNatlGalleryInfo,
+  cz_brnoTechnicalInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -120,6 +130,9 @@ const pyFile = [
   "gr_archaeological.py",
   "gr_thessaloniki.py",
   "gr_odysseus.py",
+  "cz_pragueNatl.py",
+  "cz_pragueNatlGallery.py",
+  "cz_brnoTechnical.py",
 ];
 
 // 텍스트 가공 함수
@@ -165,12 +178,14 @@ const handleProcessInfoData = (data, country) => {
     dates: dataStringList[1],
     thumbnailsSrc: dataStringList[2],
     details: dataStringList[3],
+    // category: dataStringList[4],
   };
   console.log("가공됨");
   console.log(processedInfo.titles);
   console.log(processedInfo.dates);
   console.log(processedInfo.thumbnailsSrc);
   console.log(processedInfo.details);
+  // console.log(processedInfo.category);
 
   return processedInfo;
 };
@@ -184,11 +199,12 @@ const makeExbHallsDB = async (i) => {
     thumbnailsSrc: infoObjects[i].thumbnailsSrc,
     details: infoObjects[i].details,
     hallName: hallName[i],
+    // category: infoObjects[i].category,
   });
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 25; i < infoObjects.length; i += 1) {
+  for (let i = 26; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,

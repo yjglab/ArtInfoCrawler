@@ -2,13 +2,13 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 import infoCrawler
 
-url = 'https://www.nm.cz/en/program/exhibitions'
-exb_nums = 12
-titles_selector = ".eCont > h3"
-dates_selector = ".eInfo span time"
-thumbnails_selector = ".eImg img"
-details_links_selector = ".eImg a"
-details_content_selector = ".textLayoutL > p"
+url = 'https://www.tmbrno.cz/vystavy-a-akce/vystavy/' # no eng
+exb_nums = 4
+titles_selector = ".events-event-title"
+dates_selector = ".events-event-date"
+thumbnails_selector = ".events-event-img"
+details_links_selector = ".events-event-box > p"
+details_content_selector = ""
 category = "museum"
 
 infoCrawler.print_msm_data(
