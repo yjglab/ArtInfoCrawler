@@ -34,7 +34,8 @@ jp_natl = 'https://www.tnm.jp/modules/r_calender/index.php?date=today&lang=en'
 gr_odysseus = 'http://odysseus.culture.gr/h/4/eh41.jsp?obj_id=10321'
 cz_pragueNatlGallery = 'https://www.ngprague.cz/en/exhibitions-and-events'
 cz_brnoTechnical = 'https://www.tmbrno.cz/vystavy-a-akce/vystavy/'
-
+ru_gallery = 'http://en.rusmuseum.ru/exhibitions/current/'
+ru_kremlin = 'https://www.kreml.ru/en-Us/exhibitions/'
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
@@ -66,13 +67,14 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         driver.execute_script("window.scrollTo(0, 1000)")
     elif url == cz_brnoTechnical:
         driver.find_element(by=By.CSS_SELECTOR, value="#wt-cli-accept-all-btn").click()
-    
+    elif url == ru_kremlin:
+        driver.find_element(by=By.CSS_SELECTOR, value=".btn-accept").click()
+
     def load_data():
         global exb_titles
         global exb_dates
         global exb_thumbnails
 
-        
         time.sleep(1)
         exb_titles = driver.find_elements(by=By.CSS_SELECTOR, value=titles_selector)
         exb_dates = driver.find_elements(by=By.CSS_SELECTOR, value=dates_selector)
@@ -101,6 +103,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                         jp_natl, 
                         gr_odysseus,
                         cz_brnoTechnical,
+                        ru_gallery,
+                        ru_kremlin,
                         ]:
                 exb_details = [x.text for x in exb_details_links]
                 break
