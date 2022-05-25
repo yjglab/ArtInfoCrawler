@@ -35,6 +35,9 @@ let ru_kremlinInfo = {};
 let ch_zurichNatlInfo = {};
 let ch_rietbergInfo = {};
 let ch_olympicInfo = {};
+let pl_polinInfo = {};
+let pl_warsawNatlInfo = {};
+let pl_fryderykChopinInfo = {};
 
 const hallName = [
   // uk
@@ -84,6 +87,10 @@ const hallName = [
   "Landesmuseum Zurich",
   "Museum Rietberg",
   "The Olympic Museum",
+  //
+  "POLIN Museum of the History of Polish Jews",
+  "National Museum in Warsaw",
+  "The Fryderyk Chopin Museum",
 ];
 
 export const infoObjects = [
@@ -122,6 +129,9 @@ export const infoObjects = [
   ch_zurichNatlInfo,
   ch_rietbergInfo,
   ch_olympicInfo,
+  pl_polinInfo,
+  pl_warsawNatlInfo,
+  pl_fryderykChopinInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -159,6 +169,9 @@ const pyFile = [
   "ch_zurichNatl.py",
   "ch_rietberg.py",
   "ch_olympic.py",
+  "pl_polin.py",
+  "pl_warsawNatl.py",
+  "pl_fryderykChopin.py",
 ];
 
 // 텍스트 가공 함수
@@ -230,7 +243,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 34; i < infoObjects.length; i += 1) {
+  for (let i = 37; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,

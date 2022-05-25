@@ -19,5 +19,6 @@ export const main = async (req, res) => {
     cz: await ExbHallModel.find({ country: "cz" }),
     ru: await ExbHallModel.find({ country: "ru" }),
     ch: await ExbHallModel.find({ country: "ch" }),
+    pl: await ExbHallModel.find({ country: "pl" }),
   });
 };

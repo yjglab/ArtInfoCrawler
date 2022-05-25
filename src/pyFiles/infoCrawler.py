@@ -36,6 +36,8 @@ cz_pragueNatlGallery = 'https://www.ngprague.cz/en/exhibitions-and-events'
 cz_brnoTechnical = 'https://www.tmbrno.cz/vystavy-a-akce/vystavy/'
 ru_gallery = 'http://en.rusmuseum.ru/exhibitions/current/'
 ru_kremlin = 'https://www.kreml.ru/en-Us/exhibitions/'
+pl_polin = 'https://polin.pl/en/temporary-exhibitions'
+
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
@@ -105,6 +107,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                         cz_brnoTechnical,
                         ru_gallery,
                         ru_kremlin,
+                        pl_polin,
                         ]:
                 exb_details = [x.text for x in exb_details_links]
                 break
@@ -166,11 +169,11 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
     load_details_and_mediate_numbers()
     
     for title in exb_titles:
-        print("[TITLE]", title.text)
+        print(title.text)
         print("SPLITER")
     print("FILTER")
     for date in exb_dates:
-        print("[DATE]", date.text)
+        print(date.text)
         print("SPLITER")
     print("FILTER")
     for thumbnail_src in exb_thumbnails:
@@ -178,7 +181,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         print("SPLITER")
     print("FILTER")
     for detail in exb_details:
-        print("[DETAIL]", detail)
+        print(detail)
         print("SPLITER")
     print("FILTER")
 
