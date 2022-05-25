@@ -7,7 +7,7 @@ exb_nums = 4
 titles_selector = ".event__title"
 dates_selector = ".event__date"
 thumbnails_selector = ".event__item > img"
-details_links_selector = ".event__title"
+details_links_selector = ".event__link"
 details_content_selector = ".event-detail__description-col > div > div:last-child"
 category = "gallery"
 
