@@ -37,7 +37,8 @@ cz_brnoTechnical = 'https://www.tmbrno.cz/vystavy-a-akce/vystavy/'
 ru_gallery = 'http://en.rusmuseum.ru/exhibitions/current/'
 ru_kremlin = 'https://www.kreml.ru/en-Us/exhibitions/'
 pl_polin = 'https://polin.pl/en/temporary-exhibitions'
-
+ca_ontario = 'https://www.rom.on.ca/en/exhibitions-galleries'
+ca_humanRights = 'https://humanrights.ca/exhibitions-and-events/exhibitions'
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
@@ -161,6 +162,13 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url in [it_ducale, cz_brnoTechnical]:
             exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
             exb_thumbnails = [x[x.find("url(") + 5:-3] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
+        elif url == ca_ontario:
+            exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[1:exb_nums + 1]
+        elif url == ca_humanRights:
+            exb_thumbnails = [x.get_attribute("srcset") for x in exb_thumbnails]
+            exb_thumbnails = [x[x.find("1440w") + 6:x.find("1600w") - 1] for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]

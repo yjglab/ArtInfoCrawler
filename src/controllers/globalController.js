@@ -2,7 +2,7 @@ import { makeInfo } from "../js/makeInfo.js";
 import ExbHallModel from "../models/ExbHallModel.js";
 
 const childSpawn = require("child_process").spawn;
-makeInfo(childSpawn);
+// makeInfo(childSpawn);
 
 export const main = async (req, res) => {
   return res.render("main", {
@@ -20,5 +20,6 @@ export const main = async (req, res) => {
     ru: await ExbHallModel.find({ country: "ru" }),
     ch: await ExbHallModel.find({ country: "ch" }),
     pl: await ExbHallModel.find({ country: "pl" }),
+    ca: await ExbHallModel.find({ country: "ca" }),
   });
 };

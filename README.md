@@ -1,6 +1,6 @@
 # Museum / Gallery InfoCrawler
 
-프로젝트 제작을 위한 전시정보 크롤러
+세계 박물관과 미술관 전시정보 크롤링 출력 프로그램
 
 ### python
 
@@ -40,10 +40,55 @@
 - it_napoli.py : 나폴리 고고학 박물관
 
 [KR. Republic of Korea]
+
+- kr_modernContemporary.py : 국립현대미술관
+- kr_natl.py : 국립중앙박물관
+- kr_natlFolk : 국립민속박물관
+
 [JP. Japan]
-[CN. China]
-이집트,[체코],폴란드,중국,호주,터키,남아공,모로코,캐나다,브라질,그리스
-[러시아],룩셈부르크,[스위스],몽골,덴마크,바티칸,이스라엘,인도,헝가리,홍콩
+
+- jp_kyotoNatl.py : 교토국립박물관
+- jp_naraNatl.py : 나라국립박물관
+- jp_tokyoNatl.py : 도쿄국립박물관
+
+[GR. Greece]
+
+- gr_archaeological.py : 아테네 국립 고고학 박물관
+- gr_odysseus.py : 아테네 아고라
+- gr_thessaloniki.py : 테살로니키 고고학 박물관
+
+[CZ. Czech]
+
+- cz_brnoTechnical.py : 브르노 기계 박물관
+- cz_pragueNatl.py : 프라하 국립 박물관
+- cz_pragueNatlGallery.py : 프라하 국립 미술관
+
+[RU. Russia]
+
+- ru_gallery.py : 러시아 미술관
+- ru_kremin.py : 모스크바 크렘린
+- ru_tretyakov.py : 트레티야코프 미술관
+
+[CH. Swiss]
+
+- ch_zurichNatl.py : 취리히 국립 박물관
+- ch_olympic.py : 올림픽 박물관
+- ch_rietberg.py : 취리히 rietberg 박물관
+
+[PL. Poland]
+
+- pl_polin.py : 폴란드 박물관
+- pl_warsawNatl.py : 바르샤바 국립 미술관
+- pl_fryderykChopin.py : 프레데릭 쇼팽 박물관
+
+[CA. Canada]
+
+- ca_history.py : 캐나다 역사 박물관
+- ca_humanRights.py : 위니펙 인권 박물관
+- ca_ontario.py : 로열 온타리오 박물관
+
+이집트,중국,호주,터키,남아공,모로코,브라질,
+,룩셈부르크,몽골,덴마크,바티칸,이스라엘,인도,헝가리,홍콩
 
 ### JavaScript
 
