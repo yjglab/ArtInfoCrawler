@@ -3,17 +3,13 @@ import io
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
 from selenium.webdriver.chrome.service import Service
-from bs4 import BeautifulSoup
-from webdriver_manager.chrome import ChromeDriverManager
+# from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
 from webdriver_manager.chrome import ChromeDriverManager
 
-
+# "(?:[^"]|"")*"
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
@@ -45,6 +41,7 @@ ca_ontario = 'https://www.rom.on.ca/en/exhibitions-galleries'
 ca_humanRights = 'https://humanrights.ca/exhibitions-and-events/exhibitions'
 au_newSouthWales = 'https://www.artgallery.nsw.gov.au/whats-on/exhibitions/'
 tr_alchaeology = 'https://muze.gov.tr/muzeler'
+dk_natlGallery = 'https://www.smk.dk/en/section/exhibitions/'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -184,6 +181,10 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
             exb_thumbnails = [x.get_attribute("data-progressive") for x in exb_thumbnails]
             exb_thumbnails = ["https://muze.gov.tr" + x for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
+        elif url == dk_natlGallery:
+            exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
+            exb_thumbnails = [x[x.find("url(") + 5:x.find(".jpg") + 5] for x in exb_thumbnails]
+            
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]

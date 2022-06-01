@@ -45,6 +45,7 @@ let au_contemporaryInfo = {};
 let au_newSouthWalesInfo = {};
 let au_sydneyLivingInfo = {};
 let tr_alchaeologyInfo = {};
+let dk_designInfo = {};
 
 const hallName = [
   // uk
@@ -108,10 +109,8 @@ const hallName = [
   "Sydney Living Museum",
   // TR
   "Istanbul Archaeology Museums",
-  "",
-  "",
-  //
-  "",
+  // DK
+  "Design Museum Denmark", // natl
   "",
   "",
   //
@@ -166,6 +165,7 @@ export const infoObjects = [
   au_newSouthWalesInfo,
   au_sydneyLivingInfo,
   tr_alchaeologyInfo,
+  dk_designInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -213,6 +213,7 @@ const pyFile = [
   "au_newSouthWales.py",
   "au_sydneyLiving.py",
   "tr_alchaeology.py",
+  "dk_design.py",
 ];
 
 // 텍스트 가공 함수
@@ -290,7 +291,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 44; i < infoObjects.length; i += 1) {
+  for (let i = 45; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,

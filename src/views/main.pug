@@ -6,38 +6,78 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style.
+            img {
+                width: 300px;
+                object-fit: cover;
+            }
+            .container {
+                display: grid;
+                
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: repeat(20, 600px);
+                row-gap: 10px;
+                column-gap: 20px;
+            }
+            .container > div {
+                margin: 40px;
+            }
+            .container > div .exb {
+                height: 100%;
+                overflow: auto;
+            }
+
         title #{pageTitle}
     body 
-        ul 
-            h1 🧡 AT. Austria 🧡
-            +printInfo(at)
-            h1 🧡 ES. Spain 🧡
-            +printInfo(es)
-            h1 🧡 FR. French 🧡 
-            +printInfo(fr)
-            h1 🧡 IT. Italy 🧡
-            +printInfo(it)
-            h1 🧡 UK. United Kingdom 🧡
-            +printInfo(uk)
-            h1 🧡 US. United States 🧡
-            +printInfo(us)
-            h1 🧡 KR. Republic of Korea 🧡
-            +printInfo(kr)
-            h1 🧡 JP. Japan 🧡
-            +printInfo(jp)
-            h1 🧡 GR. Greece 🧡
-            +printInfo(gr)
-            h1 🧡 CZ. Czech 🧡
-            +printInfo(cz)
-            h1 🧡 RU. Russia 🧡
-            +printInfo(ru)
-            h1 🧡 CH. Swiss 🧡
-            +printInfo(ch)
-            h1 🧡 PL. Poland 🧡
-            +printInfo(pl)
-            h1 🧡 CA. Canada 🧡
-            +printInfo(ca)
-            h1 🧡 AU. Austrailia 🧡
-            +printInfo(au)
-            h1 🧡 TR. Turkey 🧡
-            +printInfo(tr)
+        div(class="container")
+            div
+                h1 🧡 AT. Austria 🧡
+                +printInfo(at)
+            div
+                h1 🧡 ES. Spain 🧡
+                +printInfo(es)
+            div
+                h1 🧡 FR. French 🧡 
+                +printInfo(fr)
+            div
+                h1 🧡 IT. Italy 🧡
+                +printInfo(it)
+            div
+                h1 🧡 UK. United Kingdom 🧡
+                +printInfo(uk)
+            div
+                h1 🧡 US. United States 🧡
+                +printInfo(us)
+            div
+                h1 🧡 KR. Republic of Korea 🧡
+                +printInfo(kr)
+            div
+                h1 🧡 JP. Japan 🧡
+                +printInfo(jp)
+            div
+                h1 🧡 GR. Greece 🧡
+                +printInfo(gr)
+            div
+                h1 🧡 CZ. Czech 🧡
+                +printInfo(cz)
+            div
+                h1 🧡 RU. Russia 🧡
+                +printInfo(ru)
+            div
+                h1 🧡 CH. Swiss 🧡
+                +printInfo(ch)
+            div
+                h1 🧡 PL. Poland 🧡
+                +printInfo(pl)
+            div
+                h1 🧡 CA. Canada 🧡
+                +printInfo(ca)
+            div
+                h1 🧡 AU. Austrailia 🧡
+                +printInfo(au)
+            div
+                h1 🧡 TR. Turkey 🧡
+                +printInfo(tr)
+            div
+                h1 🧡 DK. Denmark 🧡
+                +printInfo(dk)

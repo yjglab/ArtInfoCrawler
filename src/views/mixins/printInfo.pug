@@ -1,10 +1,11 @@
 mixin printInfo(halls)
-    - for (var i = 0; i < 999; i += 1) // 국가당 관 수
-        - if (halls[i] == undefined) break
-        h2 #{halls[i].hallName}
-        - for (var j = 0; j < halls[i].titles.length; j += 1)
-            h4 Title: #{halls[i].titles[j]} 
-            img(src=`${halls[i].thumbnailsSrc[j]}`)
-            div Date: #{halls[i].dates[j]} 
-            div Detailed: #{halls[i].details[j]}  
+    div(class="exb")
+        - for (var i = 0; i < 999; i += 1) // 국가당 관 수
+            - if (halls[i] == undefined) break
+            h2 #{halls[i].hallName}
+            - for (var j = 0; j < halls[i].titles.length; j += 1)
+                h4 Title: #{halls[i].titles[j]} 
+                img(src=`${halls[i].thumbnailsSrc[j]}`)
+                div Date: #{halls[i].dates[j]} 
+                div Detailed: #{halls[i].details[j]}  
 
