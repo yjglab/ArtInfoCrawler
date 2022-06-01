@@ -44,6 +44,7 @@ let ca_humanRightsInfo = {};
 let au_contemporaryInfo = {};
 let au_newSouthWalesInfo = {};
 let au_sydneyLivingInfo = {};
+let tr_alchaeologyInfo = {};
 
 const hallName = [
   // uk
@@ -105,6 +106,18 @@ const hallName = [
   "Museum of Contemporary Art",
   "New South Wales Art Gallery",
   "Sydney Living Museum",
+  // TR
+  "Istanbul Archaeology Museums",
+  "",
+  "",
+  //
+  "",
+  "",
+  "",
+  //
+  "",
+  "",
+  "",
 ];
 
 export const infoObjects = [
@@ -152,6 +165,7 @@ export const infoObjects = [
   au_contemporaryInfo,
   au_newSouthWalesInfo,
   au_sydneyLivingInfo,
+  tr_alchaeologyInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -198,6 +212,7 @@ const pyFile = [
   "au_contemporary.py",
   "au_newSouthWales.py",
   "au_sydneyLiving.py",
+  "tr_alchaeology.py",
 ];
 
 // 텍스트 가공 함수
@@ -236,7 +251,13 @@ const handleProcessInfoData = (data, country) => {
     dataStringList[i] = dataStringList[i].filter((el) => el !== "");
   }
 
-  // 텍스트 가공된 관 정보s
+  // 텍스트 가공된 관 정보
+  if (dataStringList[1] == "") {
+    // 빈 값이면 영구 전시임
+    for (let _ = 0; _ < dataStringList[0].length; _ += 1) {
+      dataStringList[1].push("Permanent");
+    }
+  }
   let processedInfo = {
     country: country,
     titles: dataStringList[0],
@@ -269,7 +290,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 43; i < infoObjects.length; i += 1) {
+  for (let i = 44; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,

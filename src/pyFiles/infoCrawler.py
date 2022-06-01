@@ -44,6 +44,7 @@ pl_polin = 'https://polin.pl/en/temporary-exhibitions'
 ca_ontario = 'https://www.rom.on.ca/en/exhibitions-galleries'
 ca_humanRights = 'https://humanrights.ca/exhibitions-and-events/exhibitions'
 au_newSouthWales = 'https://www.artgallery.nsw.gov.au/whats-on/exhibitions/'
+tr_alchaeology = 'https://muze.gov.tr/muzeler'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -80,6 +81,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         driver.find_element(by=By.CSS_SELECTOR, value=".btn-accept").click()
     elif url == au_newSouthWales:
         driver.find_element(by=By.CSS_SELECTOR, value=".acknowledgementOfCountry-closeButton").click()
+    
     def load_data():
         global exb_titles
         global exb_dates
@@ -138,6 +140,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                 driver.execute_script("window.scrollTo(0, 600)")
                 time.sleep(1)
                 detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
+            
             else:
                 detail = driver.find_element(by=By.CSS_SELECTOR, value=details_content_selector)
                 # detail = WebDriverWait(driver, 10).until(
@@ -176,6 +179,10 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url == ca_humanRights:
             exb_thumbnails = [x.get_attribute("srcset") for x in exb_thumbnails]
             exb_thumbnails = [x[x.find("1440w") + 6:x.find("1600w") - 1] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
+        elif url == tr_alchaeology:
+            exb_thumbnails = [x.get_attribute("data-progressive") for x in exb_thumbnails]
+            exb_thumbnails = ["https://muze.gov.tr" + x for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
