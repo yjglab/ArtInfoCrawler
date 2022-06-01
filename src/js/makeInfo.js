@@ -41,6 +41,9 @@ let pl_fryderykChopinInfo = {};
 let ca_ontarioInfo = {};
 let ca_historyInfo = {};
 let ca_humanRightsInfo = {};
+let au_contemporaryInfo = {};
+let au_newSouthWalesInfo = {};
+let au_sydneyLivingInfo = {};
 
 const hallName = [
   // uk
@@ -98,6 +101,10 @@ const hallName = [
   "Royal Ontario Museum",
   "Canadian Museum of History",
   "Canadian Museum For Human Rights",
+  // AU
+  "Museum of Contemporary Art",
+  "New South Wales Art Gallery",
+  "Sydney Living Museum",
 ];
 
 export const infoObjects = [
@@ -142,6 +149,9 @@ export const infoObjects = [
   ca_ontarioInfo,
   ca_historyInfo,
   ca_humanRightsInfo,
+  au_contemporaryInfo,
+  au_newSouthWalesInfo,
+  au_sydneyLivingInfo,
 ];
 const pyFile = [
   "uk_british.py",
@@ -185,6 +195,9 @@ const pyFile = [
   "ca_ontario.py",
   "ca_history.py",
   "ca_humanRights.py",
+  "au_contemporary.py",
+  "au_newSouthWales.py",
+  "au_sydneyLiving.py",
 ];
 
 // 텍스트 가공 함수
@@ -232,7 +245,7 @@ const handleProcessInfoData = (data, country) => {
     details: dataStringList[3],
     // category: dataStringList[4],
   };
-  console.log("가공됨");
+  console.log("====가공됨====");
   console.log(processedInfo.titles);
   console.log(processedInfo.dates);
   console.log(processedInfo.thumbnailsSrc);
@@ -256,13 +269,13 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 40; i < infoObjects.length; i += 1) {
+  for (let i = 43; i < infoObjects.length; i += 1) {
     let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
     ]);
     infoData.stdout.on("data", function (data) {
-      console.log("날 거");
+      console.log("----날 거----");
       console.log(data.toString());
       infoObjects[i] = handleProcessInfoData(data, country);
       makeExbHallsDB(i); // db저장

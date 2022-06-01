@@ -10,6 +10,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
@@ -39,13 +43,15 @@ ru_kremlin = 'https://www.kreml.ru/en-Us/exhibitions/'
 pl_polin = 'https://polin.pl/en/temporary-exhibitions'
 ca_ontario = 'https://www.rom.on.ca/en/exhibitions-galleries'
 ca_humanRights = 'https://humanrights.ca/exhibitions-and-events/exhibitions'
+au_newSouthWales = 'https://www.artgallery.nsw.gov.au/whats-on/exhibitions/'
+
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
-    
+    # driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(10)
     driver.get(url)
     driver.set_window_position(0, 0)
@@ -72,7 +78,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         driver.find_element(by=By.CSS_SELECTOR, value="#wt-cli-accept-all-btn").click()
     elif url == ru_kremlin:
         driver.find_element(by=By.CSS_SELECTOR, value=".btn-accept").click()
-
+    elif url == au_newSouthWales:
+        driver.find_element(by=By.CSS_SELECTOR, value=".acknowledgementOfCountry-closeButton").click()
     def load_data():
         global exb_titles
         global exb_dates
