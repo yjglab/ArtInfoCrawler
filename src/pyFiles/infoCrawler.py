@@ -42,6 +42,8 @@ ca_humanRights = 'https://humanrights.ca/exhibitions-and-events/exhibitions'
 au_newSouthWales = 'https://www.artgallery.nsw.gov.au/whats-on/exhibitions/'
 tr_alchaeology = 'https://muze.gov.tr/muzeler'
 dk_natlGallery = 'https://www.smk.dk/en/section/exhibitions/'
+dk_maritime = 'https://mfs.dk/en/exhibition/'
+dk_glyptotek = 'https://www.glyptoteket.com/exhibitions/'
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
     options = webdriver.ChromeOptions()
@@ -78,6 +80,9 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         driver.find_element(by=By.CSS_SELECTOR, value=".btn-accept").click()
     elif url == au_newSouthWales:
         driver.find_element(by=By.CSS_SELECTOR, value=".acknowledgementOfCountry-closeButton").click()
+    elif url == dk_glyptotek:
+        driver.find_element(by=By.CSS_SELECTOR, value=".coi-banner__accept").click()
+        driver.execute_script("window.scrollTo(0, 2000)")
     
     def load_data():
         global exb_titles
@@ -115,6 +120,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                         ru_gallery,
                         ru_kremlin,
                         pl_polin,
+                        dk_maritime,
+                        dk_glyptotek,
                         ]:
                 exb_details = [x.text for x in exb_details_links]
                 break
@@ -184,7 +191,14 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         elif url == dk_natlGallery:
             exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
             exb_thumbnails = [x[x.find("url(") + 5:x.find(".jpg") + 5] for x in exb_thumbnails]
-            
+            exb_thumbnails = exb_thumbnails[:exb_nums]
+        elif url == dk_maritime:
+            exb_thumbnails = [x.get_attribute("href") for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
+        elif url == dk_glyptotek:
+            exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
+            exb_thumbnails = [x[x.find("url(") + 5:x.find(".jpg") + 4] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]

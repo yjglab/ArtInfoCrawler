@@ -1,220 +1,7 @@
 import ExbHallModel from "../models/ExbHallModel";
-
-let uk_britishInfo = {};
-let uk_londonNatlInfo = {};
-let fr_pompidouInfo = {};
-let fr_orsayInfo = {};
-let fr_lodinInfo = {};
-let us_cincinnatiInfo = {};
-let us_chicagoInfo = {};
-let us_bostonInfo = {};
-let at_wienInfo = {};
-let at_arsElectronicaInfo = {};
-let at_belvedereInfo = {};
-let es_pradoInfo = {};
-let es_thyssenInfo = {};
-let es_malagaAutomovilInfo = {};
-let it_uffiziInfo = {};
-let it_ducaleInfo = {};
-let it_napoliInfo = {};
-let kr_natlFolkInfo = {};
-let kr_modernContemporaryInfo = {};
-let kr_natlInfo = {};
-let jp_tokyoNatlInfo = {};
-let jp_kyotoNatlInfo = {};
-let jp_naraNatlInfo = {};
-let gr_archaeologicalInfo = {};
-let gr_thessalonikiInfo = {};
-let gr_odysseusInfo = {};
-let cz_pragueNatlInfo = {};
-let cz_pragueNatlGalleryInfo = {};
-let cz_brnoTechnicalInfo = {};
-let ru_galleryInfo = {};
-let ru_tretyakovInfo = {};
-let ru_kremlinInfo = {};
-let ch_zurichNatlInfo = {};
-let ch_rietbergInfo = {};
-let ch_olympicInfo = {};
-let pl_polinInfo = {};
-let pl_warsawNatlInfo = {};
-let pl_fryderykChopinInfo = {};
-let ca_ontarioInfo = {};
-let ca_historyInfo = {};
-let ca_humanRightsInfo = {};
-let au_contemporaryInfo = {};
-let au_newSouthWalesInfo = {};
-let au_sydneyLivingInfo = {};
-let tr_alchaeologyInfo = {};
-let dk_designInfo = {};
-
-const hallName = [
-  // uk
-  "British Museum",
-  "London National Gallery",
-  // fr
-  "Centre Georges-Pompidou",
-  "Orsay Museum",
-  "Rodin Museum",
-  // us
-  "Cincinnati Art Museum",
-  "The Art Institute of Chicago",
-  "Museum of Fine Arts, Boston",
-  // at
-  "Kunsthistorisches Museum", // wien
-  "Ars Electronica Center",
-  "Belvedere Museum Vienna",
-  // es
-  "Prado National Museum",
-  "Thyssen-Bornemisza National Museum",
-  "Automobile Museum Malaga",
-  // it
-  "Uffizi Museum",
-  "Doge's Palace",
-  "Napoli National Archaeological Museum",
-  // kr
-  "National Folk Museum of Korea",
-  "National Museum of Modern Art",
-  "National Museum of Koera",
-  // jp
-  "Tokyo National Museum",
-  "Kyoto National Museum",
-  "Nara National Museum",
-  // GR
-  "National Archaeological Museum",
-  "Archaeological Museum of Thessaloniki",
-  "Ancient Agora Museum", // odysseus
-  // CZ
-  "Prague National Museum",
-  "Prague National Gallery",
-  "Brno Technical Museum",
-  // RU
-  "The State Russian Museum",
-  "Tretyakov Gallery",
-  "Moscow Kremlin Museum",
-  // CH
-  "Landesmuseum Zurich",
-  "Museum Rietberg",
-  "The Olympic Museum",
-  // PL
-  "POLIN Museum of the History of Polish Jews",
-  "National Museum in Warsaw",
-  "The Fryderyk Chopin Museum",
-  // CA
-  "Royal Ontario Museum",
-  "Canadian Museum of History",
-  "Canadian Museum For Human Rights",
-  // AU
-  "Museum of Contemporary Art",
-  "New South Wales Art Gallery",
-  "Sydney Living Museum",
-  // TR
-  "Istanbul Archaeology Museums",
-  // DK
-  "Design Museum Denmark", // natl
-  "",
-  "",
-  //
-  "",
-  "",
-  "",
-];
-
-export const infoObjects = [
-  uk_britishInfo,
-  uk_londonNatlInfo,
-  fr_pompidouInfo,
-  fr_orsayInfo,
-  fr_lodinInfo,
-  us_cincinnatiInfo,
-  us_chicagoInfo,
-  us_bostonInfo,
-  at_wienInfo,
-  at_arsElectronicaInfo,
-  at_belvedereInfo,
-  es_pradoInfo,
-  es_thyssenInfo,
-  es_malagaAutomovilInfo,
-  it_uffiziInfo,
-  it_ducaleInfo,
-  it_napoliInfo,
-  kr_natlFolkInfo,
-  kr_modernContemporaryInfo,
-  kr_natlInfo,
-  jp_tokyoNatlInfo,
-  jp_kyotoNatlInfo,
-  jp_naraNatlInfo,
-  gr_archaeologicalInfo,
-  gr_thessalonikiInfo,
-  gr_odysseusInfo,
-  cz_pragueNatlInfo,
-  cz_pragueNatlGalleryInfo,
-  cz_brnoTechnicalInfo,
-  ru_galleryInfo,
-  ru_tretyakovInfo,
-  ru_kremlinInfo,
-  ch_zurichNatlInfo,
-  ch_rietbergInfo,
-  ch_olympicInfo,
-  pl_polinInfo,
-  pl_warsawNatlInfo,
-  pl_fryderykChopinInfo,
-  ca_ontarioInfo,
-  ca_historyInfo,
-  ca_humanRightsInfo,
-  au_contemporaryInfo,
-  au_newSouthWalesInfo,
-  au_sydneyLivingInfo,
-  tr_alchaeologyInfo,
-  dk_designInfo,
-];
-const pyFile = [
-  "uk_british.py",
-  "uk_londonNatl.py",
-  "fr_pompidou.py",
-  "fr_orsay.py",
-  "fr_lodin.py",
-  "us_cincinnati.py",
-  "us_chicago.py",
-  "us_boston.py",
-  "at_wien.py",
-  "at_arsElectronica.py",
-  "at_belvedere.py",
-  "es_prado.py",
-  "es_thyssen.py",
-  "es_malagaAutomovil.py",
-  "it_uffizi.py",
-  "it_ducale.py",
-  "it_napoli.py",
-  "kr_natlFolk.py",
-  "kr_modernContemporary.py",
-  "kr_natl.py",
-  "jp_tokyoNatl.py",
-  "jp_kyotoNatl.py",
-  "jp_naraNatl.py",
-  "gr_archaeological.py",
-  "gr_thessaloniki.py",
-  "gr_odysseus.py",
-  "cz_pragueNatl.py",
-  "cz_pragueNatlGallery.py",
-  "cz_brnoTechnical.py",
-  "ru_gallery.py",
-  "ru_tretyakov.py",
-  "ru_kremlin.py",
-  "ch_zurichNatl.py",
-  "ch_rietberg.py",
-  "ch_olympic.py",
-  "pl_polin.py",
-  "pl_warsawNatl.py",
-  "pl_fryderykChopin.py",
-  "ca_ontario.py",
-  "ca_history.py",
-  "ca_humanRights.py",
-  "au_contemporary.py",
-  "au_newSouthWales.py",
-  "au_sydneyLiving.py",
-  "tr_alchaeology.py",
-  "dk_design.py",
-];
+import infoObjects from "./infoObjects";
+import hallName from "./hallName";
+import pyFiles from "./pyFiles";
 
 // 텍스트 가공 함수
 const handleProcessInfoData = (data, country) => {
@@ -266,8 +53,9 @@ const handleProcessInfoData = (data, country) => {
     thumbnailsSrc: dataStringList[2],
     details: dataStringList[3],
     // category: dataStringList[4],
+    // link:
   };
-  console.log("====가공됨====");
+  console.log("====가공 데이터====");
   console.log(processedInfo.titles);
   console.log(processedInfo.dates);
   console.log(processedInfo.thumbnailsSrc);
@@ -287,17 +75,18 @@ const makeExbHallsDB = async (i) => {
     details: infoObjects[i].details,
     hallName: hallName[i],
     // category: infoObjects[i].category,
+    // link: infoObjects[i].link,
   });
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 45; i < infoObjects.length; i += 1) {
-    let country = `${pyFile[i]}`.substring(0, 2); // folder 이름
+  for (let i = 47; i < infoObjects.length; i += 1) {
+    let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
-      process.cwd() + `/src/pyFiles/country/${country}/${pyFile[i]}`,
+      process.cwd() + `/src/pyFiles/country/${country}/${pyFiles[i]}`,
     ]);
     infoData.stdout.on("data", function (data) {
-      console.log("----날 거----");
+      console.log("----로우 데이터----");
       console.log(data.toString());
       infoObjects[i] = handleProcessInfoData(data, country);
       makeExbHallsDB(i); // db저장
