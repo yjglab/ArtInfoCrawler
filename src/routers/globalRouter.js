@@ -1,7 +1,8 @@
 import express from "express";
-import { main } from "../controllers/globalController.js";
+
+import { intro } from "../controllers/globalController.js";
 
 const globalRouter = express.Router();
 
-globalRouter.get("/", main);
+globalRouter.get("/", intro);
 export default globalRouter;

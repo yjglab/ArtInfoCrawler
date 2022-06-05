@@ -123,3 +123,13 @@
 ### DEV 지점
 
 - makeInfo.js
+
+### 라우트
+
+[/] /intro
+[/main] 전체 전시 정보 (title, date, thumb만)
+[/main/:id] 관별 전시 정보 (+detail)
+[/main/museum] 뮤지엄 전시 정보
+[/main/gallery] 갤러리 전시 정보
+[/main/country] 국가
+[/main/country/...] 국가별 전시 정보

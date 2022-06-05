@@ -4,7 +4,8 @@ mixin printInfo(halls)
             - if (halls[i] == undefined) break
             h2 #{halls[i].hallName}
             - for (var j = 0; j < halls[i].titles.length; j += 1)
-                h4 Title: #{halls[i].titles[j]} 
+                a(href=`/main/${halls[i]._id}`)
+                    h4 Title: #{halls[i].titles[j]} 
                 img(src=`${halls[i].thumbnailsSrc[j]}`)
                 div Date: #{halls[i].dates[j]} 
                 div Detailed: #{halls[i].details[j]}  
