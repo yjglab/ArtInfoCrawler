@@ -1,5 +1,4 @@
 import sys, os
-from unicodedata import category
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 import infoCrawler
 # ?

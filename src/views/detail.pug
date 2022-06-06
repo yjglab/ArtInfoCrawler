@@ -1,8 +1,0 @@
-head 
-    title #{pageTitle}
-div 
-    h1 #{hall.hallName}
-    - for(var i = 0; i < hall.titles.length; i += 1) 
-        h4 Title: #{hall.titles[i]}
-        img(src=`${hall.thumbnailsSrc[i]}`)
-        

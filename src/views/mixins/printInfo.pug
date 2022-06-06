@@ -5,7 +5,7 @@ mixin printInfo(halls)
             a(href=`/main/${halls[i]._id}`)
                 h2 #{halls[i].hallName}
             - for (var j = 0; j < halls[i].infoLength; j += 1)
-                a(href=`/main/${halls[i].data[j]._id}`)
+                a(href=`/main/detail/${halls[i].data[j]._id}`)
                     h4 Title: #{halls[i].data[j].title} 
                 img(src=`${halls[i].data[j].thumbnailSrc}`)
                 div Date: #{halls[i].data[j].date} 

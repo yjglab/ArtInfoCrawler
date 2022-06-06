@@ -1,8 +1,9 @@
 import { makeInfo } from "../js/makeInfo.js";
 import ExbHallModel from "../models/ExbHallModel.js";
+import ExbModel from "../models/ExbModel.js";
 
 const childSpawn = require("child_process").spawn;
-makeInfo(childSpawn);
+// makeInfo(childSpawn);
 
 export const main = async (req, res) => {
   return res.render("main", {
@@ -26,13 +27,21 @@ export const main = async (req, res) => {
     dk: await ExbHallModel.find({ country: "dk" }),
   });
 };
-export const detail = async (req, res) => {
+export const hallDetail = async (req, res) => {
   //   console.log(req);
   const hall = await ExbHallModel.findById(req.params.id);
 
-  return res.render("detail", {
-    pageTitle: `Detail | ${hall.hallName}`,
+  return res.render("hallDetail", {
+    pageTitle: `Hall | ${hall.hallName}`,
     hall: hall,
+  });
+};
+export const exbDetail = async (req, res) => {
+  //   console.log(req);
+  const exb = await ExbModel.findById(req.params.id);
+  return res.render("exbDetail", {
+    pageTitle: `Detail | ${exb.title}`,
+    exb: exb,
   });
 };
 export const museum = async (req, res) => {

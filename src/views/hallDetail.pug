@@ -1,0 +1,9 @@
+head 
+    title #{pageTitle}
+div 
+    h1 #{hall.hallName}
+    - for(var i = 0; i < hall.infoLength; i += 1) 
+        a(href=`/main/detail/${hall.data[i]._id}`)
+            h4 Title: #{hall.data[i].title}
+        img(src=`${hall.data[i].thumbnailSrc}`)
+        

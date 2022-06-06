@@ -1,0 +1,11 @@
+head 
+    title #{pageTitle}
+
+body 
+    div 
+        h1 Title: #{exb.title}
+        span #{exb.date} 
+        br
+        img(src=`${exb.thumbnailSrc}`)
+        br
+        span #{exb.detail}

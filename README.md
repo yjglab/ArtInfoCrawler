@@ -105,6 +105,7 @@
 
 - infoCrawler 동작 함수, 정보 객체 제작 함수 코드 리팩토링 (22.04.29)
 - 분산화 작업 위한 MongoDB 데이터베이스 연결 (22.05.14)
+- 전시 개별 데이터 배열->개별 객체로 분리 / 각 페이지 라우트 설정 (22.06.06)
 
 ### 사용
 
@@ -128,7 +129,8 @@
 
 [/] /intro
 [/main] 전체 전시 정보 (title, date, thumb만)
-[/main/:id] 관별 전시 정보 (+detail)
+[/main/:id] 관별 전시 정보
+[/main/detail/:id] 개별 전시 정보 (+detail)
 [/main/museum] 뮤지엄 전시 정보
 [/main/gallery] 갤러리 전시 정보
 [/main/country] 국가
