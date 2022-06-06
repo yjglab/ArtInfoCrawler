@@ -45,7 +45,9 @@ dk_natlGallery = 'https://www.smk.dk/en/section/exhibitions/'
 dk_maritime = 'https://mfs.dk/en/exhibition/'
 dk_glyptotek = 'https://www.glyptoteket.com/exhibitions/'
 
-def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_selector, details_links_selector, details_content_selector):
+def print_msm_data(url, exb_nums, titles_selector, dates_selector, 
+                    thumbnails_selector, details_links_selector, details_content_selector, 
+                    category):
     options = webdriver.ChromeOptions()
     # options.add_argument("headless")
     options.add_argument("--no-sandbox")
@@ -60,9 +62,11 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
     global exb_dates
     global exb_thumbnails
     global exb_details_links
+    global exb_details_not_enter
     global exb_details
-
-    exb_titles, exb_dates, exb_thumbnails = [], [], []
+    global exb_links
+    exb_titles, exb_dates, exb_thumbnails, exb_links = [], [], [], []
+    
     
     # 쿠키 알람 처리
     if url == uk_british:
@@ -96,7 +100,14 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         
     load_data()
     exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
-    exb_details = []
+    exb_details_not_enter = driver.find_elements(by=By.CSS_SELECTOR, value=details_content_selector)
+    
+    # 개별 링크데이터 로드
+    # if details links 가 비어있으면 따로처리
+    for i in range(exb_nums):
+        exb_links.append(exb_details_links[i].get_attribute("href"))
+    
+    exb_details = []    
 
     def load_details_and_mediate_numbers():
         global exb_titles
@@ -104,7 +115,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
         global exb_thumbnails
         global exb_details
         global exb_details_links
-        
+        global exb_details_not_enter
         
         # 디테일 데이터 조정
         for i in range(exb_nums):
@@ -123,14 +134,16 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
                         dk_maritime,
                         dk_glyptotek,
                         ]:
-                exb_details = [x.text for x in exb_details_links]
+                
+                exb_details = [x.text for x in exb_details_not_enter]
                 break
             if url in [es_thyssen, kr_modernContemporary, kr_natl]:
-                break
+                break #
 
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
+
             detail = ""
 
             if url == at_wien:
@@ -203,6 +216,9 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
 
+        # 링크 데이터 조정
+        
+
     load_details_and_mediate_numbers()
     
     for title in exb_titles:
@@ -219,6 +235,14 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector, thumbnails_se
     print("FILTER")
     for detail in exb_details:
         print(detail)
+        print("SPLITER")
+    print("FILTER")
+    for link in exb_links:
+        print(link)
+        print("SPLITER")
+    print("FILTER")
+    for _ in range(len(exb_titles)):
+        print(category)
         print("SPLITER")
     print("FILTER")
 

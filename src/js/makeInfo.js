@@ -2,6 +2,7 @@ import ExbHallModel from "../models/ExbHallModel";
 import infoObjects from "./infoObjects";
 import hallName from "./hallName";
 import pyFiles from "./pyFiles";
+import ExbModel from "../models/ExbModel";
 
 // 텍스트 가공 함수
 const handleProcessInfoData = (data, country) => {
@@ -22,18 +23,9 @@ const handleProcessInfoData = (data, country) => {
     dataStringList[i] = dataStringList[i].split(SPLITER);
     for (let j = 0; j < dataStringList[i].length; j += 1) {
       dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n\r\n)/gm, "");
-      if (i == 0) {
-        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
-      }
-      if (i == 1) {
-        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
-      }
+      dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
       if (i == 2) {
-        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
         dataStringList[i][j] = dataStringList[i][j].replace(/(\n)/gm, "");
-      }
-      if (i == 3) {
-        dataStringList[i][j] = dataStringList[i][j].replace(/(\r\n)/gm, "");
       }
     }
     dataStringList[i] = dataStringList[i].filter((el) => el !== "");
@@ -52,35 +44,47 @@ const handleProcessInfoData = (data, country) => {
     dates: dataStringList[1],
     thumbnailsSrc: dataStringList[2],
     details: dataStringList[3],
-    // category: dataStringList[4],
-    // link:
+    links: dataStringList[4],
+    categories: dataStringList[5],
   };
   console.log("====가공 데이터====");
   console.log(processedInfo.titles);
   console.log(processedInfo.dates);
   console.log(processedInfo.thumbnailsSrc);
   console.log(processedInfo.details);
-  // console.log(processedInfo.category);
+  console.log(processedInfo.links);
+  console.log(processedInfo.categories);
 
   return processedInfo;
 };
 // DB 생성 && 업데이트
 const makeExbHallsDB = async (i) => {
-  await ExbHallModel.deleteMany({ titles: infoObjects[i].titles });
+  await ExbHallModel.deleteMany({ hallName: hallName[i] });
+  const exbModelArray = [];
+  for (let p = 0; p < infoObjects[i].titles.length; p += 1) {
+    await ExbModel.deleteOne({ title: infoObjects[i].titles[p] });
+    const exbModel = await ExbModel.create({
+      title: infoObjects[i].titles[p],
+      date: infoObjects[i].dates[p],
+      thumbnailSrc: infoObjects[i].thumbnailsSrc[p],
+      detail: infoObjects[i].details[p],
+      link: infoObjects[i].links[p],
+      category: infoObjects[i].categories[p],
+    });
+    exbModelArray.push(exbModel);
+  }
   await ExbHallModel.create({
+    data: exbModelArray,
     country: infoObjects[i].country,
-    titles: infoObjects[i].titles,
-    dates: infoObjects[i].dates,
-    thumbnailsSrc: infoObjects[i].thumbnailsSrc,
-    details: infoObjects[i].details,
     hallName: hallName[i],
-    // category: infoObjects[i].category,
-    // link: infoObjects[i].link,
+    category: infoObjects[i].categories[0],
+    infoLength: infoObjects[i].titles.length,
   });
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 47; i < infoObjects.length; i += 1) {
+  for (let i = 0; i < 2; i += 1) {
+    // infoObjects.length
     let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [
       process.cwd() + `/src/pyFiles/country/${country}/${pyFiles[i]}`,

@@ -47,6 +47,7 @@ let dk_designInfo = {};
 let dk_maritimeInfo = {};
 let dk_glyptotekInfo = {};
 let dk_fotografiskInfo = {};
+
 const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
