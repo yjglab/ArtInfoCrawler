@@ -52,7 +52,6 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
     # options.add_argument("headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    # driver = webdriver.Chrome('C:\JaeGyeong\codedriver\chromedriver', options=options)
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(10)
     driver.get(url)

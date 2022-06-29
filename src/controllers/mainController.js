@@ -7,7 +7,7 @@ const childSpawn = require("child_process").spawn;
 
 export const main = async (req, res) => {
   return res.render("main", {
-    pageTitle: "출력 정리",
+    pageTitle: "Main | World Exibitions",
     uk: await ExbHallModel.find({ country: "uk" }), // db에서.
     fr: await ExbHallModel.find({ country: "fr" }),
     at: await ExbHallModel.find({ country: "at" }),

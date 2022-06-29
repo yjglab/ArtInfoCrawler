@@ -11,7 +11,7 @@ import {
 const mainRouter = express.Router();
 
 mainRouter.get("/", main);
-mainRouter.get("/:id", hallDetail);
+mainRouter.get("/hall/:id", hallDetail);
 mainRouter.get("/detail/:id", exbDetail);
 mainRouter.get("/museum", museum);
 mainRouter.get("/gallery", gallery);

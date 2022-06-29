@@ -3,7 +3,8 @@ head
 
 body 
     div 
-        h1 Title: #{exb.title}
+        a(href=`${exb.link}`) 
+            h1 Title: #{exb.title}
         span #{exb.date} 
         br
         img(src=`${exb.thumbnailSrc}`)

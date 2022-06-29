@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(
 import infoCrawler
 
 url = 'https://www.nationalgallery.org.uk/exhibitions'
-exb_nums = 2 # 7
+exb_nums = 7 # 7
 titles_selector = ".exhibition-title"
 dates_selector = ".exhibition-date"
 thumbnails_selector = ".card-img-top .w-100 > div"

@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // string to JS object
 app.use(express.text());
 app.use(logger);
+app.use("/static", express.static("assets")); // access 부여
 
 app.use("/", globalRouter);
 app.use("/main", mainRouter);
