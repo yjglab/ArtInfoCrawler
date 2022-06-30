@@ -13,7 +13,7 @@ const mainRouter = express.Router();
 mainRouter.get("/", main);
 mainRouter.get("/hall/:id", hallDetail);
 mainRouter.get("/detail/:id", exbDetail);
-mainRouter.get("/museum", museum);
-mainRouter.get("/gallery", gallery);
+// mainRouter.get("/museum", museum);
+// mainRouter.get("/gallery", gallery);
 
 export default mainRouter;

@@ -1,18 +1,29 @@
 // old code only
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: { main: "./src/client/js/main.js", sub: "./src/client/js/sub.js" },
+  entry: {
+    layout: ["./src/client/js/layout.js", "./src/client/scss/layout.scss"],
+    intro: ["./src/client/js/intro.js", "./src/client/scss/screens/intro.scss"],
+    main: ["./src/client/js/main.js", "./src/client/scss/screens/main.scss"],
+  },
   mode: "development",
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+      // filename: "css/styles.css",
+    }),
+  ],
   watch: true,
   watchOptions: {
     ignored: /node_modules/,
-    aggregateTimeout: 5000,
-    poll: 1000,
+    // aggregateTimeout: 3000,
+    // poll: 1000,
   },
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "assets", "js"),
+    filename: "js/[name].js",
+    path: path.resolve(__dirname, "assets"),
     clean: true,
   },
   module: {
@@ -25,6 +36,10 @@ module.exports = {
             presets: [["@babel/preset-env", { targets: "defaults" }]],
           },
         },
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // sass->css->style
       },
     ],
   },

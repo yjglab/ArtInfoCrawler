@@ -1,5 +1,5 @@
 export const intro = async (req, res) => {
   return res.render("intro", {
-    pageTitle: "소개",
+    pageTitle: "Intro",
   });
 };

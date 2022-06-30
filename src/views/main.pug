@@ -1,85 +1,62 @@
-include mixins/printInfo
+extends layout
+include mixins/countrySpecificInfo
 
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        style.
-            img {
-                width: 300px;
-                object-fit: cover;
-            }
-            .container {
-                display: grid;
-                
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: repeat(20, 600px);
-                row-gap: 10px;
-                column-gap: 20px;
-            }
-            .container > div {
-                margin: 40px;
-            }
-            .container > div .exb {
-                height: 100%;
-                overflow: auto;
-            }
+block links
+    link(rel="stylesheet", href="/static/css/main.css")
 
-        title #{pageTitle}
-    body 
-        div(class="container")
-            div
-                h3 🧡 AT. Austria 🧡
-                +printInfo(at)
-            div
-                h3 🧡 ES. Spain 🧡
-                +printInfo(es)
-            div
-                h3 🧡 FR. French 🧡 
-                +printInfo(fr)
-            div
-                h3 🧡 IT. Italy 🧡
-                +printInfo(it)
-            div
-                h3 🧡 UK. United Kingdom 🧡
-                +printInfo(uk)
-            div
-                h3 🧡 US. United States 🧡
-                +printInfo(us)
-            div
-                h3 🧡 KR. Republic of Korea 🧡
-                +printInfo(kr)
-            div
-                h3 🧡 JP. Japan 🧡
-                +printInfo(jp)
-            div
-                h3 🧡 GR. Greece 🧡
-                +printInfo(gr)
-            div
-                h3 🧡 CZ. Czech 🧡
-                +printInfo(cz)
-            div
-                h3 🧡 RU. Russia 🧡
-                +printInfo(ru)
-            div
-                h3 🧡 CH. Swiss 🧡
-                +printInfo(ch)
-            div
-                h3 🧡 PL. Poland 🧡
-                +printInfo(pl)
-            div
-                h3 🧡 CA. Canada 🧡
-                +printInfo(ca)
-            div
-                h3 🧡 AU. Austrailia 🧡
-                +printInfo(au)
-            div
-                h3 🧡 TR. Turkey 🧡
-                +printInfo(tr)
-            div
-                h3 🧡 DK. Denmark 🧡
-                +printInfo(dk)
+block content
+    div.container
+        div
+            h3 🧡 AT. Austria 🧡
+            +countrySpecificInfo(at)
+        div
+            h3 🧡 ES. Spain 🧡
+            +countrySpecificInfo(es)
+        div
+            h3 🧡 FR. French 🧡 
+            +countrySpecificInfo(fr)
+        div
+            h3 🧡 IT. Italy 🧡
+            +countrySpecificInfo(it)
+        div
+            h3 🧡 UK. United Kingdom 🧡
+            +countrySpecificInfo(uk)
+        div
+            h3 🧡 US. United States 🧡
+            +countrySpecificInfo(us)
+        div
+            h3 🧡 KR. Republic of Korea 🧡
+            +countrySpecificInfo(kr)
+        div
+            h3 🧡 JP. Japan 🧡
+            +countrySpecificInfo(jp)
+        div
+            h3 🧡 GR. Greece 🧡
+            +countrySpecificInfo(gr)
+        div
+            h3 🧡 CZ. Czech 🧡
+            +countrySpecificInfo(cz)
+        div
+            h3 🧡 RU. Russia 🧡
+            +countrySpecificInfo(ru)
+        div
+            h3 🧡 CH. Swiss 🧡
+            +countrySpecificInfo(ch)
+        div
+            h3 🧡 PL. Poland 🧡
+            +countrySpecificInfo(pl)
+        div
+            h3 🧡 CA. Canada 🧡
+            +countrySpecificInfo(ca)
+        div
+            h3 🧡 AU. Austrailia 🧡
+            +countrySpecificInfo(au)
+        div
+            h3 🧡 TR. Turkey 🧡
+            +countrySpecificInfo(tr)
+        div
+            h3 🧡 DK. Denmark 🧡
+            +countrySpecificInfo(dk)
 
+block scripts
     script(src="/static/js/main.js")

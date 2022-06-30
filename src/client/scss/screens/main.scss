@@ -1,0 +1,24 @@
+@import "../config/_variables.scss";
+
+body {
+  background-color: $red;
+}
+img {
+  width: 300px;
+  object-fit: cover;
+}
+.container {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(20, 600px);
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.container > div {
+  margin: 40px;
+}
+.container > div .exb {
+  height: 100%;
+  overflow: auto;
+}

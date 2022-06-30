@@ -1,4 +1,4 @@
-mixin printInfo(halls)
+mixin countrySpecificInfo(halls)
     div(class="exb")
         - for (var i = 0; i < 99; i += 1) // 국가당 관 수
             - if (halls[i] == undefined) break
@@ -11,7 +11,7 @@ mixin printInfo(halls)
                 div Date: #{halls[i].data[j].date} 
                 div Detailed: #{halls[i].data[j].detail}  
 
-//- mixin printInfo(halls)
+//- mixin countrySpecificInfo(halls)
 //-     div(class="exb")
 //-         - for (var i = 0; i < 99; i += 1) // 국가당 관 수
 //-             - if (halls[i] == undefined) break
