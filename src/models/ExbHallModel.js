@@ -6,7 +6,6 @@ const exbHallSchema = new mongoose.Schema({
   hallName: String,
   category: String,
   infoLength: Number,
-  titles: [{ type: String }],
 });
 
 const ExbHallModel = mongoose.model("ExbHallModel", exbHallSchema);

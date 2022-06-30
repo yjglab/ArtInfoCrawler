@@ -32,7 +32,7 @@ export const hallDetail = async (req, res) => {
   const hall = await ExbHallModel.findById(req.params.id);
 
   return res.render("hallDetail", {
-    pageTitle: `Hall | ${hall.hallName}`,
+    pageTitle: `Hall : ${hall.hallName}`,
     hall: hall,
   });
 };
@@ -40,7 +40,7 @@ export const exbDetail = async (req, res) => {
   //   console.log(req);
   const exb = await ExbModel.findById(req.params.id);
   return res.render("exbDetail", {
-    pageTitle: `Detail | ${exb.title}`,
+    pageTitle: `Detail : ${exb.title}`,
     exb: exb,
   });
 };

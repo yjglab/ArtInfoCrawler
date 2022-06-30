@@ -1,9 +1,10 @@
 const pyFiles = [
   "uk_british.py",
   "uk_londonNatl.py",
+  "uk_victoriaAlbert.py",
   "fr_pompidou.py",
   "fr_orsay.py",
-  "fr_lodin.py",
+  "fr_rodin.py",
   "us_cincinnati.py",
   "us_chicago.py",
   "us_boston.py",

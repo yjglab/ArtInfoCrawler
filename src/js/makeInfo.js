@@ -60,6 +60,7 @@ const handleProcessInfoData = (data, country) => {
 // DB 생성 && 업데이트
 const makeExbHallsDB = async (i) => {
   await ExbHallModel.deleteMany({ hallName: hallName[i] });
+  await ExbModel.deleteMany({ hall: hallName[i] });
   const exbModelArray = [];
   for (let p = 0; p < infoObjects[i].titles.length; p += 1) {
     await ExbModel.deleteOne({ title: infoObjects[i].titles[p] });
@@ -68,6 +69,7 @@ const makeExbHallsDB = async (i) => {
       date: infoObjects[i].dates[p],
       thumbnailSrc: infoObjects[i].thumbnailsSrc[p],
       detail: infoObjects[i].details[p],
+      hall: hallName[i],
       link: infoObjects[i].links[p],
       category: infoObjects[i].categories[p],
     });
@@ -83,7 +85,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 0; i < 2; i += 1) {
+  for (let i = 6; i < 7; i += 1) {
     // infoObjects.length
     let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [

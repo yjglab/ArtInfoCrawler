@@ -1,5 +1,6 @@
 let uk_britishInfo = {};
 let uk_londonNatlInfo = {};
+let uk_victoriaAlbertInfo = {};
 let fr_pompidouInfo = {};
 let fr_orsayInfo = {};
 let fr_lodinInfo = {};
@@ -51,6 +52,7 @@ let dk_fotografiskInfo = {};
 const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
+  uk_victoriaAlbertInfo,
   fr_pompidouInfo,
   fr_orsayInfo,
   fr_lodinInfo,

@@ -6,6 +6,8 @@ const exbSchema = new mongoose.Schema({
   thumbnailSrc: String,
   detail: String,
   link: String,
+  hall: String,
+  category: String,
 });
 
 const ExbModel = mongoose.model("ExbModel", exbSchema);

@@ -2,6 +2,7 @@ const hallName = [
   // uk
   "British Museum",
   "London National Gallery",
+  "Victoria & Albert Museum",
   // fr
   "Centre Georges-Pompidou",
   "Orsay Museum",

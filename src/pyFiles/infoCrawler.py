@@ -56,7 +56,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
     driver.implicitly_wait(10)
     driver.get(url)
     driver.set_window_position(0, 0)
-    driver.set_window_size(3000, 1000)
+    driver.set_window_size(1800, 1500)
     global exb_titles
     global exb_dates
     global exb_thumbnails

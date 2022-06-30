@@ -9,6 +9,8 @@ dates_selector = ".expo .date"
 thumbnails_selector = ".expo picture img"
 details_links_selector = ".expo .titre a"
 details_content_selector = "#frame_content > div.w1230 > div > div.col-12.col-lg-8.main-col > div > div > div:nth-child(1) > div > div"
+category = "museum"
+
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -17,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_content_selector,
+    category,
     )

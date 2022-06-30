@@ -9,6 +9,7 @@ dates_selector = ".surtitle"
 thumbnails_selector = "picture img"
 details_links_selector = ".card-shadow a"
 details_content_selector = ".field--name-field-chapo"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_content_selector,
+    category,
     )

@@ -9,6 +9,7 @@ dates_selector = ".dateEvenement"
 thumbnails_selector = ".card-img-wrapper img"
 details_links_selector = ".event-card > .card-link"
 details_content_selector = ".description-courte p:nth-child(1)"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url,
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_content_selector,
+    category,
     )
