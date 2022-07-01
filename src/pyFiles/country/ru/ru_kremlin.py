@@ -7,8 +7,8 @@ exb_nums = 2
 titles_selector = ".slide .slide-text strong"
 dates_selector = ".slide .slide-text span:nth-child(2)"
 thumbnails_selector = ".slide > a > img"
-details_links_selector = ".slide .slide-text a span:nth-child(3)"
-details_content_selector = "."
+details_links_selector = "meta"
+details_content_selector = ".slide .slide-text a span:nth-child(3)"
 category = "museum"
 infoCrawler.print_msm_data(
     url, 
@@ -17,5 +17,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

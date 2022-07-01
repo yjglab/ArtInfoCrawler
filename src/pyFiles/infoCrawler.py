@@ -123,8 +123,7 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
             if url in [us_cincinnati, 
                         es_prado, 
                         es_malagaAutomovil, 
-                        it_ducale, 
-                        jp_natl, 
+                        it_ducale,  
                         gr_odysseus,
                         cz_brnoTechnical,
                         ru_gallery,
@@ -137,9 +136,12 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
                 exb_details = [x.text for x in exb_details_not_enter]
                 break
             if url in [es_thyssen, kr_modernContemporary, kr_natl]:
-                break #
-
+                break # 그냥 안가져오기
+            
+            # 링크 데이터 조정
             exb_details_links = driver.find_elements(by=By.CSS_SELECTOR, value=details_links_selector)
+            
+            
             driver.implicitly_wait(3)
             driver.get(exb_details_links[i].get_attribute("href"))
 
@@ -215,8 +217,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
 
-        # 링크 데이터 조정
         
+
 
     load_details_and_mediate_numbers()
     
@@ -232,12 +234,12 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
         print(thumbnail_src)
         print("SPLITER")
     print("FILTER")
-    for detail in exb_details:
-        print(detail)
-        print("SPLITER")
-    print("FILTER")
     for link in exb_links:
         print(link)
+        print("SPLITER")
+    print("FILTER")
+    for detail in exb_details:
+        print(detail)
         print("SPLITER")
     print("FILTER")
     for _ in range(len(exb_titles)):

@@ -9,6 +9,7 @@ dates_selector = ".tile__date"
 thumbnails_selector = ".tile__image > img"
 details_links_selector = ".tile__link"
 details_content_selector = "#main div.text"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -17,5 +18,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

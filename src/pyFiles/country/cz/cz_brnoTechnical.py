@@ -7,8 +7,8 @@ exb_nums = 4
 titles_selector = ".events-event-title"
 dates_selector = ".events-event-date"
 thumbnails_selector = ".events-event-img"
-details_links_selector = ".events-event-box > p"
-details_content_selector = ""
+details_links_selector = "meta"
+details_content_selector = ".events-event-box > p"
 category = "museum"
 
 infoCrawler.print_msm_data(
@@ -18,5 +18,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

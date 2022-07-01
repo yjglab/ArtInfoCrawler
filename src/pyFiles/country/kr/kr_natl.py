@@ -7,9 +7,9 @@ exb_nums = 6
 titles_selector = ".show-list .info a"
 dates_selector = ".show-list .info-list li:first-child"
 thumbnails_selector = ".show-list .img-box a > img"
-details_links_selector = ".show-list .info a"
-details_contents_selector = "" # 복잡함
-
+details_links_selector = "meta" 
+details_contents_selector = "" # 없음(보안)
+category = "museum"
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -18,5 +18,6 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_contents_selector,
+    category
     )
 

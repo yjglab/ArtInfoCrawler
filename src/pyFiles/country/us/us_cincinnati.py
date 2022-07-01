@@ -7,8 +7,10 @@ exb_nums = 6
 titles_selector = ".col-sm-8 h4"
 dates_selector = ".col-sm-8 h5"
 thumbnails_selector = ".col-sm-4 img"
-details_links_selector = ".col-sm-8 p:nth-of-type(2)"
-details_content_selector = ""
+details_links_selector = "meta"
+details_content_selector = ".col-sm-8 p:nth-of-type(2)"
+category = "museum"
+
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -16,5 +18,6 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector,
     details_links_selector,
-    details_content_selector
+    details_content_selector,
+    category,
     )

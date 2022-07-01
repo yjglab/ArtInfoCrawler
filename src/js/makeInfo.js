@@ -43,8 +43,8 @@ const handleProcessInfoData = (data, country) => {
     titles: dataStringList[0],
     dates: dataStringList[1],
     thumbnailsSrc: dataStringList[2],
-    details: dataStringList[3],
-    links: dataStringList[4],
+    details: dataStringList[4],
+    links: dataStringList[3],
     categories: dataStringList[5],
   };
   console.log("====가공 데이터====");
@@ -85,7 +85,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 6; i < 7; i += 1) {
+  for (let i = 47; i < 48; i += 1) {
     // infoObjects.length
     let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [

@@ -9,6 +9,8 @@ dates_selector = ".exhibition-box div p:nth-child(3)"
 thumbnails_selector = ".wp-block-image img"
 details_links_selector = ".wp-block-button__link"
 details_contents_selector = ".wp-block-columns .wp-block-column > p" 
+category = "museum"
+
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -17,5 +19,6 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_contents_selector,
+    category
     )
 

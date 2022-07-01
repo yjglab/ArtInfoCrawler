@@ -18,5 +18,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

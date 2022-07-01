@@ -7,8 +7,9 @@ exb_nums = 8
 titles_selector = "#listDiv li .info .tit"
 dates_selector = "#listDiv li .info .txt"
 thumbnails_selector = "#listDiv li .thumb img"
-details_links_selector = "#listDiv li .info .tit" # 링크가 함수
-details_contents_selector = ""
+details_links_selector = "meta" 
+details_contents_selector = "#listDiv li .info .tit"
+category = "gallery"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,5 +19,6 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_contents_selector,
+    category,
     )
 

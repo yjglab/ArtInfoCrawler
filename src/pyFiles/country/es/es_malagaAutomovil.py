@@ -7,8 +7,9 @@ exb_nums = 2
 titles_selector = ".ficha--exposiciones-actuales .heading"
 dates_selector = ".ficha--exposiciones-actuales .fecha"
 thumbnails_selector = ".ficha--exposiciones-actuales img"
-details_links_selector = ".ficha--exposiciones-actuales p:nth-of-type(3)"
-details_content_selector = ""
+details_links_selector = "meta"
+details_content_selector = ".ficha--exposiciones-actuales p:nth-of-type(3)"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector, 
     details_links_selector,
     details_content_selector,
+    category,
     )

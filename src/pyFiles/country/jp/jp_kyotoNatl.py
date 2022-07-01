@@ -9,6 +9,8 @@ dates_selector = ".exhibitionList__date"
 thumbnails_selector = ".exhibitionList__img img"
 details_links_selector = ".exhibitionList__item > a"
 details_contents_selector = ".bottomZero .contents .wallBelt > p" 
+category = "museum"
+
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -17,5 +19,6 @@ infoCrawler.print_msm_data(
     thumbnails_selector,
     details_links_selector,
     details_contents_selector,
+    category
     )
 

@@ -9,7 +9,7 @@ dates_selector = ".c-teaser__date--left"
 thumbnails_selector = ".c-teaser__img-container img"
 details_links_selector = ".c-teaser"
 details_content_selector = ".c-exhibition-info__text > p"
-category = ""
+category = "museum"
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -17,5 +17,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

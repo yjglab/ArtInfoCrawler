@@ -7,8 +7,9 @@ exb_nums = 1
 titles_selector = "body > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(3) > td > table > tbody > tr > td:nth-child(2) > b > font"
 dates_selector = "#BODY > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td:nth-child(4) > table > tbody > tr > td:nth-child(2) > div > div" # permanent
 thumbnails_selector = "body > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > table > tbody > tr > td:nth-child(1) > a > img"
-details_links_selector = "#BODY > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td.textMEnormal > div"
-details_content_selector = ""
+details_links_selector = "meta"
+details_content_selector = "#BODY > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td.textMEnormal > div"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -17,5 +18,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

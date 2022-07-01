@@ -32,7 +32,7 @@ export const hallDetail = async (req, res) => {
   const hall = await ExbHallModel.findById(req.params.id);
 
   return res.render("hallDetail", {
-    pageTitle: `Hall : ${hall.hallName}`,
+    pageTitle: `${hall.hallName}`,
     hall: hall,
   });
 };
@@ -40,17 +40,17 @@ export const exbDetail = async (req, res) => {
   //   console.log(req);
   const exb = await ExbModel.findById(req.params.id);
   return res.render("exbDetail", {
-    pageTitle: `Detail : ${exb.title}`,
+    pageTitle: `${exb.title}`,
     exb: exb,
   });
 };
-export const museum = async (req, res) => {
-  return res.render("museum", {
-    pageTitle: "museum",
-  });
-};
-export const gallery = async (req, res) => {
-  return res.render("gallery", {
-    pageTitle: "gallery",
-  });
-};
+// export const museum = async (req, res) => {
+//   return res.render("museum", {
+//     pageTitle: "museum",
+//   });
+// };
+// export const gallery = async (req, res) => {
+//   return res.render("gallery", {
+//     pageTitle: "gallery",
+//   });
+// };

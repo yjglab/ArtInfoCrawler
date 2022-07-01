@@ -9,6 +9,7 @@ dates_selector = ".exposure-list-item .date"
 thumbnails_selector = ".exposure-list-item img"
 details_links_selector = ".exposure-list-item > a"
 details_content_selector = ".exposure-intro" # .exposure-description
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector, 
     details_links_selector,
     details_content_selector,
+    category,
     )

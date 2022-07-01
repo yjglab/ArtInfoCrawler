@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(
 import infoCrawler
 
 url = 'https://www.mca.com.au/artists-works/?primary=exhibitions'
-exb_nums = 4
+exb_nums = 2
 titles_selector = ".primaryContentColKrXK .titleLink2NG3"
 dates_selector = ".primaryContentColKrXK .cont2ppK"
 thumbnails_selector = ".primaryContentColKrXK .img1MDP"
@@ -17,5 +17,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )   

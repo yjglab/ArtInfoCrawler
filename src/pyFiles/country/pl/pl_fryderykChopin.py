@@ -9,7 +9,7 @@ dates_selector = ".place_name"
 thumbnails_selector = ".vt21-image"
 details_links_selector = ".middle-addelem a"
 details_content_selector = ".vt22-title-text div:nth-of-type(4)"
-category = ""
+category = "museum"
 infoCrawler.print_msm_data(
     url, 
     exb_nums,
@@ -17,5 +17,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

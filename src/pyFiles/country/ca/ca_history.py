@@ -3,12 +3,12 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(
 import infoCrawler
 
 url = 'https://www.historymuseum.ca/exhibitions/'
-exb_nums = 1
-titles_selector = "#today_filter .hwm-poster-title"
-dates_selector = "#today_filter .hwm-poster-date"
-thumbnails_selector = "#today_filter .hwm-poster-image"
-details_links_selector = "#today_filter .hwm-poster-wrapper"
-details_content_selector = ".post-content-main"
+exb_nums = 2
+titles_selector = "#hwm-hero .hwm-poster-title"
+dates_selector = "#hwm-hero .hwm-poster-date"
+thumbnails_selector = "#hwm-hero .hwm-poster-image"
+details_links_selector = "#hwm-hero .hwm-poster-wrapper"
+details_content_selector = "#QOE-about-feature-text_1"
 category = "museum"
 infoCrawler.print_msm_data(
     url, 
@@ -17,5 +17,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

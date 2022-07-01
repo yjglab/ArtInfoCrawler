@@ -7,8 +7,9 @@ exb_nums = 2
 titles_selector = ".riga_mostra .text h2"
 dates_selector = ".riga_mostra .text h3"
 thumbnails_selector = ".riga_mostra .thumb"
-details_links_selector = ".riga_mostra .text > p"
-details_content_selector = ""
+details_links_selector = "meta"
+details_content_selector = ".riga_mostra .text > p"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector, 
     details_links_selector,
     details_content_selector,
+    category,
     )

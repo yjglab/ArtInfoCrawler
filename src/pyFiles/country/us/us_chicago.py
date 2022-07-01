@@ -9,6 +9,7 @@ dates_selector = ".m-listing--w-meta-bottom .f-secondary"
 thumbnails_selector = ".m-listing__img img"
 details_selector = ".m-listing__link"
 details_content_selector = ".o-article__body > p"
+category = "gallery"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector, 
     details_selector,
     details_content_selector,
+    category,
     )

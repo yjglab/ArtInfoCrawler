@@ -9,6 +9,7 @@ dates_selector = ".permanent-grid:first-child div img" # permanent
 thumbnails_selector = ".permanent-grid:first-child div img"
 details_links_selector = ".permanent-grid:first-child div a"
 details_content_selector = ".main-content > p"
+category = "museum"
 
 infoCrawler.print_msm_data(
     url, 
@@ -17,5 +18,5 @@ infoCrawler.print_msm_data(
     dates_selector, 
     thumbnails_selector, 
     details_links_selector,
-    details_content_selector,
+    details_content_selector,category
     )

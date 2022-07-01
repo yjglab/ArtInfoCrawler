@@ -8,6 +8,7 @@
 
 - uk_british.py : 대영 박물관
 - uk_london_natl.py : 런던 내셔널 갤러리
+- uk_victoriaAlbert.py : V&A 박물관
 
 [FR. French]
 
@@ -120,6 +121,8 @@
 - robots.txt 확인하기.
 - belvedere title, date 못가져오는 문제있음.
 - stale element reference: element is not attached to the page document -> 가상 브라우저 속도차 문제. sleep으로 해결.
+- rodin: 전시없음.
+- belvedere: 타이틀, 데이트 정보 못가져옴 (원인모름)
 
 ### DEV 지점
 

@@ -9,6 +9,7 @@ dates_selector = ".card-showcase__text"
 thumbnails_selector = ".card-showcase__image img"
 details_links_selector = ".card-showcase"
 details_content_selector = ".page-heading__text"
+category = "gallery"
 
 infoCrawler.print_msm_data(
     url, 
@@ -18,4 +19,5 @@ infoCrawler.print_msm_data(
     thumbnails_selector, 
     details_links_selector,
     details_content_selector,
+    category,
     )
