@@ -1,18 +1,3 @@
-import sys 
-import io 
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-# from bs4 import BeautifulSoup
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-
-# "(?:[^"]|"")*"
-sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
-
 # 나중에 따로 분리하기
 uk_british = 'https://www.britishmuseum.org/exhibitions-events'
 fr_pompidou = 'https://www.centrepompidou.fr/en/'
@@ -44,6 +29,27 @@ tr_alchaeology = 'https://muze.gov.tr/muzeler'
 dk_natlGallery = 'https://www.smk.dk/en/section/exhibitions/'
 dk_maritime = 'https://mfs.dk/en/exhibition/'
 dk_glyptotek = 'https://www.glyptoteket.com/exhibitions/'
+br_fotografia = 'https://museudafotografia.com.br/exposicoes/'
+br_salvador = 'http://www.secult.salvador.ba.gov.br/index.php/equipamentos/casa-do-rio-vermelho'
+hu_natl = 'https://mnm.hu/en/exhibitions'
+hu_budapesti = 'http://www.btm.hu/hu/events'
+hu_palinka = 'https://palinkaexperience.com/en/museum/'
+
+import sys 
+import io 
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+# from bs4 import BeautifulSoup
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+
+# "(?:[^"]|"")*"
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+
 
 def print_msm_data(url, exb_nums, titles_selector, dates_selector, 
                     thumbnails_selector, details_links_selector, details_content_selector, 
@@ -52,7 +58,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
     # options.add_argument("headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager(version='102.0.5005.27').install(), chrome_options=options)
     driver.implicitly_wait(10)
     driver.get(url)
     driver.set_window_position(0, 0)
@@ -86,6 +93,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
     elif url == dk_glyptotek:
         driver.find_element(by=By.CSS_SELECTOR, value=".coi-banner__accept").click()
         driver.execute_script("window.scrollTo(0, 2000)")
+    elif url == hu_palinka:
+        driver.find_element(by=By.CSS_SELECTOR, value=".age-gate-submit-yes").click()
     
     def load_data():
         global exb_titles
@@ -102,9 +111,12 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
     exb_details_not_enter = driver.find_elements(by=By.CSS_SELECTOR, value=details_content_selector)
     
     # 개별 링크데이터 로드
-    # if details links 가 비어있으면 따로처리
+    # 만약 details links 가 비어있으면(meta) url로 넣기
     for i in range(exb_nums):
-        exb_links.append(exb_details_links[i].get_attribute("href"))
+        if details_links_selector == "meta":
+            exb_links.append(url)    
+        else:
+            exb_links.append(exb_details_links[i].get_attribute("href"))
     
     exb_details = []    
 
@@ -131,6 +143,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
                         pl_polin,
                         dk_maritime,
                         dk_glyptotek,
+                        br_salvador,
+                        hu_palinka
                         ]:
                 
                 exb_details = [x.text for x in exb_details_not_enter]
@@ -209,9 +223,14 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
         elif url == dk_maritime:
             exb_thumbnails = [x.get_attribute("href") for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
-        elif url == dk_glyptotek:
+        elif url in [dk_glyptotek, hu_natl, hu_budapesti]:
             exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
             exb_thumbnails = [x[x.find("url(") + 5:x.find(".jpg") + 4] for x in exb_thumbnails]
+            exb_thumbnails = exb_thumbnails[:exb_nums]
+            
+        elif url == br_fotografia:
+            exb_thumbnails = [x.get_attribute("style") for x in exb_thumbnails]
+            exb_thumbnails = [x[x.find("url(") + 5:x.find(");")] for x in exb_thumbnails]
             exb_thumbnails = exb_thumbnails[:exb_nums]
         else:
             exb_thumbnails = [x.get_attribute("src") for x in exb_thumbnails]

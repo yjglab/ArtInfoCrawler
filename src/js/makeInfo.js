@@ -38,6 +38,7 @@ const handleProcessInfoData = (data, country) => {
       dataStringList[1].push("Permanent");
     }
   }
+
   let processedInfo = {
     country: country,
     titles: dataStringList[0],
@@ -85,7 +86,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 47; i < 48; i += 1) {
+  for (let i = 54; i < 55; i += 1) {
     // infoObjects.length
     let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [

@@ -48,5 +48,11 @@ const pyFiles = [
   "dk_design.py",
   "dk_maritime.py",
   "dk_fotografisk.py",
+  "br_fotografia.py",
+  "br_niemeyer.py",
+  "br_salvador.py",
+  "hu_natl.py",
+  "hu_budapesti.py",
+  "hu_palinka.py",
 ];
 export default pyFiles;

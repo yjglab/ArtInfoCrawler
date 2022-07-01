@@ -2,8 +2,12 @@ extends layout
 
 block content
     div 
-        a(href=`${exb.link}`) 
+        - if (exb.link !== "None") // 나중에 크롤링으로 데이터 url로 다시 처리하기
+            a(href=`${exb.link}`) 
+                h1 Title: #{exb.title}
+        - else
             h1 Title: #{exb.title}
+        
         span #{exb.date} 
         br
         img(src=`${exb.thumbnailSrc}`)

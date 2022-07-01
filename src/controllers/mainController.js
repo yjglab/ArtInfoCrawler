@@ -25,6 +25,8 @@ export const main = async (req, res) => {
     au: await ExbHallModel.find({ country: "au" }),
     tr: await ExbHallModel.find({ country: "tr" }),
     dk: await ExbHallModel.find({ country: "dk" }),
+    br: await ExbHallModel.find({ country: "br" }),
+    hu: await ExbHallModel.find({ country: "hu" }),
   });
 };
 export const hallDetail = async (req, res) => {

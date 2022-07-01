@@ -48,6 +48,13 @@ let dk_designInfo = {};
 let dk_maritimeInfo = {};
 let dk_glyptotekInfo = {};
 let dk_fotografiskInfo = {};
+let br_fotografiaInfo = {};
+let br_niemeyerInfo = {};
+let br_salvadorInfo = {};
+let il_museumInfo = {};
+let hu_natlInfo = {};
+let hu_budapestiInfo = {};
+let hu_palinkaInfo = {};
 
 const infoObjects = [
   uk_britishInfo,
@@ -99,6 +106,12 @@ const infoObjects = [
   dk_designInfo,
   dk_maritimeInfo,
   dk_fotografiskInfo,
+  br_fotografiaInfo,
+  br_niemeyerInfo,
+  br_salvadorInfo,
+  hu_natlInfo,
+  hu_budapestiInfo,
+  hu_palinkaInfo,
 ];
 
 export default infoObjects;

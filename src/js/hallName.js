@@ -65,14 +65,14 @@ const hallName = [
   "Design Museum Denmark", // natl
   "Maritime Museum",
   "FOTO-GRAFISK CENTER", // 48
-  //
-  "",
-  "",
-  "",
-  //
-  "",
-  "",
-  "",
+  // BR
+  "Museu da Fotografia",
+  "Museu Oscar Niemeyer",
+  "a Casa do Rio Vermelho", // 51
+  // HU
+  "Hungarian National Museum",
+  "Budapesti Történeti Museum",
+  "Palinka Experience Museum", // 54
   //
   "",
   "",
