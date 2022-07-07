@@ -140,3 +140,15 @@
 [/main/country/...] 국가별 전시 정보
 
 <!-- 조회수 -->
+
+E' stata la mano di Dio
+Петр Великий. Усы властелина
+Picasso Ingres: Face to Face
+나너의 기억
+
+intro 사진 크기일치
+nav 새로
+하강버튼 새로
+디테일진입버튼
+scss 수정
+배경색

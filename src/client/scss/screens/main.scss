@@ -1,7 +1,7 @@
 @import "../config/_variables.scss";
 
 body {
-  background-color: $red;
+  color: $white;
 }
 img {
   width: 300px;
@@ -11,7 +11,7 @@ img {
   display: grid;
 
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(20, 600px);
+  grid-template-rows: repeat(10, 600px);
   row-gap: 10px;
   column-gap: 20px;
 }

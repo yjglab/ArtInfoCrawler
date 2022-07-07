@@ -1,23 +1,88 @@
-// configs
 @import "./config/_variables";
 @import "./config/_reset";
+@import "./components/loader";
 
-// components
-
-// screens
-// @import "./screens/intro.scss";
-// @import "./screens/main.scss";
-
-// defaults
+html {
+  box-sizing: border-box;
+  // scroll-behavior: smooth;
+  // scroll-snap-type: y mandatory;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  min-height: 100vh;
+}
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  // background-color: ;
-  // color: ;
-
+  background: $dark;
+  overflow: overlay;
   a {
     color: inherit;
     text-decoration: none;
   }
+}
+
+*::-webkit-scrollbar {
+  width: 20px; /*너비*/
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(23, 23, 23, 0.642);
+  background-clip: padding-box;
+  border: 6px solid transparent;
+  border-radius: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+.header {
+  opacity: 0;
+  font-family: $mainFont;
+  font-size: 14px;
+  color: $white;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  line-height: 1;
+  position: fixed;
+  left: 40px;
+  top: 24px;
+  z-index: 100;
+  display: flex;
+
+  @media all and (max-width: 768px) {
+    display: block;
+    left: 24px;
+  }
+}
+
+.logo {
+  font-size: 27px;
+  letter-spacing: -1px;
+}
+
+.nav-btn,
+.nav-btn__svg {
+  width: 56px;
+  height: 30px;
+}
+
+.nav-btn {
+  display: block;
+  margin: -2px 0 0 56px;
+
+  @media all and (max-width: 768px) {
+    margin: 18px 0 0 -6px;
+  }
+}
+
+.nav-btn__svg {
+  pointer-events: none;
 }

@@ -29,6 +29,7 @@ export const main = async (req, res) => {
     hu: await ExbHallModel.find({ country: "hu" }),
   });
 };
+
 export const hallDetail = async (req, res) => {
   //   console.log(req);
   const hall = await ExbHallModel.findById(req.params.id);
