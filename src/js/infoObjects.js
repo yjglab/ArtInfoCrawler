@@ -55,7 +55,9 @@ let il_museumInfo = {};
 let hu_natlInfo = {};
 let hu_budapestiInfo = {};
 let hu_palinkaInfo = {};
-
+let hk_spaceInfo = {};
+let hk_scienceInfo = {};
+let hk_artInfo = {};
 const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
@@ -112,6 +114,9 @@ const infoObjects = [
   hu_natlInfo,
   hu_budapestiInfo,
   hu_palinkaInfo,
+  hk_spaceInfo,
+  hk_scienceInfo,
+  hk_artInfo,
 ];
 
 export default infoObjects;

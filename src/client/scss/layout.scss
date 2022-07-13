@@ -1,6 +1,7 @@
 @import "./config/_variables";
 @import "./config/_reset";
 @import "./components/loader";
+@import "./components/header";
 
 html {
   box-sizing: border-box;
@@ -15,6 +16,10 @@ html {
 html,
 body {
   min-height: 100vh;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -39,50 +44,4 @@ body {
 
 *::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
-}
-
-.header {
-  opacity: 0;
-  font-family: $mainFont;
-  font-size: 14px;
-  color: $white;
-  line-height: 1.3;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  line-height: 1;
-  position: fixed;
-  left: 40px;
-  top: 24px;
-  z-index: 100;
-  display: flex;
-
-  @media all and (max-width: 768px) {
-    display: block;
-    left: 24px;
-  }
-}
-
-.logo {
-  font-size: 27px;
-  letter-spacing: -1px;
-}
-
-.nav-btn,
-.nav-btn__svg {
-  width: 56px;
-  height: 30px;
-}
-
-.nav-btn {
-  display: block;
-  margin: -2px 0 0 56px;
-
-  @media all and (max-width: 768px) {
-    margin: 18px 0 0 -6px;
-  }
-}
-
-.nav-btn__svg {
-  pointer-events: none;
 }

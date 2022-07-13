@@ -3,22 +3,10 @@ mixin countrySpecificInfo(halls)
         - for (var i = 0; i < 99; i += 1) // 국가당 관 수
             - if (halls[i] == undefined) break
             a(href=`/main/hall/${halls[i]._id}`)
-                h2 #{halls[i].hallName}
+                h2.hallName #{halls[i].hallName}
             - for (var j = 0; j < halls[i].infoLength; j += 1)
                 a(href=`/main/detail/${halls[i].data[j]._id}`)
-                    h4 Title: #{halls[i].data[j].title} 
+                    h4.title Title: #{halls[i].data[j].title} 
                 img(src=`${halls[i].data[j].thumbnailSrc}`)
-                div Date: #{halls[i].data[j].date} 
-                div Detailed: #{halls[i].data[j].detail}  
-
-//- mixin countrySpecificInfo(halls)
-//-     div(class="exb")
-//-         - for (var i = 0; i < 99; i += 1) // 국가당 관 수
-//-             - if (halls[i] == undefined) break
-//-             h2 #{halls[i].hallName}
-//-             - for (var j = 0; j < halls[i].titles.length; j += 1)
-//-                 a(href=`/main/${halls[i]._id}`)
-//-                     h4 Title: #{halls[i].titles[j]} 
-//-                 img(src=`${halls[i].thumbnailsSrc[j]}`)
-//-                 div Date: #{halls[i].dates[j]} 
-//-                 div Detailed: #{halls[i].details[j]}  
+                div.date Date: #{halls[i].data[j].date} 
+                div.detail Detailed: #{halls[i].data[j].detail}  

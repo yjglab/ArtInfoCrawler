@@ -86,7 +86,7 @@ const makeExbHallsDB = async (i) => {
 };
 // DEV: i조정
 export const makeInfo = (childSpawn) => {
-  for (let i = 54; i < 55; i += 1) {
+  for (let i = 57; i < 58; i += 1) {
     // infoObjects.length
     let country = `${pyFiles[i]}`.substring(0, 2); // folder 이름
     const infoData = childSpawn("python", [

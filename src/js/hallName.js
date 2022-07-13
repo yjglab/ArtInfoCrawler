@@ -73,10 +73,10 @@ const hallName = [
   "Hungarian National Museum",
   "Budapesti Történeti Museum",
   "Palinka Experience Museum", // 54
-  //
-  "",
-  "",
-  "",
+  // HK
+  "HongKong Space Museum",
+  "HongKong Science Museum",
+  "HongKong Art Museum", // 57
   //
   "",
   "",

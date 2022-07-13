@@ -54,5 +54,8 @@ const pyFiles = [
   "hu_natl.py",
   "hu_budapesti.py",
   "hu_palinka.py",
+  "hk_space.py",
+  "hk_science.py",
+  "hk_art.py",
 ];
 export default pyFiles;

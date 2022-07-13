@@ -34,7 +34,7 @@ br_salvador = 'http://www.secult.salvador.ba.gov.br/index.php/equipamentos/casa-
 hu_natl = 'https://mnm.hu/en/exhibitions'
 hu_budapesti = 'http://www.btm.hu/hu/events'
 hu_palinka = 'https://palinkaexperience.com/en/museum/'
-
+hk_space = 'https://www.lcsd.gov.hk/CE/Museum/Space/en_US/web/spm/exhibitions.html'
 import sys 
 import io 
 import time
@@ -144,7 +144,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
                         dk_maritime,
                         dk_glyptotek,
                         br_salvador,
-                        hu_palinka
+                        hu_palinka,
+                        hk_space,
                         ]:
                 
                 exb_details = [x.text for x in exb_details_not_enter]
@@ -250,7 +251,8 @@ def print_msm_data(url, exb_nums, titles_selector, dates_selector,
         print("SPLITER")
     print("FILTER")
     for thumbnail_src in exb_thumbnails:
-        print(thumbnail_src)
+        print("https://media.timeout.com/images/105764536/image.jpg")
+        # print(thumbnail_src)
         print("SPLITER")
     print("FILTER")
     for link in exb_links:
