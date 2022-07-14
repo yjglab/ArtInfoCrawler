@@ -7,7 +7,7 @@
   line-height: 65px;
   text-align: center;
   z-index: 100;
-  backdrop-filter: blur(5px);
+
   // padding-top: 20px;
   // padding-bottom: 20px;
   -webkit-transition: all 0.6s ease-in-out;
@@ -31,16 +31,10 @@
     }
 
     .logo {
+      font-size: 1.5em;
       padding-left: 3rem;
-
-      a {
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.5em;
-
-        &:hover {
-        }
-      }
+      color: white;
+      font-family: $mainFont;
     }
 
     .nav__list-container {
@@ -61,14 +55,14 @@
           padding: 0;
           padding-right: 3rem;
           transition: all 0.6s ease-in-out;
-          a {
+          span {
             text-decoration: none;
-            color: #fff;
+            color: white;
             line-height: 65px;
-            font-size: 1.5em;
+            font-size: 1.2em;
             transition: color 0.5s ease-in-out;
             &:hover {
-              color: #00e676;
+              color: #9378ff;
             }
           }
         }
@@ -79,9 +73,10 @@
 
 .affix {
   background-color: rgba(255, 255, 255, 0);
-  box-shadow: 0px 0px 53px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 53px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
   li {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 }
 
@@ -115,7 +110,7 @@
     left: 0;
     bottom: 0;
     background-color: #111;
-    /*same background color of navbar*/
+
     background-position: center top;
   }
   .nav div.nav__list-container ul li {
@@ -134,7 +129,7 @@
 }
 
 .navTrigger i {
-  background-color: #fff;
+  background-color: white;
   border-radius: 2px;
   content: "";
   display: block;
