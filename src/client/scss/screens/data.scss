@@ -1,0 +1,34 @@
+@import "../config/_variables.scss";
+
+body {
+  color: $white;
+}
+img {
+  width: 300px;
+  object-fit: cover;
+}
+.hallName {
+  font-size: 34px;
+  color: tomato;
+}
+.title {
+  color: blueviolet;
+}
+.date {
+  color: aqua;
+}
+.container {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(10, 600px);
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.container > div {
+  margin: 40px;
+}
+.container > div .exb {
+  height: 100%;
+  overflow: auto;
+}

@@ -7,7 +7,8 @@ module.exports = {
     layout: ["./src/client/js/layout.js", "./src/client/scss/layout.scss"],
     intro: ["./src/client/js/intro.js", "./src/client/scss/screens/intro.scss"],
     main: ["./src/client/js/main.js", "./src/client/scss/screens/main.scss"],
-    header: ["./src/client/js/header.js"],
+    nav: ["./src/client/js/nav.js"],
+    data: ["./src/client/scss/screens/data.scss"],
   },
   mode: "development",
   plugins: [
