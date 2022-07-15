@@ -1,5 +1,7 @@
+@import "../config/_variables";
+
 body {
-  background: rgb(255, 255, 255);
+  background: $dark;
   overflow-x: hidden;
 }
 
@@ -31,17 +33,6 @@ body {
     display: grid;
     place-items: center;
   }
-
-  .header-credit {
-    text-align: center;
-    z-index: 999;
-    font-size: 0.8rem;
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
 }
 
 * {
@@ -61,7 +52,7 @@ body {
   transform: translateX(-50%);
   overflow: visible;
 
-  .col {
+  .mainSection__col {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -69,9 +60,9 @@ body {
     align-self: flex-start;
     justify-self: flex-start;
 
-    .image {
+    .mainSection__image {
       width: 100%;
-      height: 960px;
+      height: 550px; // 960
 
       transition: filter 0.7s ease-in-out;
       filter: saturate(0);
@@ -84,11 +75,12 @@ body {
       }
 
       img {
+        -webkit-user-drag: none;
         overflow: hidden;
-        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-          0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-          0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.134),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.148), 0 12.5px 10px rgba(0, 0, 0, 0.16),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.172),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.186), 0 100px 80px rgba(0, 0, 0, 0.12);
 
         width: 100%; // 필수
         height: 100%; // 필수
@@ -97,7 +89,8 @@ body {
     }
   }
 
-  .col:nth-child(2) {
+  .mainSection__col:nth-child(2),
+  .mainSection__col:nth-child(4) {
     align-self: flex-end;
     justify-self: flex-end;
   }

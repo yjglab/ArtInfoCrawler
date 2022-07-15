@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const additionalY = { val: 0 };
 let additionalYAnim;
 let offset = 0;
-const cols = gsap.utils.toArray(".col");
+const cols = gsap.utils.toArray(".mainSection__col");
 
 cols.forEach((col, i) => {
   const images = col.childNodes;
@@ -13,29 +13,58 @@ cols.forEach((col, i) => {
     col.appendChild(clone);
   });
 
-  images.forEach((item) => {
+  images.forEach((item, itemIdx) => {
     let columnHeight = item.parentElement.clientHeight;
+    console.log(columnHeight);
     let direction = i % 2 !== 0 ? "+=" : "-=";
 
-    gsap.to(item, {
-      y: direction + Number(columnHeight / 2),
-      duration: 20,
-      repeat: -1,
-      ease: "none",
-      modifiers: {
-        y: gsap.utils.unitize((y) => {
-          if (direction == "+=") {
-            offset += additionalY.val;
-            y = (parseFloat(y) - offset) % (columnHeight * 0.5);
-          } else {
-            offset += additionalY.val;
-            y = (parseFloat(y) + offset) % -Number(columnHeight * 0.5);
-          }
+    const anim = gsap
+      .to(item, {
+        y: direction + Number(columnHeight / 2),
+        duration: 20, // 20
+        repeat: Infinity,
+        ease: Power0.easeInOut, // Power2.easeInOut
+        modifiers: {
+          y: gsap.utils.unitize((y) => {
+            if (direction == "+=") {
+              offset += additionalY.val;
+              y = (parseFloat(y) - offset) % (columnHeight * 0.5);
+            } else {
+              offset += additionalY.val;
+              y = (parseFloat(y) + offset) % -Number(columnHeight * 0.5);
+            }
 
-          return y;
-        }),
-      },
-    });
+            return y;
+          }),
+        },
+      })
+      .timeScale(2);
+
+    const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
+    let clickFlag = false;
+    $$mainSectionCols.forEach((v) =>
+      v.addEventListener("click", () => {
+        if (clickFlag) {
+          anim.play();
+          gsap.to(anim, {
+            timeScale: 2,
+            duration: 1,
+            overwrite: true,
+          });
+          clickFlag = false;
+        } else {
+          gsap.to(anim, {
+            timeScale: 0,
+            duration: 1,
+            overwrite: true,
+            onComplete() {
+              anim.pause();
+            },
+          });
+          clickFlag = true;
+        }
+      })
+    );
   });
 });
 
