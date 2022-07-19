@@ -78,7 +78,7 @@ const hallName = [
   "HongKong Science Museum",
   "HongKong Art Museum", // 57
   //
-  "",
+  "Boijmans Van Beuningen",
   "",
   "",
   //

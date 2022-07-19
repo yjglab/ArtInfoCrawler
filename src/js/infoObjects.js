@@ -58,6 +58,8 @@ let hu_palinkaInfo = {};
 let hk_spaceInfo = {};
 let hk_scienceInfo = {};
 let hk_artInfo = {};
+let nl_boijmansInfo = {};
+
 const infoObjects = [
   uk_britishInfo,
   uk_londonNatlInfo,
@@ -117,6 +119,7 @@ const infoObjects = [
   hk_spaceInfo,
   hk_scienceInfo,
   hk_artInfo,
+  nl_boijmansInfo,
 ];
 
 export default infoObjects;

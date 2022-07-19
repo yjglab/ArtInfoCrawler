@@ -1,3 +1,5 @@
+// scrollTo(0, 0);
+
 const $navListLis = document.querySelectorAll(".nav__list li");
 $navListLis.forEach((v) => {
   v.addEventListener("click", (e) => {

@@ -57,5 +57,6 @@ const pyFiles = [
   "hk_space.py",
   "hk_science.py",
   "hk_art.py",
+  "nl_boijmans.py",
 ];
 export default pyFiles;

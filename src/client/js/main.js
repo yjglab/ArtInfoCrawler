@@ -3,25 +3,77 @@ gsap.registerPlugin(ScrollTrigger);
 const additionalY = { val: 0 };
 let additionalYAnim;
 let offset = 0;
-const cols = gsap.utils.toArray(".mainSection__col");
+const sectionCols = gsap.utils.toArray(".mainSection__col");
 
-cols.forEach((col, i) => {
-  const images = col.childNodes;
+const $$mainSectionCardInners = document.querySelectorAll(
+  ".mainSection__card-inner"
+);
 
-  images.forEach((image) => {
-    var clone = image.cloneNode(true);
+$$mainSectionCardInners.forEach((v) =>
+  v.addEventListener("click", () => {
+    v.classList.add("flipped");
+  })
+);
+// $(".mainSection__card-inner").click(function () {
+//   $(".mainSection__card-inner").addClass("flipped");
+// });
+
+function mainContentsScrollToggle(anim) {
+  const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
+  let clickFlag = false;
+  $$mainSectionCols.forEach((v) =>
+    ["click", "wheel"].forEach((e) => {
+      v.addEventListener(e, () => {
+        if (clickFlag) {
+          anim.play();
+          gsap.to(anim, {
+            timeScale: 2,
+            duration: 1,
+            overwrite: true,
+          });
+          $$mainSectionCardInners.forEach((v) => {
+            if (v.classList.contains("flipped")) v.classList.remove("flipped");
+          });
+          clickFlag = false;
+        } else {
+          if (e !== "wheel") {
+            // 휠은 멈추게 하지 않음
+            gsap.to(anim, {
+              timeScale: 0,
+              duration: 1,
+              overwrite: true,
+              onComplete() {
+                anim.pause();
+              },
+            });
+
+            clickFlag = true;
+          }
+        }
+      });
+    })
+  );
+}
+
+sectionCols.forEach((col, i) => {
+  const $$mainSectionCards = col.childNodes;
+
+  $$mainSectionCards.forEach((card) => {
+    let clone = card.cloneNode(true);
+    clone.firstElementChild.addEventListener("click", () => {
+      clone.firstElementChild.classList.add("flipped");
+    });
     col.appendChild(clone);
   });
 
-  images.forEach((item, itemIdx) => {
+  $$mainSectionCards.forEach((item, itemIdx) => {
     let columnHeight = item.parentElement.clientHeight;
-    console.log(columnHeight);
     let direction = i % 2 !== 0 ? "+=" : "-=";
 
     const anim = gsap
       .to(item, {
         y: direction + Number(columnHeight / 2),
-        duration: 20, // 20
+        duration: 40, // 20
         repeat: Infinity,
         ease: Power0.easeInOut, // Power2.easeInOut
         modifiers: {
@@ -40,31 +92,7 @@ cols.forEach((col, i) => {
       })
       .timeScale(2);
 
-    const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
-    let clickFlag = false;
-    $$mainSectionCols.forEach((v) =>
-      v.addEventListener("click", () => {
-        if (clickFlag) {
-          anim.play();
-          gsap.to(anim, {
-            timeScale: 2,
-            duration: 1,
-            overwrite: true,
-          });
-          clickFlag = false;
-        } else {
-          gsap.to(anim, {
-            timeScale: 0,
-            duration: 1,
-            overwrite: true,
-            onComplete() {
-              anim.pause();
-            },
-          });
-          clickFlag = true;
-        }
-      })
-    );
+    mainContentsScrollToggle(anim);
   });
 });
 
