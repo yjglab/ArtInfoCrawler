@@ -1,72 +1,25 @@
 gsap.registerPlugin(ScrollTrigger);
 
 const additionalY = { val: 0 };
-let additionalYAnim;
 let offset = 0;
-const sectionCols = gsap.utils.toArray(".mainSection__col");
+// const cols = gsap.utils.toArray(".mainSection__col");
+const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
+$$mainSectionCols.forEach((col, i) => {
+  const cards = col.childNodes;
 
-const $$mainSectionCardInners = document.querySelectorAll(
-  ".mainSection__card-inner"
-);
-
-$$mainSectionCardInners.forEach((v) =>
-  v.addEventListener("click", () => {
-    v.classList.add("flipped");
-  })
-);
-// $(".mainSection__card-inner").click(function () {
-//   $(".mainSection__card-inner").addClass("flipped");
-// });
-
-function mainContentsScrollToggle(anim) {
-  const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
-  let clickFlag = false;
-  $$mainSectionCols.forEach((v) =>
-    ["click", "wheel"].forEach((e) => {
-      v.addEventListener(e, () => {
-        if (clickFlag) {
-          anim.play();
-          gsap.to(anim, {
-            timeScale: 2,
-            duration: 1,
-            overwrite: true,
-          });
-          $$mainSectionCardInners.forEach((v) => {
-            if (v.classList.contains("flipped")) v.classList.remove("flipped");
-          });
-          clickFlag = false;
-        } else {
-          if (e !== "wheel") {
-            // 휠은 멈추게 하지 않음
-            gsap.to(anim, {
-              timeScale: 0,
-              duration: 1,
-              overwrite: true,
-              onComplete() {
-                anim.pause();
-              },
-            });
-
-            clickFlag = true;
-          }
-        }
-      });
-    })
-  );
-}
-
-sectionCols.forEach((col, i) => {
-  const $$mainSectionCards = col.childNodes;
-
-  $$mainSectionCards.forEach((card) => {
+  cards.forEach((card) => {
+    // clone
     let clone = card.cloneNode(true);
-    clone.firstElementChild.addEventListener("click", () => {
-      clone.firstElementChild.classList.add("flipped");
-    });
     col.appendChild(clone);
+    //
+    document.querySelectorAll(".mainSection__card-inner").forEach((v) =>
+      v.addEventListener("click", () => {
+        v.classList.add("flipped");
+      })
+    );
   });
 
-  $$mainSectionCards.forEach((item, itemIdx) => {
+  cards.forEach((item) => {
     let columnHeight = item.parentElement.clientHeight;
     let direction = i % 2 !== 0 ? "+=" : "-=";
 
@@ -92,10 +45,50 @@ sectionCols.forEach((col, i) => {
       })
       .timeScale(2);
 
-    mainContentsScrollToggle(anim);
+    animPlayToggle(anim);
   });
 });
 
+function removeAllFlipped() {
+  document.querySelectorAll(".mainSection__card-inner").forEach((v) => {
+    if (v.classList.contains("flipped")) v.classList.remove("flipped");
+  });
+}
+function animPlayToggle(anim) {
+  const $$mainSectionCols = document.querySelectorAll(".mainSection__col");
+  let clickFlag = false;
+  $$mainSectionCols.forEach((v) =>
+    ["click", "wheel"].forEach((e) => {
+      v.addEventListener(e, () => {
+        if (clickFlag) {
+          anim.play();
+          gsap.to(anim, {
+            timeScale: 2,
+            duration: 1,
+            overwrite: true,
+          });
+          removeAllFlipped();
+          clickFlag = false;
+        } else {
+          if (e !== "wheel") {
+            // 휠은 멈추게 하지 않음
+            gsap.to(anim, {
+              timeScale: 0,
+              duration: 1,
+              overwrite: true,
+              onComplete() {
+                anim.pause();
+              },
+            });
+            clickFlag = true;
+          }
+        }
+      });
+    })
+  );
+}
+
+let additionalYAnim;
 const imagesScrollerTrigger = ScrollTrigger.create({
   trigger: ".mainSection__header",
   start: "top 50%",
