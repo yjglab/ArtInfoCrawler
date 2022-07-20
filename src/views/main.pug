@@ -1,5 +1,5 @@
 extends layout
-
+include mixins/mainSectionCard
 
 block links
     link(rel="stylesheet", href="/static/css/main.css")
@@ -10,143 +10,25 @@ block content
         
     .mainSection__contents-container
         .mainSection__col
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="https://cdn.akamai.steamstatic.com/steam/apps/726590/ss_4737f4e1188208387ee5f85d51d44d4f0a858bcb.1920x1080.jpg?t=1609970621")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="https://cdn.2kgames.com/2020/11/10/5fa9f9c43249f2KSMKT_NBA2K21_STD_CG_NSW_FOB_300x488.jpg")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="http://www.newstap.co.kr/news/photo/202107/140320_230543_1125.jpg")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
-            
+            - for (let exbInfo of cols.col1) {
+                +mainSectionCard(exbInfo[0])
+            - }
         .mainSection__col
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="http://www.newstap.co.kr/news/photo/202107/140320_230543_1125.jpg")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="http://www.newstap.co.kr/news/photo/202107/140320_230543_1125.jpg")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
-            .mainSection__card 
-                .mainSection__card-inner 
-                    .card-front.side
-                        img(src="http://www.newstap.co.kr/news/photo/202107/140320_230543_1125.jpg")
-                        .card-content__wrapper
-                            .card-content__front-inner
-                                .card-content__title
-                                    span Hakka
-                                .card-content__date
-                                    span 2012.12.12 Pdoowddw
-                    .card-back.side
-                        .back-blurfilter
-                        img(src="")
-                        .card-content__wrapper
-                            .card-content__back-inner 
-                                .card-content__detail
-                                    span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat nisi eget erat cursus, eget eleifend justo malesuada. Nulla euismod, est ornare aliquet convallis, purus nibh interdum lacus, eu sodales metus purus quis justo. Curabitur pulvinar velit tellus, sit amet vestibulum ligula ultrices eget. Donec quis nunc luctus elit egestas eleifend. Vivamus nisi ante, pellentesque at aliquam nec, hendrerit eu lacus. Duis elementum velit quis nisl iaculis lacinia. Maecenas tincidunt mattis nisl ac efficitur. Vestibulum at ante mi. Quisque ultrices orci eget efficitur ultrices. Vestibulum sit amet mauris eget metus ullamcorper ullamcorper id id purus.
-                            .card-content__more-info-btn
-                                span MORE INFO
+            - for (let exbInfo of cols.col2) {
+                +mainSectionCard(exbInfo[0])
+            - }
         .mainSection__col
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
+            - for (let exbInfo of cols.col3) {
+                +mainSectionCard(exbInfo[0])
+            - }
         .mainSection__col
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
+            - for (let exbInfo of cols.col4) {
+                +mainSectionCard(exbInfo[0])
+            - }
         .mainSection__col
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
-            .mainSection__card
-                img(src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg", alt="")
+            - for (let exbInfo of cols.col5) {
+                +mainSectionCard(exbInfo[0])
+            - }
             
 
 block scripts

@@ -1,0 +1,44 @@
+mixin mainSectionCard(exbInfo)
+    .mainSection__card 
+        .mainSection__card-inner 
+            .card-front.side
+                img(src=`${exbInfo.thumbnailSrc}`)
+                .card-content__wrapper
+                    .card-content__front-inner
+                        .card-content__title
+                            div
+                                span #{exbInfo.title}
+                        .card-content__date
+                            span #{exbInfo.date}
+            .card-back.side
+                .back-blurfilter
+                img(src=`${exbInfo.thumbnailSrc}`)
+                .card-content__wrapper
+                    .card-content__back-inner 
+                        .card-content__detail
+                            span #{exbInfo.detail}
+                    .card-content__more-info-btn
+                        span MORE INFO
+    //- .mainSection__card 
+    //-     .mainSection__card-inner 
+    //-         .card-front.side
+    //-             img(src=`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW4t94H-R2NzU9os2iW09f7STfIVlpikjI1A&usqp=CAU`)
+    //-             .card-content__wrapper
+    //-                 .card-content__front-inner 
+    //-                     .card-content__title
+    //-                         div
+    //-                             span 아주멋진       아주멋진 
+                              
+    //-                     .card-content__date
+    //-                         span 2020.20201.2002
+    //-         .card-back.side
+    //-             .back-blurfilter
+    //-             img(src=`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW4t94H-R2NzU9os2iW09f7STfIVlpikjI1A&usqp=CAU`)
+    //-             .card-content__wrapper
+    //-                 .card-content__back-inner 
+    //-                     .card-content__detail
+    //-                         span 아주멋진 디테일
+    //-                 .card-content__more-info-btn
+    //-                     span DETAIL
+
+    

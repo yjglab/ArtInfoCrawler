@@ -26,7 +26,7 @@ $$mainSectionCols.forEach((col, i) => {
     const anim = gsap
       .to(item, {
         y: direction + Number(columnHeight / 2),
-        duration: 40, // 20
+        duration: 80, // 20
         repeat: Infinity,
         ease: Power0.easeInOut, // Power2.easeInOut
         modifiers: {
