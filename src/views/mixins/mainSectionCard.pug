@@ -2,8 +2,18 @@ mixin mainSectionCard(exbInfo)
     .mainSection__card 
         .mainSection__card-inner 
             .card-front.side
-                img(src=`${exbInfo.thumbnailSrc}`)
+                img.frontImg(src=`${exbInfo.thumbnailSrc}`)
                 .card-content__wrapper
+                    if exbInfo.category === "museum"
+                        .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 0.7); color: black;")
+                            .content-category 
+                                span #{exbInfo.category}
+                    else
+                        .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 0.7); color: black;")
+                            .content-category
+                                span #{exbInfo.category}
+                        //- .content-hall
+                        //-     span #{exbInfo.hall}
                     .card-content__front-inner
                         .card-content__title
                             div

@@ -160,13 +160,34 @@ body {
               opacity: 1;
             }
           }
+          .card-content__upper-inner {
+            position: absolute;
+            top: 41px;
+            width: 80%;
+            height: 7%;
+            border-radius: 5px;
+            opacity: 1; // dev
+            transition: opacity 0.4s ease-in-out;
+            padding: 6px 20px;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .content-category {
+              span {
+                font-family: $sans;
+                font-size: 14px;
+                text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+              }
+            }
+          }
           .card-content__front-inner {
             position: absolute;
             bottom: 41px;
             width: 80%;
-            height: 16%;
+            height: 23%;
             border-radius: 6px;
-            opacity: 0;
+            opacity: 1; // dev
             transition: opacity 0.4s ease-in-out;
             padding: 6px 20px;
             background-color: rgb(0, 0, 0, 0.5);
@@ -183,26 +204,17 @@ body {
 
             .card-content__title {
               width: 100%;
-              height: 90%;
+              height: 400%;
               font-size: 16px;
               border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-
               overflow: hidden;
 
               div {
                 border: none;
                 width: 100%;
                 height: 100%;
-                animation: upToDown 2s infinite;
-                animation-timing-function: linear;
-                @keyframes upToDown {
-                  from {
-                    transform: translateY(100%);
-                  }
-                  to {
-                    transform: translateY(-100%);
-                  }
-                }
+                // animation: upToDown 2s infinite;
+                // animation-timing-function: linear;
               }
             }
             .card-content__date {

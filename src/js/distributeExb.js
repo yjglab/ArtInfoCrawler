@@ -13,7 +13,7 @@ const distribute = async () => {
     col5: [],
   };
 
-  while (allExb.length > 180) {
+  while (allExb.length > 190) {
     const randomIdx = Math.floor(Math.random() * 5) + 1;
     const spliced = allExb.splice(0, 1);
     switch (randomIdx) {

@@ -7,8 +7,8 @@ const childSpawn = require("child_process").spawn;
 // makeInfo(childSpawn);
 
 export const main = async (req, res) => {
-  // let test = await distribute();
-  // console.log(test.col1[0]);
+  let test = await distribute();
+  console.log(test.col1[0]);
   return res.render("main", {
     pageTitle: `Main`,
     cols: await distribute(),

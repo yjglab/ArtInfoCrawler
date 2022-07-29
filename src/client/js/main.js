@@ -107,3 +107,12 @@ const imagesScrollerTrigger = ScrollTrigger.create({
     }
   },
 });
+
+const imges = document.querySelectorAll(".frontImg");
+imges.forEach((v) =>
+  v.addEventListener("error", function handleError() {
+    // console.log(v.src);
+    v.parentNode.parentNode.parentNode.remove();
+    return;
+  })
+);
