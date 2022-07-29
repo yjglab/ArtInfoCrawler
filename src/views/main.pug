@@ -1,35 +1,39 @@
 extends layout
 include mixins/mainSectionCard
 
+
 block links
     link(rel="stylesheet", href="/static/css/main.css")
+    
 
 block content
     section.mainSection__header
         //- h1.header-text h1텍스트h1텍스트h1텍스트h1텍스트
-        
+    
     .mainSection__contents-container
         .mainSection__col
-            - for (let exbInfo of cols.col1) {
+            - for (let exbInfo of allCols.col1) {
                 +mainSectionCard(exbInfo[0])
             - }
         .mainSection__col
-            - for (let exbInfo of cols.col2) {
+            - for (let exbInfo of allCols.col2) {
                 +mainSectionCard(exbInfo[0])
             - }
         .mainSection__col
-            - for (let exbInfo of cols.col3) {
+            - for (let exbInfo of allCols.col3) {
                 +mainSectionCard(exbInfo[0])
             - }
         .mainSection__col
-            - for (let exbInfo of cols.col4) {
+            - for (let exbInfo of allCols.col4) {
                 +mainSectionCard(exbInfo[0])
             - }
         .mainSection__col
-            - for (let exbInfo of cols.col5) {
+            - for (let exbInfo of allCols.col5) {
                 +mainSectionCard(exbInfo[0])
             - }
-            
+    
 
 block scripts
     script(src="/static/js/main.js")
+   
+        

@@ -1,8 +1,8 @@
 import shuffle from "./shuffleExb";
 import ExbModel from "../models/ExbModel";
 
-const distribute = async () => {
-  const allExb = await ExbModel.find({});
+const distributeGallery = async () => {
+  const allExb = await ExbModel.find({ category: "gallery" });
   shuffle(allExb);
 
   const cols = {
@@ -13,7 +13,7 @@ const distribute = async () => {
     col5: [],
   };
 
-  while (allExb.length > 190) {
+  while (allExb.length > 0) {
     const randomIdx = Math.floor(Math.random() * 5) + 1;
     const spliced = allExb.splice(0, 1);
     switch (randomIdx) {
@@ -38,4 +38,4 @@ const distribute = async () => {
   return cols;
 };
 
-export default distribute;
+export default distributeGallery;

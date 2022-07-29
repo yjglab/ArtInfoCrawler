@@ -1,34 +1,59 @@
 mixin mainSectionCard(exbInfo)
-    .mainSection__card 
-        .mainSection__card-inner 
-            .card-front.side
-                img.frontImg(src=`${exbInfo.thumbnailSrc}`)
-                .card-content__wrapper
-                    if exbInfo.category === "museum"
-                        .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 0.7); color: black;")
+    
+    if exbInfo.category === "museum"
+        .mainSection__card
+            .mainSection__card-inner 
+                .card-front.side
+                    img.frontImg(src=`${exbInfo.thumbnailSrc}` )
+                    .card-content__wrapper
+                        .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 1); color: black;")
                             .content-category 
                                 span #{exbInfo.category}
-                    else
-                        .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 0.7); color: black;")
+                            //- .content-hall
+                            //-     span #{exbInfo.hall}
+                        .card-content__front-inner
+                            .card-content__title
+                                div
+                                    span #{exbInfo.title}
+                            .card-content__date
+                                span #{exbInfo.date}
+                .card-back.side
+                    .back-blurfilter
+                    img(src=`${exbInfo.thumbnailSrc}` )
+                    .card-content__wrapper
+                        .card-content__back-inner 
+                            .card-content__detail
+                                span #{exbInfo.detail}
+                        .card-content__more-info-btn
+                            span MORE INFO
+    else
+        .mainSection__card
+            .mainSection__card-inner 
+                .card-front.side
+                    img.frontImg(src=`${exbInfo.thumbnailSrc}` )
+                    .card-content__wrapper
+                        .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 1); color: black;")
                             .content-category
                                 span #{exbInfo.category}
-                        //- .content-hall
-                        //-     span #{exbInfo.hall}
-                    .card-content__front-inner
-                        .card-content__title
-                            div
-                                span #{exbInfo.title}
-                        .card-content__date
-                            span #{exbInfo.date}
-            .card-back.side
-                .back-blurfilter
-                img(src=`${exbInfo.thumbnailSrc}`)
-                .card-content__wrapper
-                    .card-content__back-inner 
-                        .card-content__detail
-                            span #{exbInfo.detail}
-                    .card-content__more-info-btn
-                        span MORE INFO
+                            //- .content-hall
+                            //-     span #{exbInfo.hall}
+                        .card-content__front-inner
+                            .card-content__title
+                                div
+                                    span #{exbInfo.title}
+                            .card-content__date
+                                span #{exbInfo.date}
+                .card-back.side
+                    .back-blurfilter
+                    img(src=`${exbInfo.thumbnailSrc}` )
+                    .card-content__wrapper
+                        .card-content__back-inner 
+                            .card-content__detail
+                                span #{exbInfo.detail}
+                        .card-content__more-info-btn
+                            span MORE INFO
+
+    
     //- .mainSection__card 
     //-     .mainSection__card-inner 
     //-         .card-front.side

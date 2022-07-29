@@ -1,17 +1,21 @@
 import { makeInfo } from "../js/makeInfo.js";
 import ExbHallModel from "../models/ExbHallModel.js";
 import ExbModel from "../models/ExbModel.js";
-import distribute from "../js/distributeExb.js";
+import distributeAll from "../js/distributeAll.js";
+import distributeMuseum from "../js/distributeMuseum.js";
+import distributeGallery from "../js/distributeGallery.js";
 
 const childSpawn = require("child_process").spawn;
 // makeInfo(childSpawn);
 
 export const main = async (req, res) => {
-  let test = await distribute();
-  console.log(test.col1[0]);
+  // let test = await distributeAll();
+  // console.log(test.col1[0]);
   return res.render("main", {
     pageTitle: `Main`,
-    cols: await distribute(),
+    allCols: await distributeAll(),
+    museumCols: await distributeMuseum(),
+    galleryCols: await distributeGallery(),
   });
 };
 
