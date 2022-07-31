@@ -1,5 +1,6 @@
 import ExbModel from "../models/ExbModel";
 import shuffle from "../js/shuffleExb";
+import ExbHallModel from "../models/ExbHallModel";
 
 export const intro = async (req, res) => {
   const allExb = await ExbModel.find({});
@@ -9,7 +10,15 @@ export const intro = async (req, res) => {
     allExb: allExb,
   });
 };
+// export const hallDetail = async (req, res) => {
+//   //   console.log(req);
+//   const hall = await ExbHallModel.findById(req.params.id);
 
+//   return res.render("hallDetail", {
+//     pageTitle: `${hall.hallName}`,
+//     hall: hall,
+//   });
+// };
 /*
 {
     _id: new ObjectId("62be9eb9035e1a0b28da78c8"),

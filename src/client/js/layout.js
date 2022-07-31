@@ -1,4 +1,7 @@
-// scrollTo(0, 0);
+(function importAllImages() {
+  const r = require.context("../img", false, /\.(png|jpe?g|gif|svg)$/);
+  return r.keys().map(r);
+})();
 
 const $navListLis = document.querySelectorAll(".nav__list li");
 $navListLis.forEach((v) => {

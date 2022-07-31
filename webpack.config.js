@@ -7,6 +7,10 @@ module.exports = {
     layout: ["./src/client/js/layout.js", "./src/client/scss/layout.scss"],
     intro: ["./src/client/js/intro.js", "./src/client/scss/screens/intro.scss"],
     main: ["./src/client/js/main.js", "./src/client/scss/screens/main.scss"],
+    mainFilter: [
+      "./src/client/js/mainFilter.js",
+      "./src/client/scss/screens/mainFilter.scss",
+    ],
     nav: ["./src/client/js/nav.js"],
     data: ["./src/client/scss/screens/data.scss"],
   },
@@ -31,6 +35,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          name: "img/[name].[ext]",
+        },
+      },
+      {
         test: /\.js$/,
         use: {
           loader: "babel-loader",
@@ -41,7 +52,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // sass->css->style
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "",
+            },
+          },
+          "css-loader",
+          "sass-loader",
+        ], // sass->css->style
       },
     ],
   },

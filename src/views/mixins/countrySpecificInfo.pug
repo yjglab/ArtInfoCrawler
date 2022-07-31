@@ -2,7 +2,7 @@ mixin countrySpecificInfo(halls)
     div(class="exb")
         - for (var i = 0; i < 99; i += 1) // 국가당 관 수
             - if (halls[i] == undefined) break
-            a(href=`/main/hall/${halls[i]._id}`)
+            a(href=`/hall/${halls[i]._id}`)
                 h2.hallName #{halls[i].hallName}
             - for (var j = 0; j < halls[i].infoLength; j += 1)
                 a(href=`/main/detail/${halls[i].data[j]._id}`)

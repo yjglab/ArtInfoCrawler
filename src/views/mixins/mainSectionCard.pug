@@ -1,10 +1,9 @@
 mixin mainSectionCard(exbInfo)
-    
     if exbInfo.category === "museum"
-        .mainSection__card
+        .mainSection__card 
             .mainSection__card-inner 
                 .card-front.side
-                    img.frontImg(src=`${exbInfo.thumbnailSrc}` )
+                    img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
                         .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 1); color: black;")
                             .content-category 
@@ -14,23 +13,24 @@ mixin mainSectionCard(exbInfo)
                         .card-content__front-inner
                             .card-content__title
                                 div
-                                    span #{exbInfo.title}
+                                    span.content-title #{exbInfo.title}
                             .card-content__date
                                 span #{exbInfo.date}
                 .card-back.side
                     .back-blurfilter
-                    img(src=`${exbInfo.thumbnailSrc}` )
+                    img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
                         .card-content__back-inner 
                             .card-content__detail
                                 span #{exbInfo.detail}
                         .card-content__more-info-btn
-                            span MORE INFO
+                            span 
+                                a(href=`/main/detail/${exbInfo._id}`) MORE INFO
     else
         .mainSection__card
             .mainSection__card-inner 
                 .card-front.side
-                    img.frontImg(src=`${exbInfo.thumbnailSrc}` )
+                    img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
                         .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 1); color: black;")
                             .content-category
@@ -40,40 +40,15 @@ mixin mainSectionCard(exbInfo)
                         .card-content__front-inner
                             .card-content__title
                                 div
-                                    span #{exbInfo.title}
+                                    span.content-title #{exbInfo.title}
                             .card-content__date
                                 span #{exbInfo.date}
                 .card-back.side
                     .back-blurfilter
-                    img(src=`${exbInfo.thumbnailSrc}` )
+                    img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
                         .card-content__back-inner 
                             .card-content__detail
                                 span #{exbInfo.detail}
                         .card-content__more-info-btn
                             span MORE INFO
-
-    
-    //- .mainSection__card 
-    //-     .mainSection__card-inner 
-    //-         .card-front.side
-    //-             img(src=`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW4t94H-R2NzU9os2iW09f7STfIVlpikjI1A&usqp=CAU`)
-    //-             .card-content__wrapper
-    //-                 .card-content__front-inner 
-    //-                     .card-content__title
-    //-                         div
-    //-                             span 아주멋진       아주멋진 
-                              
-    //-                     .card-content__date
-    //-                         span 2020.20201.2002
-    //-         .card-back.side
-    //-             .back-blurfilter
-    //-             img(src=`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW4t94H-R2NzU9os2iW09f7STfIVlpikjI1A&usqp=CAU`)
-    //-             .card-content__wrapper
-    //-                 .card-content__back-inner 
-    //-                     .card-content__detail
-    //-                         span 아주멋진 디테일
-    //-                 .card-content__more-info-btn
-    //-                     span DETAIL
-
-    
