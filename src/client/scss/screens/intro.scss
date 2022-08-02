@@ -1,7 +1,7 @@
 @import "../config/_variables.scss";
 
 body {
-  font-family: $sans;
+  font-family: $nexongothic;
   // font-size: 14px;
   color: $white;
   line-height: 1.3;
@@ -14,7 +14,7 @@ h1,
 h2 {
   margin: 0;
   line-height: 1;
-  font-family: $mainFont;
+  font-family: $garamond;
   font-weight: 500;
 }
 
@@ -268,7 +268,7 @@ p {
 
 .col__content-wrap {
   font-size: 0.85vw;
-  font-family: $sans;
+  font-family: $nexongothic;
   letter-spacing: 0.01vw;
   display: flex;
   justify-content: center;
@@ -442,8 +442,8 @@ p {
   font-size: 5vw;
   color: $white;
   text-decoration: none;
-  // font-family: $sans;
-  font-family: $mainFont;
+  // font-family:$nexongothic;
+  font-family: $garamond;
 }
 
 .footer__link-top {
@@ -460,7 +460,7 @@ p {
   font-size: 18px;
   color: white;
   text-decoration: none;
-  font-family: $sans;
+  font-family: $nexongothic;
 }
 
 .footer__link-top-line {

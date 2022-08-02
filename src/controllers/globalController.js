@@ -10,6 +10,11 @@ export const intro = async (req, res) => {
     allExb: allExb,
   });
 };
+export const test = async (req, res) => {
+  return res.render("test", {
+    pageTitle: "test",
+  });
+};
 // export const hallDetail = async (req, res) => {
 //   //   console.log(req);
 //   const hall = await ExbHallModel.findById(req.params.id);

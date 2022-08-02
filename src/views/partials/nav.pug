@@ -1,15 +1,53 @@
-nav.nav
-    .nav__container
-        .logo
-            a(href="/") WoExb
-        .nav__list-container
-            ul.nav__list.programs
-                li
-                    span Trends
-                li
-                    span Main
+#nav
+    .nav-logo 
+        span WoExb
+    .nav__item-wrapper
+        .nav__item
+            .nav__item-text
+                a(href="/") Trends
+            .nav__item-content-box.single-01
+                .nav__item-content
+                    .nav__item-content-wrapper
+                        .title Trend Exibitions
+                        .sub-text Check out the latest updated exhibition
+        .nav__item
+            .nav__item-text
+                a(href="/main") Main
+            .nav__item-content-box.double
+                .nav__item-content 
+                    .nav__item-content-wrapper
+                        .title All Exibitions
+                        .sub-text Get all the exhibition information
+                .nav__item-content
+                    .nav__item-content-wrapper
+                        .title Detail Informations
+                        .sub-text Get detailed exhibition information
+        .nav__item
+            .nav__item-text
+                a(href="/main/filter") Filter
+            .nav__item-content-box.triple
+                .nav__item-content.top-container
+                    .nav__item-content-wrapper
+                        .title Exibition Filter
+                        .sub-text Just look for the results you want
+                .nav__item-content-gridbox
+                    h3 Category
+                    a(href="#") Museum
+                    a(href="#") Gallery 
+                    a(href="#") Random 
                 
-        span.navTrigger
-            i
-            i
-            i
+                .nav__item-content-gridbox
+                    h3 Country
+                    a(href="#") A
+                    a(href="#") B
+                    a(href="#") C
+                    a(href="#") D
+        .nav__item
+            .nav__item-text
+                a(href="#") S
+            .nav__item-content-box.single-02
+                .nav__item-content
+                    .nav__item-content-wrapper
+                        .title F
+                        .sub-text Join
+        .nav__item.search
