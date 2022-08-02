@@ -19,7 +19,7 @@ export const main = async (req, res) => {
 };
 export const mainFilter = async (req, res) => {
   return res.render("mainFilter", {
-    pageTitle: `Main`,
+    pageTitle: `Filter`,
     allExbs: await spreadAll(),
   });
 };
