@@ -1,3 +1,10 @@
+if (document.title.toLowerCase().indexOf("main") !== -1) {
+  $$filterContentGridboxes = document.querySelectorAll(
+    ".nav__item-filter .nav__item-content-gridbox"
+  );
+  $$filterContentGridboxes.forEach((v) => (v.style.display = "none"));
+  document.querySelector(".nav__item-content-box.triple").style.height = "87px";
+}
 // $(".navTrigger").click(function () {
 //   $(this).toggleClass("active");
 //   console.log("clicked");

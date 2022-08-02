@@ -2,7 +2,9 @@
     .nav-logo 
         span WoExb
     .nav__item-wrapper
-        .nav__item
+        .nav__item.item-search-wrapper
+            include searchBar
+        .nav__item.nav__item-trends
             .nav__item-text
                 a(href="/") Trends
             .nav__item-content-box.single-01
@@ -10,7 +12,7 @@
                     .nav__item-content-wrapper
                         .title Trend Exibitions
                         .sub-text Check out the latest updated exhibition
-        .nav__item
+        .nav__item.nav__item-main
             .nav__item-text
                 a(href="/main") Main
             .nav__item-content-box.double
@@ -22,7 +24,7 @@
                     .nav__item-content-wrapper
                         .title Detail Informations
                         .sub-text Get detailed exhibition information
-        .nav__item
+        .nav__item.nav__item-filter
             .nav__item-text
                 a(href="/main/filter") Filter
             .nav__item-content-box.triple
@@ -32,9 +34,10 @@
                         .sub-text Just look for the results you want
                 .nav__item-content-gridbox
                     h3 Category
-                    a(href="#") Museum
-                    a(href="#") Gallery 
-                    a(href="#") Random 
+                    a(href="#").filter(data-filter="all") All
+                    a(href="#").filter(data-filter=".museum") Museum
+                    a(href="#").filter(data-filter=".gallery") Gallery 
+                    a(href="#").filter(data-filter="") Random 
                 
                 .nav__item-content-gridbox
                     h3 Country
@@ -44,10 +47,10 @@
                     a(href="#") D
         .nav__item
             .nav__item-text
-                a(href="#") S
+                a(href="#") Navnav
             .nav__item-content-box.single-02
                 .nav__item-content
                     .nav__item-content-wrapper
                         .title F
                         .sub-text Join
-        .nav__item.search
+        

@@ -1,5 +1,7 @@
-gsap.registerPlugin(ScrollTrigger);
+document.querySelector(".item-search-wrapper").style.visibility = "hidden";
 
+//
+gsap.registerPlugin(ScrollTrigger);
 const additionalY = { val: 0 };
 let offset = 0;
 // const cols = gsap.utils.toArray(".mainSection__col");
