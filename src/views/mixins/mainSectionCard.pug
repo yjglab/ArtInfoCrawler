@@ -5,9 +5,9 @@ mixin mainSectionCard(exbInfo)
                 .card-front.side
                     img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
-                        .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 1); color: black;")
-                            .content-category 
-                                span #{exbInfo.category}
+                        .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 0.5); color: black;")
+                            .card-content__hallname
+                                span.content-hallname #{exbInfo.hall}
                             //- .content-hall
                             //-     span #{exbInfo.hall}
                         .card-content__front-inner
@@ -32,9 +32,9 @@ mixin mainSectionCard(exbInfo)
                 .card-front.side
                     img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
                     .card-content__wrapper
-                        .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 1); color: black;")
-                            .content-category
-                                span #{exbInfo.category}
+                        .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 0.5); color: black;")
+                            .card-content__hallname
+                                span.content-hallname #{exbInfo.hall}
                             //- .content-hall
                             //-     span #{exbInfo.hall}
                         .card-content__front-inner
@@ -51,4 +51,5 @@ mixin mainSectionCard(exbInfo)
                             .card-content__detail
                                 span #{exbInfo.detail}
                         .card-content__more-info-btn
-                            span MORE INFO
+                            span  
+                                a(href=`/main/detail/${exbInfo._id}`) MORE INFO

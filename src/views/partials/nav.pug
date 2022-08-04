@@ -1,4 +1,4 @@
-#nav
+.nav
     .nav-logo 
         span WoExb
     .nav__item-wrapper
@@ -34,13 +34,31 @@
                         .sub-text Just look for the results you want
                 .nav__item-content-gridbox
                     h3 Category
-                    a(href="#").filter(data-filter="all") All
-                    a(href="#").filter(data-filter=".museum") Museum
-                    a(href="#").filter(data-filter=".gallery") Gallery 
-                    a(href="#").filter(data-filter="") Random 
+                    a.filter(data-filter="all") All
+                    a.filter(data-filter=".museum") Museum
+                    a.filter(data-filter=".gallery") Gallery 
+                    a.filter(data-filter="") 
                 
                 .nav__item-content-gridbox
+                    h3 Search Filter
+                    ul
+                        li
+                            input.radio-btn#r1(type="radio", name="radio", value="Title", checked)
+                            label.radio-label(for="r1") Title
+                        li
+                            input.radio-btn#r2(type="radio", name="radio", value="Hall")
+                            label.radio-label(for="r2") Hall Name
+                    
+                    a(href="#") 
+                    a(href="#") 
+                .nav__item-content-gridbox
                     h3 Country
+                    a(href="#") A
+                    a(href="#") B
+                    a(href="#") C
+                    a(href="#") D
+                .nav__item-content-gridbox
+                    h3 .
                     a(href="#") A
                     a(href="#") B
                     a(href="#") C

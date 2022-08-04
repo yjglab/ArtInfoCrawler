@@ -5,12 +5,6 @@ block links
     link(rel="stylesheet", href="/static/css/mainFilter.css")
     
 block content
-    //- .filter-bar
-    //-     .filter(data-filter="all") All
-    //-     .filter(data-filter=".museum") Museum
-    //-     .filter(data-filter=".gallery") Gallery
-    //-     .filter(data-filter=".ccc") ccc
-    //-     input.filter-search-bar(type="text", placeholder="Search")
     .filter-container
         - for (let exb of allExbs) {
             if exb.category === "museum"
