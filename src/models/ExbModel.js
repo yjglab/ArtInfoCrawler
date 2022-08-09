@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const exbSchema = new mongoose.Schema({
+  country: String,
   title: String,
   date: String,
   thumbnailSrc: String,

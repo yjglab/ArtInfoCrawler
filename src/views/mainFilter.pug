@@ -7,10 +7,10 @@ block links
 block content
     .filter-container
         - for (let exb of allExbs) {
-            if exb.category === "museum"
+            if exb.category === "Museum"
                 .mix.museum 
                     +mainSectionCard(exb)
-            else if exb.category === "gallery"
+            else if exb.category === "Gallery"
                 .mix.gallery
                     +mainSectionCard(exb)
         - }

@@ -5,6 +5,7 @@ import ExbHallModel from "../models/ExbHallModel";
 export const intro = async (req, res) => {
   const allExb = await ExbModel.find({});
   shuffle(allExb);
+  console.log(allExb[0]);
   return res.render("intro", {
     pageTitle: "Intro",
     allExb: allExb,
