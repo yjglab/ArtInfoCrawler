@@ -1,5 +1,5 @@
 mixin mainSectionCard(exbInfo)
-    if exbInfo.category === "museum"
+    if exbInfo.category === "Museum"
         .mainSection__card 
             .mainSection__card-inner 
                 .card-front.side
@@ -8,6 +8,8 @@ mixin mainSectionCard(exbInfo)
                         .card-content__upper-inner(style="background-color: rgba(255, 227, 176, 0.5); color: black;")
                             .card-content__hallname
                                 span.content-hallname #{exbInfo.hall}
+                            .card-content__countryname
+                                span.content-countryname #{exbInfo.country}
                             //- .content-hall
                             //-     span #{exbInfo.hall}
                         .card-content__front-inner
@@ -35,6 +37,8 @@ mixin mainSectionCard(exbInfo)
                         .card-content__upper-inner(style="background-color: rgba(112, 255, 181, 0.5); color: black;")
                             .card-content__hallname
                                 span.content-hallname #{exbInfo.hall}
+                            .card-content__countryname
+                                span.content-countryname #{exbInfo.country}
                             //- .content-hall
                             //-     span #{exbInfo.hall}
                         .card-content__front-inner

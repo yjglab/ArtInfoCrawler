@@ -2,25 +2,24 @@ import { makeInfo } from "../js/makeInfo.js";
 import ExbHallModel from "../models/ExbHallModel.js";
 import ExbModel from "../models/ExbModel.js";
 import distributeAll from "../js/distributeAll.js";
-import distributeMuseum from "../js/distributeMuseum.js";
-import distributeGallery from "../js/distributeGallery.js";
+
 import spreadAll from "../js/spreadAll.js";
 
 const childSpawn = require("child_process").spawn;
 // makeInfo(childSpawn);
 
 export const main = async (req, res) => {
-  // let test = await distributeAll();
-  // console.log(test.col1[0]);
   return res.render("main", {
     pageTitle: `Main`,
-    allCols: await distributeAll(),
+    allExbs: await spreadAll(),
   });
 };
-export const mainFilter = async (req, res) => {
-  return res.render("mainFilter", {
-    pageTitle: `Filter`,
-    allExbs: await spreadAll(),
+export const show = async (req, res) => {
+  // let test = await distributeAll();
+  // console.log(test.col1[0]);
+  return res.render("show", {
+    pageTitle: `Show`,
+    allCols: await distributeAll(),
   });
 };
 export const data = async (req, res) => {

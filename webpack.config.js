@@ -6,11 +6,8 @@ module.exports = {
   entry: {
     layout: ["./src/client/js/layout.js", "./src/client/scss/layout.scss"],
     intro: ["./src/client/js/intro.js", "./src/client/scss/screens/intro.scss"],
+    show: ["./src/client/js/show.js", "./src/client/scss/screens/show.scss"],
     main: ["./src/client/js/main.js", "./src/client/scss/screens/main.scss"],
-    mainFilter: [
-      "./src/client/js/mainFilter.js",
-      "./src/client/scss/screens/mainFilter.scss",
-    ],
     nav: ["./src/client/js/nav.js"],
     data: ["./src/client/scss/screens/data.scss"],
     test: ["./src/client/scss/screens/test.scss"],

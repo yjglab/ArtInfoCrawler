@@ -9,7 +9,7 @@ const hallName = [
   "Rodin Museum", // 5
   // us
   "Cincinnati Art Museum",
-  "The Art Institute of Chicago",
+  "Art Institute Chicago",
   "Museum of Fine Arts, Boston", // 8
   // at
   "Kunsthistorisches Museum", // wien

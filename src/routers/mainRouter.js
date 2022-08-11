@@ -1,16 +1,11 @@
 import express from "express";
 
-import {
-  main,
-  data,
-  exbDetail,
-  mainFilter,
-} from "../controllers/mainController";
+import { show, data, exbDetail, main } from "../controllers/mainController";
 
 const mainRouter = express.Router();
 
 mainRouter.get("/", main);
-mainRouter.get("/filter", mainFilter);
+mainRouter.get("/show", show);
 mainRouter.get("/detail/:id", exbDetail);
 mainRouter.get("/data", data);
 
