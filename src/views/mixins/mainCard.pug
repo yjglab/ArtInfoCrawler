@@ -1,0 +1,39 @@
+mixin mainCard(exbInfo, exbCategory)
+    .main-card-container
+        .main-card
+            .main-card-category-icon
+                if exbCategory === "museum"
+                    i.fa-solid.fa-building-columns
+                else if exbCategory === "gallery"
+                    i.fa-solid.fa-palette
+            .main-card-image 
+                img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
+
+    //- .main-card-container
+    //-     .main-section-card-inner 
+    //-         .card-front.side
+    //-             img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
+    //-             .card-content__wrapper
+    //-                 .card-content__upper-inner
+    //-                     .card-content__hallname
+    //-                         span.content-hallname #{exbInfo.hall}
+    //-                     .card-content__countryname
+    //-                         span.content-countryname #{exbInfo.country}
+    //-                     //- .content-hall
+    //-                     //-     span #{exbInfo.hall}
+    //-                 .card-content__front-inner
+    //-                     .card-content__title
+    //-                         div
+    //-                             span.content-title #{exbInfo.title}
+    //-                     .card-content__date
+    //-                         span #{exbInfo.date}
+    //-         .card-back.side
+    //-             .back-blurfilter
+    //-             img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
+    //-             .card-content__wrapper
+    //-                 .card-content__back-inner 
+    //-                     .card-content__detail
+    //-                         span #{exbInfo.detail}
+    //-                 .card-content__more-info-btn
+    //-                     span 
+    //-                         a(href=`/main/detail/${exbInfo._id}`) MORE INFO

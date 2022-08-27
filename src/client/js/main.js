@@ -1,13 +1,3 @@
-document.querySelectorAll(".mainSection__card-inner").forEach((v) =>
-  v.addEventListener("click", () => {
-    v.classList.add("flipped");
-
-    setTimeout(() => {
-      v.classList.remove("flipped");
-    }, 4000);
-  })
-);
-
 // filter 부
 let searchFilter = "Title"; // default
 document.querySelectorAll(".radio-btn").forEach((v) =>
@@ -16,13 +6,12 @@ document.querySelectorAll(".radio-btn").forEach((v) =>
     searchFilter = v.value;
     $filterSearchbar.value = "";
     $filterSearchbar.placeholder = `Search ${searchFilter}`;
-    console.log(searchFilter);
   })
 );
 
-const filterContainer = ".filter-container";
+const mainCardSectionContainer = ".main-card-section-container";
 $(function () {
-  $(filterContainer).mixItUp({
+  $(mainCardSectionContainer).mixItUp({
     animation: {
       duration: 1000,
       effects: "fade translateY(100%) stagger(25ms)",
@@ -73,10 +62,10 @@ $(function () {
             $matching = $matching.not(this);
           }
         });
-        $(filterContainer).mixItUp("filter", $matching);
+        $(mainCardSectionContainer).mixItUp("filter", $matching);
       } else {
         // input 값 없으면 리셋
-        $(filterContainer).mixItUp("filter", "all");
+        $(mainCardSectionContainer).mixItUp("filter", "all");
       }
     }, 600);
   });
@@ -87,17 +76,18 @@ window.addEventListener("load", function () {
   setTimeout(lazyLoad, 1000);
 });
 
-function lazyLoad() {
-  var card_images = document.querySelectorAll(".card-front");
+// function lazyLoad() {
+//   var card_images = document.querySelectorAll(".card-front");
 
-  card_images.forEach(function (card_image) {
-    // var image_url = card_image.getAttribute('data-image-full');
-    var content_image = card_image.querySelector("img");
-    var image_url = content_image.getAttribute("src");
-    content_image.src = image_url;
-    content_image.addEventListener("load", function () {
-      card_image.style.backgroundImage = "url(" + image_url + ")";
-      card_image.className = card_image.className + " is-loaded";
-    });
-  });
-}
+//   card_images.forEach(function (card_image) {
+//     var content_image = card_image.querySelector("img");
+//     var image_url = content_image.getAttribute("src");
+//     content_image.src = image_url;
+//     content_image.addEventListener("load", function () {
+//       card_image.style.backgroundImage = "url(" + image_url + ")";
+//       card_image.className = card_image.className + " is-loaded";
+//     });
+//   });
+// }
+
+// 드래그 부
