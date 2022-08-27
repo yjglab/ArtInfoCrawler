@@ -1,4 +1,4 @@
-// filter 부
+// 필터 파트
 let searchFilter = "Title"; // default
 document.querySelectorAll(".radio-btn").forEach((v) =>
   v.addEventListener("click", () => {
@@ -44,11 +44,11 @@ $(function () {
           $this = $("this");
 
           if (searchFilter === "Title") {
-            searchFilterClassName = ".content-title";
+            searchFilterClassName = ".main-card-info .info-title";
           } else if (searchFilter === "Hall") {
-            searchFilterClassName = ".content-hallname";
+            searchFilterClassName = ".main-card-info .info-hall";
           } else if (searchFilter === "Country") {
-            searchFilterClassName = ".content-countryname";
+            searchFilterClassName = ".main-card-info .info-country";
           }
           if (
             $(this)
@@ -71,10 +71,10 @@ $(function () {
   });
 });
 
-//
-window.addEventListener("load", function () {
-  setTimeout(lazyLoad, 1000);
-});
+// 이미지 지연 로딩 파트
+// window.addEventListener("load", function () {
+//   setTimeout(lazyLoad, 1000);
+// });
 
 // function lazyLoad() {
 //   var card_images = document.querySelectorAll(".card-front");
@@ -90,4 +90,48 @@ window.addEventListener("load", function () {
 //   });
 // }
 
-// 드래그 부
+// 정보 플로팅 파트
+const $mainCardInfoFloater = document.querySelector(".main-card-info-floater");
+
+const $$mainCardContainer = document.querySelectorAll(".main-card-container");
+const handleCardMouseEnter = (e) => {
+  $mainCardInfoFloater.style.opacity = "1";
+
+  const $mainCardInfo = e.target.querySelector(".main-card-info");
+  const cardInfo = $mainCardInfo.children;
+
+  const cardTitle = cardInfo[0].textContent;
+  const cardDate = cardInfo[1].textContent;
+  const cardHall = cardInfo[2].textContent;
+  const cardCountry = cardInfo[3].textContent;
+  const cardCategory = cardInfo[4].textContent;
+  const cardImageSrc = cardInfo[5].textContent;
+
+  const floaterSubtitleCol1 = document.querySelector(
+    ".floater-subtitle-col.col1 h1"
+  );
+  floaterSubtitleCol1.textContent = `${cardCountry} ${cardCategory}`;
+  const floaterSubtitleCol2 = document.querySelector(
+    ".floater-subtitle-col.col2 h1"
+  );
+  floaterSubtitleCol2.textContent = `${cardHall}`;
+  const floaterSubtitleCol3 = document.querySelector(
+    ".floater-subtitle-col.col3 h1"
+  );
+  floaterSubtitleCol3.textContent = `${cardDate}`;
+
+  const floaterImg = document.querySelector(".floater-img img");
+  floaterImg.src = cardImageSrc;
+  const floaterTitle = document.querySelector(".floater-title h1");
+  floaterTitle.textContent = `${cardTitle}`;
+};
+$$mainCardContainer.forEach((v) =>
+  v.addEventListener("mouseenter", handleCardMouseEnter)
+);
+
+const handleCardMouseLeave = () => {
+  $mainCardInfoFloater.style.opacity = "0";
+};
+$$mainCardContainer.forEach((v) =>
+  v.addEventListener("mouseleave", handleCardMouseLeave)
+);

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const exbSchema = new mongoose.Schema({
   country: String,
+  countryCode: String,
   title: String,
   date: String,
   thumbnailSrc: String,

@@ -2,12 +2,23 @@ mixin mainCard(exbInfo, exbCategory)
     .main-card-container
         .main-card
             .main-card-category-icon
-                if exbCategory === "museum"
+                if exbCategory === "Museum"
                     i.fa-solid.fa-building-columns
-                else if exbCategory === "gallery"
+                else if exbCategory === "Gallery"
                     i.fa-solid.fa-palette
+            .main-card-country-icon 
+                img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
             .main-card-image 
                 img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
+                
+
+            .main-card-info 
+                .info-title=exbInfo.title
+                .info-date=exbInfo.date
+                .info-hall=exbInfo.hall
+                .info-country=exbInfo.country
+                .info-category=exbCategory
+                .info-imgSrc=exbInfo.thumbnailSrc
 
     //- .main-card-container
     //-     .main-section-card-inner 
