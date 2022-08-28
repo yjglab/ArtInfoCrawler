@@ -135,3 +135,40 @@ const handleCardMouseLeave = () => {
 $$mainCardContainer.forEach((v) =>
   v.addEventListener("mouseleave", handleCardMouseLeave)
 );
+
+// const $$mainCardDetailFloater = document.querySelectorAll(
+//   ".main-card-detail-floater"
+// );
+// const handleCardClick = (e) => {
+//   const $mainCardDetailFloater = e.currentTarget.previousSibling;
+//   $mainCardDetailFloater.style.width = "200%";
+//   $mainCardDetailFloater.style.height = "800px";
+//   $mainCardDetailFloater.style.zIndex = "10";
+// };
+const handleCardClick = (e) => {
+  const $mainCardContainer = e.currentTarget;
+  $mainCardContainer.classList.add("clicked");
+
+  const $mainCardDetailFloaterContainer = document.querySelector(
+    ".main-card-detail-floater-container"
+  );
+  setTimeout(() => {
+    $mainCardDetailFloaterContainer.classList.add("floated");
+  }, 250);
+
+  const $mainSectionContainer = document.querySelector(
+    ".main-section-container"
+  );
+  $mainSectionContainer.classList.add("stepback");
+
+  const handleMainCardDetailBack = () => {
+    $mainCardContainer.classList.remove("clicked");
+    $mainSectionContainer.classList.remove("stepback");
+    $mainCardDetailFloaterContainer.classList.remove("floated");
+  };
+  const $mainCardDetailBack = document.querySelector(".main-card-detail-back");
+  $mainCardDetailBack.addEventListener("click", handleMainCardDetailBack);
+};
+$$mainCardContainer.forEach((v) =>
+  v.addEventListener("click", handleCardClick)
+);

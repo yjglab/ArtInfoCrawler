@@ -5,29 +5,33 @@ block links
     link(rel="stylesheet", href="/static/css/main.css")
     
 block content
-    .main-banner-section-container
-    .main-card-section-container
-        - for (let exb of allExbs) {
-            if exb.category === "Museum"
-                .mix.filter-museum(class=`${(exb.country).split(' ').join('')}`)
-                    +mainCard(exb, exb.category)
-            else if exb.category === "Gallery"
-                .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
-                    +mainCard(exb, exb.category)
-        - }
-    .main-card-info-floater
-        .floater-img
-            img(src="")
-        .floater-info
-            .floater-subtitle
-                .floater-subtitle-col.col1
+    .main-card-detail-floater-container
+        .main-card-detail-back
+        .main-card-detail-floater
+    .main-section-container
+        .main-banner-section-container
+        .main-card-section-container
+            - for (let exb of allExbs) {
+                if exb.category === "Museum"
+                    .mix.filter-museum(class=`${(exb.country).split(' ').join('')}`)
+                        +mainCard(exb, exb.category)
+                else if exb.category === "Gallery"
+                    .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
+                        +mainCard(exb, exb.category)
+            - }
+        .main-card-info-floater
+            .floater-img
+                img(src="")
+            .floater-info
+                .floater-subtitle
+                    .floater-subtitle-col.col1
+                        h1
+                    .floater-subtitle-col.col2
+                        h1
+                    .floater-subtitle-col.col3
+                        h1
+                .floater-title
                     h1
-                .floater-subtitle-col.col2
-                    h1
-                .floater-subtitle-col.col3
-                    h1
-            .floater-title
-                h1
 block scripts
     script(src="/static/js/main.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Draggable.min.js" integrity="sha512-7i9PEs61XY2ohBjB4rzLgcE/hSBFP1dJ9an++kludOKHlZJqyovwTEr5ybsr4cmrmXORAG79Y+gCdU9nQJdnZg==" crossorigin="anonymous" referrerpolicy="no-referrer")
