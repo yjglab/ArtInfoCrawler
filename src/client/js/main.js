@@ -136,38 +136,76 @@ $$mainCardContainer.forEach((v) =>
   v.addEventListener("mouseleave", handleCardMouseLeave)
 );
 
-// const $$mainCardDetailFloater = document.querySelectorAll(
-//   ".main-card-detail-floater"
-// );
 // const handleCardClick = (e) => {
-//   const $mainCardDetailFloater = e.currentTarget.previousSibling;
-//   $mainCardDetailFloater.style.width = "200%";
-//   $mainCardDetailFloater.style.height = "800px";
-//   $mainCardDetailFloater.style.zIndex = "10";
+//   const $mainCardContainer = e.currentTarget;
+//   $mainCardContainer.classList.add("clicked");
+
+//   const $mainCardDetailFloaterContainer = document.querySelector(
+//     ".main-card-detail-floater-container"
+//   );
+//   setTimeout(() => {
+//     $mainCardDetailFloaterContainer.classList.add("floated");
+//   }, 250);
+
+//   const $mainSectionContainer = document.querySelector(
+//     ".main-section-container"
+//   );
+//   $mainSectionContainer.classList.add("stepback");
+
+//   const handleMainCardDetailBack = () => {
+//     $mainCardContainer.classList.remove("clicked");
+//     $mainSectionContainer.classList.remove("stepback");
+//     $mainCardDetailFloaterContainer.classList.remove("floated");
+//   };
+//   const $mainCardDetailBack = document.querySelector(".main-card-detail-back");
+//   $mainCardDetailBack.addEventListener("click", handleMainCardDetailBack);
+
+//   setTimeout(() => {
+//     const a = document
+//       .querySelector(".main-card-detail-floater")
+//       .getBoundingClientRect();
+//     console.log(a.x, a.y);
+//   }, 2000);
 // };
+// $$mainCardContainer.forEach((v) =>
+//   v.addEventListener("click", handleCardClick)
+// );
+
+let extraWidthPercent = 10.5;
+let extraHeightPercent = 10.5;
+window.addEventListener("resize", () => {
+  width = document.body.clientWidth;
+  if (width < 768) {
+    extraWidthPercent = 6;
+  }
+});
+
 const handleCardClick = (e) => {
   const $mainCardContainer = e.currentTarget;
-  $mainCardContainer.classList.add("clicked");
 
-  const $mainCardDetailFloaterContainer = document.querySelector(
-    ".main-card-detail-floater-container"
+  const viewPortWidth = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
   );
-  setTimeout(() => {
-    $mainCardDetailFloaterContainer.classList.add("floated");
-  }, 250);
-
-  const $mainSectionContainer = document.querySelector(
-    ".main-section-container"
+  const viewPortHeight = Math.max(
+    document.documentElement.clientHeight || 0,
+    window.innerHeight || 0
   );
-  $mainSectionContainer.classList.add("stepback");
+  if (viewPortWidth < 768) {
+    console.log("rr");
+    extraWidthPercent = 6;
+  }
+  const currentCardX = $mainCardContainer.getClientRects()[0].x;
+  const currentCardY = $mainCardContainer.getClientRects()[0].y;
+  $mainCardContainer.style.zIndex = 999;
+  $mainCardContainer.style.left = `${
+    viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
+  }px`;
+  $mainCardContainer.style.top = `${
+    viewPortHeight / 2 - currentCardY - viewPortHeight / extraHeightPercent
+  }px`;
 
-  const handleMainCardDetailBack = () => {
-    $mainCardContainer.classList.remove("clicked");
-    $mainSectionContainer.classList.remove("stepback");
-    $mainCardDetailFloaterContainer.classList.remove("floated");
-  };
-  const $mainCardDetailBack = document.querySelector(".main-card-detail-back");
-  $mainCardDetailBack.addEventListener("click", handleMainCardDetailBack);
+  console.log($mainCardContainer.style.left, $mainCardContainer.style.top);
 };
 $$mainCardContainer.forEach((v) =>
   v.addEventListener("click", handleCardClick)
