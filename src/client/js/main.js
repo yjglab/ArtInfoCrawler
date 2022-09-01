@@ -133,15 +133,23 @@ window.addEventListener("resize", () => {
 // 메인카드 제자리로
 function mainCardReplacing() {
   $$mainCardContainers.forEach((v) => {
-    v.addEventListener("click", handleCardClick);
+    v.classList.add("hoverable");
     if (v.classList.contains("main-card-clicked")) {
       v.style.left = 0;
       v.style.top = 0;
       v.classList.remove("main-card-clicked");
       v.previousSibling.classList.remove("main-card-clicked"); // main-card-detail-background
+
       $mainCardInfoFloater.classList.remove("main-card-clicked");
     }
   });
+
+  setTimeout(() => {
+    $$mainCardContainers.forEach((v) => {
+      v.style.zIndex = 1;
+      v.addEventListener("click", handleCardClick);
+    });
+  }, 500);
 }
 
 // 메인카드 클릭 이벤트
@@ -149,8 +157,8 @@ const handleCardClick = (e) => {
   const $mainCardContainer = e.currentTarget;
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
   $mainCardContainer.classList.add("main-card-clicked");
+  $mainCardContainer.style.zIndex = 999;
   $mainCardDetailBackground.classList.add("main-card-clicked");
-
   $mainCardDetailBackground.addEventListener("click", () => {
     // (임시)나중에 x버튼도 추가
     mainCardReplacing();
@@ -187,9 +195,10 @@ const handleCardClick = (e) => {
 };
 
 function init() {
-  $$mainCardContainers.forEach((v) =>
-    v.addEventListener("click", handleCardClick)
-  );
+  $$mainCardContainers.forEach((v) => {
+    v.style.zIndex = 1;
+    v.addEventListener("click", handleCardClick);
+  });
 }
 
 init();
