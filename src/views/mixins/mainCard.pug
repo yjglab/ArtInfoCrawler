@@ -1,5 +1,6 @@
 mixin mainCard(exbInfo, exbCategory)
     .main-card-detail-background
+        
     .main-card-container.hoverable
         .main-card
             .main-card-category-icon
@@ -11,14 +12,17 @@ mixin mainCard(exbInfo, exbCategory)
                 img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
             .main-card-image
                 img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-
-            .main-card-info 
-                .info-title=exbInfo.title
-                .info-date=exbInfo.date
-                .info-hall=exbInfo.hall
-                .info-country=exbInfo.country
-                .info-category=exbCategory
-                .info-imgSrc=exbInfo.thumbnailSrc
+        
+        .main-card-detail-container
+            
+            //- 데이터만 저장
+        .main-card-info 
+            .info-title=exbInfo.title
+            .info-date=exbInfo.date
+            .info-hall=exbInfo.hall
+            .info-country=exbInfo.country
+            .info-category=exbCategory
+            .info-imgSrc=exbInfo.thumbnailSrc
 
     //- .main-card-container
     //-     .main-section-card-inner 
