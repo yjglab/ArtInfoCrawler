@@ -125,11 +125,12 @@ main {
         right: 0;
         filter: saturate(0);
         transition: filter 0.3s ease-in-out;
-
         &:hover {
           filter: saturate(1);
         }
-
+        &.main-card-clicked {
+          filter: saturate(1);
+        }
         img {
           -webkit-user-drag: none;
 

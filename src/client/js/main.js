@@ -134,10 +134,12 @@ window.addEventListener("resize", () => {
 function mainCardReplacing() {
   $$mainCardContainers.forEach((v) => {
     v.classList.add("hoverable");
+
     if (v.classList.contains("main-card-clicked")) {
       v.style.left = 0;
       v.style.top = 0;
       v.classList.remove("main-card-clicked");
+      v.querySelector(".main-card-image").classList.remove("main-card-clicked");
       v.previousSibling.classList.remove("main-card-clicked"); // main-card-detail-background
 
       $mainCardInfoFloater.classList.remove("main-card-clicked");
@@ -158,6 +160,11 @@ const handleCardClick = (e) => {
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
   $mainCardContainer.classList.add("main-card-clicked");
   $mainCardContainer.style.zIndex = 999;
+
+  $mainCardContainer
+    .querySelector(".main-card-image")
+    .classList.add("main-card-clicked");
+
   $mainCardDetailBackground.classList.add("main-card-clicked");
   $mainCardDetailBackground.addEventListener("click", () => {
     // (임시)나중에 x버튼도 추가
