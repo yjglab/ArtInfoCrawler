@@ -5,20 +5,22 @@ block links
     link(rel="stylesheet", href="/static/css/main.css")
     
 block content
-    .main-card-detail-floater-container
-        .main-card-detail-back
-        .main-card-detail-floater
+    //- .main-card-detail-floater-container
+    //-     .main-card-detail-back
+    //-     .main-card-detail-floater
+    
     .main-section-container
         .main-banner-section-container
         .main-card-section-container
-            - for (let exb of allExbs) {
-                if exb.category === "Museum"
-                    .mix.filter-museum(class=`${(exb.country).split(' ').join('')}`)
-                        +mainCard(exb, exb.category)
-                else if exb.category === "Gallery"
-                    .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
-                        +mainCard(exb, exb.category)
-            - }
+            .main-card-mix-container
+                - for (let exb of allExbs) {
+                    if exb.category === "Museum"
+                        .mix.filter-museum(class=`${(exb.country).split(' ').join('')}`)
+                            +mainCard(exb, exb.category)
+                    else if exb.category === "Gallery"
+                        .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
+                            +mainCard(exb, exb.category)
+                - }
         .main-card-info-floater
             .floater-img
                 img(src="")

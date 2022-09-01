@@ -1,6 +1,6 @@
 mixin mainCard(exbInfo, exbCategory)
-    
-    .main-card-container
+    .main-card-detail-background
+    .main-card-container.hoverable
         .main-card
             .main-card-category-icon
                 if exbCategory === "Museum"
@@ -9,9 +9,8 @@ mixin mainCard(exbInfo, exbCategory)
                     i.fa-solid.fa-palette
             .main-card-country-icon 
                 img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
-            .main-card-image 
+            .main-card-image
                 img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-                
 
             .main-card-info 
                 .info-title=exbInfo.title

@@ -4,93 +4,6 @@
 
 ### python
 
-[UK. United Kingdom]
-
-- uk_british.py : 대영 박물관
-- uk_london_natl.py : 런던 내셔널 갤러리
-- uk_victoriaAlbert.py : V&A 박물관
-
-[FR. French]
-
-- fr_pompidou.py : 조르주 퐁피두 센터
-- fr_orsay.py : 오르세 미술관
-- fr_lodin.py : 로댕 미술관
-
-[US. United States]
-
-- us_cincinnati.py : 신시내티 미술관
-- us_chicago.py : 시카고 미술관
-- us_boston.py : 보스턴 미술관
-
-[AT. Austria]
-
-- at_wien.py : 비엔나 박물관
-- at_arsElectronica.py : 아르스 일렉트로니카 미래 박물관
-- at_belvedere.py : 벨베데레 뮤지엄
-
-[ES. Spain]
-
-- es_prado.py : 프라도 미술관
-- es_malangaAutomovil.py : 말라가 자동차 박물관
-- es_thyssen.py : 티센 보르네미사 박물관
-
-[IT. Italy]
-
-- it_uffizi.py : 우피치 박물관
-- it_ducale.py : 두칼레 궁전
-- it_napoli.py : 나폴리 고고학 박물관
-
-[KR. Republic of Korea]
-
-- kr_modernContemporary.py : 국립현대미술관
-- kr_natl.py : 국립중앙박물관
-- kr_natlFolk : 국립민속박물관
-
-[JP. Japan]
-
-- jp_kyotoNatl.py : 교토국립박물관
-- jp_naraNatl.py : 나라국립박물관
-- jp_tokyoNatl.py : 도쿄국립박물관
-
-[GR. Greece]
-
-- gr_archaeological.py : 아테네 국립 고고학 박물관
-- gr_odysseus.py : 아테네 아고라
-- gr_thessaloniki.py : 테살로니키 고고학 박물관
-
-[CZ. Czech]
-
-- cz_brnoTechnical.py : 브르노 기계 박물관
-- cz_pragueNatl.py : 프라하 국립 박물관
-- cz_pragueNatlGallery.py : 프라하 국립 미술관
-
-[RU. Russia]
-
-- ru_gallery.py : 러시아 미술관
-- ru_kremin.py : 모스크바 크렘린
-- ru_tretyakov.py : 트레티야코프 미술관
-
-[CH. Swiss]
-
-- ch_zurichNatl.py : 취리히 국립 박물관
-- ch_olympic.py : 올림픽 박물관
-- ch_rietberg.py : 취리히 rietberg 박물관
-
-[PL. Poland]
-
-- pl_polin.py : 폴란드 박물관
-- pl_warsawNatl.py : 바르샤바 국립 미술관
-- pl_fryderykChopin.py : 프레데릭 쇼팽 박물관
-
-[CA. Canada]
-
-- ca_history.py : 캐나다 역사 박물관
-- ca_humanRights.py : 위니펙 인권 박물관
-- ca_ontario.py : 로열 온타리오 박물관
-
-이집트,중국,남아공,모로코
-,룩셈부르크,몽골,바티칸 인도,헝가리,홍콩
-
 ### JavaScript
 
 - index.js : 서버 관리
@@ -129,15 +42,6 @@
 - makeInfo.js
 
 ### 라우트
-
-[/] /intro
-[/main] 전체 전시 정보 (title, date, thumb만)
-[/main/:id] 관별 전시 정보
-[/main/detail/:id] 개별 전시 정보 (+detail)
-[/main/museum] 뮤지엄 전시 정보
-[/main/gallery] 갤러리 전시 정보
-[/main/country] 국가
-[/main/country/...] 국가별 전시 정보
 
 <!-- 조회수 -->
 

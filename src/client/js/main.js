@@ -9,9 +9,9 @@ document.querySelectorAll(".radio-btn").forEach((v) =>
   })
 );
 
-const mainCardSectionContainer = ".main-card-section-container";
+const mainCardMixContainer = ".main-card-mix-container";
 $(function () {
-  $(mainCardSectionContainer).mixItUp({
+  $(mainCardMixContainer).mixItUp({
     animation: {
       duration: 1000,
       effects: "fade translateY(100%) stagger(25ms)",
@@ -62,38 +62,18 @@ $(function () {
             $matching = $matching.not(this);
           }
         });
-        $(mainCardSectionContainer).mixItUp("filter", $matching);
+        $(mainCardMixContainer).mixItUp("filter", $matching);
       } else {
         // input 값 없으면 리셋
-        $(mainCardSectionContainer).mixItUp("filter", "all");
+        $(mainCardMixContainer).mixItUp("filter", "all");
       }
     }, 600);
   });
 });
 
-// 이미지 지연 로딩 파트
-// window.addEventListener("load", function () {
-//   setTimeout(lazyLoad, 1000);
-// });
-
-// function lazyLoad() {
-//   var card_images = document.querySelectorAll(".card-front");
-
-//   card_images.forEach(function (card_image) {
-//     var content_image = card_image.querySelector("img");
-//     var image_url = content_image.getAttribute("src");
-//     content_image.src = image_url;
-//     content_image.addEventListener("load", function () {
-//       card_image.style.backgroundImage = "url(" + image_url + ")";
-//       card_image.className = card_image.className + " is-loaded";
-//     });
-//   });
-// }
-
 // 정보 플로팅 파트
 const $mainCardInfoFloater = document.querySelector(".main-card-info-floater");
-
-const $$mainCardContainer = document.querySelectorAll(".main-card-container");
+const $$mainCardContainers = document.querySelectorAll(".main-card-container");
 const handleCardMouseEnter = (e) => {
   $mainCardInfoFloater.style.opacity = "1";
 
@@ -125,63 +105,59 @@ const handleCardMouseEnter = (e) => {
   const floaterTitle = document.querySelector(".floater-title h1");
   floaterTitle.textContent = `${cardTitle}`;
 };
-$$mainCardContainer.forEach((v) =>
+$$mainCardContainers.forEach((v) =>
   v.addEventListener("mouseenter", handleCardMouseEnter)
 );
 
 const handleCardMouseLeave = () => {
   $mainCardInfoFloater.style.opacity = "0";
 };
-$$mainCardContainer.forEach((v) =>
+$$mainCardContainers.forEach((v) =>
   v.addEventListener("mouseleave", handleCardMouseLeave)
 );
 
-// const handleCardClick = (e) => {
-//   const $mainCardContainer = e.currentTarget;
-//   $mainCardContainer.classList.add("clicked");
-
-//   const $mainCardDetailFloaterContainer = document.querySelector(
-//     ".main-card-detail-floater-container"
-//   );
-//   setTimeout(() => {
-//     $mainCardDetailFloaterContainer.classList.add("floated");
-//   }, 250);
-
-//   const $mainSectionContainer = document.querySelector(
-//     ".main-section-container"
-//   );
-//   $mainSectionContainer.classList.add("stepback");
-
-//   const handleMainCardDetailBack = () => {
-//     $mainCardContainer.classList.remove("clicked");
-//     $mainSectionContainer.classList.remove("stepback");
-//     $mainCardDetailFloaterContainer.classList.remove("floated");
-//   };
-//   const $mainCardDetailBack = document.querySelector(".main-card-detail-back");
-//   $mainCardDetailBack.addEventListener("click", handleMainCardDetailBack);
-
-//   setTimeout(() => {
-//     const a = document
-//       .querySelector(".main-card-detail-floater")
-//       .getBoundingClientRect();
-//     console.log(a.x, a.y);
-//   }, 2000);
-// };
-// $$mainCardContainer.forEach((v) =>
-//   v.addEventListener("click", handleCardClick)
-// );
-
-let extraWidthPercent = 10.5;
-let extraHeightPercent = 10.5;
+// 메인카드 반응형 위치
+let extraWidthPercent = 10.8;
+let extraHeightPercent = 5;
 window.addEventListener("resize", () => {
-  width = document.body.clientWidth;
-  if (width < 768) {
+  currentBrowserWidth = document.body.clientWidth;
+  if (currentBrowserWidth < 768) {
     extraWidthPercent = 6;
+  } else {
+    extraWidthPercent = 10.8;
   }
+
+  mainCardReplacing();
 });
 
+// 메인카드 제자리로
+function mainCardReplacing() {
+  $$mainCardContainers.forEach((v) => {
+    v.addEventListener("click", handleCardClick);
+    if (v.classList.contains("main-card-clicked")) {
+      v.style.left = 0;
+      v.style.top = 0;
+      v.classList.remove("main-card-clicked");
+      v.previousSibling.classList.remove("main-card-clicked"); // main-card-detail-background
+      $mainCardInfoFloater.classList.remove("main-card-clicked");
+    }
+  });
+}
+
+// 메인카드 클릭 이벤트
 const handleCardClick = (e) => {
   const $mainCardContainer = e.currentTarget;
+  const $mainCardDetailBackground = $mainCardContainer.previousSibling;
+  $mainCardContainer.classList.add("main-card-clicked");
+  $mainCardDetailBackground.classList.add("main-card-clicked");
+
+  $mainCardDetailBackground.addEventListener("click", () => {
+    // (임시)나중에 x버튼도 추가
+    mainCardReplacing();
+  });
+  $$mainCardContainers.forEach((v) =>
+    v.removeEventListener("click", handleCardClick)
+  );
 
   const viewPortWidth = Math.max(
     document.documentElement.clientWidth || 0,
@@ -192,12 +168,11 @@ const handleCardClick = (e) => {
     window.innerHeight || 0
   );
   if (viewPortWidth < 768) {
-    console.log("rr");
     extraWidthPercent = 6;
   }
   const currentCardX = $mainCardContainer.getClientRects()[0].x;
   const currentCardY = $mainCardContainer.getClientRects()[0].y;
-  $mainCardContainer.style.zIndex = 999;
+
   $mainCardContainer.style.left = `${
     viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
   }px`;
@@ -205,8 +180,35 @@ const handleCardClick = (e) => {
     viewPortHeight / 2 - currentCardY - viewPortHeight / extraHeightPercent
   }px`;
 
-  console.log($mainCardContainer.style.left, $mainCardContainer.style.top);
+  $$mainCardContainers.forEach((v) => {
+    v.classList.remove("hoverable");
+  });
+  $mainCardInfoFloater.classList.add("main-card-clicked");
 };
-$$mainCardContainer.forEach((v) =>
-  v.addEventListener("click", handleCardClick)
-);
+
+function init() {
+  $$mainCardContainers.forEach((v) =>
+    v.addEventListener("click", handleCardClick)
+  );
+}
+
+init();
+
+// 이미지 지연 로딩 파트
+// window.addEventListener("load", function () {
+//   setTimeout(lazyLoad, 1000);
+// });
+
+// function lazyLoad() {
+//   var card_images = document.querySelectorAll(".card-front");
+
+//   card_images.forEach(function (card_image) {
+//     var content_image = card_image.querySelector("img");
+//     var image_url = content_image.getAttribute("src");
+//     content_image.src = image_url;
+//     content_image.addEventListener("load", function () {
+//       card_image.style.backgroundImage = "url(" + image_url + ")";
+//       card_image.className = card_image.className + " is-loaded";
+//     });
+//   });
+// }
