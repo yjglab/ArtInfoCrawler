@@ -131,7 +131,12 @@ function mainCardReplacing() {
         "main-card-clicked"
       );
       v.previousSibling.classList.remove("main-card-clicked"); // main-card-detail-background
-
+      v.querySelector(".main-card-category-icon").classList.remove(
+        "main-card-clicked"
+      );
+      v.querySelector(".main-card-country-icon").classList.remove(
+        "main-card-clicked"
+      );
       $mainCardInfoFloater.classList.remove("main-card-clicked");
     }
   });
@@ -147,6 +152,7 @@ function mainCardReplacing() {
 const handleCardClick = (e) => {
   const $mainCardContainer = e.currentTarget;
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
+
   $mainCardContainer.style.zIndex = 9999;
   $mainCardContainer.classList.add("main-card-clicked");
 
@@ -159,7 +165,14 @@ const handleCardClick = (e) => {
   $mainCardContainer
     .querySelector(".main-card-detail-container")
     .classList.add("main-card-clicked");
+  $mainCardContainer
+    .querySelector(".main-card-category-icon")
+    .classList.add("main-card-clicked");
+  $mainCardContainer
+    .querySelector(".main-card-country-icon")
+    .classList.add("main-card-clicked");
   $mainCardDetailBackground.classList.add("main-card-clicked");
+
   $mainCardDetailBackground.addEventListener("click", () => {
     // (임시)나중에 x버튼도 추가
     mainCardReplacing();
@@ -170,13 +183,11 @@ const handleCardClick = (e) => {
 
   // 메인카드 반응형 위치
   let extraWidthPercent = 10.8;
-  let extraHeightPercent = 30;
+  let extraHeightPercent = 50;
   window.addEventListener("resize", () => {
     currentBrowserWidth = document.body.clientWidth;
     if (currentBrowserWidth < 768) {
-      extraWidthPercent = 6;
     } else {
-      extraWidthPercent = 10.8;
     }
 
     mainCardReplacing();
@@ -197,7 +208,6 @@ const handleCardClick = (e) => {
   // $mainCardContainer.style.left = `${
   //   viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
   // }px`;
-  console.log(currentCardY);
   $mainCardContainer.style.left = `${0 - currentCardX + viewPortWidth / 10}px`;
   $mainCardContainer.style.top = `${
     0 - currentCardY + viewPortHeight / 20 - extraHeightPercent
