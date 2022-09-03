@@ -1,7 +1,5 @@
 // 필터 파트
-const $filterContainerBackground = document.querySelector(
-  ".filter-container-background"
-);
+const $filterContainerBackground = document.querySelector(".filter-container");
 const $filterListCategories = document.querySelectorAll(
   ".filter-list-category > div"
 );
@@ -151,6 +149,7 @@ $$mainCardContainers.forEach((v) =>
 // 메인카드 제자리로
 function mainCardReplacing() {
   $filterContainerBackground.classList.remove("main-card-clicked");
+
   $$mainCardContainers.forEach((v) => {
     v.classList.add("hoverable");
     v.style.zIndex = 1;
@@ -369,3 +368,25 @@ const clickCheck = (e) => {
 $mainBannerTrailer.forEach((cur) =>
   cur.addEventListener("click", (ev) => clickCheck(ev))
 );
+
+const touchSlide = (() => {
+  let start, move, change, sliderWidth;
+
+  $mainBannerSlider.addEventListener("touchstart", (e) => {
+    start = e.touches[0].clientX;
+    sliderWidth = $mainBannerSlider.clientWidth / $mainBannerTrailer.length;
+  });
+
+  $mainBannerSlider.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    move = e.touches[0].clientX;
+    change = start - move;
+  });
+
+  const mobile = (e) => {
+    change > sliderWidth / 4 ? slide("increase") : null;
+    change * -1 > sliderWidth / 4 ? slide("decrease") : null;
+    [start, move, change, sliderWidth] = [0, 0, 0, 0];
+  };
+  $mainBannerSlider.addEventListener("touchend", mobile);
+})();
