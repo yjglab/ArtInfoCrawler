@@ -5,10 +5,19 @@ if (document.title.toLowerCase().indexOf("main") === -1) {
   document.querySelector(".nav__item-content-box.triple").style.height = "87px";
 }
 
+const $mainBannerSectionContainer = document.querySelector(
+  ".main-banner-section-container"
+);
+const $filterContainerBackground = document.querySelector(
+  ".filter-container-background"
+);
+
 $(window).scroll(function () {
-  if ($(document).scrollTop() > 50) {
-    $(".nav").addClass("nav-affix");
+  if ($(document).scrollTop() > 200) {
+    $mainBannerSectionContainer.classList.add("hide");
+    $filterContainerBackground.classList.remove("hide");
   } else {
-    $(".nav").removeClass("nav-affix");
+    $mainBannerSectionContainer.classList.remove("hide");
+    $filterContainerBackground.classList.add("hide");
   }
 });

@@ -15,10 +15,6 @@ mixin mainCard(exbInfo, exbCategory)
         
         .main-card-detail-container
             .detail-info-title 
-                if exbCategory === "Museum"
-                    i.fa-solid.fa-building-columns
-                else if exbCategory === "Gallery"
-                    i.fa-solid.fa-palette
                 h1=exbInfo.title
             .detail-info-rest
                 .detail-info-left
@@ -30,6 +26,14 @@ mixin mainCard(exbInfo, exbCategory)
                         .icon-box
                             i.fa-solid.fa-calendar-days
                         h1=exbInfo.date
+                    .detail-info-category
+                        .icon-box
+                            if exbCategory === "Museum"
+                                i.fa-solid.fa-building-columns
+                            else if exbCategory === "Gallery"
+                                i.fa-solid.fa-palette
+                        h1=exbInfo.category
+                    
                     .detail-info-country
                         img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
                 .detail-info-right 

@@ -11,7 +11,6 @@ module.exports = {
     nav: ["./src/client/js/nav.js"],
     data: ["./src/client/scss/screens/data.scss"],
     test: ["./src/client/js/test.js", "./src/client/scss/screens/test.scss"],
-    searchBar: ["./src/client/js/searchBar.js"],
   },
   mode: "development",
   plugins: [

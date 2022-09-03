@@ -1,9 +1,41 @@
 // 필터 파트
-let searchFilter = "Title"; // default
-document.querySelectorAll(".radio-btn").forEach((v) =>
+const $filterContainerBackground = document.querySelector(
+  ".filter-container-background"
+);
+const $filterListCategories = document.querySelectorAll(
+  ".filter-list-category > div"
+);
+$filterListCategories.forEach((v) =>
+  v.addEventListener("click", () => {
+    $filterListCategories.forEach((category) =>
+      category.classList.remove("option-clicked")
+    );
+    v.classList.add("option-clicked");
+  })
+);
+const searchOptions = {
+  title: "Title",
+  hall: "Hall",
+  country: "Country",
+};
+let searchFilter = searchOptions.title; // default
+
+const $$optionSearchOptions = document.querySelectorAll(".option-search div");
+$$optionSearchOptions.forEach((v) =>
   v.addEventListener("click", () => {
     const $filterSearchbar = document.querySelector(".filter-search-bar");
-    searchFilter = v.value;
+    $$optionSearchOptions.forEach((searchOption) =>
+      searchOption.classList.remove("option-clicked")
+    );
+    v.classList.add("option-clicked");
+    if (v.classList.contains("option-title")) {
+      searchFilter = searchOptions.title;
+    } else if (v.classList.contains("option-hall")) {
+      searchFilter = searchOptions.hall;
+    } else if (v.classList.contains("option-country")) {
+      searchFilter = searchOptions.country;
+    }
+
     $filterSearchbar.value = "";
     $filterSearchbar.placeholder = `Search ${searchFilter}`;
   })
@@ -43,11 +75,11 @@ $(function () {
         $(".mix").each(function () {
           $this = $("this");
 
-          if (searchFilter === "Title") {
+          if (searchFilter === searchOptions.title) {
             searchFilterClassName = ".main-card-info .info-title";
-          } else if (searchFilter === "Hall") {
+          } else if (searchFilter === searchOptions.hall) {
             searchFilterClassName = ".main-card-info .info-hall";
-          } else if (searchFilter === "Country") {
+          } else if (searchFilter === searchOptions.country) {
             searchFilterClassName = ".main-card-info .info-country";
           }
           if (
@@ -118,6 +150,7 @@ $$mainCardContainers.forEach((v) =>
 
 // 메인카드 제자리로
 function mainCardReplacing() {
+  $filterContainerBackground.classList.remove("main-card-clicked");
   $$mainCardContainers.forEach((v) => {
     v.classList.add("hoverable");
     v.style.zIndex = 1;
@@ -172,7 +205,7 @@ const handleCardClick = (e) => {
     .querySelector(".main-card-country-icon")
     .classList.add("main-card-clicked");
   $mainCardDetailBackground.classList.add("main-card-clicked");
-
+  $filterContainerBackground.classList.add("main-card-clicked");
   $mainCardDetailBackground.addEventListener("click", () => {
     // (임시)나중에 x버튼도 추가
     mainCardReplacing();
@@ -246,3 +279,93 @@ init();
 //     });
 //   });
 // }
+
+const $mainBannerSlider = document.querySelector(".main-banner-slider");
+const $mainBannerTrailer = document
+  .querySelector(".main-banner-trailer")
+  .querySelectorAll("div");
+let value = 0;
+let trailValue = 0;
+let interval = 4000;
+
+const slide = (condition) => {
+  clearInterval(start);
+  condition === "increase" ? initiateINC() : initiateDEC();
+  move(value, trailValue);
+  animate();
+  start = setInterval(() => slide("increase"), interval);
+};
+
+const initiateINC = () => {
+  $mainBannerTrailer.forEach((cur) => cur.classList.remove("active"));
+  value === 80 ? (value = 0) : (value += 20);
+  trailUpdate();
+};
+
+const initiateDEC = () => {
+  $mainBannerTrailer.forEach((cur) => cur.classList.remove("active"));
+  value === 0 ? (value = 80) : (value -= 20);
+  trailUpdate();
+};
+
+const move = (S, T) => {
+  $mainBannerSlider.style.transform = `translateX(-${S}%)`;
+  $mainBannerTrailer[T].classList.add("active");
+};
+
+const tl = gsap.timeline({ defaults: { duration: 0.7, ease: "power4.inOut" } });
+tl.from(".banner-detail-filter", { x: "-100%", opacity: 0, delay: 0.3 })
+  .from(".banner-detail p", { opacity: 0 }, "-=0.3")
+  .from(".banner-detail h1", { opacity: 0, y: "30px" }, "-=0.3");
+
+const animate = () => tl.restart();
+
+const trailUpdate = () => {
+  if (value === 0) {
+    trailValue = 0;
+  } else if (value === 20) {
+    trailValue = 1;
+  } else if (value === 40) {
+    trailValue = 2;
+  } else if (value === 60) {
+    trailValue = 3;
+  } else {
+    trailValue = 4;
+  }
+};
+
+let start = setInterval(() => slide("increase"), interval);
+
+document.querySelectorAll("svg").forEach((cur) => {
+  cur.addEventListener("click", () =>
+    cur.classList.contains("next") ? slide("increase") : slide("decrease")
+  );
+});
+
+const clickCheck = (e) => {
+  clearInterval(start);
+  $mainBannerTrailer.forEach((cur) => cur.classList.remove("active"));
+
+  const check = e.target;
+  check.classList.add("active");
+
+  if (check.classList.contains("trail-box1")) {
+    value = 0;
+  } else if (check.classList.contains("trail-box2")) {
+    value = 20;
+  } else if (check.classList.contains("trail-box3")) {
+    value = 40;
+  } else if (check.classList.contains("trail-box4")) {
+    value = 60;
+  } else if (check.classList.contains("trail-box5")) {
+    value = 80;
+  }
+  trailUpdate();
+  move(value, trailValue);
+  animate();
+  start = setInterval(() => slide("increase"), interval);
+};
+
+$mainBannerTrailer.forEach((cur) =>
+  cur.addEventListener("click", (ev) => clickCheck(ev))
+);

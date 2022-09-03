@@ -1,63 +1,30 @@
-.nav
-    .nav-logo 
-        span WoExb
-    .nav__item-wrapper
-        .nav__item.item-search-wrapper
-            include searchBar
-        .nav__item.nav__item-trends
-            .nav__item-text
-                a(href="/") Trends
-            .nav__item-content-box.single-01
-                .nav__item-content
-                    .nav__item-content-wrapper
-                        .title Trend Exibitions
-                        .sub-text Check out the latest updated exhibition
-        .nav__item.nav__item-main
-            .nav__item-text
-                a(href="/main") Main
-            .nav__item-content-box.double
-                .nav__item-content 
-                    .nav__item-content-wrapper
-                        .title All Exibitions
-                        .sub-text Get all the exhibition information
-                .nav__item-content
-                    .nav__item-content-wrapper
-                        .title Detail Informations
-                        .sub-text Get detailed exhibition information
-        .nav__item.nav__item-filter
-            .nav__item-text
-                a(href="/main/filter") Filter
-            .nav__item-content-box.triple
-                .nav__item-content.top-container
-                    .nav__item-content-wrapper
-                        .title Exibition Filter
-                        .sub-text Look for the results you want
-                .nav__item-content-gridbox
-                    h3 Category
-                    a.filter(data-filter="all") All
-                    a.filter(data-filter=".filter-museum") Museum
-                    a.filter(data-filter=".filter-gallery") Gallery 
-                
-                .nav__item-content-gridbox
-                    h3 Search Filter
-                    ul
-                        li
-                            input.radio-btn#r1(type="radio", name="radio", value="Title", checked)
-                            label.radio-label(for="r1") Title
-                        li
-                            input.radio-btn#r2(type="radio", name="radio", value="Hall")
-                            label.radio-label(for="r2") Hall Name
-                        li
-                            input.radio-btn#r3(type="radio", name="radio", value="Country")
-                            label.radio-label(for="r3") Country
-                 
-                    
-        .nav__item
-            .nav__item-text
-                a(href="#") Navnav
-            .nav__item-content-box.single-02
-                .nav__item-content
-                    .nav__item-content-wrapper
-                        .title F
-                        .sub-text Join
-        
+.filter-container-background.hide
+    .filter-container
+        h1 FILTER
+        .filter-list
+            .filter-list-title Search
+            .filter-list-search
+                input.filter-search-bar(type="text", placeholder="Search Title")
+                .option-search
+                    .option-title.option-clicked
+                        i.fa-solid.fa-heading
+                    .option-hall 
+                        i.fa-solid.fa-location-dot
+                    .option-country
+                        i.fa-solid.fa-earth-americas
+        .filter-list
+            .filter-list-title Category 
+            .filter-list-category
+                .option-all.option-clicked.filter(data-filter="all")
+                    .option-icon-box
+                        i.fa-solid.fa-border-all
+                    h1 All
+                .option-museum.filter(data-filter=".filter-museum")
+                    .option-icon-box
+                        i.fa-solid.fa-building-columns
+                    h1 Museum
+                .option-gallery.filter(data-filter=".filter-gallery")
+                    .option-icon-box
+                        i.fa-solid.fa-palette
+                    h1 Gallery
+            

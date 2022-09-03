@@ -11,7 +11,48 @@ block content
     
     .main-section-container
         .main-banner-section-container
-            
+            .main-banner-slider
+                .main-banner-1.main-banner(style=`background: url(${allExbs[0].thumbnailSrc}) no-repeat; background-size:cover`)
+                    .banner-detail-filter
+                    .banner-detail
+                        h1=allExbs[0].title
+                        p=`${allExbs[0].date} in ${allExbs[0].country}`
+                    
+                .main-banner-2.main-banner(style=`background: url(${allExbs[1].thumbnailSrc}) no-repeat; background-size:cover`)
+                    .banner-detail-filter
+                    .banner-detail
+                        h1=allExbs[1].title
+                        p=`${allExbs[1].date} in ${allExbs[1].country}`
+                        
+                .main-banner-3.main-banner(style=`background: url(${allExbs[2].thumbnailSrc}) no-repeat; background-size:cover`)
+                    .banner-detail-filter
+                    .banner-detail
+                        h1=allExbs[2].title
+                        p=`${allExbs[2].date} in ${allExbs[2].country}`
+                    
+                .main-banner-4.main-banner(style=`background: url(${allExbs[3].thumbnailSrc}) no-repeat; background-size:cover`)
+                    .banner-detail-filter
+                    .banner-detail
+                        h1=allExbs[3].title
+                        p=`${allExbs[3].date} in ${allExbs[3].country}`
+                    
+                .main-banner-5.main-banner(style=`background: url(${allExbs[4].thumbnailSrc}) no-repeat; background-size:cover`)
+                    .banner-detail-filter
+                    .banner-detail
+                        h1=allExbs[4].title
+                        p=`${allExbs[4].date} in ${allExbs[4].country}`
+                        
+            svg.prev(xmlns="http://www.w3.org/2000/svg", width="56.898", height="91", viewBox="0 0 56.898 91")
+                path(d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z", transform="translate(0 91) rotate(-90)", fill="#fff")
+            svg.next(xmlns="http://www.w3.org/2000/svg", width="56.898", height="91", viewBox="0 0 56.898 91")
+                path(d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z", transform="translate(56.898) rotate(90)", fill="#fff")
+            .main-banner-trailer
+                .trail-box1.active
+                .trail-box2
+                .trail-box3 
+                .trail-box4 
+                .trail-box5
+                
         .main-card-section-container
             .main-card-mix-container
                 - for (let exb of allExbs) {
@@ -37,6 +78,5 @@ block content
                     h1
 block scripts
     script(src="/static/js/main.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Draggable.min.js" integrity="sha512-7i9PEs61XY2ohBjB4rzLgcE/hSBFP1dJ9an++kludOKHlZJqyovwTEr5ybsr4cmrmXORAG79Y+gCdU9nQJdnZg==" crossorigin="anonymous" referrerpolicy="no-referrer")
    
         
