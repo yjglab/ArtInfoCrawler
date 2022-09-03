@@ -1,3 +1,18 @@
+// 업데이트 인포
+const $$updateInfoContinerh1 = document.querySelectorAll(
+  ".update-info-container h1"
+);
+let today = new Date();
+$$updateInfoContinerh1[0].textContent = "70 Countries";
+$$updateInfoContinerh1[2].textContent =
+  document.querySelectorAll(".main-card-container").length + " Exibitions";
+$$updateInfoContinerh1[1].textContent =
+  "Last Updated on " +
+  today.getFullYear() +
+  ". " +
+  today.getMonth() +
+  ". " +
+  today.getDate();
 // 필터 파트
 const $filterContainerBackground = document.querySelector(".filter-container");
 const $filterListCategories = document.querySelectorAll(
@@ -148,6 +163,7 @@ $$mainCardContainers.forEach((v) =>
 
 // 메인카드 제자리로
 function mainCardReplacing() {
+  document.querySelector("body").style.overflow = "overlay";
   $filterContainerBackground.classList.remove("main-card-clicked");
 
   $$mainCardContainers.forEach((v) => {
@@ -182,6 +198,7 @@ function mainCardReplacing() {
 
 // 메인카드 클릭 이벤트
 const handleCardClick = (e) => {
+  document.querySelector("body").style.overflow = "hidden";
   const $mainCardContainer = e.currentTarget;
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
 
@@ -251,14 +268,11 @@ const handleCardClick = (e) => {
   $mainCardInfoFloater.classList.add("main-card-clicked");
 };
 
-function init() {
+setTimeout(() => {
   $$mainCardContainers.forEach((v) => {
-    // v.style.zIndex = 1;
     v.addEventListener("click", handleCardClick);
   });
-}
-
-init();
+}, 1000);
 
 // 이미지 지연 로딩 파트
 // window.addEventListener("load", function () {

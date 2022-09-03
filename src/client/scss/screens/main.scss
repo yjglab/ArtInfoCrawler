@@ -18,8 +18,65 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
+.update-info-container {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  top: 9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .update-spinner {
+    margin-bottom: 1.4%;
+    width: 20px;
+    height: 20px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: calc($baseFontSize + 0.35em);
+      animation: spin 1s linear 0s infinite;
+      @keyframes spin {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    }
+  }
+  .update-infos {
+    display: flex;
+    justify-content: space-between;
+    width: 44%;
+
+    h1 {
+      font-size: calc($baseFontSize);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      text-align: center;
+    }
+    @media all and (min-width: 768px) and (max-width: 1280px) {
+      width: 60%;
+      h1 {
+        font-size: calc($baseFontSize - 0.1em);
+      }
+    }
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      width: 95%;
+      h1 {
+        font-size: calc($baseFontSize - 0.2em);
+      }
+    }
+  }
+}
 .main-section-container {
   width: 100%;
   height: 100%;
@@ -32,6 +89,7 @@ main {
   width: 100%;
   height: 100%;
   transition: padding-top 0.5s ease-in-out;
+  padding: 0 10px;
   .main-card-mix-container {
     width: 100%;
     height: 100%;
@@ -43,9 +101,7 @@ main {
     margin: 2% 0.8%;
     transition: width 0.6s ease-in-out;
     position: relative;
-    @media all and (min-width: 1280px) and (max-width: 1920px) {
-      width: 18.4%;
-    }
+
     @media all and (min-width: 768px) and (max-width: 1280px) {
       width: 23.35%;
     }
@@ -81,7 +137,7 @@ main {
     width: 100%;
     transition: all 1s ease-in-out;
     opacity: 1;
-
+    background-color: white;
     position: relative;
     top: 0;
     left: 0;
@@ -98,6 +154,7 @@ main {
       width: 80vw;
       height: 90vh;
       box-shadow: none;
+      background-color: transparent;
     }
     &.hoverable {
       &:hover {
@@ -105,14 +162,17 @@ main {
       }
     }
 
-    @media all and (min-width: 1280px) and (max-width: 1920px) {
-      height: 43vh;
+    @media all and (min-width: 1280px) and (max-width: 3860px) {
+      height: 400px;
     }
     @media all and (min-width: 768px) and (max-width: 1280px) {
-      height: 43vh;
+      height: 360px;
     }
-    @media all and (min-width: 0px) and (max-width: 768px) {
-      height: 43vh;
+    @media all and (min-width: 410px) and (max-width: 768px) {
+      height: 270px;
+    }
+    @media all and (min-width: 0px) and (max-width: 410px) {
+      height: 220px;
     }
 
     .main-card {
@@ -241,6 +301,13 @@ main {
           margin: 0 0.5%;
           position: relative;
           top: 5%;
+
+          @media all and (min-width: 768px) and (max-width: 1280px) {
+            font-size: calc($baseFontSize + 0.6em);
+          }
+          @media all and (min-width: 0px) and (max-width: 768px) {
+            font-size: calc($baseFontSize + 0.4em);
+          }
         }
       }
       .detail-info-rest {
@@ -254,10 +321,22 @@ main {
           display: flex;
           flex-direction: column;
           align-items: center;
+          @media all and (min-width: 768px) and (max-width: 1280px) {
+            width: 40%;
+          }
+          @media all and (min-width: 0px) and (max-width: 768px) {
+            width: 50%;
+          }
           h1 {
             color: white;
             font-size: calc($baseFontSize + 0.3em);
             margin-left: 2%;
+            @media all and (min-width: 768px) and (max-width: 1280px) {
+              font-size: calc($baseFontSize + 0.1em);
+            }
+            @media all and (min-width: 0px) and (max-width: 768px) {
+              font-size: calc($baseFontSize - 0.1em);
+            }
           }
           .icon-box {
             width: 30px;
@@ -268,6 +347,12 @@ main {
             i {
               font-size: calc($baseFontSize + 0.2em);
               color: white;
+              @media all and (min-width: 768px) and (max-width: 1280px) {
+                font-size: calc($baseFontSize);
+              }
+              @media all and (min-width: 0px) and (max-width: 768px) {
+                font-size: calc($baseFontSize - 0.1em);
+              }
             }
           }
           .detail-info-hall,
@@ -290,16 +375,26 @@ main {
               width: 240px;
               height: 240px;
               object-fit: cover;
-
-              // -webkit-box-reflect: below 0px
-              //   linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+              @media all and (min-width: 768px) and (max-width: 1280px) {
+                width: 200px;
+                height: 200px;
+              }
+              @media all and (min-width: 0px) and (max-width: 768px) {
+                width: 150px;
+                height: 150px;
+              }
             }
           }
         }
         .detail-info-right {
           width: 65%;
           height: 100%;
-
+          @media all and (min-width: 768px) and (max-width: 1280px) {
+            width: 60%;
+          }
+          @media all and (min-width: 0px) and (max-width: 768px) {
+            width: 50%;
+          }
           .detail-info-detail {
             width: 100%;
             height: 100%;
@@ -310,6 +405,13 @@ main {
               font-size: calc($baseFontSize + 0.3em);
               line-height: 1.4;
               padding: 0 5%;
+
+              @media all and (min-width: 768px) and (max-width: 1280px) {
+                font-size: calc($baseFontSize + 0.1em);
+              }
+              @media all and (min-width: 0px) and (max-width: 768px) {
+                font-size: calc($baseFontSize - 0.1em);
+              }
             }
           }
         }
@@ -333,14 +435,16 @@ main {
   padding: 0.5% 1%;
   box-shadow: 0 10px 15px 4px rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s ease-in-out, visibility 0.5s ease-in-out;
-  @media all and (min-width: 1280px) and (max-width: 1920px) {
+  @media all and (min-width: 1280px) and (max-width: 3860px) {
     width: 60%;
   }
   @media all and (min-width: 768px) and (max-width: 1280px) {
     width: 75%;
+    height: 65px;
   }
   @media all and (min-width: 0px) and (max-width: 768px) {
     width: 92%;
+    height: 60px;
     .floater-subtitle {
       font-size: calc($baseFontSize - 0.2em);
     }
@@ -407,6 +511,12 @@ main {
         align-items: center;
         font-size: calc($baseFontSize + 0.3em);
         font-weight: 600;
+        @media all and (min-width: 768px) and (max-width: 1280px) {
+          font-size: calc($baseFontSize + 0.1em);
+        }
+        @media all and (min-width: 0px) and (max-width: 768px) {
+          font-size: calc($baseFontSize);
+        }
       }
     }
   }
@@ -485,6 +595,7 @@ main {
         font-size: calc($baseFontSize + 2em);
         font-weight: 600;
         margin-bottom: 1.5%;
+        transition: font-size 0.3s ease-in-out;
       }
 
       p {
@@ -492,6 +603,23 @@ main {
         display: inline-block;
         font-size: calc($baseFontSize + 0.2em);
         color: rgba(255, 255, 255, 0.711);
+      }
+
+      @media all and (min-width: 768px) and (max-width: 1280px) {
+        h1 {
+          font-size: calc($baseFontSize) + 1.2em;
+        }
+        p {
+          font-size: calc($baseFontSize);
+        }
+      }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        h1 {
+          font-size: calc($baseFontSize + 0.5em);
+        }
+        p {
+          font-size: calc($baseFontSize - 0.2em);
+        }
       }
     }
   }
@@ -506,13 +634,20 @@ main {
 
 .prev,
 .next {
-  width: 4rem;
+  width: 2rem;
   cursor: pointer;
   opacity: 0.2;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     opacity: 1;
+  }
+
+  @media all and (min-width: 768px) and (max-width: 1280px) {
+    width: 1.3em;
+  }
+  @media all and (min-width: 0px) and (max-width: 768px) {
+    display: none;
   }
 }
 .prev {
