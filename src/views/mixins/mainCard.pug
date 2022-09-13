@@ -1,6 +1,5 @@
 mixin mainCard(exbInfo, exbCategory)
     .main-card-detail-background
-        
     .main-card-container.hoverable
         .main-card
             .main-card-category-icon
@@ -10,17 +9,24 @@ mixin mainCard(exbInfo, exbCategory)
                     i.fa-solid.fa-palette
             .main-card-country-icon 
                 img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
-            .main-card-image
-                img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-        
+            .main-card-image 
+                img.card-image(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
+                .main-card-extra-btn
+                    i.fa-solid.fa-xmark
+                    //- .main-card-link-btn
+        //- .main-card-sub-floater
         .main-card-detail-container
             .detail-info-title 
                 h1=exbInfo.title
+                
             .detail-info-rest
                 .detail-info-left
+                    .detail-info-detail
+                        p=exbInfo.detail
+                .detail-info-right 
                     .detail-info-hall
                         .icon-box
-                            i.fa-solid.fa-location-dot
+                            i.fa-solid.fa-landmark-dome
                         h1=exbInfo.hall
                     .detail-info-date
                         .icon-box
@@ -33,12 +39,15 @@ mixin mainCard(exbInfo, exbCategory)
                             else if exbCategory === "Gallery"
                                 i.fa-solid.fa-palette
                         h1=exbInfo.category
-                    
+                    .detail-info-link 
+                        .icon-box 
+                            i.fa-solid.fa-arrow-up-right-from-square
+                        a(href=`${exbInfo.link}` target="blank") 
+                           
+                            
                     .detail-info-country
                         img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
-                .detail-info-right 
-                    .detail-info-detail
-                        p=exbInfo.detail
+                    
                     
             //- 데이터만 저장
         .main-card-info 
@@ -48,32 +57,3 @@ mixin mainCard(exbInfo, exbCategory)
             .info-country=exbInfo.country
             .info-category=exbCategory
             .info-imgSrc=exbInfo.thumbnailSrc
-
-    //- .main-card-container
-    //-     .main-section-card-inner 
-    //-         .card-front.side
-    //-             img.frontImg(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-    //-             .card-content__wrapper
-    //-                 .card-content__upper-inner
-    //-                     .card-content__hallname
-    //-                         span.content-hallname #{exbInfo.hall}
-    //-                     .card-content__countryname
-    //-                         span.content-countryname #{exbInfo.country}
-    //-                     //- .content-hall
-    //-                     //-     span #{exbInfo.hall}
-    //-                 .card-content__front-inner
-    //-                     .card-content__title
-    //-                         div
-    //-                             span.content-title #{exbInfo.title}
-    //-                     .card-content__date
-    //-                         span #{exbInfo.date}
-    //-         .card-back.side
-    //-             .back-blurfilter
-    //-             img(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-    //-             .card-content__wrapper
-    //-                 .card-content__back-inner 
-    //-                     .card-content__detail
-    //-                         span #{exbInfo.detail}
-    //-                 .card-content__more-info-btn
-    //-                     span 
-    //-                         a(href=`/main/detail/${exbInfo._id}`) MORE INFO

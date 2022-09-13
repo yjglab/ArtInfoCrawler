@@ -89,7 +89,7 @@ main {
   width: 100%;
   height: 100%;
   transition: padding-top 0.5s ease-in-out;
-  padding: 0 10px;
+  padding: 0 20px;
   .main-card-mix-container {
     width: 100%;
     height: 100%;
@@ -106,7 +106,7 @@ main {
       width: 23.35%;
     }
     @media all and (min-width: 0px) and (max-width: 768px) {
-      width: 31.5%;
+      width: 48%;
     }
   }
   .main-card-detail-background {
@@ -135,18 +135,29 @@ main {
   }
   .main-card-container {
     width: 100%;
-    transition: all 1s ease-in-out;
+    height: 400px;
+    transition: all 1s $mainTransition, transform 0.2s $mainTransition;
     opacity: 1;
-    background-color: white;
+
     position: relative;
     top: 0;
     left: 0;
     box-shadow: $mainSectionCardShadow;
     border-radius: 25px;
     overflow: hidden;
-
+    will-change: width, height, top, left;
     display: flex; //
     flex-direction: column; //
+
+    // background: rgb(53, 53, 53) center center no-repeat;
+    // background-size: cover;
+    filter: blur(8px);
+
+    &.card-image-loaded {
+      filter: none;
+      transition: all 1s $mainTransition, transform 0.2s $mainTransition,
+        filter 4s $mainTransition;
+    }
 
     &.main-card-clicked {
       display: flex;
@@ -155,6 +166,11 @@ main {
       height: 90vh;
       box-shadow: none;
       background-color: transparent;
+
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        // padding-top: 25%;
+        margin-top: 28%;
+      }
     }
     &.hoverable {
       &:hover {
@@ -162,9 +178,6 @@ main {
       }
     }
 
-    @media all and (min-width: 1280px) and (max-width: 3860px) {
-      height: 400px;
-    }
     @media all and (min-width: 768px) and (max-width: 1280px) {
       height: 360px;
     }
@@ -172,12 +185,13 @@ main {
       height: 270px;
     }
     @media all and (min-width: 0px) and (max-width: 410px) {
-      height: 220px;
+      height: 250px;
     }
 
     .main-card {
       width: 100%;
       height: 100%;
+      cursor: pointer;
 
       position: relative;
       overflow: hidden;
@@ -190,23 +204,64 @@ main {
         width: 100%;
         height: 100%;
         position: absolute;
+        // background-color: rgb(53, 53, 53);
+        background: rgb(53, 53, 53) center center no-repeat;
+        background-size: cover;
+        opacity: 0;
         top: 0;
         left: 0;
         right: 0;
         filter: saturate(0);
-        transition: filter 0.3s ease-in-out;
+        transition: filter 1s $mainTransition;
         &:hover {
           filter: saturate(1);
         }
         &.main-card-clicked {
           filter: saturate(1);
         }
-        img {
-          -webkit-user-drag: none;
+        &.card-image-loaded {
+          animation: fadeOn 1s $mainTransition forwards;
+          @keyframes fadeOn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        }
+        img.card-image {
+          opacity: 0;
+        }
 
-          width: 100%; // 필수
-          height: 100%; // 필수
-          object-fit: cover;
+        .main-card-extra-btn {
+          position: absolute;
+
+          right: 2%;
+          top: 5%;
+          padding: 10px;
+          width: 30px;
+          height: 30px;
+          box-shadow: 0 0 15px 5px rgb(0, 0, 0, 0.05);
+          font-size: $baseFontSize;
+          background-color: white;
+          border-radius: 50%;
+
+          opacity: 0;
+          cursor: pointer;
+
+          transition: all 0.3s $mainTransition, opacity 0.5s ease-in-out;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &:hover {
+            transform: scale(1.2);
+            background-color: $dark;
+            color: white;
+          }
+          &.main-card-clicked {
+            opacity: 1;
+          }
         }
       }
 
@@ -223,9 +278,12 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 1;
+        opacity: 0;
 
         transition: opacity 1s ease-in-out;
+        &.card-image-loaded {
+          opacity: 1;
+        }
         &.main-card-clicked {
           opacity: 0;
         }
@@ -243,9 +301,12 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 1;
+        opacity: 0;
 
         transition: opacity 1s ease-in-out;
+        &.card-image-loaded {
+          opacity: 1;
+        }
         &.main-card-clicked {
           opacity: 0;
         }
@@ -255,7 +316,13 @@ main {
         }
       }
     }
-
+    .main-card-sub-floater {
+      width: 100%;
+      height: 50px;
+      background-color: tomato;
+      z-index: 900;
+      position: relative;
+    }
     .main-card-detail-container {
       width: 100%;
       display: none;
@@ -263,7 +330,7 @@ main {
       transition: all 1s ease-in-out;
       height: 100%;
       padding: 1% 1%;
-      text-shadow: 0px 3px 13px rgba(0, 0, 0, 0.5);
+      text-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
       &.main-card-clicked {
         display: flex;
         flex-direction: column;
@@ -292,7 +359,9 @@ main {
         align-items: center;
         padding: 1% 0;
         border-bottom: 2px solid white;
-
+        @media all and (min-width: 0px) and (max-width: 768px) {
+          margin-top: 3%;
+        }
         h1 {
           font-size: calc($baseFontSize + 1.2em);
           font-weight: 600;
@@ -316,78 +385,7 @@ main {
         display: flex;
         margin-top: 1%;
         .detail-info-left {
-          width: 35%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          @media all and (min-width: 768px) and (max-width: 1280px) {
-            width: 40%;
-          }
-          @media all and (min-width: 0px) and (max-width: 768px) {
-            width: 50%;
-          }
-          h1 {
-            color: white;
-            font-size: calc($baseFontSize + 0.3em);
-            margin-left: 2%;
-            @media all and (min-width: 768px) and (max-width: 1280px) {
-              font-size: calc($baseFontSize + 0.1em);
-            }
-            @media all and (min-width: 0px) and (max-width: 768px) {
-              font-size: calc($baseFontSize - 0.1em);
-            }
-          }
-          .icon-box {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            i {
-              font-size: calc($baseFontSize + 0.2em);
-              color: white;
-              @media all and (min-width: 768px) and (max-width: 1280px) {
-                font-size: calc($baseFontSize);
-              }
-              @media all and (min-width: 0px) and (max-width: 768px) {
-                font-size: calc($baseFontSize - 0.1em);
-              }
-            }
-          }
-          .detail-info-hall,
-          .detail-info-date,
-          .detail-info-category {
-            width: 100%;
-            height: 8%;
-            display: flex;
-            align-items: center;
-            margin: 0.5% 0;
-          }
-
-          .detail-info-country {
-            width: 100%;
-            height: 76%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img {
-              width: 240px;
-              height: 240px;
-              object-fit: cover;
-              @media all and (min-width: 768px) and (max-width: 1280px) {
-                width: 200px;
-                height: 200px;
-              }
-              @media all and (min-width: 0px) and (max-width: 768px) {
-                width: 150px;
-                height: 150px;
-              }
-            }
-          }
-        }
-        .detail-info-right {
-          width: 65%;
+          width: 70%;
           height: 100%;
           @media all and (min-width: 768px) and (max-width: 1280px) {
             width: 60%;
@@ -414,6 +412,114 @@ main {
               }
             }
           }
+        }
+        .detail-info-right {
+          width: 30%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          @media all and (min-width: 768px) and (max-width: 1280px) {
+            width: 40%;
+          }
+          @media all and (min-width: 0px) and (max-width: 768px) {
+            width: 50%;
+          }
+
+          h1 {
+            color: white;
+            font-size: calc($baseFontSize + 0.3em);
+            margin-left: 2%;
+
+            @media all and (min-width: 768px) and (max-width: 1280px) {
+              font-size: calc($baseFontSize + 0.1em);
+            }
+            @media all and (min-width: 0px) and (max-width: 768px) {
+              font-size: calc($baseFontSize - 0.1em);
+            }
+          }
+          .icon-box {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            margin-right: 1%;
+            justify-content: center;
+            align-items: center;
+            i {
+              font-size: calc($baseFontSize + 0.2em);
+              color: white;
+              @media all and (min-width: 768px) and (max-width: 1280px) {
+                font-size: calc($baseFontSize);
+              }
+              @media all and (min-width: 0px) and (max-width: 768px) {
+                font-size: calc($baseFontSize - 0.1em);
+              }
+            }
+          }
+          .detail-info-hall,
+          .detail-info-date,
+          .detail-info-category,
+          .detail-info-link {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+            margin: 0.5% 0;
+            @media all and (min-width: 0px) and (max-width: 410px) {
+              height: 7%;
+            }
+          }
+
+          .detail-info-country {
+            width: 100%;
+            height: 76%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 100px;
+              height: 100px;
+              object-fit: cover;
+              @media all and (min-width: 768px) and (max-width: 1280px) {
+                width: 90px;
+                height: 90px;
+              }
+              @media all and (min-width: 0px) and (max-width: 768px) {
+                width: 70px;
+                height: 70px;
+              }
+            }
+          }
+          .detail-info-link {
+            a {
+              width: 70%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 2px solid white;
+              color: white;
+              padding: 3px 0;
+              border-radius: 50px;
+              transition: all 0.5s $mainTransition;
+              transform: scale(0.95);
+              cursor: pointer;
+              &:before {
+                content: "Visit Detail Page";
+              }
+              &:hover {
+                &:before {
+                  content: "";
+                }
+                &:after {
+                  content: "GO";
+                }
+                background-color: white;
+                color: $dark;
+                transform: scale(0.98);
+              }
+            }
+          }
+          //
         }
       }
     }
@@ -521,20 +627,6 @@ main {
     }
   }
 }
-// .card-front {
-//   background: rgba(255, 255, 255, 0) center center no-repeat;
-//   background-size: cover;
-//   // filter: blur(5px);
-// }
-
-// .card-front > img {
-//   opacity: 1;
-// }
-
-// .card-front.is-loaded {
-//   filter: none;
-//   transition: filter 3s;
-// }
 
 .main-card-info {
   display: none;

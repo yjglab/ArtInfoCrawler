@@ -20,7 +20,7 @@ $(window).scroll(function () {
       $updateSpinnerIcon.classList.remove("fa-circle-notch");
       $updateSpinnerIcon.classList.add("fa-check");
       $updateSpinnerIcon.style.animation = "none";
-    }, 1000);
+    }, 1500);
   } else {
     $mainBannerSectionContainer.classList.remove("hide");
     $filterContainerBackground.classList.add("hide");

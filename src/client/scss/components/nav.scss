@@ -58,7 +58,7 @@
   background-color: rgb(49, 49, 49);
   opacity: 1;
   box-shadow: 0px 5px 25px 10px rgb(0, 0, 0, 0.15);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s $mainTransition;
   padding: 0.5%;
   border-radius: 37px;
   backdrop-filter: blur(8px);

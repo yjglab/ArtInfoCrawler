@@ -19,32 +19,32 @@ block content
                 .main-banner-1.main-banner(style=`background: url(${allExbs[0].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
-                        h1=allExbs[0].title
-                        p=`${allExbs[0].date} in ${allExbs[0].country}`
+                        h1=allExbs[10].title
+                        p=`${allExbs[10].date} in ${allExbs[10].country}`
                     
                 .main-banner-2.main-banner(style=`background: url(${allExbs[1].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
-                        h1=allExbs[1].title
-                        p=`${allExbs[1].date} in ${allExbs[1].country}`
+                        h1=allExbs[20].title
+                        p=`${allExbs[20].date} in ${allExbs[20].country}`
                         
                 .main-banner-3.main-banner(style=`background: url(${allExbs[2].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
-                        h1=allExbs[2].title
-                        p=`${allExbs[2].date} in ${allExbs[2].country}`
+                        h1=allExbs[30].title
+                        p=`${allExbs[30].date} in ${allExbs[30].country}`
                     
                 .main-banner-4.main-banner(style=`background: url(${allExbs[3].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
-                        h1=allExbs[3].title
-                        p=`${allExbs[3].date} in ${allExbs[3].country}`
+                        h1=allExbs[40].title
+                        p=`${allExbs[40].date} in ${allExbs[40].country}`
                     
                 .main-banner-5.main-banner(style=`background: url(${allExbs[4].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
-                        h1=allExbs[4].title
-                        p=`${allExbs[4].date} in ${allExbs[4].country}`
+                        h1=allExbs[50].title
+                        p=`${allExbs[50].date} in ${allExbs[50].country}`
                         
             svg.prev(xmlns="http://www.w3.org/2000/svg", width="56.898", height="91", viewBox="0 0 56.898 91")
                 path(d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z", transform="translate(0 91) rotate(-90)", fill="#fff")
@@ -66,6 +66,7 @@ block content
                     else if exb.category === "Gallery"
                         .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
                             +mainCard(exb, exb.category)
+                    //- - break
                 - }
         .main-card-info-floater
             .floater-img

@@ -185,6 +185,9 @@ function mainCardReplacing() {
       v.querySelector(".main-card-country-icon").classList.remove(
         "main-card-clicked"
       );
+      v.querySelector(".main-card-extra-btn").classList.remove(
+        "main-card-clicked"
+      );
       $mainCardInfoFloater.classList.remove("main-card-clicked");
     }
   });
@@ -201,7 +204,9 @@ const handleCardClick = (e) => {
   document.querySelector("body").style.overflow = "hidden";
   const $mainCardContainer = e.currentTarget;
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
-
+  const $mainCardExtraBtn = $mainCardContainer.querySelector(
+    ".main-card-extra-btn"
+  );
   $mainCardContainer.style.zIndex = 9999;
   $mainCardContainer.classList.add("main-card-clicked");
 
@@ -222,10 +227,15 @@ const handleCardClick = (e) => {
     .classList.add("main-card-clicked");
   $mainCardDetailBackground.classList.add("main-card-clicked");
   $filterContainerBackground.classList.add("main-card-clicked");
-  $mainCardDetailBackground.addEventListener("click", () => {
-    // (임시)나중에 x버튼도 추가
-    mainCardReplacing();
-  });
+  $mainCardContainer
+    .querySelector(".main-card-extra-btn")
+    .classList.add("main-card-clicked");
+  [$mainCardDetailBackground, $mainCardExtraBtn].forEach((v) =>
+    v.addEventListener("click", () => {
+      // (임시)나중에 x버튼도 추가
+      mainCardReplacing();
+    })
+  );
   $$mainCardContainers.forEach((v) =>
     v.removeEventListener("click", handleCardClick)
   );
@@ -259,7 +269,7 @@ const handleCardClick = (e) => {
   // }px`;
   $mainCardContainer.style.left = `${0 - currentCardX + viewPortWidth / 10}px`;
   $mainCardContainer.style.top = `${
-    0 - currentCardY + viewPortHeight / 20 - extraHeightPercent
+    0 - currentCardY + viewPortHeight / 110 - extraHeightPercent
   }px`;
   console.log($mainCardContainer.style.top);
   $$mainCardContainers.forEach((v) => {
@@ -273,25 +283,6 @@ setTimeout(() => {
     v.addEventListener("click", handleCardClick);
   });
 }, 1000);
-
-// 이미지 지연 로딩 파트
-// window.addEventListener("load", function () {
-//   setTimeout(lazyLoad, 1000);
-// });
-
-// function lazyLoad() {
-//   var card_images = document.querySelectorAll(".card-front");
-
-//   card_images.forEach(function (card_image) {
-//     var content_image = card_image.querySelector("img");
-//     var image_url = content_image.getAttribute("src");
-//     content_image.src = image_url;
-//     content_image.addEventListener("load", function () {
-//       card_image.style.backgroundImage = "url(" + image_url + ")";
-//       card_image.className = card_image.className + " is-loaded";
-//     });
-//   });
-// }
 
 const $mainBannerSlider = document.querySelector(".main-banner-slider");
 const $mainBannerTrailer = document
@@ -404,3 +395,31 @@ const touchSlide = (() => {
   };
   $mainBannerSlider.addEventListener("touchend", mobile);
 })();
+
+// 이미지 지연 로딩 파트
+window.addEventListener("load", function () {
+  setTimeout(lazyLoad, 1000);
+});
+
+function lazyLoad() {
+  const $$mainCardImages = document.querySelectorAll(".main-card-image");
+
+  $$mainCardImages.forEach(function ($mainCardImage) {
+    let $cardImage = $mainCardImage.querySelector(".card-image");
+    let imgUrl = $cardImage.src;
+    $cardImage.src = imgUrl;
+    $cardImage.addEventListener("load", function () {
+      $mainCardImage.style.backgroundImage = "url(" + imgUrl + ")";
+      $$mainCardContainers.forEach((v) => {
+        v.classList.add("card-image-loaded");
+        v.querySelector(".main-card-country-icon").classList.add(
+          "card-image-loaded"
+        );
+        v.querySelector(".main-card-category-icon").classList.add(
+          "card-image-loaded"
+        );
+      });
+      $$mainCardImages.forEach((v) => v.classList.add("card-image-loaded"));
+    });
+  });
+}
