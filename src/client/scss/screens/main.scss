@@ -444,7 +444,6 @@ main {
             }
             @media all and (min-width: 0px) and (max-width: 768px) {
               width: 100px;
-
               position: absolute;
               right: 0;
               bottom: 42px;
@@ -692,7 +691,8 @@ main {
 
 .prev,
 .next {
-  width: 2rem;
+  font-size: calc($baseFontSize + 1.2em);
+  color: white;
   cursor: pointer;
   opacity: 0.2;
   transition: all 0.2s ease;

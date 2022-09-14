@@ -336,7 +336,7 @@ const trailUpdate = () => {
 
 let start = setInterval(() => slide("increase"), interval);
 
-document.querySelectorAll("svg").forEach((cur) => {
+document.querySelectorAll(".banner-control-btn").forEach((cur) => {
   cur.addEventListener("click", () =>
     cur.classList.contains("next") ? slide("increase") : slide("decrease")
   );
