@@ -6,46 +6,41 @@ block links
     
 block content
     .update-info-container 
-        .update-spinner 
-            i.fa-solid.fa-circle-notch
-        .update-infos
-            h1 
-            h1 
-            h1
+        
     .main-section-container
         .main-banner-section-container
             
             .main-banner-slider
-                .main-banner-1.main-banner(style=`background: url(${allExbs[0].thumbnailSrc}) no-repeat; background-size:cover`)
+                .main-banner-1.main-banner(style=`background: url(${allExbs[10].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
                         h1=allExbs[10].title
                         p=`${allExbs[10].date} in ${allExbs[10].country}`
-                    
-                .main-banner-2.main-banner(style=`background: url(${allExbs[1].thumbnailSrc}) no-repeat; background-size:cover`)
+                        span=allExbs[10].link
+                .main-banner-2.main-banner(style=`background: url(${allExbs[20].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
                         h1=allExbs[20].title
                         p=`${allExbs[20].date} in ${allExbs[20].country}`
-                        
-                .main-banner-3.main-banner(style=`background: url(${allExbs[2].thumbnailSrc}) no-repeat; background-size:cover`)
+                        span=allExbs[20].link
+                .main-banner-3.main-banner(style=`background: url(${allExbs[30].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
                         h1=allExbs[30].title
                         p=`${allExbs[30].date} in ${allExbs[30].country}`
-                    
-                .main-banner-4.main-banner(style=`background: url(${allExbs[3].thumbnailSrc}) no-repeat; background-size:cover`)
+                        span=allExbs[30].link
+                .main-banner-4.main-banner(style=`background: url(${allExbs[40].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
                         h1=allExbs[40].title
                         p=`${allExbs[40].date} in ${allExbs[40].country}`
-                    
-                .main-banner-5.main-banner(style=`background: url(${allExbs[4].thumbnailSrc}) no-repeat; background-size:cover`)
+                        span=allExbs[40].link
+                .main-banner-5.main-banner(style=`background: url(${allExbs[50].thumbnailSrc}) no-repeat; background-size:cover`)
                     .banner-detail-filter
                     .banner-detail
                         h1=allExbs[50].title
                         p=`${allExbs[50].date} in ${allExbs[50].country}`
-                        
+                        span=allExbs[50].link
             svg.prev(xmlns="http://www.w3.org/2000/svg", width="56.898", height="91", viewBox="0 0 56.898 91")
                 path(d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z", transform="translate(0 91) rotate(-90)", fill="#fff")
             svg.next(xmlns="http://www.w3.org/2000/svg", width="56.898", height="91", viewBox="0 0 56.898 91")

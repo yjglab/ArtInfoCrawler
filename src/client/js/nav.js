@@ -15,12 +15,6 @@ $(window).scroll(function () {
     $mainBannerSectionContainer.classList.add("hide");
     $filterContainerBackground.classList.remove("hide");
     $navContainer.style.color = "black";
-    setTimeout(() => {
-      const $updateSpinnerIcon = document.querySelector(".update-spinner i");
-      $updateSpinnerIcon.classList.remove("fa-circle-notch");
-      $updateSpinnerIcon.classList.add("fa-check");
-      $updateSpinnerIcon.style.animation = "none";
-    }, 1500);
   } else {
     $mainBannerSectionContainer.classList.remove("hide");
     $filterContainerBackground.classList.add("hide");
@@ -35,9 +29,34 @@ $(window).scroll(function () {
   }
 });
 $(window).scroll(function () {
-  if ($(document).scrollTop() > 330) {
+  if ($(document).scrollTop() > 200) {
     $(".update-info-container").fadeOut();
+    $(".nav-list-container").fadeOut();
   } else {
     $(".update-info-container").fadeIn();
+    $(".nav-list-container").fadeIn();
   }
 });
+
+// 업데이트 정보 nav 플로팅
+const $navListContainer = document.querySelector(".nav-list-container");
+const $LastUpdated = $navListContainer.querySelector(".last-updated");
+const $exbCount = $navListContainer.querySelector(".exb-count");
+let today = new Date();
+$LastUpdated.textContent =
+  "Last Updated on " +
+  today.getFullYear() +
+  ". " +
+  today.getMonth() +
+  ". " +
+  today.getDate();
+$exbCount.textContent =
+  document.querySelectorAll(".main-card-container").length + " Exibitions";
+
+const $updateSpinnerIcon = document.querySelector(".update-spinner i");
+// let randomNum = Math.floor(Math.random() * 15);
+setTimeout(() => {
+  $updateSpinnerIcon.classList.remove("fa-circle-notch");
+  $updateSpinnerIcon.classList.add("fa-check");
+  $updateSpinnerIcon.classList.add("update-completed");
+}, Math.floor(Math.random() * 15) * 1000 + 10000);
