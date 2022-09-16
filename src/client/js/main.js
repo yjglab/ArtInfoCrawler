@@ -442,7 +442,6 @@ window.addEventListener("mousemove", handleCardMouseMove);
 const $$mainBanner = document.querySelectorAll(".main-banner");
 $$mainBanner.forEach((v) =>
   v.addEventListener("click", () => {
-    console.log(v);
     window.open(v.querySelector(".banner-detail span").textContent);
   })
 );

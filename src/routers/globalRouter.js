@@ -1,6 +1,6 @@
 import express from "express";
 
-import { hallDetail, intro, test } from "../controllers/globalController.js";
+import { intro, test } from "../controllers/globalController.js";
 
 const globalRouter = express.Router();
 

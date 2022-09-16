@@ -8,24 +8,26 @@
   z-index: 999;
   color: white;
   transition: color 0.5s ease-in-out;
-
+  display: flex;
+  align-items: center;
   .nav-logo {
-    width: 7%;
-    position: absolute;
-    left: 0;
+    width: 40px;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: calc($baseFontSize + 0.2em);
+    position: absolute;
+    left: 30px;
 
-    @media all and (min-width: 768px) and (max-width: 1280px) {
-      width: 10%;
+    display: flex;
+
+    align-items: center;
+    i {
+      font-size: calc($baseFontSize);
+      margin-right: 10px;
     }
-    @media all and (min-width: 0px) and (max-width: 768px) {
-      width: 13%;
+
+    span {
       font-size: calc($baseFontSize + 0.05em);
+      font-weight: 750;
+      letter-spacing: 0.102em;
     }
   }
   .nav-list-container {
@@ -39,18 +41,18 @@
     color: white;
     font-size: $baseFontSize;
     transition: opacity 1s $mainTransition;
-    background-color: rgba(255, 255, 255, 0.328);
     padding: 2px 15px;
     border-radius: 35px;
     backdrop-filter: blur(8px);
+    box-shadow: 0 3px 15px 5px rgba(0, 0, 0, 0.05);
     @media all and (min-width: 768px) and (max-width: 1280px) {
-      width: 310px;
-      font-size: calc($baseFontSize - 0.06em);
+      width: 330px;
+      font-size: calc($baseFontSize - 0.07em);
     }
     @media all and (min-width: 0px) and (max-width: 768px) {
-      width: 280px;
+      width: 300px;
       font-size: calc($baseFontSize - 0.14em);
-      padding: 0;
+      padding: 0 10px;
       background-color: transparent;
     }
 
@@ -84,10 +86,10 @@
 }
 
 .filter-container {
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  // border: 2px solid rgba(255, 255, 255, 0.8);
   width: 8%;
   height: 4%;
-  z-index: 9999;
+  z-index: 1000;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -104,6 +106,7 @@
 
   @media all and (min-width: 0px) and (max-width: 768px) {
     width: 14%;
+    top: 6%;
   }
   &.main-card-clicked,
   &.hide {

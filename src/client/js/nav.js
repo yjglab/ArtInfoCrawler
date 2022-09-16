@@ -10,6 +10,7 @@ const $mainBannerSectionContainer = document.querySelector(
 );
 const $filterContainerBackground = document.querySelector(".filter-container");
 const $navContainer = document.querySelector(".nav-container");
+const $filterSearchbar = document.querySelector(".filter-search-bar");
 $(window).scroll(function () {
   if ($(document).scrollTop() > 120) {
     $mainBannerSectionContainer.classList.add("hide");
@@ -19,6 +20,7 @@ $(window).scroll(function () {
     $mainBannerSectionContainer.classList.remove("hide");
     $filterContainerBackground.classList.add("hide");
     $navContainer.style.color = "white";
+    $filterSearchbar.value = "";
     $(".main-card-mix-container").mixItUp("filter", "all");
     document.querySelectorAll(".filter-list-category .filter").forEach((v) => {
       if (v.classList.contains("option-all")) v.classList.add("option-clicked");
@@ -31,10 +33,8 @@ $(window).scroll(function () {
 $(window).scroll(function () {
   if ($(document).scrollTop() > 200) {
     $(".update-info-container").fadeOut();
-    $(".nav-list-container").fadeOut();
   } else {
     $(".update-info-container").fadeIn();
-    $(".nav-list-container").fadeIn();
   }
 });
 

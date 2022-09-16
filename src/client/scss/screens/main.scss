@@ -1,7 +1,7 @@
 @import "../config/_variables";
 
 body {
-  background: white;
+  background: rgb(255, 255, 255);
   overflow-x: hidden;
   &::-webkit-scrollbar {
     display: none;
@@ -32,7 +32,7 @@ main {
 .main-card-section-container {
   width: 100%;
   height: 100%;
-  transition: padding-top 0.5s ease-in-out;
+  transition: padding-top 0.5s $mainTransition;
   padding: 0 20px;
   .main-card-mix-container {
     width: 100%;
@@ -43,7 +43,7 @@ main {
     display: none;
     width: 18.4%;
     margin: 2% 0.8%;
-    transition: width 0.6s ease-in-out;
+    transition: width 0.6s $mainTransition;
     position: relative;
 
     @media all and (min-width: 768px) and (max-width: 1280px) {
@@ -100,7 +100,7 @@ main {
     &.card-image-loaded {
       filter: none;
       transition: all 1s $mainTransition, transform 0.5s $mainTransition,
-        filter 4s $mainTransition;
+        filter 5s $mainTransition;
     }
 
     &.main-card-clicked {
@@ -136,25 +136,28 @@ main {
       width: 100%;
       height: 100%;
       cursor: pointer;
-
+      background-color: transparent;
+      // background: url("https://cyber.hknu.ac.kr/ilos/images/osms/hankyong/ko/logo.gif?v=20220809");
       position: relative;
       overflow: hidden;
-      transition: all 1s ease-in-out;
+      transition: all 1s $mainTransition;
       &.main-card-clicked {
         border-radius: 25px;
         height: 40%;
+        background-color: $dark;
       }
       .main-card-image {
         width: 100%;
         height: 100%;
         position: absolute;
-        // background-color: rgb(53, 53, 53);
-        background: rgb(53, 53, 53) center center no-repeat;
+        backface-visibility: hidden;
+        background: transparent center center no-repeat;
         background-size: cover;
         opacity: 0;
         top: 0;
         left: 0;
         right: 0;
+        border-radius: inherit;
         filter: saturate(0);
         transition: filter 1s $mainTransition;
         &:hover {
@@ -175,6 +178,7 @@ main {
           }
         }
         img.card-image {
+          // display: none;
           opacity: 0;
         }
 
@@ -194,7 +198,7 @@ main {
           opacity: 0;
           cursor: pointer;
 
-          transition: all 0.3s $mainTransition, opacity 0.5s ease-in-out;
+          transition: all 0.3s $mainTransition, opacity 0.5s $mainTransition;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -224,7 +228,7 @@ main {
         align-items: center;
         opacity: 0;
 
-        transition: opacity 1s ease-in-out;
+        transition: opacity 1s $mainTransition;
         &.card-image-loaded {
           opacity: 1;
         }
@@ -247,7 +251,7 @@ main {
         align-items: center;
         opacity: 0;
 
-        transition: opacity 1s ease-in-out;
+        transition: opacity 1s $mainTransition;
         &.card-image-loaded {
           opacity: 1;
         }
@@ -265,24 +269,27 @@ main {
       width: 100%;
       display: none;
       opacity: 0;
-      transition: all 1s ease-in-out;
+      transition: all 1s $mainTransition;
       height: 100%;
       padding: 1% 1%;
       text-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+      filter: blur(8px);
       &.main-card-clicked {
         display: flex;
         flex-direction: column;
         position: absolute;
         bottom: 0;
         opacity: 0;
-        animation: show-on 1s ease-in-out forwards;
-        animation-delay: 500ms;
+        animation: show-on 1.5s $mainTransition forwards;
+        animation-delay: 200ms;
         @keyframes show-on {
           from {
+            filter: blur(8px);
             height: 0%;
             opacity: 0;
           }
           to {
+            filter: none;
             height: 60%;
             opacity: 1;
           }
@@ -490,7 +497,7 @@ main {
   position: fixed;
   bottom: 2%;
   border-radius: 15px;
-  z-index: 999;
+  z-index: 998;
   overflow: hidden;
   display: none;
   opacity: 0;
@@ -501,7 +508,7 @@ main {
 
   padding: 0.5% 1%;
   box-shadow: 0 10px 15px 4px rgba(0, 0, 0, 0.3);
-  transition: opacity 0.3s ease-in-out, visibility 0.5s ease-in-out,
+  transition: opacity 0.3s $mainTransition, visibility 0.5s $mainTransition,
     border 0.5s $mainTransition;
   // @media all and (min-width: 1280px) and (max-width: 3860px) {
   //   width: 60%;
@@ -602,7 +609,7 @@ main {
   height: 50vh;
   z-index: 0;
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s $mainTransition;
   &.hide {
     opacity: 0;
   }
@@ -612,7 +619,7 @@ main {
   display: flex;
   width: 500%; // 배너 개수
   height: 100%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s $mainTransition;
   transform: translateX(0);
 
   // overflow-x: auto;
@@ -650,7 +657,7 @@ main {
         font-size: calc($baseFontSize + 2em);
         font-weight: 600;
         margin-bottom: 1.5%;
-        transition: font-size 0.3s ease-in-out;
+        transition: font-size 0.3s $mainTransition;
       }
 
       p {
@@ -702,10 +709,12 @@ main {
   }
 
   @media all and (min-width: 768px) and (max-width: 1280px) {
-    width: 1.3em;
+    font-size: calc($baseFontSize + 1em);
   }
   @media all and (min-width: 0px) and (max-width: 768px) {
-    display: none;
+    font-size: calc($baseFontSize + 0.5em);
+
+    margin: 0 30px;
   }
 }
 .prev {
@@ -755,7 +764,7 @@ main {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 9999999;
+  z-index: 999;
   transition: opacity 0.5s $mainTransition, height 0.5s $mainTransition,
     transform 0.5s $mainTransition, border 0.5s $mainTransition;
   border-radius: 15px;
