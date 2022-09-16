@@ -267,7 +267,7 @@ const handleCardClick = (e) => {
   $mainCardContainer.style.top = `${
     0 - currentCardY + viewPortHeight / 110 - extraHeightPercent
   }px`;
-  console.log($mainCardContainer.style.top);
+
   $$mainCardContainers.forEach((v) => {
     v.classList.remove("hoverable");
   });

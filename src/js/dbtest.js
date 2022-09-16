@@ -1,6 +1,7 @@
 import ExbModel from "../models/ExbModel";
 
 const dbtest = () => {
+  ExbModel.deleteMany({});
   ExbModel.insertMany([
     {
       country: "United Kingdom",
