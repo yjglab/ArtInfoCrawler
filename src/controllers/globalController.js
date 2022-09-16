@@ -11,7 +11,7 @@ export const intro = async (req, res) => {
 export const test = async (req, res) => {
   return res.render("test", {
     pageTitle: "test",
-    // dbtest: dbtest(),
+    dbtest: dbtest(),
   });
 };
 // export const hallDetail = async (req, res) => {
