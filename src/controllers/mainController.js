@@ -1,7 +1,6 @@
 import { makeInfo } from "../js/makeInfo.js";
 import ExbHallModel from "../models/ExbHallModel.js";
 import ExbModel from "../models/ExbModel.js";
-import distributeAll from "../js/distributeAll.js";
 
 import spreadAll from "../js/spreadAll.js";
 
@@ -16,8 +15,7 @@ export const main = async (req, res) => {
 };
 
 export const exbDetail = async (req, res) => {
-  //   console.log(req);
-  const exb = await ExbModel.findById(req.params.id);
+  //   console.log(req);  const exb = await ExbModel.findById(req.params.id);
   return res.render("exbDetail", {
     pageTitle: `${exb.title}`,
     exb: exb,

@@ -10,14 +10,14 @@ module.exports = {
     nav: ["./src/client/js/nav.js"],
     test: ["./src/client/js/test.js", "./src/client/scss/screens/test.scss"],
   },
-  mode: "development",
+
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
       // filename: "css/styles.css",
     }),
   ],
-  watch: true,
+
   watchOptions: {
     ignored: /node_modules/,
     // aggregateTimeout: 3000,

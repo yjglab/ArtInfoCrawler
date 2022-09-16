@@ -1,14 +1,10 @@
-import ExbModel from "../models/ExbModel";
-import shuffle from "../js/shuffleExb";
 import ExbHallModel from "../models/ExbHallModel";
+import spreadAll from "../js/spreadAll";
 
 export const intro = async (req, res) => {
-  const allExb = await ExbModel.find({});
-  shuffle(allExb);
-  console.log(allExb[0]);
   return res.render("intro", {
-    pageTitle: "Intro",
-    allExb: allExb,
+    pageTitle: "Introduction",
+    allExbs: await spreadAll(),
   });
 };
 export const test = async (req, res) => {
