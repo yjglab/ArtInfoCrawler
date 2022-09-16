@@ -1,8 +1,8 @@
 import ExbModel from "../models/ExbModel";
 
-const dbtest = () => {
-  ExbModel.deleteMany({});
-  ExbModel.insertMany([
+const dbtest = async () => {
+  await ExbModel.deleteMany({});
+  await ExbModel.insertMany([
     {
       country: "United Kingdom",
       title: "Feminine power the divine to the demonic",
