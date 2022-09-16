@@ -1,5 +1,6 @@
 import ExbHallModel from "../models/ExbHallModel";
 import spreadAll from "../js/spreadAll";
+import dbtest from "../js/dbtest";
 
 export const intro = async (req, res) => {
   return res.render("intro", {
@@ -10,6 +11,7 @@ export const intro = async (req, res) => {
 export const test = async (req, res) => {
   return res.render("test", {
     pageTitle: "test",
+    dbtest: dbtest(),
   });
 };
 // export const hallDetail = async (req, res) => {
