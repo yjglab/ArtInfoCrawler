@@ -1,4 +1,6 @@
 import "./db";
+import "dotenv/config";
+
 import app from "./index";
 const PORT = 8080;
 app.listen(PORT, () => {
