@@ -3,17 +3,7 @@
   return r.keys().map(r);
 })();
 
-// const $navListLis = document.querySelectorAll(".nav__list li");
-// $navListLis.forEach((v) => {
-//   v.addEventListener("click", (e) => {
-//     let linkTitle = e.currentTarget.textContent.toLowerCase();
-
-//     setTimeout(() => {
-//       $("#loader").fadeIn();
-//     }, 100);
-//     setTimeout(() => {
-//       if (linkTitle === "trends") linkTitle = "";
-//       window.open(`/${linkTitle}`, "_self");
-//     }, 500);
-//   });
-// });
+(function importAllVideos() {
+  const r = require.context("../videos", false, /\.(mp4)$/);
+  return r.keys().map(r);
+})();

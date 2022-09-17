@@ -47,7 +47,7 @@ $LastUpdated.textContent =
   "Last Updated on " +
   today.getFullYear() +
   ". " +
-  today.getMonth() +
+  `${today.getMonth() + 1}` +
   ". " +
   today.getDate();
 $exbCount.textContent =
@@ -59,4 +59,4 @@ setTimeout(() => {
   $updateSpinnerIcon.classList.remove("fa-circle-notch");
   $updateSpinnerIcon.classList.add("fa-check");
   $updateSpinnerIcon.classList.add("update-completed");
-}, Math.floor(Math.random() * 15) * 1000 + 10000);
+}, Math.floor(Math.random() * 20) * 1000 + 15000);
