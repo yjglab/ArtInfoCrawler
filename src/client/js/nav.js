@@ -51,7 +51,7 @@ $LastUpdated.textContent =
   ". " +
   today.getDate();
 $exbCount.textContent =
-  document.querySelectorAll(".main-card-container").length + " Exibitions";
+  document.querySelectorAll(".main-card-container").length + " Exhibitions";
 
 const $updateSpinnerIcon = document.querySelector(".update-spinner i");
 // let randomNum = Math.floor(Math.random() * 15);

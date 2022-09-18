@@ -15,19 +15,39 @@
     height: 100%;
     position: absolute;
     left: 30px;
-
     display: flex;
-
     align-items: center;
+    transition: all 0.3s $mainTransition;
+
+    &:hover {
+      transform: scale(1.07);
+    }
     i {
       font-size: calc($baseFontSize);
       margin-right: 10px;
     }
 
-    span {
+    a {
       font-size: calc($baseFontSize + 0.05em);
       font-weight: 750;
       letter-spacing: 0.102em;
+    }
+  }
+  .nav-list-page {
+    width: 100px;
+    height: 100%;
+    margin-left: 10px;
+    font-size: $baseFontSize;
+    transition: all 0.3s $mainTransition;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 100px;
+
+    &:hover {
+      transform: scale(1.07);
     }
   }
   .nav-list-container {

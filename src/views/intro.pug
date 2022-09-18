@@ -4,8 +4,37 @@ block links
     link(rel="stylesheet", href="/static/css/intro.css")
 
 block content
-    .intro-page
-        h1 인트로 페이지는 현재 제작중입니다.<br><a href="/main">메인페이지</a>로 이동해주세요!
-    
+    .intro-header
+        h1 INTRODUCING 
+        span MUG
+        h6 SCROLL DOWN
+        h2 인트로 페이지는 현재 제작중인 페이지입니다. 전시를 확인하시려면 <a href="/main">여기</a>를 혹은 상단의 MAIN을 클릭하여 메인페이지로 이동해주세요
+    .intro-text
+        p
+    .intro-device-container.scene-1
+       .intro-device.scene-1
+            video(muted autoplay)
+                source(src="" type="video/mp4")
+                strong 이 브라우저는 비디오 태그를 지원하지 않습니다.
+    //- .views
+    //-     button(value="1") View 1 - Laying
+    //-     button(value="2") View 2 - Side
+    //-     button(value="3") View 3 - Front
+    //- #controls
+    //-     div
+    //-         label(for="iframeURL") URL:
+    //-         input#iframeURL(type="text", placeholder="https://codepen.io", value="https://codepen.io")
+    //-     div
+    //-         label(for="iframeWidth") Width:
+    //-         input#iframeWidth(type="number", placeholder="400", value="400")
+    //-     div
+    //-         label(for="iframeHeight") Height:
+    //-         input#iframeHeight(type="number", placeholder="650", value="650")
+        //- div
+        //-     label(for="iframePerspective") Add perspective:
+            input#iframePerspective(type="checkbox", checked="true")
+    //- #linkBack(style="position:absolute;right:0px;bottom:0px;background-color:#333;margin:0;width:60px;padding:5px")
+    //-     a(href="http://www.f-rilling.com/projects/", target="_blank", style="font-size:14px;text-decoration:none;color:#fff;padding:0 0 0 5px;font-family:sans-serif") My Site
+
 block scripts
     script(src="/static/js/intro.js")
