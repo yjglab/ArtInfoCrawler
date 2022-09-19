@@ -1,7 +1,7 @@
 window.scrollTo(0, 0);
 
 const mainTransition = "cubic-bezier(0.51, 0.08, 0.03, 0.99)";
-const dark = "#242424";
+const dark = "#242424"; //rgb(36, 36, 36)
 
 const $navContainer = document.querySelector(".nav-container");
 $navContainer.style.color = dark;
@@ -14,10 +14,12 @@ const $introDevice = document.querySelector(".intro-device");
 
 const $introTextP = document.querySelector(".intro-text p");
 
-const scene1Value = 300;
+const scene1Value = 400;
 const scene2Value = 1500;
 const scene3Value = 3000;
 const scene4Value = 4500;
+const scene5Value = 5500;
+const scene6Value = 6500;
 
 const $video = document.querySelector(".intro-device video");
 const $videoSource = $video.querySelector("source");
@@ -34,6 +36,8 @@ function videoLoadPlay(src) {
     playPromise.then((_) => {}).catch((err) => {});
   }
 }
+
+let alertFlag = false;
 window.addEventListener("scroll", function () {
   // console.log(window.scrollY);
   const scrollValue = window.scrollY;
@@ -42,17 +46,32 @@ window.addEventListener("scroll", function () {
     $navContainer.style.color = dark;
     $introTextP.className = "";
     document.querySelector("main").style.backgroundColor = "white";
+    document.querySelector(
+      ".intro-marquee-block-container-sideblur"
+    ).style.boxShadow = "inset 0px 0px 40px 140px white";
     if (scene1Flag)
       $introDeviceContainer.style.animation = `show-down 0.5s ${mainTransition} forwards`;
   }
   // 씬1
   if (scrollValue > scene1Value && scrollValue < scene2Value) {
     scene1Flag = true;
+    $navContainer.style.color = "white";
+
+    if (!alertFlag) {
+      setTimeout(() => {
+        alert(
+          "!알림!: 인트로 페이지는 현재 제작중인 페이지입니다. 전시를 바로 확인하시고 싶은 분이시라면 좌측 상단의 MAIN버튼을 클릭하여 메인 페이지로 이동해주세요!"
+        );
+      }, 2000);
+      alertFlag = true;
+    }
     if (!$videoSource.src.includes("intro-01")) {
       videoLoadPlay("/static/videos/intro-01.mp4");
     }
     document.querySelector("main").style.backgroundColor = dark;
-    $navContainer.style.color = "white";
+    document.querySelector(
+      ".intro-marquee-block-container-sideblur"
+    ).style.boxShadow = `inset 0px 0px 40px 140px ${dark}`;
     $introTextP.className = "scene-1";
     $introDevice.className = "intro-device scene-1";
     $introDeviceContainer.style.animation = `show-up 1.3s ${mainTransition} forwards`;
@@ -76,7 +95,8 @@ window.addEventListener("scroll", function () {
     $introDevice.className = "intro-device scene-3";
     $introDeviceContainer.className = "intro-device-container scene-3";
   }
-  if (scrollValue > scene4Value) {
+  // 씬4
+  if (scrollValue > scene4Value && scrollValue < scene5Value) {
     if (!$videoSource.src.includes("intro-04")) {
       videoLoadPlay("/static/videos/intro-04.mp4");
     }
@@ -84,35 +104,22 @@ window.addEventListener("scroll", function () {
     $introDevice.className = "intro-device scene-4";
     $introDeviceContainer.className = "intro-device-container scene-4";
   }
+  // 씬5
+  if (scrollValue > scene5Value && scrollValue < scene6Value) {
+    // if (!$videoSource.src.includes("intro-04")) {
+    //   videoLoadPlay("/static/videos/intro-04.mp4");
+    // }
+    $introTextP.className = "scene-5";
+    $introDevice.className = "intro-device scene-5";
+    $introDeviceContainer.className = "intro-device-container scene-5";
+  }
+  //씬6
+  if (scrollValue > scene6Value) {
+    // if (!$videoSource.src.includes("intro-04")) {
+    //   videoLoadPlay("/static/videos/intro-04.mp4");
+    // }
+    $introTextP.className = "scene-6";
+    $introDevice.className = "intro-device scene-6";
+    $introDeviceContainer.className = "intro-device-container scene-6";
+  }
 });
-
-/*Only needed for the controls*/
-
-/*View*/
-// function updateView(view) {
-//   if (view) {
-//     phone.className = "phone view_" + view;
-//   }
-// }
-
-// document.querySelector(".views").addEventListener("click", function (e) {
-//   updateView(e.target.value);
-// });
-
-/*Controls*/
-// function updateIframe() {
-//   iframe.src = document.getElementById("iframeURL").value;
-
-//   phone.style.width = document.getElementById("iframeWidth").value + "px";
-//   phone.style.height = document.getElementById("iframeHeight").value + "px";
-
-//   /*Idea by /u/aerosole*/
-//   //   document.getElementById("wrapper").style.perspective =
-//   //     document.getElementById("iframePerspective").checked ? "1000px" : "none";
-// }
-// updateIframe();
-
-/*Events*/
-// document.getElementById("controls").addEventListener("change", function () {
-//   updateIframe();
-// });

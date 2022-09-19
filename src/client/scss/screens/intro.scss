@@ -5,7 +5,7 @@ main {
   display: flex;
   justify-content: center;
   //   align-items: center;
-  height: 800vh;
+  height: 1400vh;
   background-color: white;
   transition: background-color 0.7s $mainTransition;
 }
@@ -14,32 +14,66 @@ $deviceFrontEdgeColor: rgb(49, 49, 49);
 $deviceEdgeColor: rgb(31, 31, 31);
 
 .intro-header {
-  position: fixed;
-
-  width: 100vw;
-  height: 100vh;
-}
-.intro-header {
   position: absolute;
-  top: 400px;
+
   display: flex;
-  width: 30%;
-  height: 0px;
+  width: 100%;
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   h1 {
+    z-index: 12;
     letter-spacing: 4px;
     color: rgba($dark, 0.8);
     font-weight: 300;
-    font-size: calc($baseFontSize + 3.8em);
+    font-size: calc($baseFontSize + 0.95em);
+    text-shadow: 0 0 85px rgba($dark, 0.9);
   }
   span {
+    z-index: 12;
     letter-spacing: 8px;
     margin-top: 15px;
     color: $dark;
     font-weight: 600;
-    font-size: calc($baseFontSize + 5.8em);
+    font-size: calc($baseFontSize + 7.8em);
+    text-shadow: 0 0 85px rgba($dark, 0.9);
+  }
+
+  .chevrons {
+    position: absolute;
+    bottom: 30%;
+
+    margin-left: -3px;
+    margin-top: 53px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chevrondown {
+    margin-top: -8px;
+    position: relative;
+    border: solid $dark;
+    border-width: 0 2.4px 2.4px 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+  }
+  .chevrondown:nth-child(odd) {
+    animation: pulse 500ms ease infinite alternate;
+  }
+  .chevrondown:nth-child(even) {
+    animation: pulse 500ms ease infinite alternate 250ms;
+  }
+  @keyframes pulse {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   h6 {
     margin-top: 50px;
@@ -56,7 +90,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
 }
 .intro-text {
   position: fixed;
-
+  z-index: 15;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -102,22 +136,35 @@ $deviceEdgeColor: rgb(31, 31, 31);
       }
     }
     &.scene-4 {
-      top: 25%;
+      top: 18%;
 
-      width: 40%;
+      width: 50%;
       opacity: 1;
-      font-size: calc($baseFontSize + 1.2em);
       text-align: center;
       &::before {
         content: "Get more detailed exhibition filtering with dynamic search filters.";
       }
+    }
+    &.scene-5 {
+      top: 15%;
+
+      width: 50%;
+      opacity: 1;
+
+      text-align: center;
+      &::before {
+        content: "You can get exhibition information in an optimal environment from any device.";
+      }
+    }
+    &.scene-6 {
+      opacity: 0;
     }
   }
 }
 .intro-device-container {
   perspective: 1000px;
   position: fixed;
-
+  z-index: 15;
   width: 100vw;
   height: 100vh;
   //   background-color: #444;
@@ -156,6 +203,12 @@ $deviceEdgeColor: rgb(31, 31, 31);
   &.scene-4 {
     transform: scale(1.2) translateY(10%);
   }
+  &.scene-5 {
+    transform: scale(0.4) translateY(30%);
+  }
+  &.scene-6 {
+    opacity: 0;
+  }
 }
 .intro-device {
   border: 30px solid $deviceFrontEdgeColor;
@@ -191,9 +244,13 @@ $deviceEdgeColor: rgb(31, 31, 31);
     //   0px 5px 0 $deviceEdgeColor, 0px 7px 0 $deviceEdgeColor, 0px 10px 20px #666;
   }
   &.scene-5 {
-    transform: rotateX(50deg) rotateY(0deg) rotateZ(-50deg);
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.3);
     // box-shadow: -3px 3px 0 $deviceEdgeColor, -6px 6px 0 $deviceEdgeColor,
     //   -9px 9px 0 $deviceEdgeColor, -12px 12px 0 #bbb, -14px 10px 20px #666;
+  }
+  &.scene-6 {
+    opacity: 0;
   }
 
   video {
@@ -224,40 +281,108 @@ $deviceEdgeColor: rgb(31, 31, 31);
   color: #444;
   background-color: #eee;
 }
+// // // //
 
-// @media (max-width: 900px) {
-//   #wrapper {
-//     transform: scale(0.8, 0.8);
-//   }
-// }
+.intro-marquee-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background: rgba(tomato, 0.4);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-// @media (max-width: 700px) {
-//   #wrapper {
-//     transform: scale(0.6, 0.6);
-//   }
-// }
+  .intro-marquee-block-container-sideblur {
+    // background: linear-gradient(
+    //   90deg,
+    //   rgba(255, 255, 255, 1) 10%,
+    //   rgba(255, 255, 255, 0) 16%,
+    //   rgba(255, 255, 255, 0) 84%,
+    //   rgba(255, 255, 255, 1) 90%
+    // );
+    transition: box-shadow 0.7s $mainTransition;
+    box-shadow: inset 0px 0px 40px 140px white;
+    z-index: 11;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .intro-marquee-block-container {
+    z-index: 10;
+    overflow: hidden;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .intro-marquee-block {
+      --total-marquee-items: 5;
+      height: 30%;
+      width: calc(300px * (var(--total-marquee-items)));
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      margin: 10px auto;
 
-// @media (max-width: 500px) {
-//   #wrapper {
-//     transform: scale(0.4, 0.4);
-//   }
-// }
-/*Controls*/
+      .intro-marquee-inner {
+        display: block;
+        width: 200%;
+        position: absolute;
+        height: 100%;
+        &.to-left {
+          animation: marqueeLeft 25s linear infinite;
+        }
+        &.to-right {
+          animation: marqueeRight 25s linear infinite;
+        }
 
-// #controls {
-//   position: absolute;
-//   top: 20px;
-//   left: 20px;
-//   font-size: 0.9em;
-//   color: #333;
-// }
+        @keyframes marqueeLeft {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -100%;
+          }
+        }
+        @keyframes marqueeRight {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 0;
+          }
+        }
 
-// #controls div {
-//   margin: 10px;
-// }
+        span {
+          // float: left;
+          width: 50%;
+          height: 100%;
 
-// #controls div label {
-//   width: 120px;
-//   display: block;
-//   float: left;
-// }
+          .intro-marquee-item {
+            opacity: 0.3;
+            border-radius: 15px;
+            overflow: hidden;
+            filter: saturate(0);
+            width: 280px;
+            height: 100%;
+            display: inline-block;
+            margin: 0 10px;
+            float: left;
+            // background-color: $dark;
+            transition: all 0.2s ease-out;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
