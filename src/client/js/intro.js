@@ -57,14 +57,14 @@ window.addEventListener("scroll", function () {
     scene1Flag = true;
     $navContainer.style.color = "white";
 
-    // if (!alertFlag) {
-    //   setTimeout(() => {
-    //     alert(
-    //       "!알림!: 인트로 페이지는 현재 제작중인 페이지입니다. 전시를 바로 확인하시고 싶은 분이시라면 좌측 상단의 MAIN버튼을 클릭하여 메인 페이지로 이동해주세요!"
-    //     );
-    //   }, 2000);
-    //   alertFlag = true;
-    // }
+    if (!alertFlag) {
+      setTimeout(() => {
+        alert(
+          "!알림!: 인트로 페이지는 현재 제작중인 페이지입니다. 전시를 바로 확인하시고 싶은 분이시라면 좌측 상단의 MAIN버튼을 클릭하여 메인 페이지로 이동해주세요!"
+        );
+      }, 2000);
+      alertFlag = true;
+    }
     if (!$videoSource.src.includes("intro-01")) {
       videoLoadPlay("/static/videos/intro-01.mp4");
     }
