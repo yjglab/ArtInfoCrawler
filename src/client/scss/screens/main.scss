@@ -64,8 +64,7 @@ main {
 
     &.main-card-clicked {
       display: flex;
-      // animation: blur-on 1s forwards;
-      background-color: rgba(0, 0, 0, 0.8);
+      animation: blur-on 1s forwards;
       @keyframes blur-on {
         from {
           backdrop-filter: blur(0px);
