@@ -5,7 +5,7 @@ main {
   display: flex;
   justify-content: center;
   //   align-items: center;
-  height: 1400vh;
+  height: 1720vh;
   background-color: white;
   transition: background-color 0.7s $mainTransition;
 }
@@ -90,14 +90,14 @@ $deviceEdgeColor: rgb(31, 31, 31);
 }
 .intro-text {
   position: fixed;
-  z-index: 15;
+
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   p {
     position: absolute;
-
+    z-index: 15;
     color: white;
     font-size: calc($baseFontSize + 1.8em);
     font-weight: 500;
@@ -156,8 +156,16 @@ $deviceEdgeColor: rgb(31, 31, 31);
         content: "You can get exhibition information in an optimal environment from any device.";
       }
     }
-    &.scene-6 {
-      opacity: 0;
+    &.scene-6,
+    &.scene-7 {
+      z-index: 0;
+      opacity: 1;
+      top: 37%;
+      width: 50%;
+      text-align: center;
+      &::before {
+        content: "Get Started";
+      }
     }
   }
 }
@@ -234,7 +242,10 @@ $deviceEdgeColor: rgb(31, 31, 31);
       transform: translateY(0%);
     }
   }
-  &.scene-6 {
+
+  &.scene-6,
+  &.scene-7 {
+    z-index: 0;
     opacity: 0;
   }
 }
@@ -280,15 +291,40 @@ $deviceEdgeColor: rgb(31, 31, 31);
     position: fixed;
     transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
     box-shadow: 0px 10px 35px 5px rgba(0, 0, 0, 0.3);
+    video {
+      display: none;
+    }
     .monitor {
       opacity: 1;
     }
-
-    // box-shadow: -3px 3px 0 $deviceEdgeColor, -6px 6px 0 $deviceEdgeColor,
-    //   -9px 9px 0 $deviceEdgeColor, -12px 12px 0 #bbb, -14px 10px 20px #666;
   }
   &.scene-6 {
-    opacity: 0;
+    width: 320px;
+    height: 80px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc($baseFontSize + 1em);
+    font-weight: 700;
+    color: $dark;
+
+    cursor: pointer;
+
+    &::before {
+      content: "See All Exhibitions";
+    }
+    &:hover {
+      background-color: $dark;
+      color: white;
+      transition: all 0.3s $mainTransition;
+      transform: scale(1.1);
+    }
+    video {
+      display: none;
+    }
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.3);
   }
 
   video {
@@ -310,7 +346,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
     border: 1.25em solid $dark;
     margin: 0 auto;
     z-index: 1;
-    transition: all 1.5s $mainTransition;
+    transition: opacity 1.5s $mainTransition;
     box-shadow: 0 8px 25px 5px rgba(0, 0, 0, 0.2);
     & > div {
       position: absolute;
@@ -381,6 +417,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.8s $mainTransition;
 
   .intro-marquee-block-container-sideblur {
     box-shadow: inset 0px 0px 40px 140px white;
