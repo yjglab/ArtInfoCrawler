@@ -138,7 +138,7 @@ window.addEventListener("scroll", function () {
     $introTextP.className = "scene-7";
 
     $introDeviceContainer.className = "intro-device-container scene-7";
-    $introMarqueeContainer.style.opacity = 0;
+    $introMarqueeContainer.style.opacity = 0.08;
   } else {
     $introMarqueeContainer.style.opacity = 1;
   }
