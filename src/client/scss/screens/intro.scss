@@ -418,7 +418,6 @@ $deviceEdgeColor: rgb(31, 31, 31);
   transition: opacity 0.8s $mainTransition;
 
   .intro-marquee-block-container-sideblur {
-    box-shadow: inset 0px 0px 80px 240px white;
     transition: box-shadow 0.7s $mainTransition;
     z-index: 11;
     overflow: hidden;
@@ -427,6 +426,27 @@ $deviceEdgeColor: rgb(31, 31, 31);
     position: absolute;
     left: 0;
     top: 0;
+
+    &.white-blur {
+      box-shadow: inset 0px 0px 80px 220px white;
+    }
+    &.dark-blur {
+      box-shadow: inset 0px 0px 80px 220px $dark;
+    }
+    @media all and (min-width: 1920px) and (max-width: 3860px) {
+      &.white-blur {
+        box-shadow: inset 0px 0px 80px 290px white;
+      }
+      &.dark-blur {
+        box-shadow: inset 0px 0px 80px 290px $dark;
+      }
+    }
+    // @media all and (min-width: 410px) and (max-width: 768px) {
+    //   height: 270px;
+    // }
+    // @media all and (min-width: 0px) and (max-width: 410px) {
+    //   height: 250px;
+    // }
   }
   .intro-marquee-block-container {
     z-index: 10;

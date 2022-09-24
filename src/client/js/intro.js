@@ -11,7 +11,9 @@ document.querySelector(".filter-container").style.display = "none";
 
 const $introDeviceContainer = document.querySelector(".intro-device-container");
 const $introDevice = document.querySelector(".intro-device");
-
+const $introMarqueeBlockContainerSideblur = document.querySelector(
+  ".intro-marquee-block-container-sideblur"
+);
 const $introTextP = document.querySelector(".intro-text p");
 
 const scene1Value = 400;
@@ -51,9 +53,8 @@ window.addEventListener("scroll", function () {
     $navContainer.style.color = dark;
     $introTextP.className = "";
     document.querySelector("main").style.backgroundColor = "white";
-    document.querySelector(
-      ".intro-marquee-block-container-sideblur"
-    ).style.boxShadow = "inset 0px 0px 80px 240px white";
+    $introMarqueeBlockContainerSideblur.className =
+      "intro-marquee-block-container-sideblur white-blur";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
     if (scene1Flag)
       $introDeviceContainer.style.animation = `show-down 0.5s ${mainTransition} forwards`;
@@ -75,9 +76,8 @@ window.addEventListener("scroll", function () {
       videoLoadPlay("/static/videos/intro-01.mp4");
     }
     document.querySelector("main").style.backgroundColor = dark;
-    document.querySelector(
-      ".intro-marquee-block-container-sideblur"
-    ).style.boxShadow = `inset 0px 0px 80px 240px ${dark}`;
+    $introMarqueeBlockContainerSideblur.className =
+      "intro-marquee-block-container-sideblur dark-blur";
     $introTextP.className = "scene-1";
     $introDevice.className = "intro-device scene-1";
     $introDeviceContainer.style.animation = `show-up 1.3s ${mainTransition} forwards`;
