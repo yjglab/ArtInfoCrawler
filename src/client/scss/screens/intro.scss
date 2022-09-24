@@ -308,7 +308,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
     font-size: calc($baseFontSize + 1em);
     font-weight: 700;
     color: $dark;
-
+    background-color: white;
     cursor: pointer;
 
     &::before {
