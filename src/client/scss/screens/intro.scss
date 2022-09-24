@@ -136,7 +136,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
       }
     }
     &.scene-4 {
-      top: 26%;
+      top: 16%;
 
       width: 50%;
       opacity: 1;
@@ -146,7 +146,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
       }
     }
     &.scene-5 {
-      top: 15%;
+      top: 18%;
 
       width: 50%;
       opacity: 1;
@@ -167,7 +167,6 @@ $deviceEdgeColor: rgb(31, 31, 31);
   z-index: 15;
   width: 100vw;
   height: 100vh;
-  //   background-color: #444;
 
   display: flex;
   justify-content: center;
@@ -191,6 +190,26 @@ $deviceEdgeColor: rgb(31, 31, 31);
       opacity: 0;
     }
   }
+  .monitor-bottom {
+    width: 300px;
+    height: 158px;
+    background-color: rgb(233, 233, 233);
+    z-index: 1;
+    position: absolute;
+    bottom: -63px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: all 1.5s $mainTransition;
+    transform: translateY(100%);
+    .monitor-bottom-prop {
+      position: absolute;
+      width: 135%;
+      height: 10px;
+      background-color: rgb(233, 233, 233);
+      bottom: 0;
+    }
+  }
   &.scene-1 {
     transform: translateY(28%);
   }
@@ -201,10 +220,19 @@ $deviceEdgeColor: rgb(31, 31, 31);
     transform: scale(1.3) translateY(20%);
   }
   &.scene-4 {
-    transform: scale(1.2) translateY(16%);
+    transform: scale(1.1) translateY(20%);
   }
   &.scene-5 {
-    transform: scale(0.4) translateY(30%);
+    transition: all 1.5s $mainTransition;
+    transform: scale(0.38) translateY(270px);
+    .monitor-bottom {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    & ~ .responsive-animation-container {
+      opacity: 1;
+      transform: translateY(0%);
+    }
   }
   &.scene-6 {
     opacity: 0;
@@ -217,12 +245,14 @@ $deviceEdgeColor: rgb(31, 31, 31);
   //   margin: 50px auto;
   overflow: hidden;
   transition: all 1s $mainTransition;
+  background-color: white;
 
   position: relative;
 
   width: 1200px;
   height: 680px;
 
+  z-index: 1;
   &.scene-1 {
     transform: rotateX(0deg) rotateY(-30deg) rotateZ(0deg);
     box-shadow: 13px 18px 30px 15px rgba(0, 0, 0, 0.3);
@@ -238,14 +268,22 @@ $deviceEdgeColor: rgb(31, 31, 31);
     //   0px 5px 0 $deviceEdgeColor, 0px 7px 0 $deviceEdgeColor, 0px 10px 20px #666;
   }
   &.scene-4 {
-    transform: rotateX(50deg) rotateY(0deg) rotateZ(0deg);
+    transform: rotateX(-50deg) rotateY(0deg) rotateZ(0deg);
     box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.3);
     // box-shadow: 0px 3px 0 $deviceEdgeColor, 0px 4px 0 $deviceEdgeColor,
     //   0px 5px 0 $deviceEdgeColor, 0px 7px 0 $deviceEdgeColor, 0px 10px 20px #666;
   }
   &.scene-5 {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.3);
+    border: none;
+    height: 760px;
+    transition: all 1.5s $mainTransition;
+    position: fixed;
+    transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+    box-shadow: 0px 10px 35px 5px rgba(0, 0, 0, 0.3);
+    .monitor {
+      opacity: 1;
+    }
+
     // box-shadow: -3px 3px 0 $deviceEdgeColor, -6px 6px 0 $deviceEdgeColor,
     //   -9px 9px 0 $deviceEdgeColor, -12px 12px 0 #bbb, -14px 10px 20px #666;
   }
@@ -257,52 +295,96 @@ $deviceEdgeColor: rgb(31, 31, 31);
     object-fit: cover;
     width: 100%;
     height: 100%;
+    z-index: 2;
+  }
+  .monitor {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    border: 0.625em solid $dark;
+    border-radius: 0.625em;
+    border: 1.25em solid $dark;
+    margin: 0 auto;
+    z-index: 1;
+    transition: all 1.5s $mainTransition;
+    box-shadow: 0 8px 25px 5px rgba(0, 0, 0, 0.2);
+    & > div {
+      position: absolute;
+    }
+
+    .content {
+      width: 26.25em;
+      height: 15em;
+      left: 50%;
+      top: 30%;
+      margin-left: -13.125em;
+      overflow: hidden;
+      transform: scale(3);
+
+      .browser {
+        width: 15em;
+        height: 11.25em;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -5.625em 0 0 -7.5em;
+        border-top: 1.25em solid rgba($dark, 0.5);
+        border-radius: 0.313em;
+        box-shadow: 0px 5px 25px 5px rgba(0, 0, 0, 0.13);
+      }
+
+      .browser-content {
+        overflow: hidden;
+        height: 9.938em;
+      }
+
+      .btns {
+        position: absolute;
+        top: -1.25em;
+        left: 0.438em;
+
+        & > li {
+          display: inline-block;
+          vertical-align: middle;
+          list-style: none;
+          width: 0.313em;
+          height: 0.313em;
+          border-radius: 0.313em;
+          background: white;
+          margin-right: 0.25em;
+        }
+      }
+
+      .btns:before {
+        content: "";
+        position: absolute;
+        left: 2.188em;
+        top: 0.313em;
+        height: 0.625em;
+        width: 11.563em;
+        background: white;
+        border-radius: 3px;
+      }
+    }
   }
 }
 
-.views {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 200px;
-}
-
-.views button {
-  width: 198px;
-  border: 1px solid #bbb;
-  background-color: #fff;
-  height: 40px;
-  margin: 10px 0;
-  color: #666;
-  transition: all 0.2s;
-}
-
-.views button:hover {
-  color: #444;
-  background-color: #eee;
-}
-// // // //
-
 .intro-marquee-container {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
-  // background: rgba(tomato, 0.4);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .intro-marquee-block-container-sideblur {
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(255, 255, 255, 1) 10%,
-    //   rgba(255, 255, 255, 0) 16%,
-    //   rgba(255, 255, 255, 0) 84%,
-    //   rgba(255, 255, 255, 1) 90%
-    // );
-    transition: box-shadow 0.7s $mainTransition;
     box-shadow: inset 0px 0px 40px 140px white;
+    transition: box-shadow 0.7s $mainTransition;
     z-index: 11;
     overflow: hidden;
     width: 100%;
@@ -324,6 +406,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
       height: 30%;
       width: calc(300px * (var(--total-marquee-items)));
       overflow: hidden;
+      transform: translateY(0%);
       box-sizing: border-box;
       position: relative;
       margin: 10px auto;
@@ -334,10 +417,10 @@ $deviceEdgeColor: rgb(31, 31, 31);
         position: absolute;
         height: 100%;
         &.to-left {
-          animation: marqueeLeft 25s linear infinite;
+          animation: marqueeLeft 35s linear infinite;
         }
         &.to-right {
-          animation: marqueeRight 25s linear infinite;
+          animation: marqueeRight 35s linear infinite;
         }
 
         @keyframes marqueeLeft {
@@ -385,5 +468,195 @@ $deviceEdgeColor: rgb(31, 31, 31);
         }
       }
     }
+  }
+}
+
+// // // //
+
+$white: #f8f8f8;
+$grey-light: #e8ebf0;
+$grey: #e8ebf0;
+$grey-dark: #d8dbe1;
+
+.responsive-animation-container {
+  position: fixed;
+  width: 100vw;
+  height: 50vh;
+  z-index: 15;
+  top: 43.5%;
+  opacity: 0;
+  transition: all 1.5s $mainTransition;
+  transform: translateY(100%);
+}
+
+.screen {
+  .txt {
+    margin: 0.625rem auto;
+    width: 85%;
+    text-align: center;
+    font-size: 0;
+    animation: scroll 4s 1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    @keyframes scroll {
+      20%,
+      60% {
+        transform: translateY(-62%);
+      }
+      80% {
+        margin-top: -50px;
+      }
+    }
+    & > .third {
+      height: 2.25em;
+      width: 30%;
+      margin-right: 5%;
+      display: inline-block;
+    }
+
+    & > li {
+      box-shadow: 0 3px 15px 2px rgba(0, 0, 0, 0.17);
+      width: 100%;
+      height: 0.938em;
+      margin-bottom: 0.363em;
+      font-size: 1rem;
+    }
+    & > li.big {
+      height: 3.75em;
+    }
+    & > li:nth-child(5),
+    & > li:nth-child(10),
+    & > li:nth-child(13),
+    & > li:nth-child(18),
+    & > li:nth-child(21) {
+      margin-right: 0;
+    }
+  }
+}
+
+.laptop {
+  width: 14.688em;
+  height: 9.688em;
+  background: white;
+  border: 0.75em solid $dark;
+  border-radius: 0.625em 0.625em 0 0;
+  position: absolute;
+  //bottom: -5em;
+  top: 14.5em;
+  right: 1.875em;
+  right: 49%;
+  margin-right: -19.5em;
+
+  & > div {
+    position: absolute;
+  }
+  .screen {
+    border-radius: 15px;
+    width: 13.188em;
+    height: 8.188em;
+    left: 0;
+
+    overflow: hidden;
+  }
+
+  .btm {
+    width: 18.5em;
+    height: 0.625em;
+    bottom: -1.188em;
+    left: 50%;
+    margin-left: -9.25em;
+    border-radius: 0 0 20px 20px;
+    background: rgb(202, 202, 202);
+    z-index: 1;
+  }
+}
+
+.phone {
+  width: 4.825em;
+  height: 8.75em;
+  position: absolute;
+
+  top: 15.75em;
+
+  left: 48.3%;
+  margin-left: -20.5em;
+  border-radius: 0.5em;
+  background: $dark;
+  border: 1.563em solid $dark;
+  border-left: 0.313em solid $dark;
+  border-right: 0.313em solid $dark;
+
+  .phone-notch {
+    position: absolute;
+    z-index: 5;
+    width: 63%;
+    left: 12.3px;
+    height: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    top: -19px;
+    background-color: $dark;
+  }
+  .screen {
+    width: 4.2em;
+    height: 8em;
+    border-radius: 5px;
+    top: -1.17em;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+  .txt {
+    animation: scroll 4s 1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    & > li {
+      height: 1.125em;
+    }
+  }
+}
+
+.screen .txt > li.txt-half {
+  width: 46%;
+  margin-right: 8%;
+  display: inline-block;
+
+  &:nth-of-type(even) {
+    margin-right: 0;
+  }
+}
+
+.ipad {
+  width: 8.75em;
+  height: 12.75em;
+  position: absolute;
+  //bottom: -5em;
+  top: 11.7em;
+
+  left: 48.8%;
+  margin-left: -15.5em;
+  border-radius: 0.5em;
+  background: $dark;
+  border: 1.563em solid $dark;
+  border-left: 0.313em solid $dark;
+  border-right: 0.313em solid $dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .ipad-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    bottom: -17px;
+  }
+  .screen {
+    width: 8em;
+    height: 9.8em;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  li.txt-half {
+    height: 35px;
   }
 }
