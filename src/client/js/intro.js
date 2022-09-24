@@ -42,6 +42,7 @@ function videoLoadPlay(src) {
 
 let alertFlag = false;
 const getStartedMove = () => {
+  console.log("cc");
   location.href = "/main";
 };
 window.addEventListener("scroll", function () {
