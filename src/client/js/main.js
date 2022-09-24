@@ -98,6 +98,7 @@ $(function () {
       } else {
         // input 값 없으면 리셋
         $(mainCardMixContainer).mixItUp("filter", "all");
+        $(".nothing-found-txt").css("display", "none");
       }
     }, 600);
   });
