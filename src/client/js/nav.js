@@ -20,7 +20,7 @@ $(window).scroll(function () {
     $mainBannerSectionContainer.classList.remove("hide");
     // $filterContainerBackground.classList.add("hide");
     $navContainer.style.color = "white";
-    $filterSearchbar.value = "";
+    // $filterSearchbar.value = "";
     // $(".main-card-mix-container").mixItUp("filter", "all");
     document.querySelectorAll(".filter-list-category .filter").forEach((v) => {
       if (v.classList.contains("option-all")) v.classList.add("option-clicked");
