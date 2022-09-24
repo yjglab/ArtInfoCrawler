@@ -53,7 +53,7 @@ window.addEventListener("scroll", function () {
     document.querySelector("main").style.backgroundColor = "white";
     document.querySelector(
       ".intro-marquee-block-container-sideblur"
-    ).style.boxShadow = "inset 0px 0px 40px 140px white";
+    ).style.boxShadow = "inset 0px 0px 80px 240px white";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
     if (scene1Flag)
       $introDeviceContainer.style.animation = `show-down 0.5s ${mainTransition} forwards`;
@@ -77,7 +77,7 @@ window.addEventListener("scroll", function () {
     document.querySelector("main").style.backgroundColor = dark;
     document.querySelector(
       ".intro-marquee-block-container-sideblur"
-    ).style.boxShadow = `inset 0px 0px 40px 160px ${dark}`;
+    ).style.boxShadow = `inset 0px 0px 80px 240px ${dark}`;
     $introTextP.className = "scene-1";
     $introDevice.className = "intro-device scene-1";
     $introDeviceContainer.style.animation = `show-up 1.3s ${mainTransition} forwards`;
