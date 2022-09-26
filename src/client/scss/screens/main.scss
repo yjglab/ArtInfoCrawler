@@ -1,8 +1,10 @@
 @import "../config/_variables";
 
 body {
+  width: 100vw;
   background: rgb(255, 255, 255);
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -38,6 +40,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media all and (min-width: 768px) and (max-width: 1280px) {
+    padding: 0 30px;
+  }
+  @media all and (min-width: 0px) and (max-width: 768px) {
+    padding: 0 50px;
+  }
   .nothing-found-txt {
     position: absolute;
     top: 500px;
@@ -108,8 +116,6 @@ main {
     display: flex; //
     flex-direction: column; //
 
-    // background: rgb(53, 53, 53) center center no-repeat;
-    // background-size: cover;
     filter: blur(8px);
 
     &.card-image-loaded {
@@ -695,6 +701,7 @@ main {
       @media all and (min-width: 0px) and (max-width: 768px) {
         h1 {
           font-size: calc($baseFontSize + 0.5em);
+          width: 60%;
         }
         p {
           font-size: calc($baseFontSize - 0.2em);

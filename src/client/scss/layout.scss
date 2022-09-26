@@ -5,6 +5,7 @@
 @import "./components/footer.scss";
 
 html {
+  overflow-x: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;

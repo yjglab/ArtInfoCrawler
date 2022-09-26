@@ -70,10 +70,11 @@
       font-size: calc($baseFontSize - 0.07em);
     }
     @media all and (min-width: 0px) and (max-width: 768px) {
-      width: 300px;
-      font-size: calc($baseFontSize - 0.14em);
-      padding: 0 10px;
-      background-color: transparent;
+      // width: 300px;
+      // font-size: calc($baseFontSize - 0.14em);
+      // padding: 0 10px;
+      // background-color: transparent;
+      width: 40px;
     }
 
     .update-spinner {
@@ -102,6 +103,12 @@
         }
       }
     }
+    .last-updated,
+    .exb-count {
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -125,7 +132,7 @@
   backdrop-filter: blur(8px);
 
   @media all and (min-width: 0px) and (max-width: 768px) {
-    width: 14%;
+    width: 16%;
     top: 6%;
   }
   &.main-card-clicked,
