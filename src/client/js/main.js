@@ -20,10 +20,18 @@ const searchOptions = {
 };
 let searchFilter = searchOptions.title; // default
 
+const $filterSearchbar = document.querySelector(".filter-search-bar");
+["focus", "click"].forEach((event) => {
+  $filterSearchbar.addEventListener(event, () => {
+    window.scrollTo({ top: 410, behavior: "smooth" });
+  });
+});
+
 const $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach((v) =>
   v.addEventListener("click", () => {
-    const $filterSearchbar = document.querySelector(".filter-search-bar");
+    window.scrollTo({ top: 410, behavior: "smooth" });
+
     $$optionSearchOptions.forEach((searchOption) =>
       searchOption.classList.remove("option-clicked")
     );
