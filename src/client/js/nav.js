@@ -14,13 +14,10 @@ const $filterSearchbar = document.querySelector(".filter-search-bar");
 $(window).scroll(function () {
   if ($(document).scrollTop() > 120) {
     $mainBannerSectionContainer.classList.add("hide");
-    // $filterContainerBackground.classList.remove("hide");
-    $navContainer.style.color = "black";
+    $navContainer.classList.add("scroll-down");
   } else {
     $mainBannerSectionContainer.classList.remove("hide");
-    // $filterContainerBackground.classList.add("hide");
-    $navContainer.style.color = "white";
-    // $filterSearchbar.value = "";
+    $navContainer.classList.remove("scroll-down");
     // $(".main-card-mix-container").mixItUp("filter", "all");
     document.querySelectorAll(".filter-list-category .filter").forEach((v) => {
       if (v.classList.contains("option-all")) v.classList.add("option-clicked");

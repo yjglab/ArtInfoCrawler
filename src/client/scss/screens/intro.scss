@@ -26,20 +26,16 @@ $deviceEdgeColor: rgb(31, 31, 31);
     z-index: 12;
     letter-spacing: 4px;
     color: rgba($dark, 0.8);
-    font-weight: 300;
+    font-weight: 400;
     font-size: calc($baseFontSize + 0.95em);
-    text-shadow: 0 0 85px rgba($dark, 0.9);
+    text-shadow: 0 0 85px rgba($dark, 0.5);
+    margin-bottom: 10px;
   }
-  span {
-    z-index: 12;
-    letter-spacing: 8px;
-    margin-top: 15px;
-    color: $dark;
-    font-weight: 600;
-    font-size: calc($baseFontSize + 7.8em);
-    text-shadow: 0 0 85px rgba($dark, 0.9);
+  .main-logo {
+    span {
+      font-size: calc($baseFontSize + 7.8em);
+    }
   }
-
   .chevrons {
     position: absolute;
     bottom: 31%;

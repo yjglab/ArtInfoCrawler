@@ -32,11 +32,6 @@ body {
   }
 }
 
-// * {
-// 	margin: 0;
-// 	padding: 0;
-// 	box-sizing: border-box;
-// }
 *::-webkit-scrollbar {
   width: 20px; /*너비*/
 }
@@ -50,4 +45,21 @@ body {
 
 *::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
+}
+.main-logo {
+  display: flex;
+  justify-content: center;
+  z-index: 12;
+  span {
+    color: $dark;
+    font-size: $baseFontSize;
+    text-shadow: 0 0 85px rgba($dark, 0.5);
+  }
+  .logo-m,
+  .logo-g {
+    font-weight: 900;
+  }
+  .logo-u {
+    font-weight: 300;
+  }
 }
