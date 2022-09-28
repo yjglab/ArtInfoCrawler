@@ -106,7 +106,12 @@ $deviceEdgeColor: rgb(31, 31, 31);
 
     opacity: 0;
     transition: all 1s $mainTransition;
-
+    @media all and (min-width: 768px) and (max-width: 1280px) {
+      font-size: calc($baseFontSize + 1.6em);
+    }
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      font-size: calc($baseFontSize + 1em);
+    }
     &.scene-1 {
       left: 5%;
       top: 27%;
@@ -114,6 +119,11 @@ $deviceEdgeColor: rgb(31, 31, 31);
       opacity: 1;
       &::before {
         content: "Check out the recently updated exhibitions right away.";
+      }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        width: 90%;
+        text-align: center;
+        top: 13%;
       }
     }
     &.scene-2 {
@@ -125,6 +135,11 @@ $deviceEdgeColor: rgb(31, 31, 31);
       &::before {
         content: "You can view the exhibitions you want to see anytime, anywhere.";
       }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        width: 90%;
+        text-align: center;
+        top: 9%;
+      }
     }
     &.scene-3 {
       top: 10%;
@@ -134,6 +149,11 @@ $deviceEdgeColor: rgb(31, 31, 31);
       text-align: center;
       &::before {
         content: "Sort your favorite exhibits using the dynamic category filter.";
+      }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        width: 90%;
+        text-align: center;
+        top: 12%;
       }
     }
     &.scene-4 {
@@ -145,6 +165,11 @@ $deviceEdgeColor: rgb(31, 31, 31);
       &::before {
         content: "Get more detailed exhibition filtering with dynamic search filters.";
       }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        width: 90%;
+        text-align: center;
+        top: 15%;
+      }
     }
     &.scene-5 {
       top: 17%;
@@ -155,6 +180,11 @@ $deviceEdgeColor: rgb(31, 31, 31);
       text-align: center;
       &::before {
         content: "You can get exhibition information in an optimal environment from any device.";
+      }
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        width: 90%;
+        text-align: center;
+        top: 18%;
       }
     }
     &.scene-6,
@@ -211,6 +241,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
     opacity: 0;
     transition: all 1.5s $mainTransition;
     transform: translateY(100%);
+
     .monitor-bottom-prop {
       position: absolute;
       width: 135%;
@@ -241,6 +272,10 @@ $deviceEdgeColor: rgb(31, 31, 31);
     & ~ .responsive-animation-container {
       opacity: 1;
       transform: translateY(0%);
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        opacity: 1;
+        transform: translateY(7%) scale(0.52);
+      }
     }
   }
 
@@ -294,6 +329,10 @@ $deviceEdgeColor: rgb(31, 31, 31);
     }
     .monitor {
       opacity: 1;
+    }
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      transform: scale(0.65) rotateX(0deg) rotateY(360deg) rotateZ(0deg)
+        translateY(23%);
     }
   }
   &.scene-6 {
@@ -442,12 +481,9 @@ $deviceEdgeColor: rgb(31, 31, 31);
         box-shadow: inset 0px 0px 80px 290px $dark;
       }
     }
-    // @media all and (min-width: 410px) and (max-width: 768px) {
-    //   height: 270px;
-    // }
-    // @media all and (min-width: 0px) and (max-width: 410px) {
-    //   height: 250px;
-    // }
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      display: none;
+    }
   }
   .intro-marquee-block-container {
     z-index: 10;
@@ -506,7 +542,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
             border-radius: 15px;
             overflow: hidden;
             filter: saturate(0);
-            width: 280px;
+            width: 220px;
             height: 100%;
             display: inline-block;
             margin: 0 10px;
@@ -542,6 +578,9 @@ $grey-dark: #d8dbe1;
   opacity: 0;
   transition: all 1.5s $mainTransition;
   transform: translateY(100%);
+  @media all and (min-width: 0px) and (max-width: 768px) {
+    top: 43%;
+  }
 }
 
 .screen {
