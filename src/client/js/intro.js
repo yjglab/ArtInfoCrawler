@@ -16,7 +16,7 @@ const $introMarqueeBlockContainerSideblur = document.querySelector(
 );
 const $introTextP = document.querySelector(".intro-text p");
 
-const scene1Value = 400;
+const scene1Value = 300;
 const scene2Value = 3000;
 const scene3Value = 5500;
 const scene4Value = 8500;
@@ -47,6 +47,7 @@ const getStartedMove = () => {
 };
 
 const $mainLogoSpans = document.querySelectorAll(".main-logo span");
+$mainLogoSpans.forEach((v) => (v.style.color = dark));
 
 window.addEventListener("scroll", function () {
   // console.log(window.scrollY);
