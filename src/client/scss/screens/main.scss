@@ -134,7 +134,7 @@ main {
 
       @media all and (min-width: 0px) and (max-width: 768px) {
         // padding-top: 25%;
-        margin-top: 28%;
+        margin-top: 45%;
       }
     }
     &.hoverable {
@@ -223,6 +223,10 @@ main {
           display: flex;
           justify-content: center;
           align-items: center;
+
+          &::before {
+            content: "✕";
+          }
           &:hover {
             transform: scale(1.2);
             background-color: $dark;

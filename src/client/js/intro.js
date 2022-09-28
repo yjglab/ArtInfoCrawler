@@ -45,6 +45,9 @@ const getStartedMove = () => {
   console.log("cc");
   location.href = "/main";
 };
+
+const $mainLogoSpans = document.querySelectorAll(".main-logo span");
+
 window.addEventListener("scroll", function () {
   // console.log(window.scrollY);
   const scrollValue = window.scrollY;
@@ -52,6 +55,8 @@ window.addEventListener("scroll", function () {
   // 첫 상태
   if (scrollValue < scene1Value) {
     $navContainer.style.color = dark;
+    $mainLogoSpans.forEach((v) => (v.style.color = dark));
+
     $introTextP.className = "";
     document.querySelector("main").style.backgroundColor = "white";
     $introMarqueeBlockContainerSideblur.className =
@@ -62,17 +67,11 @@ window.addEventListener("scroll", function () {
   }
   // 씬1
   if (scrollValue > scene1Value && scrollValue < scene2Value) {
+    $mainLogoSpans.forEach((v) => (v.style.color = "white"));
+
     scene1Flag = true;
     $navContainer.style.color = "white";
 
-    // if (!alertFlag) {
-    //   setTimeout(() => {
-    //     alert(
-    //       "!알림!: 인트로 페이지는 현재 제작중인 페이지입니다. 전시를 바로 확인하시고 싶은 분이시라면 좌측 상단의 MAIN버튼을 클릭하여 메인 페이지로 이동해주세요!"
-    //     );
-    //   }, 2000);
-    //   alertFlag = true;
-    // }
     if (!$videoSource.src.includes("intro-01")) {
       videoLoadPlay("/static/videos/intro-01.mp4");
     }

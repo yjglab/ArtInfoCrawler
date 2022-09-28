@@ -14,6 +14,9 @@
   @media all and (min-width: 0px) and (max-width: 768px) {
     height: 40px;
   }
+  &.main-card-clicked {
+    opacity: 0;
+  }
   &.scroll-down {
     backdrop-filter: blur(8px);
   }
@@ -24,7 +27,6 @@
     left: 30px;
     display: flex;
     align-items: center;
-    transition: all 0.3s $mainTransition;
 
     &:hover {
       transform: scale(1.07);
@@ -37,8 +39,8 @@
     }
     .main-logo {
       span {
-        font-size: calc($baseFontSize + 0.2em);
         color: white;
+        font-size: calc($baseFontSize + 0.2em);
       }
     }
   }
@@ -46,7 +48,7 @@
     height: 100%;
     margin-left: 22px;
     font-size: $baseFontSize;
-    transition: all 0.3s $mainTransition;
+
     font-weight: 500;
     display: flex;
     justify-content: center;
@@ -61,7 +63,7 @@
     }
   }
   .nav-list-container {
-    width: 350px;
+    width: 380px;
     height: 70%;
     position: absolute;
     right: 20px;
@@ -73,17 +75,12 @@
     transition: opacity 1s $mainTransition;
     padding: 2px 15px;
     border-radius: 35px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 3px 15px 5px rgba(0, 0, 0, 0.05);
+    font-weight: 500;
     @media all and (min-width: 768px) and (max-width: 1280px) {
       width: 330px;
       font-size: calc($baseFontSize - 0.07em);
     }
     @media all and (min-width: 0px) and (max-width: 768px) {
-      // width: 300px;
-      // font-size: calc($baseFontSize - 0.14em);
-      // padding: 0 10px;
-      // background-color: transparent;
       width: 40px;
     }
 
@@ -112,6 +109,9 @@
           }
         }
       }
+    }
+    .exb-count {
+      margin-left: 10px;
     }
     .last-updated,
     .exb-count {

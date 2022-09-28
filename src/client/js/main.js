@@ -1,5 +1,21 @@
-const $mainCardCursor = document.querySelector(".main-card-cursor");
+const dark = "#242424";
+const $mainLogoSpans = document.querySelectorAll(".main-logo span");
+const $navContainer = document.querySelector(".nav-container");
 const $navListContainer = document.querySelector(".nav-list-container");
+
+$(window).scroll(function () {
+  if ($(document).scrollTop() > 120) {
+    $mainLogoSpans.forEach((v) => (v.style.color = dark));
+    $navContainer.style.color = dark;
+    $navListContainer.style.color = dark;
+  } else {
+    $mainLogoSpans.forEach((v) => (v.style.color = "white"));
+    $navContainer.style.color = "white";
+    $navListContainer.style.color = "white";
+  }
+});
+
+const $mainCardCursor = document.querySelector(".main-card-cursor");
 // 필터 파트
 const $filterContainerBackground = document.querySelector(".filter-container");
 const $filterListCategories = document.querySelectorAll(
@@ -164,6 +180,7 @@ $$mainCardContainers.forEach((v) =>
 // 메인카드 제자리로
 function mainCardReplacing() {
   $mainCardCursor.classList.remove("main-card-clicked");
+  $navContainer.classList.remove("main-card-clicked");
   $navListContainer.style.opacity = 1;
   document.querySelector("body").style.overflow = "overlay";
   $filterContainerBackground.classList.remove("main-card-clicked");
@@ -209,6 +226,7 @@ const handleCardClick = (e) => {
   const $mainCardExtraBtn = $mainCardContainer.querySelector(
     ".main-card-extra-btn"
   );
+  $navContainer.classList.add("main-card-clicked");
   $navListContainer.style.opacity = 0;
   $mainCardCursor.classList.add("main-card-clicked");
 
