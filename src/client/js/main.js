@@ -299,6 +299,19 @@ const handleCardClick = (e) => {
     v.classList.remove("hoverable");
   });
   $mainCardInfoFloater.classList.add("main-card-clicked");
+
+  // 타이틀이 너무 긴 경우 처리
+  const $mainCardDetailContainer = $mainCardContainer.querySelector(
+    ".main-card-detail-container"
+  );
+  const $detailInfoTitle =
+    $mainCardDetailContainer.querySelector(".detail-info-title");
+  const $detailInfoRest =
+    $mainCardDetailContainer.querySelector(".detail-info-rest");
+  if ($detailInfoTitle.textContent.length >= 55) {
+    $detailInfoTitle.style.height = "26%";
+    $detailInfoRest.style.height = "74%";
+  }
 };
 
 setTimeout(() => {
