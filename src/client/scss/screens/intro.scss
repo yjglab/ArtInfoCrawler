@@ -302,7 +302,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
   }
   &.scene-2,
   &.scene-3 {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    // transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
     box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.3);
     // box-shadow: 0px 3px 0 $deviceEdgeColor, 0px 4px 0 $deviceEdgeColor,
     //   0px 5px 0 $deviceEdgeColor, 0px 7px 0 $deviceEdgeColor, 0px 10px 20px #666;
