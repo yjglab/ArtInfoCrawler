@@ -237,7 +237,9 @@ $deviceEdgeColor: rgb(31, 31, 31);
     opacity: 0;
     transition: all 1.5s $mainTransition;
     transform: translateY(100%);
-
+    @media all and (min-width: 768px) and (max-width: 1280px) {
+      bottom: 70px;
+    }
     .monitor-bottom-prop {
       position: absolute;
       width: 135%;
