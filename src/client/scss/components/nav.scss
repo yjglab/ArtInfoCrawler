@@ -10,7 +10,7 @@
   transition: color 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  transition: all 1s $mainTransition;
+  transition: all 0.5s $mainTransition;
   @media all and (min-width: 0px) and (max-width: 768px) {
     height: 40px;
   }
@@ -18,7 +18,18 @@
     opacity: 0;
   }
   &.scroll-down {
-    backdrop-filter: blur(8px);
+    border-radius: 65px;
+    margin: 5px;
+    width: 98%;
+    background-color: white;
+    box-shadow: 0px 10px 35px 8px rgba($dark, 0.3);
+
+    & ~ .filter-container {
+      top: 1.48%;
+      @media all and (min-width: 0px) and (max-width: 768px) {
+        top: 6.5%;
+      }
+    }
   }
   .nav-logo {
     width: 40px;
@@ -133,7 +144,7 @@
   justify-content: center;
   position: fixed;
   top: 1%;
-  background-color: rgb(49, 49, 49);
+  background-color: $dark;
   opacity: 1;
   box-shadow: 0px 5px 25px 10px rgb(0, 0, 0, 0.15);
   transition: all 0.6s $mainTransition;
@@ -143,7 +154,7 @@
 
   @media all and (min-width: 0px) and (max-width: 768px) {
     width: 16%;
-    top: 6%;
+    top: 5%;
   }
   &.main-card-clicked,
   &.hide {

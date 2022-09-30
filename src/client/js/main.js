@@ -177,12 +177,33 @@ $$mainCardContainers.forEach((v) =>
   v.addEventListener("mouseleave", handleCardMouseLeave)
 );
 
+// 마우스 스크롤 방지
+function mouseScrollToggle(bool) {
+  if (!bool) {
+    document
+      .querySelector("body")
+      .addEventListener("wheel", preventScroll, { passive: false });
+  } else {
+    document
+      .querySelector("body")
+      .removeEventListener("wheel", preventScroll, { passive: false });
+  }
+}
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  return false;
+}
+
 // 메인카드 제자리로
 function mainCardReplacing() {
+  // document.querySelector("body").style.overflow = "overlay";
+  mouseScrollToggle(true);
+
   $mainCardCursor.classList.remove("main-card-clicked");
   $navContainer.classList.remove("main-card-clicked");
   $navListContainer.style.opacity = 1;
-  document.querySelector("body").style.overflow = "overlay";
   $filterContainerBackground.classList.remove("main-card-clicked");
 
   $$mainCardContainers.forEach((v) => {
@@ -220,7 +241,9 @@ function mainCardReplacing() {
 
 // 메인카드 클릭 이벤트
 const handleCardClick = (e) => {
-  document.querySelector("body").style.overflow = "hidden";
+  // document.querySelector("body").style.overflow = "hidden";
+  mouseScrollToggle(false);
+
   const $mainCardContainer = e.currentTarget;
   const $mainCardDetailBackground = $mainCardContainer.previousSibling;
   const $mainCardExtraBtn = $mainCardContainer.querySelector(
@@ -465,6 +488,16 @@ const $$mainCards = document.querySelectorAll(".main-card");
 const handleCardMouseMove = (e) => {
   $mainCardCursor.style.left = `${e.pageX - 150}px`;
   $mainCardCursor.style.top = `${e.pageY + 30}px`;
+
+  // mouse 위로 갈시 nav 숨기기
+
+  // if (e.clientY <= 60) {
+  //   $navContainer.style.opacity = 0;
+  //   $navContainer.style.visibility = "hidden";
+  // } else {
+  //   $navContainer.style.opacity = 1;
+  //   $navContainer.style.visibility = "visible";
+  // }
 };
 const displayCardSubInfo = (cardInfo) => {
   $mainCardCursor.querySelector(".cursor-info-hall").textContent =

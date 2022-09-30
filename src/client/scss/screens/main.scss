@@ -3,7 +3,7 @@
 body {
   width: 100vw;
   background: rgb(255, 255, 255);
-  overflow-x: hidden;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
@@ -88,6 +88,7 @@ main {
     &.main-card-clicked {
       display: flex;
       animation: blur-on 1s forwards;
+
       @keyframes blur-on {
         from {
           backdrop-filter: blur(0px);

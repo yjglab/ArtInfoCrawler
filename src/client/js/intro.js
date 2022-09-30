@@ -5,7 +5,7 @@ const dark = "#242424"; //rgb(36, 36, 36)
 
 const $navContainer = document.querySelector(".nav-container");
 $navContainer.style.color = dark;
-
+$navContainer.style.backgroundColor = "transparent";
 $navContainer.querySelector(".nav-list-container").style.display = "none";
 document.querySelector(".filter-container").style.display = "none";
 
