@@ -11,10 +11,9 @@ mixin mainCard(exbInfo, exbCategory)
                 img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
             .main-card-image 
                 img.card-image(loading="lazy" src=`${exbInfo.thumbnailSrc}` )
-                .main-card-extra-btn
-                    
-                    //- .main-card-link-btn
-        //- .main-card-sub-floater
+            .main-card-extra-btn
+                i.fa-solid.fa-xmark
+      
         .main-card-detail-container
             .detail-info-title 
                 h1=exbInfo.title

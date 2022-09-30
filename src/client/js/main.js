@@ -278,7 +278,6 @@ const handleCardClick = (e) => {
     .classList.add("main-card-clicked");
   [$mainCardDetailBackground, $mainCardExtraBtn].forEach((v) =>
     v.addEventListener("click", () => {
-      // (임시)나중에 x버튼도 추가
       mainCardReplacing();
     })
   );
@@ -315,7 +314,7 @@ const handleCardClick = (e) => {
   // }px`;
   $mainCardContainer.style.left = `${0 - currentCardX + viewPortWidth / 10}px`;
   $mainCardContainer.style.top = `${
-    0 - currentCardY + viewPortHeight / 110 - extraHeightPercent
+    0 - currentCardY + viewPortHeight / 110 - extraHeightPercent + 50
   }px`;
 
   $$mainCardContainers.forEach((v) => {
