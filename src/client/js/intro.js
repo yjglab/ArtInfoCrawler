@@ -50,9 +50,23 @@ const $mainLogoSpans = document.querySelectorAll(".main-logo span");
 $mainLogoSpans.forEach((v) => (v.style.color = dark));
 
 window.addEventListener("scroll", function () {
-  // console.log(window.scrollY);
-  const scrollValue = window.scrollY;
+  // // intro scroll bar
+  // const $introScrollBar = document.querySelector(".intro-scroll-bar");
+  // const $barGuage = $introScrollBar.querySelector(".bar-guage");
 
+  // // ...
+  // // const scene1Value = 3
+  // // const scene2Value = 30
+  // // const scene3Value = 55
+  // // const scene4Value = 85
+  // // const scene5Value = 110
+  // // const scene6Value = 135
+  // // const scene7Value = 150
+  // // ...
+
+  // $barGuage.style.width += scrollValue;
+
+  const scrollValue = window.scrollY;
   // 첫 상태
   if (scrollValue < scene1Value) {
     $navContainer.style.color = dark;

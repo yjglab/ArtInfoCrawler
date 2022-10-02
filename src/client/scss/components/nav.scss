@@ -17,7 +17,10 @@
   &.main-card-clicked {
     opacity: 0;
   }
-  &.scroll-down {
+  &.scroll-down-intro {
+    background-color: transparent;
+  }
+  &.scroll-down-main {
     border-radius: 65px;
     margin: 5px;
     width: 98%;
@@ -232,6 +235,7 @@
     }
     .filter-list-search {
       input {
+        font-size: 16px;
         width: 80%;
         height: 100%;
         outline: none;

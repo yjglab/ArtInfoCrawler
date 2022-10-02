@@ -1,23 +1,19 @@
-// intro 페이지 nav
 const $navContainer = document.querySelector(".nav-container");
-$(window).scroll(function () {
-  if ($(document).scrollTop() > 120) {
-    $navContainer.classList.add("scroll-down");
-  } else {
-    $navContainer.classList.remove("scroll-down");
-  }
-});
+const body = document.querySelector("body");
 
-// main 페이지 nav
 if (document.title.toLowerCase().indexOf("introduction") === -1) {
+  // main 페이지 nav
+
   const $mainBannerSectionContainer = document.querySelector(
     ".main-banner-section-container"
   );
 
   $(window).scroll(function () {
     if ($(document).scrollTop() > 120) {
+      $navContainer.classList.add("scroll-down-main");
       $mainBannerSectionContainer.classList.add("hide");
     } else {
+      $navContainer.classList.remove("scroll-down-main");
       $mainBannerSectionContainer.classList.remove("hide");
       // $(".main-card-mix-container").mixItUp("filter", "all");
       document
@@ -62,4 +58,13 @@ if (document.title.toLowerCase().indexOf("introduction") === -1) {
     $updateSpinnerIcon.classList.add("fa-check");
     $updateSpinnerIcon.classList.add("update-completed");
   }, Math.floor(Math.random() * 20) * 1000 + 15000);
+} else if (document.title.toLowerCase().indexOf("main") === -1) {
+  // intro 페이지 nav
+  $(window).scroll(function () {
+    if ($(document).scrollTop() > 120) {
+      $navContainer.classList.add("scroll-down-intro");
+    } else {
+      $navContainer.classList.remove("scroll-down-intro");
+    }
+  });
 }
