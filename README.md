@@ -1,6 +1,7 @@
 # MUG
 
 세계 전시관 전시정보 제공 웹서비스
+![image](https://user-images.githubusercontent.com/70316567/193456602-bb92fe44-5067-4a13-b8da-3c075efeba42.png)
 
 ### 기본 동작
 
@@ -32,8 +33,8 @@
 
 ### 라우트
 
-- / (Introduction Page)
-- /main (Main Page)
+- Introduction Page: /
+- Main Page: /main
 
 <!-- 조회수 -->
 
