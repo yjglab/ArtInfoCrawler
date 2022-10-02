@@ -1,9 +1,8 @@
 # MUG
 
 세계 전시관 전시정보 제공 웹서비스
-<br>
 
-![image](https://user-images.githubusercontent.com/70316567/193456602-bb92fe44-5067-4a13-b8da-3c075efeba42.png)
+![logo-01](https://user-images.githubusercontent.com/70316567/193456858-265fad0e-cbf4-45f4-9402-ebf5332404dc.png)
 
 ### 기본 동작
 
