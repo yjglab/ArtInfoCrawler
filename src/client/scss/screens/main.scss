@@ -148,7 +148,7 @@ main {
       }
     }
     @media all and (min-width: 1920px) and (max-width: 3860px) {
-      height: 330px;
+      height: 400px;
     }
     @media all and (min-width: 768px) and (max-width: 1280px) {
       height: 250px;
@@ -453,6 +453,9 @@ main {
             // @media all and (min-width: 0px) and (max-width: 410px) {
             //   height: 7%;
             // }
+            @media all and (min-width: 1920px) and (max-width: 3860px) {
+              margin: -0.5% 0;
+            }
             @media all and (min-width: 0px) and (max-width: 768px) {
               width: 70%;
               margin: 1.5% 0;
@@ -475,6 +478,10 @@ main {
               width: 100px;
               height: 100px;
               object-fit: cover;
+              @media all and (min-width: 1920px) and (max-width: 3860px) {
+                width: 200px;
+                height: 200px;
+              }
               @media all and (min-width: 768px) and (max-width: 1280px) {
                 width: 90px;
                 height: 90px;

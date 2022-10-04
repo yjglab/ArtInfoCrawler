@@ -7,6 +7,7 @@
   const r = require.context("../videos", false, /\.(mp4)$/);
   return r.keys().map(r);
 })();
+
 // (function importAllFonts() {
 //   const r = require.context("../fonts", false, /\.(woff|woff2|eot|ttf|otf)$/);
 //   return r.keys().map(r);
