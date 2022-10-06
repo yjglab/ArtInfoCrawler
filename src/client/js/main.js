@@ -300,6 +300,7 @@ const handleCardClick = (e) => {
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
   );
+  console.log(viewPortWidth);
   const viewPortHeight = Math.max(
     document.documentElement.clientHeight || 0,
     window.innerHeight || 0
