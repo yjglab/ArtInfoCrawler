@@ -515,9 +515,7 @@ window.addEventListener("mousemove", handleCardMouseMove);
 const $$mainBanner = document.querySelectorAll(".main-banner");
 $$mainBanner.forEach((v) =>
   v.addEventListener("click", () => {
-    const userRes = confirm(
-      `Would you like to go to the detail page of this exhibition?\n`
-    );
+    const userRes = confirm(`Go to the detail page of this exhibition?\n`);
 
     if (userRes) {
       window.open(v.querySelector(".banner-detail span").textContent);

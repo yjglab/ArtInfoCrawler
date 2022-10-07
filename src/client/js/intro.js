@@ -1,3 +1,8 @@
+(function importAllVideos() {
+  const r = require.context("../videos", false, /\.(mp4)$/);
+  return r.keys().map(r);
+})();
+
 window.scrollTo(0, 0);
 
 const mainTransition = "cubic-bezier(0.51, 0.08, 0.03, 0.99)";

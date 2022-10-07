@@ -15,16 +15,6 @@ if (document.title.toLowerCase().indexOf("introduction") === -1) {
     } else {
       $navContainer.classList.remove("scroll-down-main");
       $mainBannerSectionContainer.classList.remove("hide");
-      // $(".main-card-mix-container").mixItUp("filter", "all");
-      document
-        .querySelectorAll(".filter-list-category .filter")
-        .forEach((v) => {
-          if (v.classList.contains("option-all"))
-            v.classList.add("option-clicked");
-          else {
-            v.classList.remove("option-clicked");
-          }
-        });
     }
   });
 

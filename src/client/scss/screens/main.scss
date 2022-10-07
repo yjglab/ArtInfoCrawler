@@ -104,9 +104,9 @@ main {
   .main-card-container {
     width: 100%;
     height: 400px;
-    transition: all 1s $mainTransition, transform 0.5s $mainTransition;
     opacity: 1;
-
+    transition: all 1s $mainTransition, transform 0.5s $mainTransition,
+      filter 5s $mainTransition;
     position: relative;
     top: 0;
     left: 0;
@@ -121,8 +121,6 @@ main {
 
     &.card-image-loaded {
       filter: none;
-      transition: all 1s $mainTransition, transform 0.5s $mainTransition,
-        filter 5s $mainTransition;
     }
 
     &.main-card-clicked {
@@ -134,7 +132,6 @@ main {
       background-color: transparent;
 
       @media all and (min-width: 0px) and (max-width: 768px) {
-        // padding-top: 25%;
         margin-top: 25%;
       }
     }
