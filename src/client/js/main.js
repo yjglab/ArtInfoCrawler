@@ -18,9 +18,11 @@ $(window).scroll(function () {
 const $mainCardCursor = document.querySelector(".main-card-cursor");
 // 필터 파트
 const $filterContainerBackground = document.querySelector(".filter-container");
+
 const $filterListCategories = document.querySelectorAll(
   ".filter-list-category > div"
 );
+
 $filterListCategories.forEach((v) =>
   v.addEventListener("click", () => {
     $filterListCategories.forEach((category) =>

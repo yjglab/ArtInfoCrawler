@@ -4,6 +4,16 @@
 
 ![logo-01](https://user-images.githubusercontent.com/70316567/193456858-265fad0e-cbf4-45f4-9402-ebf5332404dc.png)
 
+### Version
+
+- 0.0.0
+  - Launched
+- 0.0.1
+  - 필터 박스 디자인, 배치 수정
+  - 모바일에서 필터 박스 클릭시 옵션 클릭되는 버그 수정
+  - PC 카드 애니메이션 프레임 드랍 수정
+  - 카드 내부 좌우 아이콘 배치 수정
+
 ### 기본 동작
 
 - infoCrawler를 통해 원하는 url과 원하는 정보의 selector만 넣고 selenium으로 데이터를 불러와 JavaScript에서 텍스트 가공을 수행합니다.
@@ -46,4 +56,18 @@
 - 전시 닫기 버튼이 잘 안눌림 (적용)
 - 인트로 페이지 스크롤 게이지 표시 (적용 중)
 - 배너 클릭시 이동 확인 이벤트 (적용)
-- 3860 box shadow 텍스트 오류
+- 3860 box shadow + 텍스트 오류
+
+### 디자이너 친구 조언
+
+- filter 백 색상 블랙+투명
+- 전시 내부 동그란 아이콘 사방 여백 동일하게
+- 그라데이션 과함(모바일 기준 5 웹 8)
+- 슬라이드 전체화면으로 하는게..?
+- 섹션 넘어갈 때 여백 확실히(특히 모바일)
+- 감각 익히기.. (apple.com, https://toss.im/, toss.com)
+- 스크롤 글자들 애니메이션 참고(https://www.plus-ex.com/, https://www.plus-ex.com/about)
+- filter blur 빼기+ 블랙으로.. 뉴모피즘X
+- 모바일 인트로 로고 작게
+- 폰트는 noto sans || pretendard (실무자들 주로 사용)
+- 웹 pc버전은 good
