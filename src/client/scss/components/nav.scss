@@ -144,10 +144,10 @@
   background-color: $dark;
   position: relative;
   opacity: 1;
-  //  box-shadow: 0px 5px 25px 10px rgb(0, 0, 0, 0.15);
   transition: all 0.6s $mainTransition;
   padding: 0.5%;
-  border-radius: 37px;
+  border-radius: 40px;
+
   // -webkit-backdrop-filter: blur(8px);
   // backdrop-filter: blur(8px);
 
@@ -175,7 +175,8 @@
     transition: opacity 0.2s ease-in-out;
   }
   &:hover {
-    // background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 5px 25px 10px rgb(0, 0, 0, 0.1);
+
     background-color: rgba(white, 1);
     top: 0;
     width: 450px;

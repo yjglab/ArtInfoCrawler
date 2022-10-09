@@ -1,7 +1,8 @@
 const dark = "#242424";
-const $mainLogoSpans = document.querySelectorAll(".main-logo span");
 const $navContainer = document.querySelector(".nav-container");
 const $navListContainer = document.querySelector(".nav-list-container");
+
+const $mainLogoSpans = $navContainer.querySelectorAll(".main-logo span");
 
 $(window).scroll(function () {
   if ($(document).scrollTop() > 120) {
