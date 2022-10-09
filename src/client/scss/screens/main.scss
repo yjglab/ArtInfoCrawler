@@ -543,20 +543,15 @@ main {
   box-shadow: 0 10px 15px 4px rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s $mainTransition, visibility 0.5s $mainTransition,
     border 0.5s $mainTransition;
-  // @media all and (min-width: 1280px) and (max-width: 3860px) {
-  //   width: 60%;
-  // }
-  // @media all and (min-width: 768px) and (max-width: 1280px) {
-  //   width: 75%;
-  //   height: 65px;
-  // }
+
   @media all and (min-width: 0px) and (max-width: 768px) {
-    display: flex;
-    width: 92%;
-    height: 60px;
-    .floater-subtitle {
-      font-size: calc($baseFontSize - 0.2em);
-    }
+    // display: flex;
+    // width: 92%;
+    // height: 60px;
+    // .floater-subtitle {
+    //   font-size: calc($baseFontSize - 0.2em);
+    // }
+    display: none;
   }
 
   h1 {

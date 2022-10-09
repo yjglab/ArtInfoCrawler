@@ -355,6 +355,9 @@ $deviceEdgeColor: rgb(31, 31, 31);
   &.scene-7 {
     z-index: 0;
     opacity: 0;
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      transform: scale(0.6) translateY(-40px);
+    }
   }
 }
 .intro-device {
