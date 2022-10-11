@@ -464,25 +464,14 @@ window.addEventListener("load", function () {
 });
 
 function lazyLoad() {
-  const $$mainCardImages = document.querySelectorAll(".main-card-image");
-
-  $$mainCardImages.forEach(function ($mainCardImage) {
-    let $cardImage = $mainCardImage.querySelector(".card-image");
-    let imgUrl = $cardImage.src;
-    $cardImage.src = imgUrl;
-    $cardImage.addEventListener("load", function () {
-      $mainCardImage.style.backgroundImage = "url(" + imgUrl + ")";
-      $$mainCardContainers.forEach((v) => {
-        v.classList.add("card-image-loaded");
-        v.querySelector(".main-card-country-icon").classList.add(
-          "card-image-loaded"
-        );
-        v.querySelector(".main-card-category-icon").classList.add(
-          "card-image-loaded"
-        );
-      });
-      $$mainCardImages.forEach((v) => v.classList.add("card-image-loaded"));
-    });
+  $$mainCardContainers.forEach((v) => {
+    v.classList.add("card-image-loaded");
+    v.querySelector(".main-card-country-icon").classList.add(
+      "card-image-loaded"
+    );
+    v.querySelector(".main-card-category-icon").classList.add(
+      "card-image-loaded"
+    );
   });
 }
 
