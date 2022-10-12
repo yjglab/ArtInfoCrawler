@@ -99,7 +99,7 @@ window.addEventListener("scroll", function () {
     $introTextContentTopValue = 0;
     $navContainer.style.color = dark;
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
-    $navContainer.style.opacity = "1";
+
     $introText.className = "intro-text";
     $introTextContent.textContent = "";
     document.querySelector("main").style.backgroundColor = "white";
@@ -113,7 +113,6 @@ window.addEventListener("scroll", function () {
   if (scrollValue > scene1Value && scrollValue < scene2Value) {
     handleSceneIntroText(1, scrollValue);
     $mainLogoSpans.forEach((v) => (v.style.color = "white"));
-    $navContainer.style.opacity = "0";
     scene1Flag = true;
     $navContainer.style.color = "white";
 
