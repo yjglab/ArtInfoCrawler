@@ -27,7 +27,7 @@
     margin: 10px;
     width: 98%;
     background-color: rgba(white, 1);
-    box-shadow: 0px 10px 35px 8px rgba($dark, 0.3);
+    box-shadow: 0px 10px 35px 8px rgba($dark, 0.125);
   }
   .nav-logo {
     width: 40px;
@@ -53,6 +53,7 @@
       }
     }
   }
+
   .nav-list-page {
     height: 100%;
     margin-left: 22px;

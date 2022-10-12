@@ -119,7 +119,9 @@ main {
     flex-direction: column; //
 
     // filter: blur(8px);
-
+    @media all and (min-width: 0px) and (max-width: 768px) {
+      margin-bottom: 20px;
+    }
     &.card-image-loaded {
       filter: none;
     }

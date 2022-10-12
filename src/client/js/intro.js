@@ -1,15 +1,16 @@
+window.scrollTo(0, 0);
+
 (function importAllVideos() {
   const r = require.context("../videos", false, /\.(mp4)$/);
   return r.keys().map(r);
 })();
-
-window.scrollTo(0, 0);
 
 const mainTransition = "cubic-bezier(0.51, 0.08, 0.03, 0.99)";
 const dark = "#242424"; //rgb(36, 36, 36)
 
 const $navContainer = document.querySelector(".nav-container");
 $navContainer.style.color = dark;
+
 $navContainer.style.backgroundColor = "transparent";
 $navContainer.querySelector(".nav-list-container").style.display = "none";
 document.querySelector(".filter-container").style.display = "none";
@@ -19,15 +20,14 @@ const $introDevice = document.querySelector(".intro-device");
 const $introMarqueeBlockContainerSideblur = document.querySelector(
   ".intro-marquee-block-container-sideblur"
 );
-const $introTextP = document.querySelector(".intro-text p");
 
 const scene1Value = 300;
-const scene2Value = 3000;
-const scene3Value = 5500;
-const scene4Value = 8500;
-const scene5Value = 11000;
-const scene6Value = 13500;
-const scene7Value = 15000;
+const scene2Value = 1500;
+const scene3Value = 3000;
+const scene4Value = 4500;
+const scene5Value = 6000;
+const scene6Value = 7500;
+const scene7Value = 9000;
 
 const $video = document.querySelector(".intro-device video");
 const $videoSource = $video.querySelector("source");
@@ -47,37 +47,62 @@ function videoLoadPlay(src) {
 
 let alertFlag = false;
 const getStartedMove = () => {
-  console.log("cc");
   location.href = "/main";
 };
 
 const $mainLogoSpans = document.querySelectorAll(".main-logo span");
 $mainLogoSpans.forEach((v) => (v.style.color = dark));
 
+const $introText = document.querySelector(".intro-text");
+const $introTextContent = $introText.querySelector("p");
+let $introTextContentTopValue = 10; // px
+let before = 0;
+
+const sceneIntroTextFlag = [
+  { sceneNum: 1, value: false },
+  { sceneNum: 2, value: false },
+  { sceneNum: 3, value: false },
+  { sceneNum: 4, value: false },
+  { sceneNum: 5, value: false },
+  { sceneNum: 6, value: false },
+  { sceneNum: 7, value: false },
+];
+
+function handleSceneIntroText(n, scrollValue) {
+  sceneIntroTextFlag.forEach((v) => {
+    if (v.sceneNum !== n) {
+      v.value = false;
+    }
+  });
+  if (!sceneIntroTextFlag[n - 1].value) {
+    sceneIntroTextFlag[n - 1].value = true;
+    $introTextContentTopValue = 0;
+  }
+  if (before < scrollValue) {
+    $introTextContentTopValue -= 1;
+  } else {
+    $introTextContentTopValue += 1;
+  }
+  $introTextContent.style.top = `${$introTextContentTopValue}px`;
+  if (n !== 6 && n !== 7) {
+    $introDeviceContainer.style.top = `${$introTextContentTopValue}px`;
+  } else {
+    $introDeviceContainer.style.top = "20px";
+  }
+  before = scrollValue;
+}
 window.addEventListener("scroll", function () {
-  // // intro scroll bar
-  // const $introScrollBar = document.querySelector(".intro-scroll-bar");
-  // const $barGuage = $introScrollBar.querySelector(".bar-guage");
-
-  // // ...
-  // // const scene1Value = 3
-  // // const scene2Value = 30
-  // // const scene3Value = 55
-  // // const scene4Value = 85
-  // // const scene5Value = 110
-  // // const scene6Value = 135
-  // // const scene7Value = 150
-  // // ...
-
-  // $barGuage.style.width += scrollValue;
-
   const scrollValue = window.scrollY;
+
   // 첫 상태
   if (scrollValue < scene1Value) {
+    $introTextContentTopValue = 0;
+
     $navContainer.style.color = dark;
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
 
-    $introTextP.className = "";
+    $introText.className = "intro-text";
+    $introTextContent.textContent = "";
     document.querySelector("main").style.backgroundColor = "white";
     $introMarqueeBlockContainerSideblur.className =
       "intro-marquee-block-container-sideblur white-blur";
@@ -87,6 +112,7 @@ window.addEventListener("scroll", function () {
   }
   // 씬1
   if (scrollValue > scene1Value && scrollValue < scene2Value) {
+    handleSceneIntroText(1, scrollValue);
     $mainLogoSpans.forEach((v) => (v.style.color = "white"));
 
     scene1Flag = true;
@@ -98,7 +124,9 @@ window.addEventListener("scroll", function () {
     document.querySelector("main").style.backgroundColor = dark;
     $introMarqueeBlockContainerSideblur.className =
       "intro-marquee-block-container-sideblur dark-blur";
-    $introTextP.className = "scene-1";
+    $introText.className = "intro-text scene-1";
+    $introTextContent.textContent =
+      "Check out the recently updated exhibitions right away.";
     $introDevice.className = "intro-device scene-1";
     $introDeviceContainer.style.animation = `show-up 1.3s ${mainTransition} forwards`;
     $introDeviceContainer.className = "intro-device-container scene-1";
@@ -106,45 +134,63 @@ window.addEventListener("scroll", function () {
   }
   // 씬2
   if (scrollValue > scene2Value && scrollValue < scene3Value) {
+    handleSceneIntroText(2, scrollValue);
+
     if (!$videoSource.src.includes("intro-02")) {
       videoLoadPlay("/static/videos/intro-02.mp4");
     }
-    $introTextP.className = "scene-2";
+    $introText.className = "intro-text scene-2";
+    $introTextContent.textContent =
+      "You can view the exhibitions you want to see anytime, anywhere.";
     $introDevice.className = "intro-device scene-2";
     $introDeviceContainer.className = "intro-device-container scene-2";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
   }
   // 씬3
   if (scrollValue > scene3Value && scrollValue < scene4Value) {
+    handleSceneIntroText(3, scrollValue);
+
     if (!$videoSource.src.includes("intro-03")) {
       videoLoadPlay("/static/videos/intro-03.mp4");
     }
-    $introTextP.className = "scene-3";
+    $introText.className = "intro-text scene-3";
+    $introTextContent.textContent =
+      "Sort your favorite exhibits using the dynamic category filter.";
     $introDevice.className = "intro-device scene-3";
     $introDeviceContainer.className = "intro-device-container scene-3";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
   }
   // 씬4
   if (scrollValue > scene4Value && scrollValue < scene5Value) {
+    handleSceneIntroText(4, scrollValue);
+
     if (!$videoSource.src.includes("intro-04")) {
       videoLoadPlay("/static/videos/intro-04.mp4");
     }
-    $introTextP.className = "scene-4";
+    $introText.className = "intro-text scene-4";
+    $introTextContent.textContent =
+      "Get more detailed exhibition filtering with dynamic search filters.";
     $introDevice.className = "intro-device scene-4";
     $introDeviceContainer.className = "intro-device-container scene-4";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
   }
   // 씬5
   if (scrollValue > scene5Value && scrollValue < scene6Value) {
-    $introTextP.className = "scene-5";
+    handleSceneIntroText(5, scrollValue);
+
+    $introText.className = "intro-text scene-5";
+    $introTextContent.textContent =
+      "You can get exhibition information in an optimal environment from any device.";
     $introDevice.className = "intro-device scene-5";
     $introDeviceContainer.className = "intro-device-container scene-5";
     $introDeviceContainer.removeEventListener("click", getStartedMove);
   }
   // 씬6
-
   if (scrollValue > scene6Value && scrollValue < scene7Value) {
-    $introTextP.className = "scene-6";
+    handleSceneIntroText(6, scrollValue);
+
+    $introText.className = "intro-text scene-6";
+    $introTextContent.textContent = "Get Started";
     $introDevice.className = "intro-device scene-6";
     $introDeviceContainer.className = "intro-device-container scene-6";
     $introDeviceContainer.addEventListener("click", getStartedMove);
@@ -154,7 +200,9 @@ window.addEventListener("scroll", function () {
     ".intro-marquee-container"
   );
   if (scrollValue > scene7Value) {
-    $introTextP.className = "scene-7";
+    handleSceneIntroText(7, scrollValue);
+
+    $introText.className = "scene-7";
 
     $introDeviceContainer.className = "intro-device-container scene-7";
     $introMarqueeContainer.style.opacity = 0.08;

@@ -14,11 +14,13 @@
     - 카드 내부 좌우 아이콘 배치 수정
   - PC
     - 카드 애니메이션 프레임 드랍 수정
-  - Tablet
   - Mobile
     - footer 디자인 수정
     - card inf0 floater 제거
     - 필터 박스 클릭시 옵션 클릭되는 버그 수정
+- 0.0.2
+  - PC
+    - Introduction Page 사용자 스크롤 이벤트 추가
 
 ### 기본 동작
 
