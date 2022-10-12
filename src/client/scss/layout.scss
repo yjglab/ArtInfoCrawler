@@ -10,7 +10,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   @media all and (min-width: 0px) and (max-width: 768px) {
-    scroll-behavior: unset;
+    -webkit-overflow-scrolling: touch;
   }
 }
 *,
