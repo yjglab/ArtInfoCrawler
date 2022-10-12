@@ -21,6 +21,7 @@
 - 0.0.2
   - 공통
     - Introduction Page 사용자 스크롤 이벤트 추가
+    - font-family 변경
 
 ### 기본 동작
 

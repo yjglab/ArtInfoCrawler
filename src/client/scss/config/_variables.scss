@@ -1,22 +1,13 @@
 // font
-
-$nexongothic: "넥슨Lv2고딕 OTF", "넥슨Lv2고딕OTF", "nexon-lv2-gothic-otf";
-$garamond: "EB Garamond", serif;
-$nanumgothic: "Nanum Gothic", sans-serif;
 $baseFontSize: 1em;
+$Qanelas: "Gilroy", sans-serif;
 
 // color
-$backColor: white;
-$red: tomato;
 $dark: #242424;
-$white: white;
-$mainTransition: cubic-bezier(0.51, 0.08, 0.03, 0.99);
-$mainSectionCardShadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.134),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.148), 0 12.5px 10px rgba(0, 0, 0, 0.16),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.172), 0 41.8px 33.4px rgba(0, 0, 0, 0.186),
-  0 100px 80px rgba(0, 0, 0, 0.12);
-$white50: rgba(255, 255, 255, 0.5);
-$white70: rgba(255, 255, 255, 0.7);
-$white100: rgba(255, 255, 255, 1);
 
-$Qanelas: "Qanelas Soft", sans-serif;
+//
+$mainTransition: cubic-bezier(0.51, 0.08, 0.03, 0.99);
+$mainSectionCardShadow: 0 2.8px 2.2px rgba($dark, 0.1),
+  0 6.7px 5.3px rgba($dark, 0.1), 0 12.5px 10px rgba($dark, 0.1),
+  0 22.3px 17.9px rgba($dark, 0.1), 0 41.8px 33.4px rgba($dark, 0.1),
+  0 100px 80px rgba($dark, 0.1);

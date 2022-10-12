@@ -11,7 +11,7 @@ const dark = "#242424"; //rgb(36, 36, 36)
 const $navContainer = document.querySelector(".nav-container");
 $navContainer.style.color = dark;
 
-$navContainer.style.backgroundColor = "transparent";
+$navContainer.style.backgroundColor = "";
 $navContainer.querySelector(".nav-list-container").style.display = "none";
 document.querySelector(".filter-container").style.display = "none";
 
@@ -79,9 +79,9 @@ function handleSceneIntroText(n, scrollValue) {
     $introTextContentTopValue = 0;
   }
   if (before < scrollValue) {
-    $introTextContentTopValue -= 1;
+    $introTextContentTopValue -= 2;
   } else {
-    $introTextContentTopValue += 1;
+    $introTextContentTopValue += 2;
   }
   $introTextContent.style.top = `${$introTextContentTopValue}px`;
   if (n !== 6 && n !== 7) {
@@ -97,10 +97,9 @@ window.addEventListener("scroll", function () {
   // 첫 상태
   if (scrollValue < scene1Value) {
     $introTextContentTopValue = 0;
-
     $navContainer.style.color = dark;
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
-
+    $navContainer.style.opacity = "1";
     $introText.className = "intro-text";
     $introTextContent.textContent = "";
     document.querySelector("main").style.backgroundColor = "white";
@@ -114,7 +113,7 @@ window.addEventListener("scroll", function () {
   if (scrollValue > scene1Value && scrollValue < scene2Value) {
     handleSceneIntroText(1, scrollValue);
     $mainLogoSpans.forEach((v) => (v.style.color = "white"));
-
+    $navContainer.style.opacity = "0";
     scene1Flag = true;
     $navContainer.style.color = "white";
 

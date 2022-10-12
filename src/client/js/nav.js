@@ -50,11 +50,4 @@ if (document.title.toLowerCase().indexOf("introduction") === -1) {
   }, Math.floor(Math.random() * 20) * 1000 + 15000);
 } else if (document.title.toLowerCase().indexOf("main") === -1) {
   // intro 페이지 nav
-  $(window).scroll(function () {
-    if ($(document).scrollTop() > 120) {
-      $navContainer.classList.add("scroll-down-intro");
-    } else {
-      $navContainer.classList.remove("scroll-down-intro");
-    }
-  });
 }
