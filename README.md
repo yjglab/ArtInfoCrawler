@@ -19,7 +19,7 @@
     - card inf0 floater 제거
     - 필터 박스 클릭시 옵션 클릭되는 버그 수정
 - 0.0.2
-  - PC
+  - 공통
     - Introduction Page 사용자 스크롤 이벤트 추가
 
 ### 기본 동작
