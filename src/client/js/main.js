@@ -19,7 +19,14 @@ $(window).scroll(function () {
 const $mainCardCursor = document.querySelector(".main-card-cursor");
 // 필터 파트
 const $filterContainerBackground = document.querySelector(".filter-container");
-
+["click", "mouseenter"].forEach((event) => {
+  $filterContainerBackground.addEventListener(event, () => {
+    $filterContainerBackground.classList.add("filter-container-clicked");
+  });
+});
+$filterContainerBackground.addEventListener("mouseleave", () => {
+  $filterContainerBackground.classList.remove("filter-container-clicked");
+});
 const $filterListCategories = document.querySelectorAll(
   ".filter-list-category > div"
 );
@@ -303,7 +310,7 @@ const handleCardClick = (e) => {
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
   );
-  console.log(viewPortWidth);
+
   const viewPortHeight = Math.max(
     document.documentElement.clientHeight || 0,
     window.innerHeight || 0

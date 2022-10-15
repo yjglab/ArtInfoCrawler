@@ -24,6 +24,8 @@
     - font-family 변경
   - PC
     - 인트로 영상 개선
+  - Mobile
+  - filter click 문제 수정
 
 ### 기본 동작
 
