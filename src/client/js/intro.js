@@ -205,6 +205,6 @@ window.addEventListener("scroll", function () {
     $introDeviceContainer.className = "intro-device-container scene-7";
     $introMarqueeContainer.style.opacity = 0.08;
   } else {
-    $introMarqueeContainer.style.opacity = 1;
+    $introMarqueeContainer.style.opacity = 0.5;
   }
 });

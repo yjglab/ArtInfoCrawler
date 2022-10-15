@@ -50,7 +50,6 @@ $deviceEdgeColor: rgb(31, 31, 31);
     color: rgba($dark, 0.8);
     font-weight: 400;
     font-size: calc($baseFontSize + 0.95em);
-    text-shadow: 0 0 85px rgba($dark, 0.5);
     margin-bottom: 10px;
     @media all and (min-width: 0px) and (max-width: 768px) {
       font-size: $baseFontSize;
@@ -417,7 +416,7 @@ $deviceEdgeColor: rgb(31, 31, 31);
       opacity: 1;
     }
     @media all and (min-width: 0px) and (max-width: 768px) {
-      transform: scale(0.65) rotateX(0deg) rotateY(360deg) rotateZ(0deg)
+      transform: scale(0.65) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
         translateY(23%);
     }
   }
