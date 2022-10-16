@@ -8,9 +8,9 @@ mixin mainCard(exbInfo, exbCategory)
                 else if exbCategory === "Gallery"
                     i.fa-solid.fa-palette
             .main-card-country-icon 
-                img(width=50 height=50 src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` )
+                img(width="50" height="100" src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` )
             .main-card-image 
-                img.card-image(loading="lazy" width=100 src=`${exbInfo.thumbnailSrc}`)
+                img.card-image(loading="lazy" width="100" height="100" src=`${exbInfo.thumbnailSrc}`)
             .main-card-extra-btn
                 i.fa-solid.fa-xmark
       

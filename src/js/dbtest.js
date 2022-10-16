@@ -1450,17 +1450,6 @@ const dbtest = async () => {
     },
     {
       country: `Korea`,
-      title: `Sojung Jun: Green Screen `,
-      date: `2022.08.23 ~ 2023.01.29`,
-      thumbnailSrc: `https://file.samsungfoundation.org:449/leeum/leeum_upload/gallery/Green Screen_web.gif`,
-      detail: `Sojung Jun is an artist working in diverse mediums including video, sound, sculpture, and publication, to create non-linear space and time that evokes new perceptions of history and the present. Exploring ways in which change of physical boundaries penetrates everyday sensual experiences, she traces the scenes, moments, and voices of the people excluded from our contemporary sense of speed. Presented on the media wall in Leeum’s lobby, “Sojung Jun: Green Screen” is composed of three of her works related to the experience and imaginary of borders: Green Screen (2021), Eclipse (2020), and Early Arrival of Future (2015). Considering the media wall’s unusual location in a lobby connecting the museum’s various spaces and serving as an arcade for temporary gatherings, Jun conceived of the program by approaching the media wall as a medium as well as a device. A rather vulnerable space for exhibition, the media wall offered her a device for managing time and maximizing senses – something similar to such fictional spaces located in reality as “portals, wormholes, chukjibeop  (a hypothetical method of folding space and shrinking distance), and time travel to the fourth dimension,” as the artist puts it. This view corresponds to how she perceives Korea’s Demilitarized Zone (DMZ) as a twilight zone full of potentials in Green Screen, which unfolds green sceneries of the DMZ, thus providing a ground for the one-time monumental collaboration. The superimposition of the three works—Early Arrival of Future which summons a future into the present, Green Screen which creates ruptures in reality and perception, and Eclipse which translates our imagining the border as a sliding image—is to temporarily construct non-linear space and time. Fictional realities thus created will rattle our sense of borders and create fractures.`,
-      link: `https://www.leeum.org/exhibition/exhibition01_detail.asp?seq=49`,
-      hall: `LEEUM`,
-      category: `Gallery`,
-      countryCode: `kr`,
-    },
-    {
-      country: `Korea`,
       title: `Jiyoung Yoo: Closed Containers`,
       date: `2022.06.21 ~ 2022.12.18`,
       thumbnailSrc: `https://file.samsungfoundation.org:449/leeum/leeum_upload/gallery/프로젝트룸.jpg`,
