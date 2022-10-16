@@ -627,7 +627,7 @@ main {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   z-index: 0;
   opacity: 1;
   transition: all 0.5s $mainTransition;
@@ -643,6 +643,7 @@ main {
     bottom: 0;
     height: 46%;
     z-index: 1;
+
     .mousey {
       width: 34px;
       height: 50px;
@@ -652,8 +653,9 @@ main {
       opacity: 0.75;
       display: flex;
       justify-content: center;
+      position: absolute;
+      top: 55%;
       @media all and (min-width: 768px) and (max-width: 1280px) {
-        position: absolute;
         top: 35%;
         width: 82px;
         border-radius: 7px;
@@ -661,7 +663,6 @@ main {
         transform: rotate(180deg) scale(0.9);
       }
       @media all and (min-width: 0px) and (max-width: 768px) {
-        position: absolute;
         top: 35%;
         width: 32px;
         border-radius: 7px;
