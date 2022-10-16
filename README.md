@@ -2,7 +2,7 @@
 
 세계 전시관 전시정보 제공 웹서비스
 
-![logo-01](https://user-images.githubusercontent.com/70316567/193456858-265fad0e-cbf4-45f4-9402-ebf5332404dc.png)
+![logo-01](https://user-images.githubusercontent.com/70316567/196025868-5f39383e-d964-45d6-b117-e8ff0b256dca.png)
 
 ### Version
 
@@ -46,12 +46,6 @@
 3. DB에서 데이터 불러와서 템플릿에 출력
 4. 페이지에서 출력 확인
 
-### 기타 기록
-
-- Selenium은 페이지 이동 시 초기 데이터가 모두 초기화됨.
-- robots.txt 확인하기.
-- stale element reference: element is not attached to the page document -> 가상 브라우저 속도차 문제. sleep으로 해결.
-
 ### DEV 지점
 
 - makeInfo.js
@@ -61,27 +55,28 @@
 - Introduction Page: /
 - Main Page: /main
 
-<!-- 조회수 -->
+### UX 반영사항
 
-### 사용자 경험 반영사항
-
-- filter 버튼 상시 플로트 되어있으면 좋을 것 같음. (적용)
-- 여러 이름으로 불리는 국가들 (고려 중)
-- 전시 닫기 버튼이 잘 안눌림 (적용)
-- 인트로 페이지 스크롤 게이지 표시 (다른 스크롤 이벤트로 적용)
-- 배너 클릭시 이동 확인 이벤트 (적용)
-- 3860 box shadow + 텍스트 오류
+- filter 버튼 상시 플로트 되어있으면 좋을 것 같음. ✅
+- 여러 이름으로 불리는 국가들 🔺
+- 전시 닫기 버튼이 잘 안눌림 ✅
+- 인트로 페이지 UX ✅
+- 배너 클릭시 이동 확인 이벤트 ✅
 
 ### 디자이너 친구 조언
 
-- filter 백 색상 블랙+투명
-- 전시 내부 동그란 아이콘 사방 여백 동일하게
-- 그라데이션 과함(모바일 기준 5 웹 8)
-- 슬라이드 전체화면으로 하는게..?
-- 섹션 넘어갈 때 여백 확실히(특히 모바일)
-- 감각 익히기.. (apple.com, https://toss.im/, toss.com)
-- 스크롤 글자들 애니메이션 참고(https://www.plus-ex.com/, https://www.plus-ex.com/about)
-- filter blur 빼기+ 블랙으로.. 뉴모피즘X
-- 모바일 인트로 로고 작게
-- 폰트는 noto sans || pretendard (실무자들 주로 사용)
-- 웹 pc버전은 good
+- 전시 내부 동그란 아이콘 사방 여백 동일하게 ✅
+- 그라데이션 과함(모바일 기준 5 웹 8) ✅
+- 슬라이드 전체화면으로 하는게..? ✅
+- 섹션 넘어갈 때 여백 확실히(특히 모바일) 🔺
+- 감각 익히기.. (apple.com, https://toss.im/, toss.com) ✅
+- 스크롤 글자들 애니메이션 참고(https://www.plus-ex.com/, https://www.plus-ex.com/about) ✅
+- filter blur 빼기+ 블랙으로.. 뉴모피즘X ✅
+- 모바일 인트로 로고 작게 ✅
+- 폰트는 noto sans || pretendard (실무자들 주로 사용) 🔺
+
+### 기타 기록
+
+- Selenium은 페이지 이동 시 초기 데이터가 모두 초기화됨.
+- robots.txt 확인하기.
+- stale element reference: element is not attached to the page document -> 가상 브라우저 속도차 문제. sleep으로 해결.
