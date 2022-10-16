@@ -3,16 +3,20 @@ const $navContainer = document.querySelector(".nav-container");
 const $navListContainer = document.querySelector(".nav-list-container");
 
 const $mainLogoSpans = $navContainer.querySelectorAll(".main-logo span");
-
+const $mainBannerSectionContainer = document.querySelector(
+  ".main-banner-section-container"
+);
 $(window).scroll(function () {
   if ($(document).scrollTop() > 120) {
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
     $navContainer.style.color = dark;
     $navListContainer.style.color = dark;
+    $mainBannerSectionContainer.style.height = "50vh";
   } else {
     $mainLogoSpans.forEach((v) => (v.style.color = "white"));
     $navContainer.style.color = "white";
     $navListContainer.style.color = "white";
+    $mainBannerSectionContainer.style.height = "100vh";
   }
 });
 
