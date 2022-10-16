@@ -14,7 +14,7 @@
     - 카드 내부 좌우 아이콘 배치 수정
   - PC
     - 카드 애니메이션 프레임 드랍 수정
-  - Mobile
+  - Mobile / Tablet
     - footer 디자인 수정
     - card inf0 floater 제거
     - 필터 박스 클릭시 옵션 클릭되는 버그 수정
@@ -25,8 +25,9 @@
     - 상단 배너 크기 조정
   - PC
     - 인트로 영상 개선
-  - Mobile
+  - Mobile / Tablet
     - filter click 문제 수정
+    - 배너 터치 슬라이드 수정
 
 ### 기본 동작
 
