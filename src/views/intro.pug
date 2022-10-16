@@ -25,20 +25,20 @@ block content
                     .intro-marquee-inner.to-right
                         span
                             - for(let i = 10; i < 15; i += 1)
-                                .intro-marquee-item
+                                .intro-marquee-item.to-right-item
                                     img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
                         span
                             - for(let i = 15; i < 20; i += 1)
-                                .intro-marquee-item
+                                .intro-marquee-item.to-right-item
                                     img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
                 .intro-marquee-block
                     .intro-marquee-inner.to-left
                         span
-                            - for(let i = 25; i < 30; i += 1)
+                            - for(let i = 20; i < 25; i += 1)
                                 .intro-marquee-item
                                     img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
                         span
-                            - for(let i = 35; i < 40; i += 1)
+                            - for(let i = 25; i < 30; i += 1)
                                 .intro-marquee-item
                                     img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
 

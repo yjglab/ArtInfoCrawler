@@ -635,9 +635,13 @@ $deviceEdgeColor: rgb(31, 31, 31);
             margin: 0 10px;
             float: left;
             transition: all 0.2s ease-out;
+            &.to-right-item {
+              float: right;
+            }
             @media all and (min-width: 1920px) and (max-width: 3860px) {
               width: 380px;
             }
+
             img {
               background-color: white;
               width: 100%;

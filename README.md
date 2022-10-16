@@ -2,7 +2,7 @@
 
 세계 전시관 전시정보 제공 웹서비스
 
-![logo-01](https://user-images.githubusercontent.com/70316567/196025868-5f39383e-d964-45d6-b117-e8ff0b256dca.png)
+![logo-01](https://user-images.githubusercontent.com/70316567/196025933-4aaed90a-fe6e-4076-a01a-5045b4a61290.png)
 
 ### Version
 
