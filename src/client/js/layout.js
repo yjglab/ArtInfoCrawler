@@ -7,8 +7,8 @@
 let detectionCount = 0;
 setInterval(() => {
   detectionCount += 1;
-  if (detectionCount === 30000) {
-    // 40초간 움직임 없을 시
+  if (detectionCount === 300) {
+    // 300초간 움직임 없을 시
     location.href = "/";
   }
 }, 1000);
