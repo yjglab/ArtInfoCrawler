@@ -55,18 +55,22 @@ block content
         .main-card-section-container
             //- .nothing-found-txt Nothing Found
             .main-card-mix-container
+                //- - let aa = 0;
                 - for (let exb of allExbs) {
+                    //- if aa === 1
+                        - break;
                     if exb.category === "Museum"
                         .mix.filter-museum(class=`${(exb.country).split(' ').join('')}`)
                             +mainCard(exb, exb.category)
                     else if exb.category === "Gallery"
                         .mix.filter-gallery(class=`${(exb.country).split(' ').join('')}`)
                             +mainCard(exb, exb.category)
+                    //- - aa += 1;
                     //- - break
                 - }
         .main-card-info-floater
             .floater-img
-                img(src="")
+                img(width=80 height=80 src="")
             .floater-info
                 .floater-subtitle
                     .floater-subtitle-col.col1

@@ -8,9 +8,9 @@ mixin mainCard(exbInfo, exbCategory)
                 else if exbCategory === "Gallery"
                     i.fa-solid.fa-palette
             .main-card-country-icon 
-                img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
+                img(width=50 height=50 src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` )
             .main-card-image 
-                img.card-image(loading="lazy" src=`${exbInfo.thumbnailSrc}`)
+                img.card-image(loading="lazy" width=100 src=`${exbInfo.thumbnailSrc}`)
             .main-card-extra-btn
                 i.fa-solid.fa-xmark
       
@@ -45,7 +45,7 @@ mixin mainCard(exbInfo, exbCategory)
                            
                             
                     .detail-info-country
-                        img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width="48")
+                        img(src=`https://hatscripts.github.io/circle-flags/flags/${exbInfo.countryCode}.svg` width=48)
                     
                     
             //- 데이터만 저장
