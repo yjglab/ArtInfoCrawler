@@ -68,8 +68,9 @@ const $filterSearchbar = document.querySelector(".filter-search-bar");
 
 const $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach((v) =>
-  v.addEventListener("click", () => {
-    window.scrollTo({ top: 410, behavior: "smooth" });
+  v.addEventListener("click", (e) => {
+    e.currentTarget.scrollIntoView();
+    // window.scrollTo({ top: 410, behavior: "smooth" });
 
     $$optionSearchOptions.forEach((searchOption) =>
       searchOption.classList.remove("option-clicked")
