@@ -64,7 +64,9 @@ const $filterSearchbar = document.querySelector(".filter-search-bar");
 //     window.scrollTo({ top: 410, behavior: "smooth" });
 //   });
 // });
-
+$filterSearchbar.addEventListener("focus", (e) => {
+  e.currentTarget.scrollIntoView();
+});
 const $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach((v) =>
   v.addEventListener("click", () => {
