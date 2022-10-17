@@ -12,7 +12,7 @@ const $navContainer = document.querySelector(".nav-container");
 $navContainer.style.color = dark;
 
 $navContainer.style.backgroundColor = "";
-$navContainer.querySelector(".nav-list-container").style.display = "none";
+document.querySelector(".nav-update-checker").style.display = "none";
 document.querySelector(".filter-container").style.display = "none";
 
 const $introDeviceContainer = document.querySelector(".intro-device-container");
@@ -51,7 +51,10 @@ const getStartedMove = () => {
 };
 
 const $mainLogoSpans = document.querySelectorAll(".main-logo span");
-$mainLogoSpans.forEach((v) => (v.style.color = dark));
+$mainLogoSpans.forEach((v) => {
+  // if (!v.classList.contains("logo-mid-u"))
+  v.style.color = dark;
+});
 
 const $introText = document.querySelector(".intro-text");
 const $introTextContent = $introText.querySelector("p");

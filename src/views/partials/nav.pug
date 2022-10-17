@@ -1,20 +1,20 @@
+.nav-update-checker
+    .update-spinner 
+        i.fa-solid.fa-circle-notch
+    .last-updated
+    .exb-count
+        
 .nav-container 
     .nav-logo
         a(href="/")
             +mainLogo()
     .nav-list-page
         a(href="/main") MAIN
-    .nav-list-container 
-        .update-spinner 
-            i.fa-solid.fa-circle-notch
-        .last-updated
-        .exb-count
-        
 
     .filter-container
         h1 FILTER
+      
         .filter-list
-            .filter-list-title Search
             .filter-list-search
                 input.filter-search-bar(type="text", placeholder="Search Title")
                 .option-search
@@ -25,7 +25,6 @@
                     .option-country
                         i.fa-solid.fa-earth-americas
         .filter-list
-            .filter-list-title Category 
             .filter-list-category
                 .option-all.option-clicked.filter(data-filter="all")
                     .option-icon-box

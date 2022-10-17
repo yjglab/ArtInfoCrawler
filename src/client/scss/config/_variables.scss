@@ -1,11 +1,14 @@
 // font
 $baseFontSize: 1em;
 $Qanelas: "Gilroy", sans-serif;
-
+// $Qanelas: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+//   system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+//   "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+//   "Segoe UI Symbol", sans-serif;
 // color
 $dark: #242424;
-
-//
+$pointClr: tomato;
+//#ff5c2a;
 $mainTransition: cubic-bezier(0.51, 0.08, 0.03, 0.99);
 $mainSectionCardShadow: 0 2.8px 2.2px rgba($dark, 0.1),
   0 6.7px 5.3px rgba($dark, 0.1), 0 12.5px 10px rgba($dark, 0.1),

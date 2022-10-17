@@ -1,34 +1,42 @@
 const dark = "#242424";
 const $navContainer = document.querySelector(".nav-container");
-const $navListContainer = document.querySelector(".nav-list-container");
-
+const $navUpdateChecker = document.querySelector(".nav-update-checker");
+const $filterContainerBackground = document.querySelector(".filter-container");
 const $mainLogoSpans = $navContainer.querySelectorAll(".main-logo span");
 const $mainBannerSectionContainer = document.querySelector(
   ".main-banner-section-container"
 );
+
 $(window).scroll(function () {
+  $filterContainerBackground.classList.remove("filter-container-clicked");
+  $navContainer.classList.remove("filter-clicked");
   if ($(document).scrollTop() > 120) {
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
+    $filterContainerBackground.style.display = "flex";
     $navContainer.style.color = dark;
-    $navListContainer.style.color = dark;
+    $navUpdateChecker.style.color = dark;
     $mainBannerSectionContainer.style.height = "50vh";
   } else {
     $mainLogoSpans.forEach((v) => (v.style.color = "white"));
+    $filterContainerBackground.style.display = "none";
     $navContainer.style.color = "white";
-    $navListContainer.style.color = "white";
+    $navUpdateChecker.style.color = "white";
     $mainBannerSectionContainer.style.height = "100vh";
   }
 });
 
 const $mainCardCursor = document.querySelector(".main-card-cursor");
 // 필터 파트
-const $filterContainerBackground = document.querySelector(".filter-container");
 ["click", "mouseenter"].forEach((event) => {
   $filterContainerBackground.addEventListener(event, () => {
+    $navContainer.classList.add("filter-clicked");
+    $navContainer.classList.remove("scroll-down-main");
     $filterContainerBackground.classList.add("filter-container-clicked");
   });
 });
 $filterContainerBackground.addEventListener("mouseleave", () => {
+  $navContainer.classList.remove("filter-clicked");
+  $navContainer.classList.add("scroll-down-main");
   $filterContainerBackground.classList.remove("filter-container-clicked");
 });
 const $filterListCategories = document.querySelectorAll(
@@ -51,16 +59,16 @@ const searchOptions = {
 let searchFilter = searchOptions.title; // default
 
 const $filterSearchbar = document.querySelector(".filter-search-bar");
-["focus", "click"].forEach((event) => {
-  $filterSearchbar.addEventListener(event, () => {
-    window.scrollTo({ top: 410, behavior: "smooth" });
-  });
-});
+// ["focus", "click"].forEach((event) => {
+//   $filterSearchbar.addEventListener(event, () => {
+//     window.scrollTo({ top: 410, behavior: "smooth" });
+//   });
+// });
 
 const $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach((v) =>
   v.addEventListener("click", () => {
-    window.scrollTo({ top: 410, behavior: "smooth" });
+    // window.scrollTo({ top: 410, behavior: "smooth" });
 
     $$optionSearchOptions.forEach((searchOption) =>
       searchOption.classList.remove("option-clicked")
@@ -217,7 +225,7 @@ function mainCardReplacing() {
 
   $mainCardCursor.classList.remove("main-card-clicked");
   $navContainer.classList.remove("main-card-clicked");
-  $navListContainer.style.opacity = 1;
+  $navUpdateChecker.style.opacity = 1;
   $filterContainerBackground.classList.remove("main-card-clicked");
 
   $$mainCardContainers.forEach((v) => {
@@ -255,7 +263,6 @@ function mainCardReplacing() {
 
 // 메인카드 클릭 이벤트
 const handleCardClick = (e) => {
-  // document.querySelector("body").style.overflow = "hidden";
   mouseScrollToggle(false);
 
   const $mainCardContainer = e.currentTarget;
@@ -264,7 +271,7 @@ const handleCardClick = (e) => {
     ".main-card-extra-btn"
   );
   $navContainer.classList.add("main-card-clicked");
-  $navListContainer.style.opacity = 0;
+  $navUpdateChecker.style.opacity = 0;
   $mainCardCursor.classList.add("main-card-clicked");
 
   $mainCardContainer.style.zIndex = 9999;
@@ -491,16 +498,6 @@ const $$mainCards = document.querySelectorAll(".main-card");
 const handleCardMouseMove = (e) => {
   $mainCardCursor.style.left = `${e.pageX - 150}px`;
   $mainCardCursor.style.top = `${e.pageY + 30}px`;
-
-  // mouse 위로 갈시 nav 숨기기
-
-  // if (e.clientY <= 60) {
-  //   $navContainer.style.opacity = 0;
-  //   $navContainer.style.visibility = "hidden";
-  // } else {
-  //   $navContainer.style.opacity = 1;
-  //   $navContainer.style.visibility = "visible";
-  // }
 };
 const displayCardSubInfo = (cardInfo) => {
   $mainCardCursor.querySelector(".cursor-info-hall").textContent =

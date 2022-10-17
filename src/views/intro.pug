@@ -16,31 +16,31 @@ block content
                         span
                             - for(let i = 0; i < 5; i += 1)
                                 .intro-marquee-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
                         span
                             - for(let i = 5; i < 10; i += 1)
                                 .intro-marquee-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
                 .intro-marquee-block
                     .intro-marquee-inner.to-right
                         span
                             - for(let i = 10; i < 15; i += 1)
                                 .intro-marquee-item.to-right-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
                         span
                             - for(let i = 15; i < 20; i += 1)
                                 .intro-marquee-item.to-right-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
                 .intro-marquee-block
                     .intro-marquee-inner.to-left
                         span
                             - for(let i = 20; i < 25; i += 1)
                                 .intro-marquee-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
                         span
                             - for(let i = 25; i < 30; i += 1)
                                 .intro-marquee-item
-                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}`)
+                                    img(loading="lazy" src=`${allExbs[i].thumbnailSrc}` width="100px" onerror="this.src='/static/img/errimg.jpg'")
 
         h1 INTRODUCING 
         +mainLogo
