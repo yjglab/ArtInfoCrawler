@@ -8,8 +8,8 @@ const $mainBannerSectionContainer = document.querySelector(
 );
 
 $(window).scroll(function () {
-  $filterContainerBackground.classList.remove("filter-container-clicked");
-  $navContainer.classList.remove("filter-clicked");
+  // $filterContainerBackground.classList.remove("filter-container-clicked");
+  // $navContainer.classList.remove("filter-clicked");
   if ($(document).scrollTop() > 120) {
     $mainLogoSpans.forEach((v) => (v.style.color = dark));
     $filterContainerBackground.style.display = "flex";
@@ -59,18 +59,18 @@ const searchOptions = {
 let searchFilter = searchOptions.title; // default
 
 const $filterSearchbar = document.querySelector(".filter-search-bar");
-// ["focus", "click"].forEach((event) => {
-//   $filterSearchbar.addEventListener(event, () => {
-//     window.scrollTo({ top: 410, behavior: "smooth" });
-//   });
-// });
-$filterSearchbar.addEventListener("focus", (e) => {
-  e.currentTarget.scrollIntoView();
+["focus", "click"].forEach((event) => {
+  $filterSearchbar.addEventListener(event, () => {
+    window.scrollTo({ top: 410, behavior: "smooth" });
+  });
 });
+// $filterSearchbar.addEventListener("focus", (e) => {
+//   e.currentTarget.scrollIntoView();
+// });
 const $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach((v) =>
   v.addEventListener("click", () => {
-    // window.scrollTo({ top: 410, behavior: "smooth" });
+    window.scrollTo({ top: 410, behavior: "smooth" });
 
     $$optionSearchOptions.forEach((searchOption) =>
       searchOption.classList.remove("option-clicked")
