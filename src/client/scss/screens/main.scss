@@ -55,6 +55,7 @@ main {
     font-weight: 600;
   }
   .main-card-mix-container {
+    padding: 0 4.5%;
     width: 100%;
     height: 100%;
     z-index: 99;
@@ -655,12 +656,12 @@ main {
       display: flex;
       justify-content: center;
       position: absolute;
-      top: 55%;
+      top: 60%;
       @media all and (min-width: 768px) and (max-width: 1280px) {
-        top: 40%;
-        width: 82px;
+        top: 56%;
+        width: 70px;
         border-radius: 7px;
-        height: 70px;
+        height: 56px;
         transform: rotate(180deg) scale(0.9);
       }
       @media all and (min-width: 0px) and (max-width: 768px) {
@@ -823,9 +824,9 @@ main {
   gap: 3px;
   // text-align: center;
   @media all and (min-width: 768px) and (max-width: 1280px) {
-    bottom: -12%;
+    bottom: -22%;
     height: 32%;
-    width: 40%;
+    width: 20%;
   }
 
   @media all and (min-width: 0px) and (max-width: 768px) {
