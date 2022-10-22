@@ -41,7 +41,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.7s $mainTransition;
-    color: tomato;
+    color: $pointClr;
     i {
       animation: spin 1s linear infinite;
 
@@ -203,10 +203,11 @@
   }
 
   &.filter-container-clicked {
+    border-radius: 20px;
     background-color: transparent;
-    top: -5px;
+    top: 10px;
     width: 460px;
-    height: 280%;
+    height: 300%;
 
     @media all and (min-width: 768px) and (max-width: 1280px) {
       top: 10%;
@@ -293,7 +294,7 @@
           color: $dark;
           &.option-clicked {
             i {
-              color: tomato;
+              color: $pointClr;
               transform: scale(1.1);
             }
           }
@@ -370,7 +371,7 @@
       .option-gallery {
         &.option-clicked {
           transform: scale(1.03);
-          background-color: tomato;
+          background-color: $pointClr;
           color: white;
         }
       }
