@@ -298,6 +298,7 @@ main {
         bottom: 0;
 
         animation: show-on 1s $mainTransition forwards;
+        animation-delay: 800ms;
         @keyframes show-on {
           from {
             opacity: 0;
