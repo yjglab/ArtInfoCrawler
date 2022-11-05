@@ -9,7 +9,7 @@ setInterval(() => {
   detectionCount += 1;
   if (detectionCount === 180) {
     // 300초간 움직임 없을 시
-    location.href = "/";
+    location.href = "/main";
   }
 }, 1000);
 
