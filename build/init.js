@@ -10,7 +10,6 @@ var _index = _interopRequireDefault(require("./index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-console.log(process.env.DB_URL);
 var PORT = process.env.PORT || 8080;
 
 _index["default"].listen(PORT, function () {

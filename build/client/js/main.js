@@ -1,12 +1,47 @@
 "use strict";
 
-var $mainCardCursor = document.querySelector(".main-card-cursor");
-var $navListContainer = document.querySelector(".nav-list-container"); // 필터 파트
-
+var dark = "#242424";
+var $navContainer = document.querySelector(".nav-container");
+var $navUpdateChecker = document.querySelector(".nav-update-checker");
 var $filterContainerBackground = document.querySelector(".filter-container");
-var $filterListCategories = document.querySelectorAll(
-  ".filter-list-category > div"
-);
+var $mainLogoSpans = $navContainer.querySelectorAll(".main-logo span");
+var $mainBannerSectionContainer = document.querySelector(".main-banner-section-container");
+$(window).scroll(function () {
+  // $filterContainerBackground.classList.remove("filter-container-clicked");
+  // $navContainer.classList.remove("filter-clicked");
+  if ($(document).scrollTop() > 120) {
+    $mainLogoSpans.forEach(function (v) {
+      return v.style.color = dark;
+    });
+    $filterContainerBackground.style.display = "flex";
+    $navContainer.style.color = dark;
+    $navUpdateChecker.style.color = dark;
+    $mainBannerSectionContainer.style.height = "50vh";
+  } else {
+    $mainLogoSpans.forEach(function (v) {
+      return v.style.color = "white";
+    });
+    $filterContainerBackground.style.display = "none";
+    $navContainer.style.color = "white";
+    $navUpdateChecker.style.color = "white";
+    $mainBannerSectionContainer.style.height = "100vh";
+  }
+});
+var $mainCardCursor = document.querySelector(".main-card-cursor"); // 필터 파트
+
+["click", "mouseenter"].forEach(function (event) {
+  $filterContainerBackground.addEventListener(event, function () {
+    $navContainer.classList.add("filter-clicked");
+    $navContainer.classList.remove("scroll-down-main");
+    $filterContainerBackground.classList.add("filter-container-clicked");
+  });
+});
+$filterContainerBackground.addEventListener("mouseleave", function () {
+  $navContainer.classList.remove("filter-clicked");
+  $navContainer.classList.add("scroll-down-main");
+  $filterContainerBackground.classList.remove("filter-container-clicked");
+});
+var $filterListCategories = document.querySelectorAll(".filter-list-category > div");
 $filterListCategories.forEach(function (v) {
   return v.addEventListener("click", function () {
     $filterListCategories.forEach(function (category) {
@@ -18,14 +53,21 @@ $filterListCategories.forEach(function (v) {
 var searchOptions = {
   title: "Title",
   hall: "Hall",
-  country: "Country",
+  country: "Country"
 };
 var searchFilter = searchOptions.title; // default
 
+var $filterSearchbar = document.querySelector(".filter-search-bar");
+["focus", "click"].forEach(function (event) {
+  $filterSearchbar.addEventListener(event, function (e) {
+    e.currentTarget.scrollIntoView(); // window.scrollTo({ top: 410, behavior: "smooth" });
+  });
+});
 var $$optionSearchOptions = document.querySelectorAll(".option-search div");
 $$optionSearchOptions.forEach(function (v) {
-  return v.addEventListener("click", function () {
-    var $filterSearchbar = document.querySelector(".filter-search-bar");
+  return v.addEventListener("click", function (e) {
+    e.currentTarget.scrollIntoView(); // window.scrollTo({ top: 410, behavior: "smooth" });
+
     $$optionSearchOptions.forEach(function (searchOption) {
       return searchOption.classList.remove("option-clicked");
     });
@@ -53,19 +95,19 @@ $(function () {
       reverseOut: false,
       staggerSequence: function staggerSequence(i) {
         return i % 8; // 3
-      },
-    },
+      }
+    }
   });
   var inputText;
   var $matching = $(); // delay
 
-  var delay = (function () {
+  var delay = function () {
     var timer = 2;
     return function (callback, ms) {
       clearTimeout(timer);
       timer = setTimeout(callback, ms);
     };
-  })();
+  }();
 
   var searchFilterClassName;
   $(".filter-search-bar").keyup(function () {
@@ -84,13 +126,7 @@ $(function () {
             searchFilterClassName = ".main-card-info .info-country";
           }
 
-          if (
-            $(this)
-              .find(searchFilterClassName)
-              .text()
-              .toLowerCase()
-              .match(inputText)
-          ) {
+          if ($(this).find(searchFilterClassName).text().toLowerCase().match(inputText)) {
             $matching = $matching.add(this);
           } else {
             $matching = $matching.not(this);
@@ -100,6 +136,7 @@ $(function () {
       } else {
         // input 값 없으면 리셋
         $(mainCardMixContainer).mixItUp("filter", "all");
+        $(".nothing-found-txt").css("display", "none");
       }
     }, 600);
   });
@@ -119,19 +156,11 @@ var handleCardMouseEnter = function handleCardMouseEnter(e) {
   var cardCountry = cardInfo[3].textContent;
   var cardCategory = cardInfo[4].textContent;
   var cardImageSrc = cardInfo[5].textContent;
-  var floaterSubtitleCol1 = document.querySelector(
-    ".floater-subtitle-col.col1 h1"
-  );
-  floaterSubtitleCol1.textContent = ""
-    .concat(cardCountry, " ")
-    .concat(cardCategory);
-  var floaterSubtitleCol2 = document.querySelector(
-    ".floater-subtitle-col.col2 h1"
-  );
+  var floaterSubtitleCol1 = document.querySelector(".floater-subtitle-col.col1 h1");
+  floaterSubtitleCol1.textContent = "".concat(cardCountry, " ").concat(cardCategory);
+  var floaterSubtitleCol2 = document.querySelector(".floater-subtitle-col.col2 h1");
   floaterSubtitleCol2.textContent = "".concat(cardHall);
-  var floaterSubtitleCol3 = document.querySelector(
-    ".floater-subtitle-col.col3 h1"
-  );
+  var floaterSubtitleCol3 = document.querySelector(".floater-subtitle-col.col3 h1");
   floaterSubtitleCol3.textContent = "".concat(cardDate);
   var floaterImg = document.querySelector(".floater-img img");
   floaterImg.src = cardImageSrc;
@@ -151,12 +180,33 @@ var handleCardMouseLeave = function handleCardMouseLeave() {
 
 $$mainCardContainers.forEach(function (v) {
   return v.addEventListener("mouseleave", handleCardMouseLeave);
-}); // 메인카드 제자리로
+}); // 마우스 스크롤 방지
+
+function mouseScrollToggle(bool) {
+  if (!bool) {
+    document.querySelector("body").addEventListener("wheel", preventScroll, {
+      passive: false
+    });
+  } else {
+    document.querySelector("body").removeEventListener("wheel", preventScroll, {
+      passive: false
+    });
+  }
+}
+
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+} // 메인카드 제자리로
+
 
 function mainCardReplacing() {
+  // document.querySelector("body").style.overflow = "overlay";
+  mouseScrollToggle(true);
   $mainCardCursor.classList.remove("main-card-clicked");
-  $navListContainer.style.opacity = 1;
-  document.querySelector("body").style.overflow = "overlay";
+  $navContainer.classList.remove("main-card-clicked");
+  $navUpdateChecker.style.opacity = 1;
   $filterContainerBackground.classList.remove("main-card-clicked");
   $$mainCardContainers.forEach(function (v) {
     v.classList.add("hoverable");
@@ -168,20 +218,12 @@ function mainCardReplacing() {
       v.classList.remove("main-card-clicked");
       v.querySelector(".main-card-image").classList.remove("main-card-clicked");
       v.querySelector(".main-card").classList.remove("main-card-clicked");
-      v.querySelector(".main-card-detail-container").classList.remove(
-        "main-card-clicked"
-      );
+      v.querySelector(".main-card-detail-container").classList.remove("main-card-clicked");
       v.previousSibling.classList.remove("main-card-clicked"); // main-card-detail-background
 
-      v.querySelector(".main-card-category-icon").classList.remove(
-        "main-card-clicked"
-      );
-      v.querySelector(".main-card-country-icon").classList.remove(
-        "main-card-clicked"
-      );
-      v.querySelector(".main-card-extra-btn").classList.remove(
-        "main-card-clicked"
-      );
+      v.querySelector(".main-card-category-icon").classList.remove("main-card-clicked");
+      v.querySelector(".main-card-country-icon").classList.remove("main-card-clicked");
+      v.querySelector(".main-card-extra-btn").classList.remove("main-card-clicked");
       $mainCardInfoFloater.classList.remove("main-card-clicked");
     }
   });
@@ -192,40 +234,27 @@ function mainCardReplacing() {
   }, 1000);
 } // 메인카드 클릭 이벤트
 
+
 var handleCardClick = function handleCardClick(e) {
-  document.querySelector("body").style.overflow = "hidden";
+  mouseScrollToggle(false);
   var $mainCardContainer = e.currentTarget;
   var $mainCardDetailBackground = $mainCardContainer.previousSibling;
-  var $mainCardExtraBtn = $mainCardContainer.querySelector(
-    ".main-card-extra-btn"
-  );
-  $navListContainer.style.opacity = 0;
+  var $mainCardExtraBtn = $mainCardContainer.querySelector(".main-card-extra-btn");
+  $navContainer.classList.add("main-card-clicked");
+  $navUpdateChecker.style.opacity = 0;
   $mainCardCursor.classList.add("main-card-clicked");
   $mainCardContainer.style.zIndex = 9999;
   $mainCardContainer.classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card")
-    .classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card-image")
-    .classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card-detail-container")
-    .classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card-category-icon")
-    .classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card-country-icon")
-    .classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card").classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card-image").classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card-detail-container").classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card-category-icon").classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card-country-icon").classList.add("main-card-clicked");
   $mainCardDetailBackground.classList.add("main-card-clicked");
   $filterContainerBackground.classList.add("main-card-clicked");
-  $mainCardContainer
-    .querySelector(".main-card-extra-btn")
-    .classList.add("main-card-clicked");
+  $mainCardContainer.querySelector(".main-card-extra-btn").classList.add("main-card-clicked");
   [$mainCardDetailBackground, $mainCardExtraBtn].forEach(function (v) {
     return v.addEventListener("click", function () {
-      // (임시)나중에 x버튼도 추가
       mainCardReplacing();
     });
   });
@@ -238,20 +267,12 @@ var handleCardClick = function handleCardClick(e) {
   window.addEventListener("resize", function () {
     currentBrowserWidth = document.body.clientWidth;
 
-    if (currentBrowserWidth < 768) {
-    } else {
-    }
+    if (currentBrowserWidth < 768) {} else {}
 
     mainCardReplacing();
   });
-  var viewPortWidth = Math.max(
-    document.documentElement.clientWidth || 0,
-    window.innerWidth || 0
-  );
-  var viewPortHeight = Math.max(
-    document.documentElement.clientHeight || 0,
-    window.innerHeight || 0
-  );
+  var viewPortWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  var viewPortHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
   if (viewPortWidth < 768) {
     extraWidthPercent = 6;
@@ -262,19 +283,21 @@ var handleCardClick = function handleCardClick(e) {
   //   viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
   // }px`;
 
-  $mainCardContainer.style.left = "".concat(
-    0 - currentCardX + viewPortWidth / 10,
-    "px"
-  );
-  $mainCardContainer.style.top = "".concat(
-    0 - currentCardY + viewPortHeight / 110 - extraHeightPercent,
-    "px"
-  );
-  console.log($mainCardContainer.style.top);
+  $mainCardContainer.style.left = "".concat(0 - currentCardX + viewPortWidth / 10, "px");
+  $mainCardContainer.style.top = "".concat(0 - currentCardY + viewPortHeight / 110 - extraHeightPercent + 50, "px");
   $$mainCardContainers.forEach(function (v) {
     v.classList.remove("hoverable");
   });
-  $mainCardInfoFloater.classList.add("main-card-clicked");
+  $mainCardInfoFloater.classList.add("main-card-clicked"); // 타이틀이 너무 긴 경우 처리
+
+  var $mainCardDetailContainer = $mainCardContainer.querySelector(".main-card-detail-container");
+  var $detailInfoTitle = $mainCardDetailContainer.querySelector(".detail-info-title");
+  var $detailInfoRest = $mainCardDetailContainer.querySelector(".detail-info-rest");
+
+  if ($detailInfoTitle.textContent.length >= 55) {
+    $detailInfoTitle.style.height = "26%";
+    $detailInfoRest.style.height = "74%";
+  }
 };
 
 setTimeout(function () {
@@ -283,9 +306,7 @@ setTimeout(function () {
   });
 }, 1000);
 var $mainBannerSlider = document.querySelector(".main-banner-slider");
-var $mainBannerTrailer = document
-  .querySelector(".main-banner-trailer")
-  .querySelectorAll("div");
+var $mainBannerTrailer = document.querySelector(".main-banner-trailer").querySelectorAll("div");
 var value = 0;
 var trailValue = 0;
 var interval = 4000;
@@ -304,7 +325,7 @@ var initiateINC = function initiateINC() {
   $mainBannerTrailer.forEach(function (cur) {
     return cur.classList.remove("active");
   });
-  value === 80 ? (value = 0) : (value += 20);
+  value === 80 ? value = 0 : value += 20;
   trailUpdate();
 };
 
@@ -312,7 +333,7 @@ var initiateDEC = function initiateDEC() {
   $mainBannerTrailer.forEach(function (cur) {
     return cur.classList.remove("active");
   });
-  value === 0 ? (value = 80) : (value -= 20);
+  value === 0 ? value = 80 : value -= 20;
   trailUpdate();
 };
 
@@ -324,29 +345,19 @@ var move = function move(S, T) {
 var tl = gsap.timeline({
   defaults: {
     duration: 0.7,
-    ease: "power4.inOut",
-  },
+    ease: "power4.inOut"
+  }
 });
 tl.from(".banner-detail-filter", {
   x: "-100%",
   opacity: 0,
-  delay: 0.3,
-})
-  .from(
-    ".banner-detail p",
-    {
-      opacity: 0,
-    },
-    "-=0.3"
-  )
-  .from(
-    ".banner-detail h1",
-    {
-      opacity: 0,
-      y: "30px",
-    },
-    "-=0.3"
-  );
+  delay: 0.3
+}).from(".banner-detail p", {
+  opacity: 0
+}, "-=0.3").from(".banner-detail h1", {
+  opacity: 0,
+  y: "30px"
+}, "-=0.3");
 
 var animate = function animate() {
   return tl.restart();
@@ -371,9 +382,7 @@ var start = setInterval(function () {
 }, interval);
 document.querySelectorAll(".banner-control-btn").forEach(function (cur) {
   cur.addEventListener("click", function () {
-    return cur.classList.contains("next")
-      ? slide("increase")
-      : slide("decrease");
+    return cur.classList.contains("next") ? slide("increase") : slide("decrease");
   });
 });
 
@@ -411,7 +420,7 @@ $mainBannerTrailer.forEach(function (cur) {
   });
 });
 
-var touchSlide = (function () {
+var touchSlide = function () {
   var start, move, change, sliderWidth;
   $mainBannerSlider.addEventListener("touchstart", function (e) {
     start = e.touches[0].clientX;
@@ -433,35 +442,21 @@ var touchSlide = (function () {
   };
 
   $mainBannerSlider.addEventListener("touchend", mobile);
-})(); // 이미지 지연 로딩 파트
+}(); // 이미지 지연 로딩 파트
+
 
 window.addEventListener("load", function () {
   setTimeout(lazyLoad, 1000);
 });
 
 function lazyLoad() {
-  var $$mainCardImages = document.querySelectorAll(".main-card-image");
-  $$mainCardImages.forEach(function ($mainCardImage) {
-    var $cardImage = $mainCardImage.querySelector(".card-image");
-    var imgUrl = $cardImage.src;
-    $cardImage.src = imgUrl;
-    $cardImage.addEventListener("load", function () {
-      $mainCardImage.style.backgroundImage = "url(" + imgUrl + ")";
-      $$mainCardContainers.forEach(function (v) {
-        v.classList.add("card-image-loaded");
-        v.querySelector(".main-card-country-icon").classList.add(
-          "card-image-loaded"
-        );
-        v.querySelector(".main-card-category-icon").classList.add(
-          "card-image-loaded"
-        );
-      });
-      $$mainCardImages.forEach(function (v) {
-        return v.classList.add("card-image-loaded");
-      });
-    });
+  $$mainCardContainers.forEach(function (v) {
+    v.classList.add("card-image-loaded");
+    v.querySelector(".main-card-country-icon").classList.add("card-image-loaded");
+    v.querySelector(".main-card-category-icon").classList.add("card-image-loaded");
   });
 } // sub 정보 플로팅 파트
+
 
 var $$mainCards = document.querySelectorAll(".main-card");
 
@@ -471,14 +466,10 @@ var handleCardMouseMove = function handleCardMouseMove(e) {
 };
 
 var displayCardSubInfo = function displayCardSubInfo(cardInfo) {
-  $mainCardCursor.querySelector(".cursor-info-hall").textContent =
-    cardInfo[2].textContent;
-  $mainCardCursor.querySelector(".cursor-info-title").textContent =
-    cardInfo[0].textContent;
-  $mainCardCursor.querySelector(".cursor-info-date").textContent =
-    cardInfo[1].textContent;
-  $mainCardCursor.querySelector(".cursor-info-country").textContent =
-    cardInfo[3].textContent;
+  $mainCardCursor.querySelector(".cursor-info-hall").textContent = cardInfo[2].textContent;
+  $mainCardCursor.querySelector(".cursor-info-title").textContent = cardInfo[0].textContent;
+  $mainCardCursor.querySelector(".cursor-info-date").textContent = cardInfo[1].textContent;
+  $mainCardCursor.querySelector(".cursor-info-country").textContent = cardInfo[3].textContent;
 };
 
 window.addEventListener("mousemove", handleCardMouseMove); // banner click 이벤트
@@ -486,6 +477,10 @@ window.addEventListener("mousemove", handleCardMouseMove); // banner click 이�
 var $$mainBanner = document.querySelectorAll(".main-banner");
 $$mainBanner.forEach(function (v) {
   return v.addEventListener("click", function () {
-    window.open(v.querySelector(".banner-detail span").textContent);
+    var userRes = confirm("Go to the detail page of this exhibition?\n");
+
+    if (userRes) {
+      window.open(v.querySelector(".banner-detail span").textContent);
+    }
   });
 });

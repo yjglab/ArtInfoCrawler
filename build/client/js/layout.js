@@ -4,16 +4,21 @@
   var r = require.context("../img", false, /\.(png|jpe?g|gif|svg)$/);
 
   return r.keys().map(r);
-})(); // const $navListLis = document.querySelectorAll(".nav__list li");
-// $navListLis.forEach((v) => {
-//   v.addEventListener("click", (e) => {
-//     let linkTitle = e.currentTarget.textContent.toLowerCase();
-//     setTimeout(() => {
-//       $("#loader").fadeIn();
-//     }, 100);
-//     setTimeout(() => {
-//       if (linkTitle === "trends") linkTitle = "";
-//       window.open(`/${linkTitle}`, "_self");
-//     }, 500);
-//   });
-// });
+})(); // 사용자 마우스 잠수 탐지
+
+
+var detectionCount = 0;
+setInterval(function () {
+  detectionCount += 1;
+
+  if (detectionCount === 180) {
+    // 300초간 움직임 없을 시
+    location.href = "/";
+  }
+}, 1000);
+
+function userDetection(e) {
+  detectionCount = 0;
+}
+
+window.addEventListener("mousemove", userDetection);

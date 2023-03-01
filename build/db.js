@@ -12,7 +12,7 @@ _mongoose["default"].connect(process.env.DB_URL, {
 var db = _mongoose["default"].connection;
 
 var handleOpen = function handleOpen() {
-  return console.log("🟢 DATABASE 연결");
+  return console.log("🟢 DB 연결");
 };
 
 var handleError = function handleError(err) {
