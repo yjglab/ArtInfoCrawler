@@ -1,94 +1,57 @@
-# MUG
+# MUG 0.0.3
 
-세계 전시관 전시정보 제공 웹서비스
+![DF_깃헙업로드용_19205](https://user-images.githubusercontent.com/70316567/224071275-bd290abd-9683-4598-9ed5-d6a7365376ae.jpg)
 
-![logo-01](https://user-images.githubusercontent.com/70316567/196025933-4aaed90a-fe6e-4076-a01a-5045b4a61290.png)
+MUG(Museum Union Gallery)는 전시 정보를 한 페이지에서 쉽게 확인할 수 있는 인터랙티브 웹 서비스입니다.
+[https://mug-lab.fly.dev](https://mug-lab.fly.dev "MUG")
 
-### Version
+<div> 
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=Express&logoColor=white">
+<img src="https://img.shields.io/badge/Pug-A86454?style=for-the-badge&logo=Pug&logoColor=white">
+<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
+<img src="https://img.shields.io/badge/Illustrator-FF9A00?style=for-the-badge&logo=AdobeIllustrator&logoColor=white">
+</div>
 
-- 0.0.0
-  - Launched
-- 0.0.1
-  - 공통
-    - 필터 박스 디자인, 배치 수정
-    - 카드 내부 좌우 아이콘 배치 수정
-  - PC
-    - 카드 애니메이션 프레임 드랍 수정
-  - Mobile / Tablet
-    - footer 디자인 수정
-    - card inf0 floater 제거
-    - 필터 박스 클릭시 옵션 클릭되는 버그 수정
-- 0.0.2
-  - 공통
-    - Introduction Page 사용자 스크롤 이벤트 추가
-    - font-family 변경
-    - 상단 배너 크기 조정
-  - PC
-    - 인트로 영상 개선
-  - Mobile / Tablet
-    - filter click 문제 수정
-    - 배너 터치 슬라이드 수정
-- 0.0.3
-  - 공통
-    - 네비게이션 디자인 전면 수정
+<div >
 
-### 기본 동작
+</div>
+
+## 서비스 소개 / 결과물 바로보기: [Main](https://mug-lab.fly.dev/main) / [Intro](https://mug-lab.fly.dev/)
+
+이곳 저곳 찾아보지 말고 한 페이지에서 확인하자! [서비스 소개 자세히 - WIKI](https://github.com/yjglab/MuG/wiki/%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B8%B0%ED%9A%8D-%EB%B0%B0%EA%B2%BD%EA%B3%BC-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
+
+- 전시명, 전시장, 전시국으로 구분되어 정보가 담긴 카드를 로드합니다.
+- 카드에 마우스를 올리면 전시에 관한 간단한 정보를 마우스 커서에 올려줍니다.
+- 카드를 클릭하면 전시의 상세 정보를 보여줍니다.
+- 동적 애니메이션을 이용한 카드 필터링 기능을 제공합니다.
+
+## 🛠 [사용된 기술과 선정 이유 - WIKI](https://github.com/yjglab/MuG/wiki/%EC%82%AC%EC%9A%A9%EB%90%9C-%EA%B8%B0%EC%88%A0%EA%B3%BC-%EC%84%A0%EC%A0%95-%EC%9D%B4%EC%9C%A0)
+
+## 기본 동작
 
 - infoCrawler를 통해 원하는 url과 원하는 정보의 selector만 넣고 selenium으로 데이터를 불러와 JavaScript에서 텍스트 가공을 수행합니다.
-- MongoDB에 저장한 후 저장된 데이터를 가져와 템플릿에 자동으로 출력합니다.
+- MongoDB에 저장한 후 저장된 데이터를 가져와 템플릿으로 전송합니다.
 
-### 중심 로그
-
-- infoCrawler 동작 함수, 정보 객체 제작 함수 코드 리팩토링 (22.04.29)
-- 분산화 작업용 MongoDB 연결 (22.05.14)
-- 전시 개별 데이터 배열->개별 객체로 분리 / 각 페이지 라우트 설정 (22.06.06)
-
-### 사용
+## 사용 방법
 
 1. 전시정보를 가져올 python 파일 생성 후 파일에 필요한 정보들의 selector 저장
 2. makeInfo.js에 객체와 파일 정보 입력하여 정보 객체 생성 및 DB저장
 3. DB에서 데이터 불러와서 템플릿에 출력
 4. 페이지에서 출력 확인
 
-### DEV 지점
+## 📃 페이지
 
-- makeInfo.js
+- / `인트로-서비스 소개`
+- /main `메인 정보 페이지`
 
-### 라우트
+| [인트로-서비스 소개](https://github.com/yjglab/MuG/wiki/%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B8%B0%ED%9A%8D-%EB%B0%B0%EA%B2%BD%EA%B3%BC-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#%EC%9D%B8%ED%8A%B8%EB%A1%9C) | [메인 화면](https://github.com/yjglab/MuG/wiki/%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B8%B0%ED%9A%8D-%EB%B0%B0%EA%B2%BD%EA%B3%BC-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#%EB%A9%94%EC%9D%B8-%ED%99%94%EB%A9%B4) |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                              <img width="1043" alt="image" src="https://user-images.githubusercontent.com/70316567/224076728-d8891fb3-339d-4c55-87bb-cf661de1081d.png">                               |                               <img width="1043" alt="image" src="https://user-images.githubusercontent.com/70316567/224076735-bdd7dba9-267c-4681-b2eb-23bf867afd5a.png">                               |
 
-- Introduction Page: /
-- Main Page: /main
+## 📈 서비스 구조와 흐름
 
-### UX 반영사항
+## 🗓 Version Release
 
-- filter 버튼 상시 플로트 되어있으면 좋을 것 같음. ✅
-- 여러 이름으로 불리는 국가들 🔺
-- 전시 닫기 버튼이 잘 안눌림 ✅
-- 인트로 페이지 UX ✅
-- 배너 클릭시 이동 확인 이벤트 ✅
-
-### 디자이너 친구 조언
-
-- 전시 내부 동그란 아이콘 사방 여백 동일하게 ✅
-- 그라데이션 과함(모바일 기준 5 웹 8) ✅
-- 슬라이드 전체화면으로 하는게..? ✅
-- 섹션 넘어갈 때 여백 확실히(특히 모바일) 🔺
-- 감각 익히기.. (apple.com, https://toss.im/, toss.com) ✅
-- 스크롤 글자들 애니메이션 참고(https://www.plus-ex.com/, https://www.plus-ex.com/about) ✅
-- filter blur 빼기+ 블랙으로.. 뉴모피즘X ✅
-- 모바일 인트로 로고 작게 ✅
-- 폰트는 noto sans || pretendard (실무자들 주로 사용) 🔺
-- 배너 애니메이션 조금 빠름 ✅
-- intro scene-1 text 중앙정렬 추천 ✅
-- intro 중앙 로고 빼고 헤더랑 푸터에만 작게 넣는게..? 🔺
-- update 표시 우측 아래 고정 + 사라지게 ✅
-- 필터 위치 우측으로 재검토 + 배경, 서브타이틀 제거 (다른 컨텐츠들이 화려함) ✅
-- 서치 애니메이션 추가 🔺
-- intro-device 테두리 제거 ✅
-- 포인트 컬러 넣어보는게?
-
-### 기타 기록
-
-- Selenium은 페이지 이동 시 초기 데이터가 모두 초기화됨.
-- robots.txt 확인하기.
-- stale element reference: element is not attached to the page document -> 가상 브라우저 속도차 문제. sleep으로 해결.
+[MUG 0.0.3](https://github.com/yjglab/MuG "MUG") / Latest
