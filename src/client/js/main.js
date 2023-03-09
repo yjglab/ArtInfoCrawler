@@ -98,14 +98,13 @@ $(function () {
       easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
       reverseOut: false,
       staggerSequence: function (i) {
-        return i % 8; // 3
+        return i % 8;
       },
     },
   });
 
   var inputText;
   var $matching = $();
-
   // delay
   var delay = (function () {
     var timer = 2;
@@ -309,14 +308,10 @@ const handleCardClick = (e) => {
   );
 
   // 메인카드 반응형 위치
-  let extraWidthPercent = 10.8;
-  let extraHeightPercent = 50;
   window.addEventListener("resize", () => {
     currentBrowserWidth = document.body.clientWidth;
     if (currentBrowserWidth < 768) {
-    } else {
     }
-
     mainCardReplacing();
   });
   const viewPortWidth = Math.max(
@@ -333,13 +328,9 @@ const handleCardClick = (e) => {
   }
   const currentCardX = $mainCardContainer.getClientRects()[0].x;
   const currentCardY = $mainCardContainer.getClientRects()[0].y;
-  // $mainCardContainer.style.left = `${
-  //   viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
-  // }px`;
+
   $mainCardContainer.style.left = `${0 - currentCardX + viewPortWidth / 10}px`;
-  $mainCardContainer.style.top = `${
-    0 - currentCardY + viewPortHeight / 110 - extraHeightPercent + 50
-  }px`;
+  $mainCardContainer.style.top = `${0 - currentCardY + viewPortHeight / 10}px`;
 
   $$mainCardContainers.forEach((v) => {
     v.classList.remove("hoverable");

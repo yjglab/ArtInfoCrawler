@@ -7,6 +7,7 @@ MUG(Museum Union Gallery)는 전시 정보를 한 페이지에서 쉽게 확인�
 
 <div> 
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white">
 <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=Express&logoColor=white">
 <img src="https://img.shields.io/badge/Pug-A86454?style=for-the-badge&logo=Pug&logoColor=white">
 <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
@@ -50,7 +51,16 @@ MUG(Museum Union Gallery)는 전시 정보를 한 페이지에서 쉽게 확인�
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                              <img width="1043" alt="image" src="https://user-images.githubusercontent.com/70316567/224076728-d8891fb3-339d-4c55-87bb-cf661de1081d.png">                               |                               <img width="1043" alt="image" src="https://user-images.githubusercontent.com/70316567/224076735-bdd7dba9-267c-4681-b2eb-23bf867afd5a.png">                               |
 
+## 🪄 구현된 인터랙티브 요소
+
+- [인트로 - 스크롤 반응 애니메이션](https://github.com/yjglab/MuG/wiki/%EA%B5%AC%ED%98%84%EB%90%9C-%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C-%EC%9A%94%EC%86%8C#%EC%9D%B8%ED%8A%B8%EB%A1%9C---%EC%8A%A4%ED%81%AC%EB%A1%A4-%EB%B0%98%EC%9D%91-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)
+- [메인 - 마우스 커서 카드 정보 플로팅](https://github.com/yjglab/MuG/wiki/%EA%B5%AC%ED%98%84%EB%90%9C-%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C-%EC%9A%94%EC%86%8C#%EB%A9%94%EC%9D%B8---%EB%A7%88%EC%9A%B0%EC%8A%A4-%EC%BB%A4%EC%84%9C-%EC%B9%B4%EB%93%9C-%EC%A0%95%EB%B3%B4-%ED%94%8C%EB%A1%9C%ED%8C%85)
+- [메인 - 카드 클릭 인터랙션](https://github.com/yjglab/MuG/wiki/%EA%B5%AC%ED%98%84%EB%90%9C-%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C-%EC%9A%94%EC%86%8C#%EB%A9%94%EC%9D%B8---%EC%B9%B4%EB%93%9C-%ED%81%B4%EB%A6%AD-%EC%9D%B8%ED%84%B0%EB%9E%99%EC%85%98)
+- [메인 - 카드 필터링 애니메이션](https://github.com/yjglab/MuG/wiki/%EA%B5%AC%ED%98%84%EB%90%9C-%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C-%EC%9A%94%EC%86%8C#%EB%A9%94%EC%9D%B8---%EC%B9%B4%EB%93%9C-%ED%95%84%ED%84%B0%EB%A7%81-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)
+
 ## 📈 서비스 구조와 흐름
+
+![구조-01](https://user-images.githubusercontent.com/70316567/224111663-f499f1b1-f407-4977-b976-44899398926a.png)
 
 ## 🗓 Version Release
 
