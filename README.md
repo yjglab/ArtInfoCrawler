@@ -28,8 +28,6 @@ MUG(Museum Union Gallery)는 전시 정보를 한 페이지에서 쉽게 확인�
 - 카드를 클릭하면 전시의 상세 정보를 보여줍니다.
 - 동적 애니메이션을 이용한 카드 필터링 기능을 제공합니다.
 
-## 🛠 [사용된 기술과 선정 이유 - WIKI](https://github.com/yjglab/MuG/wiki/%EC%82%AC%EC%9A%A9%EB%90%9C-%EA%B8%B0%EC%88%A0%EA%B3%BC-%EC%84%A0%EC%A0%95-%EC%9D%B4%EC%9C%A0)
-
 ## 기본 동작
 
 - infoCrawler를 통해 원하는 url과 원하는 정보의 selector만 넣고 selenium으로 데이터를 불러와 JavaScript에서 텍스트 가공을 수행합니다.
