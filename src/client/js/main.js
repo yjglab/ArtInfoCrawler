@@ -329,8 +329,10 @@ const handleCardClick = (e) => {
   const currentCardX = $mainCardContainer.getClientRects()[0].x;
   const currentCardY = $mainCardContainer.getClientRects()[0].y;
 
-  $mainCardContainer.style.left = `${0 - currentCardX + viewPortWidth / 10}px`;
-  $mainCardContainer.style.top = `${0 - currentCardY + viewPortHeight / 10}px`;
+  $mainCardContainer.style.left = `${-currentCardX + viewPortWidth / 10}px`;
+  $mainCardContainer.style.top = `${
+    -currentCardY + viewPortHeight / 10 - 150
+  }px`;
 
   $$mainCardContainers.forEach((v) => {
     v.classList.remove("hoverable");

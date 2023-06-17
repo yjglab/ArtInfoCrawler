@@ -94,7 +94,7 @@ $(function () {
       easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
       reverseOut: false,
       staggerSequence: function staggerSequence(i) {
-        return i % 8; // 3
+        return i % 8;
       }
     }
   });
@@ -262,12 +262,10 @@ var handleCardClick = function handleCardClick(e) {
     return v.removeEventListener("click", handleCardClick);
   }); // 메인카드 반응형 위치
 
-  var extraWidthPercent = 10.8;
-  var extraHeightPercent = 50;
   window.addEventListener("resize", function () {
     currentBrowserWidth = document.body.clientWidth;
 
-    if (currentBrowserWidth < 768) {} else {}
+    if (currentBrowserWidth < 768) {}
 
     mainCardReplacing();
   });
@@ -279,12 +277,9 @@ var handleCardClick = function handleCardClick(e) {
   }
 
   var currentCardX = $mainCardContainer.getClientRects()[0].x;
-  var currentCardY = $mainCardContainer.getClientRects()[0].y; // $mainCardContainer.style.left = `${
-  //   viewPortWidth / 2 - currentCardX - viewPortWidth / extraWidthPercent
-  // }px`;
-
-  $mainCardContainer.style.left = "".concat(0 - currentCardX + viewPortWidth / 10, "px");
-  $mainCardContainer.style.top = "".concat(0 - currentCardY + viewPortHeight / 110 - extraHeightPercent + 50, "px");
+  var currentCardY = $mainCardContainer.getClientRects()[0].y;
+  $mainCardContainer.style.left = "".concat(-currentCardX + viewPortWidth / 10, "px");
+  $mainCardContainer.style.top = "".concat(-currentCardY + viewPortHeight / 10 - 150, "px");
   $$mainCardContainers.forEach(function (v) {
     v.classList.remove("hoverable");
   });
