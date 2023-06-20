@@ -114,3 +114,7 @@ MUG(Museum Union Gallery)는 전시 정보를 한 페이지에서 쉽게 확인�
 ## 🗓 Version Release
 
 [MUG 0.0.3](https://github.com/yjglab/MuG "MUG") / Latest
+
+
+![IMG_7564](https://github.com/yjglab/MuG/assets/70316567/eefdb324-b1f0-4e70-83d6-5b69907c0b00)
+
